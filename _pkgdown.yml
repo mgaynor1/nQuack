@@ -1,0 +1,82 @@
+url: http://mlgaynor.com/nQuack/
+template:
+  bootstrap: 5
+  params:
+    ganalytics: G-YWYQ5CX5NC
+reference:
+- title: Preparing Data
+  desc: |
+    Prepare your data for ploidal estimation with nQuack.
+  contents:
+  - prepare_data
+  - process_data
+  - process_nquire
+  - denoise_data
+  - Bclean
+- title: Simulating data
+  desc: |
+    Simulate data for a given ploidal level.
+  contents:
+  - sim.ind.BB
+  - sim.ind.BB.tau
+  - sim.ind.simple
+- title: Basic Mixture Models
+  desc: |
+    Wrapper functions to run model selection for diploids, triploids, tetraploids, pentaploids, and hexaploids.
+  contents:
+  - quackNormal
+  - quackNormalNQ
+  - quackBeta
+  - quackBetaBinom
+- title: More on Mixture Models
+  desc: |
+    Wrapper functions for model selection, running specific sets of mixture models, and bootstrap replication.
+  contents:
+  - quackit
+  - bestquack
+  - quackNboots
+- title: Expected Maximization Base Functions
+  desc: |
+    Functions used within our mixture models
+  contents:
+  - emstepN
+  - emstepNU
+  - emstepNA
+  - emstepNUA
+  - emstepB
+  - emstepBU
+  - emstepBB
+  - emstepBBU
+  - estepB3
+  - emstepB3
+- title: Helper functions
+  desc: |
+    Everything else.
+  contents:
+  - alphabetacalc
+  - alphabetacalctau
+  - alphabetacalcvec
+  - alphabetacalctauvec
+  - muvarcalcvec
+  - process_rcpp
+  - nQuire_reformat
+  - muvarcalcvec
+  - setconvert
+  - resample_xm
+articles:
+- title: nQuack
+  navbar: ~
+  contents:
+  - BasicExample
+  - DataPreparation
+  - ModelOptions
+  - SimulateData
+  - Outliers
+  - SimulateData
+navbar:
+  structure:
+    left:
+    - reference
+    - articles
+    right: search
+

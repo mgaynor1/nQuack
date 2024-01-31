@@ -1,0 +1,36 @@
+Package: nQuack
+Title: Mixed model approach to predicting samples ploidal level from sequence data using site-based heterozygosity.
+Version: 1.0.0
+Authors@R: c(person(given = "Michelle L.", family = "Gaynor",  email= "shellyleegaynor@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-3912-6079")), 
+     person(given = "José Miguel", family = "Ponciano", email= "josemi@ufl.edu", role = "ctb", 
+           comment = c(ORCID = "0000-0001-8457-7840"))
+    )
+Description: nQuack estimates the most likely ploidal level based on a mixture of models.
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Suggests: 
+    testthat (>= 3.0.0)
+Imports: 
+    Rcpp (>= 1.0.11),
+    truncdist,
+    data.table,
+    foreach, 
+    future, 
+    parallel, 
+    doParallel,
+    extraDistr, 
+    RcppProgress 
+LinkingTo: Rcpp, RcppArmadillo,  extraDistr, RcppProgress 
+Config/testthat/edition: 3
+SystemRequirements: C++17
+Depends: 
+    R (>= 3.5.0)
+LazyData: true
+License: GPL-3
+Maintainer: ML Gaynor <shellyleegaynor@gmail.com>
+URL: http://mlgaynor.com/nQuack/,
+    https://github.com/mgaynor1/nQuack
+BugReports: https://github.com/mgaynor1/nQuack/issue
+

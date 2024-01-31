@@ -1,0 +1,14 @@
+pandoc: 3.1.1
+pkgdown: 2.0.7
+pkgdown_sha: ~
+articles:
+  BasicExample: BasicExample.html
+  DataPreparation: DataPreparation.html
+  ModelOptions: ModelOptions.html
+  Outliers: Outliers.html
+  SimulateData: SimulateData.html
+last_built: 2024-01-31T22:02Z
+urls:
+  reference: http://mlgaynor.com/nQuack/reference
+  article: http://mlgaynor.com/nQuack/articles
+
