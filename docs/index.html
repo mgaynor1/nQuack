@@ -76,7 +76,6 @@
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
 <p>nQuack is a modified statistical framework to predict ploidy level based on sequence data. We build upon <a href="https://doi.org/10.1186/s12859-018-2128-z" class="external-link">Weib et al., 2018</a> Gaussian Mixture Model approach to estimate ploidy level, which was originally written as <a href="https://github.com/clwgg/nQuire" class="external-link">a C executable</a>.</p>
-<p>Here, we provide 32 ways to estimates likelihood of a mixture of models with the expected maximization algorithm (<a href="https://mlgaynor.com/nQuack/articles/ModelOptions.html" class="external-link">see more here</a>)</p>
 </div>
 <div class="section level2">
 <h2 id="more-on-nquack">More on nQuack<a class="anchor" aria-label="anchor" href="#more-on-nquack"></a>
@@ -84,6 +83,7 @@
 <p>Here we provided expanded tools and implementations to improve site-based heterozygosity inferences of ploidal level.</p>
 <p>nQuack provides data preparation guidance and tools to decrease noise in input data. These include a maximum sequence coverage quantile filter and sequence error-based filter, to remove biallelic sites that are likely not representative of copy number variance in the nuclear genome. We also consider only the frequency of allele A or B at each site, instead of both, as found in other methods. To learn more about best practices, see our <a href="https://mlgaynor.com/nQuack/articles/DataPreparation.html" class="external-link">Data Preparation</a> guide.</p>
 <p>Our model improves upon the nQuire framework by extending it to higher ploidal levels (pentaploid and hexaploid), correcting the augmented likelihood calculation, implementing more suitable distribution, and allowing additional ‘fixed’ models. We also decrease model selection errors by relying on BIC rather than likelihood ratio tests. To learn more about these methods, see our <a href="https://mlgaynor.com/nQuack/articles/ModelOptions.html" class="external-link">Model Options</a> guide.</p>
+<p>We provide 32 ways to estimates likelihood of a mixture of models with the expected maximization algorithm (<a href="https://mlgaynor.com/nQuack/articles/ModelOptions.html" class="external-link">see more here</a>) - 8 expected maximization implementations with 4 model types each. In total, nQuack offers 128 mixtures to examine per sample.</p>
 </div>
 <div class="section level2">
 <h2 id="evaluation-of-nquack">Evaluation of nQuack<a class="anchor" aria-label="anchor" href="#evaluation-of-nquack"></a>
