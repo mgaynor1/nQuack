@@ -76,7 +76,7 @@ for(i in 1:length(newfilelist)){
 ## Model inference 
 
 ### Explore all models   
-Now we are ready to predict the ploidal level of these samples. When you are using this method on an unexplored sample set, we suggest to examine the data under at least 18 model types for all three distributions, a total of 54 models.   
+Now we are ready to predict the ploidal level of these samples. When you are using this method on an unexplored sample set, we suggest to examine the data under at least 18 model types for all three distributions, a total of 54 models. These functions can be run on multiple cores. 
 
 ```{r eval=FALSE, include=TRUE}
 samples <- c("MLG013", "MLG014", "MLG015")
