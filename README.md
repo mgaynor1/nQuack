@@ -11,8 +11,6 @@
 ## Overview
 nQuack is a modified statistical framework to predict ploidy level based on sequence data. We build upon [Weib et al., 2018](https://doi.org/10.1186/s12859-018-2128-z) Gaussian Mixture Model approach to estimate ploidy level, which was originally written as [a C executable](https://github.com/clwgg/nQuire). 
 
-Here, we provide 32 ways to estimates likelihood of a mixture of models with the expected maximization algorithm ([see more here](https://mlgaynor.com/nQuack/articles/ModelOptions.html))
-
 ## More on nQuack
 Here we provided expanded tools and implementations to improve site-based heterozygosity inferences of ploidal level. 
 
@@ -20,6 +18,7 @@ nQuack provides data preparation guidance and tools to decrease noise in input d
 
 Our model improves upon the nQuire framework by extending it to higher ploidal levels (pentaploid and hexaploid), correcting the augmented likelihood calculation, implementing more suitable distribution, and allowing additional ‘fixed’ models. We also decrease model selection errors by relying on BIC rather than likelihood ratio tests. To learn more about these methods, see our [Model Options](https://mlgaynor.com/nQuack/articles/ModelOptions.html) guide.
 
+We provide 32 ways to estimates likelihood of a mixture of models with the expected maximization algorithm ([see more here](https://mlgaynor.com/nQuack/articles/ModelOptions.html)) - 8 expected maximization implementations with 4 model types each. In total, nQuack offers 128 mixtures to examine per sample. 
 
 ## Evaluation of nQuack  
 

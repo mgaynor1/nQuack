@@ -37,7 +37,7 @@ Here we details these available implementations and how to use them.
     
 #### Model types  
 
-nQuire's implementation of expected maximization for a normal distribution had two types of models: "free" where all variable were estimated and "fixed" where only variance was estimated. nQuire then calculate the log-likelihood ratio between the free and fixed models to identify if a sample was a diploid, triploid, or tetraploid. The simplest approach to expand this to higher ploidal levels is to just add their distribution to the fixed mixtures examined. 
+nQuire's implementation of expected maximization for a normal distribution had two types of models: "free" where all variable were estimated and "fixed" where only variance was estimated. nQuire then calculate the log-likelihood ratio between the free and fixed models to identify if a sample was a diploid, triploid, or tetraploid. The simplest approach to expand this to higher ploidal levels is to just add these distribution to the fixed mixtures examined. 
 
 ```{r echo=FALSE, out.width="50%", fig.align='center'}
 knitr::include_graphics("../man/figures/Distributions.png")
