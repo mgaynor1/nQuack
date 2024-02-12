@@ -29,7 +29,7 @@
 #'  For BIC, the smallest score is the most likely model.
 #'  For LL, the largest score is the most likely model.
 #'
-#'  @importFrom stats dbeta pbeta
+#' @importFrom stats dbeta pbeta
 
 
 bestquack <- function(xm, distribution, type, uniform,
