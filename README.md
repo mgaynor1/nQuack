@@ -18,7 +18,7 @@ nQuack provides data preparation guidance and tools to decrease noise in input d
 
 Our model improves upon the nQuire framework by extending it to higher ploidal levels (pentaploid and hexaploid), correcting the augmented likelihood calculation, implementing more suitable distribution, and allowing additional ‘fixed’ models. We also decrease model selection errors by relying on BIC rather than likelihood ratio tests. To learn more about these methods, see our [Model Options](https://mlgaynor.com/nQuack/articles/ModelOptions.html) guide.
 
-We provide 32 ways to estimates likelihood of a mixture of models with the expected maximization algorithm ([see more here](https://mlgaynor.com/nQuack/articles/ModelOptions.html)) - 8 expected maximization implementations with 4 model types each. In total, nQuack offers 128 mixtures to examine per sample. 
+We provide 32 ways to estimates likelihood of a mixture of models with the expected maximization algorithm ([see more here](https://mlgaynor.com/nQuack/articles/ModelOptions.html)) - 8 expected maximization implementations with 4 model types each. In total, nQuack offers 128 models.
 
 ## Evaluation of nQuack  
 
@@ -36,7 +36,7 @@ For implementation, see our [Basic Example](https://mlgaynor.com/nQuack/articles
 
 ## References 
 
-Gaynor ML, Landis JB, O’Connor TK, Laport RG, Doyle JJ, Soltis DE, Soltis PS, and Ponciano JM. nQuack: An R package for predicting ploidy level from sequence data using site-based heterozygosity. In Review. Abstract accepted for Special Issue of Applications in Plant Science.
+Gaynor ML, Landis JB, O’Connor TK, Laport RG, Doyle JJ, Soltis DE, Ponciano JM, and Soltis PS. nQuack: An R package for predicting ploidy level from sequence data using site-based heterozygosity. In Review. See preprint here:
 
 
 ## Up Next:
