@@ -36,7 +36,7 @@ For implementation, see our [Basic Example](https://mlgaynor.com/nQuack/articles
 
 ## References 
 
-Gaynor ML, Landis JB, O’Connor TK, Laport RG, Doyle JJ, Soltis DE, Ponciano JM, and Soltis PS. nQuack: An R package for predicting ploidy level from sequence data using site-based heterozygosity. In Review. See preprint here:
+Gaynor ML, Landis JB, O’Connor TK, Laport RG, Doyle JJ, Soltis DE, Ponciano JM, and Soltis PS. nQuack: An R package for predicting ploidy level from sequence data using site-based heterozygosity. <i>In Review</i>. See preprint on bioRxiv, [doi.org: 10.1101/2024.02.12.579894](https://www.biorxiv.org/content/10.1101/2024.02.12.579894v1)
 
 
 ## Up Next:

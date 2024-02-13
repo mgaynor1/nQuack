@@ -37,8 +37,10 @@ bwa-mem2 index reference_genome.gz
 ## -M Indexed reference genome.
 
 bwa-mem2 mem -t 10 -M reference_genome.gz sample_001_1.fastq sample_001_2.fastq > sample_001.sam
+# SAM to BAM
 samtools view -S -b sample_001.sam > sample_001.bam
-
+# SORT
+samtools sort sample_001.bam -o sample_001.bam
 ```
 
 

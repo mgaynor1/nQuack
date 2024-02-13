@@ -52,8 +52,6 @@ the variance of each mixture will be inferred from these values. If not, the var
 BIC scores and log-likelihood (LL) for the included mixture models.
 For BIC, the smallest score is the most likely model.
 For LL, the largest score is the most likely model.
-
-@importFrom stats dbeta pbeta
 }
 \description{
 This function was made to run a subset of models based on a selected distribution and type.

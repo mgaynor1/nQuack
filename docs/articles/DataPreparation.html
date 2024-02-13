@@ -106,7 +106,10 @@ reads. We then converted our SAM files to BAM files using <a href="http://www.ht
 <span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a><span class="co">## -M Indexed reference genome.</span></span>
 <span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a></span>
 <span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a><span class="ex">bwa-mem2</span> mem <span class="at">-t</span> 10 <span class="at">-M</span> reference_genome.gz sample_001_1.fastq sample_001_2.fastq <span class="op">&gt;</span> sample_001.sam</span>
-<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a><span class="ex">samtools</span> view <span class="at">-S</span> <span class="at">-b</span> sample_001.sam <span class="op">&gt;</span> sample_001.bam</span></code></pre></div>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a><span class="co"># SAM to BAM</span></span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a><span class="ex">samtools</span> view <span class="at">-S</span> <span class="at">-b</span> sample_001.sam <span class="op">&gt;</span> sample_001.bam</span>
+<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a><span class="co"># SORT</span></span>
+<span id="cb1-16"><a href="#cb1-16" tabindex="-1"></a><span class="ex">samtools</span> sort sample_001.bam <span class="at">-o</span> sample_001.bam</span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="remove-repeats">Remove repeats<a class="anchor" aria-label="anchor" href="#remove-repeats"></a>
