@@ -28,7 +28,7 @@ To examine the utility of this method, we examined 513,792 models based on both 
 ## Installation  
 
 ```
-install.packages("devtools"")
+install.packages("devtools")
 devtools::install_github("mgaynor1/nQuack")
 ```
 
