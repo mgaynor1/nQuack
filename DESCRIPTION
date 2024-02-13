@@ -30,6 +30,6 @@ Depends:
 LazyData: true
 License: GPL-3
 Maintainer: ML Gaynor <shellyleegaynor@gmail.com>
-URL: http://mlgaynor.com/nQuack/,https://github.com/mgaynor1/nQuack
+URL: http://mlgaynor.com/nQuack/ https://github.com/mgaynor1/nQuack
 BugReports: https://github.com/mgaynor1/nQuack/issue
 
