@@ -13,6 +13,14 @@ resource_files:
   - man/figures/Figure02-ModelDesign.png
 ---
 
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/"
+)
+```
+
 ## Site-based heterozygosity
 At a biallelic site in a diploid with allele's A and B, you expect to sequence both alleles in equal proportions with 50% of sequences representing A and 50% of sequences representing B. This simple idea is the foundation of all *site-based heterozygosity* methods. 
 

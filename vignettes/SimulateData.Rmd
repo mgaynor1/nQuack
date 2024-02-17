@@ -12,6 +12,14 @@ resource_files:
   - man/figures/AdvancedSimulation.png
 ---
 
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/"
+)
+```
+
 We provide two different approaches to simulate heterozygous biallelic sites within an individual. Here we simply review these options.
 
 ## Simple or Idealisitic       

@@ -21,9 +21,12 @@ resource_files:
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  fig.path = "man/figures/"
 )
 ```
+
+
 
 This vignette will teach you how to prepare raw sequence data for input into nQuack. Our software requires sequences to be aligned to a reference genome or target sequences. 
 
