@@ -7,6 +7,9 @@ vignette: >
   %\VignetteIndexEntry{Simulate Data}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+resource_files: 
+  - man/figures/SimpleSim.png
+  - man/figures/AdvancedSimulation.png
 ---
 
 We provide two different approaches to simulate heterozygous biallelic sites within an individual. Here we simply review these options.

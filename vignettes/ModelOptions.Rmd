@@ -7,6 +7,10 @@ vignette: >
   %\VignetteIndexEntry{Model Options}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+resource_files:
+  - man/figures/TableofFreq.png
+  - man/figures/Distributions.png
+  - man/figures/Figure02-ModelDesign.png
 ---
 
 ## Site-based heterozygosity

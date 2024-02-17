@@ -7,6 +7,15 @@ vignette: >
   %\VignetteIndexEntry{Data Preparation}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+resource_files:
+  - man/figures/NoTrunc.png
+  - man/figures/Truncated.png
+  - man/figures/DataCompare.png
+  - man/figures/FancyDenoise88069-lowtrunc.png
+  - man/figures/DenoiseFancy88069-highertrunc.png
+  - man/figures/noTruncBclean.png
+  - man/figures/TruncBclean.png
+  - man/figures/AllInThisTogether.png
 ---
 
 ```{r, include = FALSE}

@@ -7,6 +7,9 @@ vignette: >
   %\VignetteIndexEntry{Outliers}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+resource_files:
+  - man/figures/OutlierEqualFreq.png
+  - man/figures/OutlierWithSD.png
 ---
 
 Here we examine the effect of high coverage outliers. 

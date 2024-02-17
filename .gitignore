@@ -8,3 +8,5 @@ src/*.dll
 *.DS_Store
 src/*.so
 src/*.o
+/doc/
+/Meta/
