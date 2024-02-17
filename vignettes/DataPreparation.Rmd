@@ -14,7 +14,7 @@ resource_files:
   - man/figures/FancyDenoise88069-lowtrunc.png
   - man/figures/DenoiseFancy88069-highertrunc.png
   - man/figures/noTruncBclean.png
-  - man/figures/TruncBclean.png
+  - man/figures/TruncBClean.png
   - man/figures/AllInThisTogether.png
 ---
 
@@ -303,9 +303,10 @@ This is a great alternative to allele truncation. Here is an example of the `Bcl
 ```{r echo=FALSE, out.width="125%", fig.align='center'}
 knitr::include_graphics("../man/figures/noTruncBclean.png",  dpi = 5000)
 ```
+
 This method can also be applied after truncation to catch any extra peak:   
 ```{r echo=FALSE, out.width="125%", fig.align='center'}
-knitr::include_graphics("../man/figures/TruncBclean.png",  dpi = 5000)
+knitr::include_graphics("../man/figures/TruncBClean.png",  dpi = 5000)
 ```
 
 
