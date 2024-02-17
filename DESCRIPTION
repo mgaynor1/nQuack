@@ -34,7 +34,6 @@ Depends:
     R (>= 3.5.0)
 LazyData: true
 License: GPL-3
-VignetteBuilder: knitr
 Maintainer: ML Gaynor <shellyleegaynor@gmail.com>
 URL: http://mlgaynor.com/nQuack/ https://github.com/mgaynor1/nQuack
 BugReports: https://github.com/mgaynor1/nQuack/issue
