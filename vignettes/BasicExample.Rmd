@@ -12,6 +12,7 @@ vignette: >
 ```{r message=FALSE, warning=FALSE, include=FALSE}
 library(kableExtra)
 library(dplyr)
+library(nQuack)
 ```
 
 
@@ -31,6 +32,7 @@ This tutorial requires `nQuack` and `dplyr`.
 ```{r eval=FALSE, include=TRUE}
 library(nQuack)
 library(dplyr)
+library(kableExtra)
 ```
 
 ## Data preparation 
