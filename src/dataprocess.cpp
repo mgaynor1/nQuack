@@ -58,7 +58,7 @@ LogicalVector depthfilter(NumericMatrix xy, int mindepth, double maxprob){
   Environment stats("package:stats");
   Function quantile = stats["quantile"];
   double maxdepth = as<double>(quantile(x, maxprob));
-  LogicalVector lx = (x >= mindepth & x <= maxdepth);
+  LogicalVector lx = ((x >= mindepth) & (x <= maxdepth));
   return(lx);
 }
 

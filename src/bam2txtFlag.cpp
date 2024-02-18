@@ -255,11 +255,15 @@ int mainBashF(std::string name, std::string outpath) {
 // [[Rcpp::export]]
 void prepare_data(std::string name, std::string inpath, std::string outpath, std::string threads = "1") {
    std::string command1 = "mkdir temp";
-   system(command1.c_str());
+   int result1 =  system(command1.c_str());
    mpileF(name, inpath, threads);
    mainBashF(name, outpath);
    std::string command2 = "rm -rf temp";
-   system(command2.c_str());
+   int result2 = system(command2.c_str());
    std::string command3 ="perl -pi -e 's/\t\n/\n/g' -i " + outpath + name + ".txt";
-   system(command3.c_str());
+   int result3 = system(command3.c_str());
+   if(result1 + result2+ result3 == 1){
+      Rcpp::Rcout  << "done" << "\n";
+   }
+
 }
