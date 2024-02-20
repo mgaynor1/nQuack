@@ -270,12 +270,11 @@ alphabetacalctauvec <- function(mu, tau, error) {
 #' @param name File name without the suffix. For example, if your file is called "frog.bam", this input should be "frog".
 #' @param inpath Location of input file.
 #' @param outpath Location for output file.
-#' @param threads Number of avaliable threads or cores. Default as 1.
 #'
 #' @returns Writes text file with the following columns: chromosome, position, depth, A, C, G, and T.
 #'
-prepare_data <- function(name, inpath, outpath, threads = "1") {
-    invisible(.Call('_nQuack_prepare_data', PACKAGE = 'nQuack', name, inpath, outpath, threads))
+prepare_data <- function(name, inpath, outpath) {
+    invisible(.Call('_nQuack_prepare_data', PACKAGE = 'nQuack', name, inpath, outpath))
 }
 
 #' Calculate Alpha and Beta from Mean and Variance

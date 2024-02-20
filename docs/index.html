@@ -95,7 +95,13 @@
 </h2>
 <pre><code><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"mgaynor1/nQuack"</span><span class="op">)</span></span></code></pre>
+<div class="section level3">
+<h3 id="warning-samtools-must-be-local">Warning: samtools must be local!<a class="anchor" aria-label="anchor" href="#warning-samtools-must-be-local"></a>
+</h3>
+<p>If you are working on your personal computer, make sure samtools is installed and callable as “samtools”. If you are working on a cluster, you may need to install samtools locally. Though the location of install may differ, here is how I installed samtools locally on UF’s amazing <a href="https://www.rc.ufl.edu/about/hipergator/" class="external-link">HiPerGator</a> slurm cluster:</p>
+<p><code>{bash eval=FALSE, include=TRUE} mkdir bin cd bin ln -s /apps/samtools/1.15/bin/samtools samtools</code></p>
 <p>For implementation, see our <a href="https://mlgaynor.com/nQuack/articles/BasicExample.html" class="external-link">Basic Example</a> article.</p>
+</div>
 </div>
 <div class="section level2">
 <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>

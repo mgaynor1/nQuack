@@ -10,8 +10,8 @@ using namespace Rcpp;
 
 
 // samtools mpileup
-int mpileF(std::string name, std::string inpath, std::string threads) {
-    std::string command = "samtools mpileup " + inpath + name + ".bam > temp/test.mpileup --no-BAQ --ff UNMAP,DUP -A -Q 0 -q 0 -@" + threads + "" ;
+int mpileF(std::string name, std::string inpath) {
+    std::string command = "samtools mpileup " + inpath + name + ".bam > temp/test.mpileup --no-BAQ --ff UNMAP,DUP -A -Q 0 -q 0";
 
     int result = system(command.c_str());
 
@@ -248,15 +248,14 @@ int mainBashF(std::string name, std::string outpath) {
 //' @param name File name without the suffix. For example, if your file is called "frog.bam", this input should be "frog".
 //' @param inpath Location of input file.
 //' @param outpath Location for output file.
-//' @param threads Number of avaliable threads or cores. Default as 1.
 //'
 //' @returns Writes text file with the following columns: chromosome, position, depth, A, C, G, and T.
 //'
 // [[Rcpp::export]]
-void prepare_data(std::string name, std::string inpath, std::string outpath, std::string threads = "1") {
+void prepare_data(std::string name, std::string inpath, std::string outpath) {
    std::string command1 = "mkdir temp";
    int result1 =  system(command1.c_str());
-   mpileF(name, inpath, threads);
+   mpileF(name, inpath);
    mainBashF(name, outpath);
    std::string command2 = "rm -rf temp";
    int result2 = system(command2.c_str());

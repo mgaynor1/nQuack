@@ -32,6 +32,16 @@ install.packages("devtools")
 devtools::install_github("mgaynor1/nQuack")
 ```
 
+### Warning: samtools must be local!   
+
+If you are working on your personal computer, make sure samtools is installed and callable as "samtools". If you are working on a cluster, you may need to install samtools locally. Though the location of install may differ, here is how I installed samtools locally on UF's amazing [HiPerGator](https://www.rc.ufl.edu/about/hipergator/) slurm cluster: 
+
+```{bash eval=FALSE, include=TRUE}
+mkdir bin
+cd bin
+ln -s /apps/samtools/1.15/bin/samtools samtools
+```
+
 For implementation, see our [Basic Example](https://mlgaynor.com/nQuack/articles/BasicExample.html) article.
 
 ## References 

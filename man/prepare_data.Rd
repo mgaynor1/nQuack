@@ -4,7 +4,7 @@
 \alias{prepare_data}
 \title{Prepare data - Step 1}
 \usage{
-prepare_data(name, inpath, outpath, threads = "1")
+prepare_data(name, inpath, outpath)
 }
 \arguments{
 \item{name}{File name without the suffix. For example, if your file is called "frog.bam", this input should be "frog".}
@@ -12,8 +12,6 @@ prepare_data(name, inpath, outpath, threads = "1")
 \item{inpath}{Location of input file.}
 
 \item{outpath}{Location for output file.}
-
-\item{threads}{Number of avaliable threads or cores. Default as 1.}
 }
 \value{
 Writes text file with the following columns: chromosome, position, depth, A, C, G, and T.
