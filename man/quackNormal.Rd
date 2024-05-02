@@ -2,7 +2,7 @@
 % Please edit documentation in R/quackNormal.R
 \name{quackNormal}
 \alias{quackNormal}
-\title{Model Selection - Expected Maximization - Normal Mixture}
+\title{Model Selection - Expectation Maximization - Normal Mixture}
 \usage{
 quackNormal(
   xm,
@@ -55,7 +55,7 @@ For BIC or delta-log likelihood, the smallest score is the most likely model.
 For LL, the largest score is the most likely model.
 }
 \description{
-This function uses the expected maximization of both
+This function uses the expectation maximization of both
 the normal and normal-uniform mixture models for model selection.
 Here we can run up to 32 mixture models.
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/quackBeta.R
 \name{quackBeta}
 \alias{quackBeta}
-\title{Model Selection - Expected Maximization - Beta Mixture}
+\title{Model Selection - Expectation Maximization - Beta Mixture}
 \usage{
 quackBeta(
   xm,
@@ -55,6 +55,6 @@ For BIC or delta-log likelihood, the smallest score is the most likely model.
 For LL, the largest score is the most likely model.
 }
 \description{
-This function uses the expected maximization of both the beta and beta-uniform mixture models for model selection.
+This function uses the expectation maximization of both the beta and beta-uniform mixture models for model selection.
 Here we can run up to 32 mixture models.
 }

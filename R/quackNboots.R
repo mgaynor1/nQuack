@@ -1,4 +1,4 @@
-#' Bootstrapping - Expected Maximization - Choose your distribution and type
+#' Bootstrapping - Expectation Maximization - Choose your distribution and type
 #'
 #' @description This function was made to assist with bootstrap replication for a set of models run a subset of models based on a selected distribution and type.
 #' There are many limitations to this function to make this tractable, as there are 128 models that could be run with our package.

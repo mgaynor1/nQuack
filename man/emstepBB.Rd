@@ -2,7 +2,7 @@
 % Please edit documentation in R/RcppExports.R
 \name{emstepBB}
 \alias{emstepBB}
-\title{Expected maximization - Beta-Binomial Distribution}
+\title{Expectation maximization - Beta-Binomial Distribution}
 \usage{
 emstepBB(parmlist, xm, niter, epsilon, trunc, type = "free")
 }
@@ -26,6 +26,6 @@ and the optimized parameter values.
 }
 \description{
 This function calculates the negative log-likelihood using
-the expected maximization algorithm with Nelder-Mead numerical optimization
+the expectation maximization algorithm with Nelder-Mead numerical optimization
 and beta-binomial distribution.
 }

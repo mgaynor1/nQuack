@@ -35,7 +35,7 @@ reference:
   - quackit
   - bestquack
   - quackNboots
-- title: Expected Maximization Base Functions
+- title: Expectation Maximization Base Functions
   desc: |
     Functions used within our mixture models
   contents:

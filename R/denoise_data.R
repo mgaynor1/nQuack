@@ -2,7 +2,7 @@
 #'
 #' @description Here we filter allele frequencies with a normal + uniform
 #' mixture model. nQuack utilizes the scaled probability of each data point belonging
-#' to each mixture model, which is inferred in the expected maximization algorithm.
+#' to each mixture model, which is inferred in the expectation maximization algorithm.
 #' We remove allele frequencies where probability of belonging to uniform mixture is higher than their
 #' probability of belonging to any other mixture. We also implement nQuire's denoise method here, which
 #' utilizes the inferred alpha parameter and a histogram of base frequencies to filter the data.

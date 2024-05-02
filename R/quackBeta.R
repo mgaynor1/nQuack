@@ -1,6 +1,6 @@
-#' Model Selection - Expected Maximization - Beta Mixture
+#' Model Selection - Expectation Maximization - Beta Mixture
 #'
-#' @description This function uses the expected maximization of both the beta and beta-uniform mixture models for model selection.
+#' @description This function uses the expectation maximization of both the beta and beta-uniform mixture models for model selection.
 #' Here we can run up to 32 mixture models.
 #'
 #' @param xm Matrix with two columns with total coverage and coverage

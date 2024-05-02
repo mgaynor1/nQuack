@@ -2,7 +2,7 @@
 % Please edit documentation in R/RcppExports.R
 \name{estepB3}
 \alias{estepB3}
-\title{E-Step for Expected Maximization - Beta + Beta + Beta Distribution}
+\title{E-Step for Expectation Maximization - Beta + Beta + Beta Distribution}
 \usage{
 estepB3(parmlist, xi, trunc)
 }

@@ -1,6 +1,6 @@
-#' Model Selection - Expected Maximization - Normal Mixture
+#' Model Selection - Expectation Maximization - Normal Mixture
 #'
-#' @description This function uses the expected maximization of both
+#' @description This function uses the expectation maximization of both
 #' the normal and normal-uniform mixture models for model selection.
 #' Here we can run up to 32 mixture models.
 #'

@@ -8,7 +8,7 @@ using namespace arma;
 
 
 
-//' @title E-Step for Expected Maximization - Beta + Beta + Beta Distribution
+//' @title E-Step for Expectation Maximization - Beta + Beta + Beta Distribution
 //' @description This is used in the `Bclean()` function. Here we complete
 //' the E-Step and calculate the log-likelihood. Modifications include a correction for
 //' the truncated distribution.
@@ -114,7 +114,7 @@ typedef double optimfn(int n, double *par, void *ex);
 // Numerical Optimization - Beta Distribution
 //
 // description This function is used in nnmin for numeric optimization
-// which is necessary for expected maximization to maximize the parameter values.
+// which is necessary for expectation maximization to maximize the parameter values.
 // param n Number of parameters in par.
 // param par The parameters to be optimized.
 // param ex Pointer containing all additional information needed.
@@ -199,9 +199,9 @@ extern "C" {
              int *fncount, int maxit);
 }
 
-// M-Step with Numerical Optimization for Expected Maximization - Beta Distribution
+// M-Step with Numerical Optimization for Expectation Maximization - Beta Distribution
 //
-// description This function is used in expected maximization to maximize the parameter values.
+// description This function is used in expectation maximization to maximize the parameter values.
 // param eout List with output from the estep
 // param trunc List of two values representing the lower and upper bounds, $c_{L}$ and $c_{U}$.
 Rcpp::List mstepB3(Rcpp::List eout){
@@ -319,9 +319,9 @@ double llcalcfinalB3(Rcpp::List eout){
 }
 
 
-//' @title Expected maximization - Beta + Beta + Beta Distribution
+//' @title Expectation maximization - Beta + Beta + Beta Distribution
 //'
-//' @description This function is made for the `Bclean()` function and preforms expected maximization with Nelder-Mead
+//' @description This function is made for the `Bclean()` function and preforms expectation maximization with Nelder-Mead
 //' numerical optimization for beta distribution.
 //'
 //' @param parmlist A list containing initial alpha, mean, and variance.

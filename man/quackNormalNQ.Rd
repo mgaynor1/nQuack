@@ -2,7 +2,7 @@
 % Please edit documentation in R/quackNormalNQ.R
 \name{quackNormalNQ}
 \alias{quackNormalNQ}
-\title{Model Selection - Expected Maximization - Normal Mixture (nQuire)}
+\title{Model Selection - Expectation Maximization - Normal Mixture (nQuire)}
 \usage{
 quackNormalNQ(
   xm,
@@ -55,7 +55,7 @@ For BIC or delta-log likelihood, the smallest score is the most likely model.
 For LL, the largest score is the most likely model.
 }
 \description{
-This function uses the expected maximization of both
+This function uses the expectation maximization of both
 the normal and normal-uniform mixture models for model selection
 based on the nQuire approach. Here we can run up to 32 mixture models.
 }

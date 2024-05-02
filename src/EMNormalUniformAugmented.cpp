@@ -9,8 +9,8 @@ using namespace arma;
 
 
 
-// title E-Step for Expected Maximization - Normal + Uniform Distribution - Same as EMNormalUniform.cpp
-// description This function is used in expected maximization. Here we complete
+// title E-Step for Expectation Maximization - Normal + Uniform Distribution - Same as EMNormalUniform.cpp
+// description This function is used in expectation maximization. Here we complete
 //  the E-Step and calculate the log-likelihood. Modifications include a correction for
 //  the truncated distribution.
 Rcpp::List estepNUA(const Rcpp::List parmlist, const arma::vec xi, std::string type,
@@ -115,9 +115,9 @@ double lnlikecalcNUA(const Rcpp::List eout){
   return((lnlike*-1.0));
 }
 
-// M-Step with Numerical Optimization for Expected Maximization - Normal+Uniform Distribution - Same as EMNormalUniform.cpp
+// M-Step with Numerical Optimization for Expectation Maximization - Normal+Uniform Distribution - Same as EMNormalUniform.cpp
 //
-// description This function is used in expected maximization to maximize the parameter values.
+// description This function is used in expectation maximization to maximize the parameter values.
 // param eout List with output from the estep
 Rcpp::List mstepNUA(Rcpp::List eout){
 
@@ -205,10 +205,10 @@ Rcpp::List mstepNUA(Rcpp::List eout){
 
 
 
-//' @title Expected maximization - Normal Distribution
+//' @title Expectation maximization - Normal Distribution
 //'
 //' @description This function calculates the log-likelihood using
-//'  the expected maximization algorithm with the Normal-Uniform Distribution.
+//'  the expectation maximization algorithm with the Normal-Uniform Distribution.
 //'  This code is not identical to nQuire and uses an augmented likelihood.
 //'
 //' @param parmlist A list containing initial alpha, mean, and variance values. The list of alpha must include a proportion for the uniform mixture.

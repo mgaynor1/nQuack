@@ -1,6 +1,6 @@
-#' Model Selection - Expected Maximization - Normal Mixture (nQuire)
+#' Model Selection - Expectation Maximization - Normal Mixture (nQuire)
 #'
-#' @description This function uses the expected maximization of both
+#' @description This function uses the expectation maximization of both
 #'  the normal and normal-uniform mixture models for model selection
 #'  based on the nQuire approach. Here we can run up to 32 mixture models.
 #'

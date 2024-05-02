@@ -2,7 +2,7 @@
 % Please edit documentation in R/RcppExports.R
 \name{emstepNU}
 \alias{emstepNU}
-\title{Expected maximization - Normal and Uniform Distribution}
+\title{Expectation maximization - Normal and Uniform Distribution}
 \usage{
 emstepNU(parmlist, xi, niter, epsilon, trunc, type = "free")
 }
@@ -27,6 +27,6 @@ and the optimized parameter values.
 }
 \description{
 This function calculates the log-likelihood using
-the expected maximization algorithm with the Normal-Uniform Distribution.
+the expectation maximization algorithm with the Normal-Uniform Distribution.
 This code follows nQuire and does not use an augmented likelihood.
 }

@@ -7,8 +7,8 @@ using namespace arma;
 #include <math.h>
 
 
-// title E-Step for Expected Maximization - Beta+Uniform Distribution
-// description This function is used in expected maximization. Here we complete
+// title E-Step for Expectation Maximization - Beta+Uniform Distribution
+// description This function is used in expectation maximization. Here we complete
 //  the E-Step and calculate the log-likelihood. Modifications include a correction for
 //  the truncated distribution.
 // param parmlist A list containing initial alpha, mu, and sigma values.
@@ -140,7 +140,7 @@ double lnlikecalcBU(const Rcpp::List eout){
 
 // Numerical Optimization - Beta+Uniform Distribution
 // description This function is used in nnmin for numeric optimization
-//    which is necessary for expected maximization to maximize the parameter values.
+//    which is necessary for expectation maximization to maximize the parameter values.
 // param n Number of parameters in par.
 // param par The parameters to be optimized.
 // param ex Pointer containing all additional information needed.
@@ -241,9 +241,9 @@ extern "C" {
             int *fncount, int maxit);
 }
 
-// M-Step with Numerical Optimization for Expected Maximization - Beta+Uniform Distribution
+// M-Step with Numerical Optimization for Expectation Maximization - Beta+Uniform Distribution
 //
-// description This function is used in expected maximization to maximize the parameter values.
+// description This function is used in expectation maximization to maximize the parameter values.
 // param eout List with output from the estep
 // param trunc List of two values representing the lower and upper bounds, $c_{L}$ and $c_{U}$.]
 Rcpp::List mstepBU(Rcpp::List eout){
@@ -405,10 +405,10 @@ double llcalcfinalBU(Rcpp::List eout){
     return sumit;
 }
 
-//' @title Expected maximization - Beta and Uniform Distributions
+//' @title Expectation maximization - Beta and Uniform Distributions
 //'
 //' @description This function calculates the log-likelihood using
-//'  the expected maximization algorithm with Nelder-Mead numerical optimization
+//'  the expectation maximization algorithm with Nelder-Mead numerical optimization
 //'  and beta distribution with one uniform mixture.
 //'
 //' @param parmlist A list containing initial alpha, mean, and variance values.

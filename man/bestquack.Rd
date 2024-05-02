@@ -2,7 +2,7 @@
 % Please edit documentation in R/bestquack.R
 \name{bestquack}
 \alias{bestquack}
-\title{Model Selection - Expected Maximization - Choose your distribution and type}
+\title{Model Selection - Expectation Maximization - Choose your distribution and type}
 \usage{
 bestquack(
   xm,

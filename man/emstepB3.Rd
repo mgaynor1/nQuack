@@ -2,7 +2,7 @@
 % Please edit documentation in R/RcppExports.R
 \name{emstepB3}
 \alias{emstepB3}
-\title{Expected maximization - Beta + Beta + Beta Distribution}
+\title{Expectation maximization - Beta + Beta + Beta Distribution}
 \usage{
 emstepB3(parmlist, xi, niter, epsilon, trunc)
 }
@@ -23,6 +23,6 @@ List of elements including the negative log likelihood, the number of iterates,
 and the optimized parameter values.
 }
 \description{
-This function is made for the \code{Bclean()} function and preforms expected maximization with Nelder-Mead
+This function is made for the \code{Bclean()} function and preforms expectation maximization with Nelder-Mead
 numerical optimization for beta distribution.
 }

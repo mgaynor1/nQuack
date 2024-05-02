@@ -1,6 +1,6 @@
-#' Model Selection - Expected Maximization - Beta-Binomial Mixture
+#' Model Selection - Expectation Maximization - Beta-Binomial Mixture
 #'
-#' @description This function uses the expected maximization of both
+#' @description This function uses the expectation maximization of both
 #' the beta-binomial and beta-binomial-uniform mixture models for model selection.
 #' Here we can run up to 32 mixture models.
 #'

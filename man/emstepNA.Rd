@@ -2,7 +2,7 @@
 % Please edit documentation in R/RcppExports.R
 \name{emstepNA}
 \alias{emstepNA}
-\title{Expected maximization - Normal Distribution}
+\title{Expectation maximization - Normal Distribution}
 \usage{
 emstepNA(parmlist, xi, niter, epsilon, trunc, type = "free")
 }
@@ -27,6 +27,6 @@ and the optimized parameter values.
 }
 \description{
 This function calculates the log-likelihood using
-the expected maximization algorithm with the Normal Distribution.
+the expectation maximization algorithm with the Normal Distribution.
 This code is not identical to nQuire and uses an augmented likelihood.
 }

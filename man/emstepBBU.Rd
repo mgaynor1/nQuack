@@ -2,7 +2,7 @@
 % Please edit documentation in R/RcppExports.R
 \name{emstepBBU}
 \alias{emstepBBU}
-\title{Expected maximization - Beta-Binomial and Uniform Distributions}
+\title{Expectation maximization - Beta-Binomial and Uniform Distributions}
 \usage{
 emstepBBU(parmlist, xm, niter, epsilon, trunc, type = "free")
 }
@@ -28,6 +28,6 @@ and the optimized parameter values.
 }
 \description{
 This function calculates the log-likelihood using
-the expected-maximization algorithm with Nelder-Mead numerical optimization
+the expectation-maximization algorithm with Nelder-Mead numerical optimization
 and beta distribution with one uniform mixture.
 }

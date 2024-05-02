@@ -4,16 +4,16 @@
 #' three mixtures representing cytotypes included in nQuack and two mixtures representing a U-shaped distribution.
 #' We constrained the first three mixtures to have shape and scale parameters above 1,
 #' while the last two mixtures shape and scale are constrained to be less than 1.
-#' With this implementation of expected-maximization, we utilizes the scaled probability of each data point belonging
+#' With this implementation of expectation-maximization, we utilizes the scaled probability of each data point belonging
 #' to each mixture model to remove site where the probability of belonging to a U-shaped mixture is higher than the
 #' probability of belonging to any other mixture. Due to the computational time needed
-#' to run the expected-maximization algorithm, by default, we simple calculate this probability matrix with the E-step and do not
+#' to run the expectation-maximization algorithm, by default, we simple calculate this probability matrix with the E-step and do not
 #' run the complete algorithm.
 #'
 #' @param xm  Matrix with total coverage and coverage for a randomly sampled allele.
 #' @param plot Default to TRUE. The plots do not share the same y-axis, so careful interpretation is key.
 #'  Warning, if nothing is removed, the plot of removed data will be missing.
-#' @param quick Default to TRUE. If set as FALSE, the expected-maximization algorithm will be run in full.
+#' @param quick Default to TRUE. If set as FALSE, the expectation-maximization algorithm will be run in full.
 #'
 #' @return Numeric matrix with total coverage and coverage for a randomly sampled allele.
 #'
@@ -37,7 +37,7 @@ Bclean <- function(xm, plot = TRUE, quick = TRUE){
   set <-  list(avec = c(0.25, 0.25, 0.25, 0.125, 0.125), t1vec = c(tcalc[,1], 0.5, 0.33), t2vec = c(tcalc[,2], 0.33, 0.5))
 
   if(quick == FALSE){
-    message("Stay tune: Starting expected-maximization algorithm now! nQuack calculations may take a long time to complete.")
+    message("Stay tune: Starting expectation-maximization algorithm now! nQuack calculations may take a long time to complete.")
     checkB <- emstepB3(set, xi, 1000, 0.1, c(cL,cU))
     pir <- checkB$pir
   }else if(quick == TRUE){

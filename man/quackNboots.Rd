@@ -2,7 +2,7 @@
 % Please edit documentation in R/quackNboots.R
 \name{quackNboots}
 \alias{quackNboots}
-\title{Bootstrapping - Expected Maximization - Choose your distribution and type}
+\title{Bootstrapping - Expectation Maximization - Choose your distribution and type}
 \usage{
 quackNboots(
   xm,
