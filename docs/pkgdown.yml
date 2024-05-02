@@ -1,4 +1,4 @@
-pandoc: 3.1.1
+pandoc: 3.1.13
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles:
@@ -7,7 +7,7 @@ articles:
   ModelOptions: ModelOptions.html
   Outliers: Outliers.html
   SimulateData: SimulateData.html
-last_built: 2024-02-20T13:02Z
+last_built: 2024-05-02T19:27Z
 urls:
   reference: http://mlgaynor.com/nQuack/reference
   article: http://mlgaynor.com/nQuack/articles

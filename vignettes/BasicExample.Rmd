@@ -16,7 +16,7 @@ library(nQuack)
 ```
 
 
-Here we provide an example to show you how to apply this method on real samples. All associated data files can be found in "inst/extdata/" folder in our [github repository](https://github.com/mgaynor1/nQuack). 
+Here we provide an example to show you how to apply this method on real samples. All associated data files can be found in "inst/extdata/" folder in our [github repository](https://github.com/mgaynor1/nQuack). Please unzip 01_raw.zip and 02_prepared.zip before attempting to run this tutorial!    
 
 Time when reported is based on a MacBook Pro with Apple M2 Max, 12 core-cpu, and 32 GB memory. Not all functions in this package are able to use multiple CPUs, however we note when functions are able to use multiple cores. To speed up these analysis, we suggest array SLURM submissions.   
 
@@ -49,7 +49,7 @@ filelist <- list.files(path = inpath, pattern = "*.bam" )
 filelist <- gsub(".bam", "", filelist)
 
 for( i in 1:length(filelist)){
-  prepare_data_flag(filelist[i], inpath, outpath)
+  prepare_data(filelist[i], inpath, outpath)
 }
 
 ```

@@ -35,7 +35,7 @@ knitr::include_graphics("../man/figures/TableofFreq.png",  dpi = 5000)
 
 Like previous site-based heterozygosity approaches to predict ploidal level, we use a mixture model approach to estimate the most likely ploidal level. 
 
-nQuack provides multiple implementations of the expected maximization (EM) algorithm, including implementations with:   
+nQuack provides multiple implementations of the expectation maximization (EM) algorithm, including implementations with:   
 
   (1) a normal distribution that mimics [nQuire](https://github.com/clwgg/nQuire),    
   (2) a corrected normal distribution,     
@@ -49,7 +49,7 @@ Here we details these available implementations and how to use them.
     
 #### Model types  
 
-nQuire's implementation of expected maximization for a normal distribution had two types of models: "free" where all variable were estimated and "fixed" where only variance was estimated. nQuire then calculate the log-likelihood ratio between the free and fixed models to identify if a sample was a diploid, triploid, or tetraploid. The simplest approach to expand this to higher ploidal levels is to just add these distribution to the fixed mixtures examined. 
+nQuire's implementation of expectation maximization for a normal distribution had two types of models: "free" where all variable were estimated and "fixed" where only variance was estimated. nQuire then calculate the log-likelihood ratio between the free and fixed models to identify if a sample was a diploid, triploid, or tetraploid. The simplest approach to expand this to higher ploidal levels is to just add these distribution to the fixed mixtures examined. 
 
 ```{r echo=FALSE, out.width="50%", fig.align='center'}
 knitr::include_graphics("../man/figures/Distributions.png")
@@ -65,7 +65,7 @@ We ended up coding each implementation to provide estimates for all parameters f
 
 
 ### Additional arguments.   
-For each expected maximization function, a starting parameter list (`parm.list`) must be provided which includes `avec`, `mvec`, and `svec`, which represent $\alpha$, $\mu$, and $\sigma$ for each mixture. The length of each input `vec`tor should be equal, unless the distribution includes a uniform mixture, then `avec` should include a value for the uniform distribution. All values must be greater than 0 and less than or equal to 1, with `sum(avec)` equal to 1. 
+For each expectation maximization function, a starting parameter list (`parm.list`) must be provided which includes `avec`, `mvec`, and `svec`, which represent $\alpha$, $\mu$, and $\sigma$ for each mixture. The length of each input `vec`tor should be equal, unless the distribution includes a uniform mixture, then `avec` should include a value for the uniform distribution. All values must be greater than 0 and less than or equal to 1, with `sum(avec)` equal to 1. 
 
 For the normal and beta distributions, allele frequency should be provided (`xi`), however for the beta-binomial mixtures we expect total coverage and coverage for a randomly sampled allele (`xm`). Convergence of the algorithm occurs after the set `niters` or iterates, or when the difference between the augmented log-likelihood values is less than `epsilon`. We also allow truncation of the probability density function to match any allele frequency truncation that may have been done during data cleaning (`trunc`). 
 
@@ -78,7 +78,7 @@ Some notes:
   - We provide packaged functions to apply these methods below. 
   
 
-Expected maximization implementations can be found here:
+Expectation maximization implementations can be found here:
 
   - Normal: `emstepNA()`
   - Normal with uniform: `emstepNUA()`

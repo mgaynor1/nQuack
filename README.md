@@ -18,7 +18,7 @@ nQuack provides data preparation guidance and tools to decrease noise in input d
 
 Our model improves upon the nQuire framework by extending it to higher ploidal levels (pentaploid and hexaploid), correcting the augmented likelihood calculation, implementing more suitable distribution, and allowing additional ‘fixed’ models. We also decrease model selection errors by relying on BIC rather than likelihood ratio tests. To learn more about these methods, see our [Model Options](https://mlgaynor.com/nQuack/articles/ModelOptions.html) guide.
 
-We provide 32 ways to estimates likelihood of a mixture of models with the expected maximization algorithm ([see more here](https://mlgaynor.com/nQuack/articles/ModelOptions.html)) - 8 expected maximization implementations with 4 model types each. In total, nQuack offers 128 models.
+We provide 32 ways to estimates likelihood of a mixture of models with the expectation maximization algorithm ([see more here](https://mlgaynor.com/nQuack/articles/ModelOptions.html)) - 8 expectation maximization implementations with 4 model types each. In total, nQuack offers 128 models.
 
 ## Evaluation of nQuack  
 
@@ -34,13 +34,15 @@ devtools::install_github("mgaynor1/nQuack")
 
 ### Warning: samtools must be local!   
 
-If you are working on your personal computer, make sure samtools is installed and callable as "samtools". If you are working on a cluster, you may need to install samtools locally. Though the location of install may differ, here is how I installed samtools locally on UF's amazing [HiPerGator](https://www.rc.ufl.edu/about/hipergator/) slurm cluster: 
+If you are working on your personal computer, make sure samtools is installed and callable as "samtools" via terminal. If you are working on a cluster, you may need to symbolically-link samtools locally. Though the location of install may differ, here is how I make samtools callable locally on UF's amazing [HiPerGator](https://www.rc.ufl.edu/about/hipergator/) slurm cluster:    
 
-```{bash eval=FALSE, include=TRUE}
+
+```
 mkdir bin
 cd bin
 ln -s /apps/samtools/1.15/bin/samtools samtools
 ```
+
 
 For implementation, see our [Basic Example](https://mlgaynor.com/nQuack/articles/BasicExample.html) article.
 
