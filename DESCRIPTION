@@ -9,7 +9,7 @@ Authors@R: c(person(given = "Michelle L.", family = "Gaynor",  email= "shellylee
 Description: nQuack estimates the most likely ploidal level based on a mixture of models.
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
 Suggests: 
     knitr,
     dplyr,
