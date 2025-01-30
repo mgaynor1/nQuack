@@ -16,7 +16,6 @@ Suggests:
     kableExtra
 Imports: 
     Rcpp (>= 1.0.11),
-    Rcpp (<= 1.0.13-1),
     RcppArmadillo (>= 12.8.0.0), 
     RcppArmadillo (<= 14.0.2-1),  
     truncdist,
@@ -29,7 +28,7 @@ Imports:
     RcppProgress 
 LinkingTo: 
     Rcpp,
-    RcppArmadillo, 
+    RcppArmadillo (<= 14.0.2-1), 
     extraDistr, 
     RcppProgress 
 SystemRequirements: C++17
