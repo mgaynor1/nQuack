@@ -1,7 +1,7 @@
 Package: nQuack
 Title: Predicting ploidal level from sequence data using site-based heterozygosity  
 Version: 1.0.1
-Authors@R: c(person(given = "Michelle L.", family = "Gaynor",  email= "shellyleegaynor@gmail.com", role = c("aut", "cre"),
+Author: c(person(given = "Michelle L.", family = "Gaynor",  email= "shellyleegaynor@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-3912-6079")), 
      person(given = "José Miguel", family = "Ponciano", email= "josemi@ufl.edu", role = "ctb", 
            comment = c(ORCID = "0000-0001-8457-7840"))
@@ -16,7 +16,7 @@ Suggests:
     kableExtra
 Imports: 
     Rcpp (>= 1.0.11),
-    RcppArmadillo (>= 12.8.0.0), 
+    RcppArmadillo (>= 0.12.8.0.0), 
     RcppArmadillo (<= 14.0.2-1),  
     truncdist,
     data.table,
@@ -28,7 +28,7 @@ Imports:
     RcppProgress 
 LinkingTo: 
     Rcpp,
-    RcppArmadillo (<= 14.0.2-1), 
+    RcppArmadillo, 
     extraDistr, 
     RcppProgress 
 SystemRequirements: C++17
