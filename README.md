@@ -22,7 +22,7 @@ We provide 32 ways to estimates likelihood of a mixture of models with the expec
 
 ## Evaluation of nQuack
 
-<img src="man/figures/SummarynQuack.png" align="center" width="500"/>
+<img src="man/figures/SummarynQuack.png" align="center"/>
 
 **Figure 1**. Accuracy of nQuire, nQuack's implementation of nQuire, nQuack's best model, and a simplified version of nQuack across data sets.
 
