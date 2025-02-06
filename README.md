@@ -22,7 +22,9 @@ We provide 32 ways to estimates likelihood of a mixture of models with the expec
 
 ## Evaluation of nQuack
 
-![Figure 1. Accuracy of nQuire, nQuack's implementation of nQuire, nQuack's best model, and a simplified version of nQuack across data sets.](man/figures/SummarynQuack.png){align="center" width="500"}
+<img src="man/figures/SummarynQuack.png" align="center" width="500"/>
+
+**Figure 1**. Accuracy of nQuire, nQuack's implementation of nQuire, nQuack's best model, and a simplified version of nQuack across data sets.
 
 To examine the utility of this method, we examined 513,792 models based on both simulated and real samples. Figure 1 depicts the accuracy of our method across our included data sets. More information on nQuack's implementation of nQuire can be found on [our pkgdown site](https://mlgaynor.com/nQuack/articles/ModelOptions.html) and in the [Appendix S1](https://www.doi.org/10.1002/aps3.11606). In Figure 1, the simplified version of nQuack only classifies samples as diploid or polyploid - though this is not ideal, it is accurate!
 
@@ -47,7 +49,7 @@ ln -s /apps/samtools/1.15/bin/samtools samtools
 
 Thanks to [jessiepelosi](https://github.com/jessiepelosi), here is another option:
 
-```      
+```         
 Sys.setenv(PATH=paste("/apps/samtools/1.19.2/bin", Sys.getenv("PATH"),sep=":"))
 ```
 
