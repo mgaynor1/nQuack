@@ -16,8 +16,7 @@ Suggests:
     kableExtra
 Imports: 
     Rcpp (>= 1.0.11),
-    RcppArmadillo (>= 0.12.8.0.0), 
-    RcppArmadillo (<= 14.0.2-1),  
+    RcppArmadillo (>= 14.0.2-1),  
     truncdist,
     data.table,
     foreach, 
