@@ -4,7 +4,7 @@
 \alias{prepare_data}
 \title{Prepare data - Step 1}
 \usage{
-prepare_data(name, inpath, outpath)
+prepare_data(name, inpath, outpath, tempfolder = "temp")
 }
 \arguments{
 \item{name}{File name without the suffix. For example, if your file is called "frog.bam", this input should be "frog".}
@@ -12,6 +12,8 @@ prepare_data(name, inpath, outpath)
 \item{inpath}{Location of input file.}
 
 \item{outpath}{Location for output file.}
+
+\item{tempfolder}{Location for temp folder.}
 }
 \value{
 Writes text file with the following columns: chromosome, position, depth, A, C, G, and T.

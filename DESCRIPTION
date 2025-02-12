@@ -1,6 +1,6 @@
 Package: nQuack
 Title: Predicting ploidal level from sequence data using site-based heterozygosity  
-Version: 1.0.1
+Version: 1.0.2
 Author: c(person(given = "Michelle L.", family = "Gaynor",  email= "shellyleegaynor@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-3912-6079")), 
      person(given = "José Miguel", family = "Ponciano", email= "josemi@ufl.edu", role = "ctb", 

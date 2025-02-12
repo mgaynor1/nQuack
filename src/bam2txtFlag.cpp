@@ -10,8 +10,8 @@ using namespace Rcpp;
 
 
 // samtools mpileup
-int mpileF(std::string name, std::string inpath) {
-    std::string command = "samtools mpileup " + inpath + name + ".bam > temp/test.mpileup --no-BAQ --ff UNMAP,DUP -A -Q 0 -q 0";
+int mpileF(std::string name, std::string inpath, std::string tempfolder) {
+    std::string command = "samtools mpileup " + inpath + name + ".bam > " + tempfolder + "/test.mpileup --no-BAQ --ff UNMAP,DUP -A -Q 0 -q 0";
 
     int result = system(command.c_str());
 
@@ -43,11 +43,11 @@ std::string extractFifthFieldF(const std::string& line) {
 }
 
 // mainBash - count ACGT, compare sums, remove indels and deletions
-int mainBashF(std::string name, std::string outpath) {
+int mainBashF(std::string name, std::string outpath, std::string tempfolder) {
 
     // Count number of ACGTs
-    std::ifstream inputFile1("temp/test.mpileup");
-    std::ofstream cleanFile("temp/clean.mpileup");
+    std::ifstream inputFile1(tempfolder + "/test.mpileup");
+    std::ofstream cleanFile(tempfolder + "/clean.mpileup");
 
     if (!inputFile1.is_open() || !cleanFile.is_open() ) {
       Rcpp::Rcerr << "Failed to open files." << "\n";
@@ -79,8 +79,8 @@ int mainBashF(std::string name, std::string outpath) {
     cleanFile.close();
 
     // Count number of ACGTs
-    std::ifstream inputFile("temp/clean.mpileup");
-    std::ofstream outputCounts("temp/temp_counts.txt");
+    std::ifstream inputFile(tempfolder + "/clean.mpileup");
+    std::ofstream outputCounts(tempfolder + "/temp_counts.txt");
 
     if (!inputFile.is_open() || !outputCounts.is_open() ) {
       Rcpp::Rcerr << "Failed to open files." << "\n";
@@ -138,9 +138,9 @@ int mainBashF(std::string name, std::string outpath) {
     // Compare sum of ACGTs to mpileup & combine
     // Remove INDELS & potential errors in calculation (mpileup != ACGTs sum)
 
-      std::ifstream inputCounts("temp/temp_counts.txt");
-      std::ofstream outputCompare("temp/temp_compare.txt");
-      std::ofstream outputCounts4("temp/temp_counts4.txt");
+      std::ifstream inputCounts(tempfolder + "/temp_counts.txt");
+      std::ofstream outputCompare(tempfolder + "/temp_compare.txt");
+      std::ofstream outputCounts4(tempfolder + "/temp_counts4.txt");
 
        if (!inputCounts.is_open() || !outputCompare.is_open() || !outputCounts4.is_open()) {
                     Rcpp::Rcerr << "Failed to open files." << "\n";
@@ -186,7 +186,7 @@ int mainBashF(std::string name, std::string outpath) {
     outputCounts4.close();
 
     // Extract relevant columns and add header
-     std::ifstream inputCounts4("temp/temp_counts4.txt");
+     std::ifstream inputCounts4(tempfolder + "/temp_counts4.txt");
      std::ofstream outputFinal(""+ outpath + name + ".txt");
 
     if (!inputCounts4.is_open() || !outputFinal.is_open()) {
@@ -248,21 +248,21 @@ int mainBashF(std::string name, std::string outpath) {
 //' @param name File name without the suffix. For example, if your file is called "frog.bam", this input should be "frog".
 //' @param inpath Location of input file.
 //' @param outpath Location for output file.
+//' @param tempfolder Location for temp folder.
 //'
 //' @returns Writes text file with the following columns: chromosome, position, depth, A, C, G, and T.
 //'
 // [[Rcpp::export]]
-void prepare_data(std::string name, std::string inpath, std::string outpath) {
-   std::string command1 = "mkdir temp";
+void prepare_data(std::string name, std::string inpath, std::string outpath, std::string tempfolder = "temp") {
+   std::string command1 = "mkdir " + tempfolder;
    int result1 =  system(command1.c_str());
-   mpileF(name, inpath);
-   mainBashF(name, outpath);
-   std::string command2 = "rm -rf temp";
+   mpileF(name, inpath, tempfolder);
+   mainBashF(name, outpath, tempfolder);
+   std::string command2 = "rm -rf " + tempfolder;
    int result2 = system(command2.c_str());
    std::string command3 ="perl -pi -e 's/\t\n/\n/g' -i " + outpath + name + ".txt";
    int result3 = system(command3.c_str());
-   if(result1 + result2+ result3 == 1){
+   if(result1 + result2 + result3 == 1){
       Rcpp::Rcout  << "done" << "\n";
    }
-
 }

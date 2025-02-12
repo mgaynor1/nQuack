@@ -221,14 +221,15 @@ BEGIN_RCPP
 END_RCPP
 }
 // prepare_data
-void prepare_data(std::string name, std::string inpath, std::string outpath);
-RcppExport SEXP _nQuack_prepare_data(SEXP nameSEXP, SEXP inpathSEXP, SEXP outpathSEXP) {
+void prepare_data(std::string name, std::string inpath, std::string outpath, std::string tempfolder);
+RcppExport SEXP _nQuack_prepare_data(SEXP nameSEXP, SEXP inpathSEXP, SEXP outpathSEXP, SEXP tempfolderSEXP) {
 BEGIN_RCPP
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< std::string >::type name(nameSEXP);
     Rcpp::traits::input_parameter< std::string >::type inpath(inpathSEXP);
     Rcpp::traits::input_parameter< std::string >::type outpath(outpathSEXP);
-    prepare_data(name, inpath, outpath);
+    Rcpp::traits::input_parameter< std::string >::type tempfolder(tempfolderSEXP);
+    prepare_data(name, inpath, outpath, tempfolder);
     return R_NilValue;
 END_RCPP
 }
@@ -300,7 +301,7 @@ static const R_CallMethodDef CallEntries[] = {
     {"_nQuack_alphabetacalcvec", (DL_FUNC) &_nQuack_alphabetacalcvec, 2},
     {"_nQuack_alphabetacalctau", (DL_FUNC) &_nQuack_alphabetacalctau, 3},
     {"_nQuack_alphabetacalctauvec", (DL_FUNC) &_nQuack_alphabetacalctauvec, 3},
-    {"_nQuack_prepare_data", (DL_FUNC) &_nQuack_prepare_data, 3},
+    {"_nQuack_prepare_data", (DL_FUNC) &_nQuack_prepare_data, 4},
     {"_nQuack_resample_xm", (DL_FUNC) &_nQuack_resample_xm, 2},
     {"_nQuack_nQuire_reformat", (DL_FUNC) &_nQuack_nQuire_reformat, 1},
     {"_nQuack_process_rcpp", (DL_FUNC) &_nQuack_process_rcpp, 5},
