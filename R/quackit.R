@@ -3,7 +3,7 @@
 #' @description This function is for model interpretation.
 #'
 #' @param model_out Data frame containing, at minimum, columns labeled LL, type, mixture, distribution, and BIC.
-#' @param summary_statistic May be equal to BIC or dLL.
+#' @param summary_statistic May be equal to BIC or LL.
 #' @param mixtures Defaults to `c("diploid", "triploid", "tetraploid", "hexaploid", "pentaploid")`.
 #'
 #' @return Returns data frame with the most likely model for each set of mixtures. Includes the best and second best mixtures, as well as the difference between the two.
@@ -11,6 +11,11 @@
 #'
 quackit <- function(model_out, summary_statistic = "BIC",
                     mixtures = c("diploid", "triploid", "tetraploid", "hexaploid", "pentaploid")){
+  if(summary_statistic == "dLL"){
+    summary_statistic <- "LL"
+  }else{
+    summary_statistic <- summary_statistic
+  }
   # Set up
   if(length(mixtures) != 5){
     model_out <- model_out[which(model_out$mixture %in% mixtures), ]
@@ -52,8 +57,8 @@ quackit <- function(model_out, summary_statistic = "BIC",
 
  if(summary_statistic == "BIC"){
    colnames( out2go) <- c("BICdif", "winnerBIC", "secondBIC", "Distribution", "Type", "sample")
- } else if(summary_statistic == "dLL"){
-   colnames( out2go) <- c("dLLdif", "winnerdLL", "seconddLL", "Distribution", "Type", "sample")
+ } else if(summary_statistic == "LL"){
+   colnames( out2go) <- c("LLdif", "winnerLL", "secondLL", "Distribution", "Type", "sample")
  }
  return(out2go)
 
