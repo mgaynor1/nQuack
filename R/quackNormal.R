@@ -171,6 +171,8 @@ quackNormal <- function(xm, samplename, cores, parallel= FALSE,
     d <- as.data.frame(matrix(nrow = 0, ncol = 5))
     colnames(d) <- c("LL", "type", "mixture", "distribution", "BIC")
     bvec <- c("fixed", "fixed_2", "fixed_3")
+    mixturekey <- c("diploid", "triploid", "tetraploid", "pentaploid", "hexaploid")
+
 
     for(type in 1:3){
       for(iter in 1:5){
