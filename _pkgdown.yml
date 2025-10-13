@@ -69,10 +69,10 @@ articles:
   contents:
   - BasicExample
   - DataPreparation
+  - FasterExample
   - ModelOptions
   - SimulateData
   - Outliers
-  - SimulateData
 navbar:
   structure:
     left:

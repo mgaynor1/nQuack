@@ -1,0 +1,304 @@
+---
+title: "Faster Example"
+output: rmarkdown::html_vignette
+description: >
+  How do you apply this method to real samples efficiently?
+vignette: >
+  %\VignetteIndexEntry{Faster Example}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+library(kableExtra)
+library(dplyr)
+library(nQuack)
+```
+
+
+Here we provide an extension to the [example to show you how to apply this method on real samples](https://mlgaynor.com/nQuack/articles/BasicExample.html), but expand the tutorial to show ways to speed up your runs. Please start with the [Basic Example](https://mlgaynor.com/nQuack/articles/BasicExample.html). 
+
+Time is not reported here. Not all functions in this package are able to use multiple CPUs, however we note when functions are able to use multiple cores. 
+
+To efficiently use this package, you should split your runs into at least two parts:
+- Data preparation
+- Model inference
+
+## Part 1: Data preparation 
+These functions are not set up to use multiple CPUs. Therefore, we are using a foreach loop to speed up processing. 
+
+### Load packages    
+
+```{r eval=FALSE, include=TRUE}
+library(nQuack)
+library(foreach)
+library(doParallel)
+```
+
+### Set up parallel
+```{r eval=FALSE, include=TRUE}
+# IF USING SLURM
+n.cpus <- as.numeric(Sys.getenv("SLURM_CPUS_PER_TASK")) 
+# IF NOT USING SLURM
+#n.cpus <- 10
+
+cl <- makeCluster(n.cpus)
+registerDoParallel(cl)
+```
+
+### 01. Prepare  data
+
+Thanks to Alyssa Phillips for requesting the `tempfolder` option! Note, storage requirements to run this function are large due to temporary files. 
+
+```{r eval=FALSE, include=TRUE}
+# Set in and out paths of files
+inpath <- "../inst/extdata/01_raw/"
+outpath <- "../inst/extdata/02_prepared/"
+
+# List files in the inpath and remove their ending
+filelist <- list.files(path = inpath, pattern = "*.bam" )
+filelist <- gsub(".bam", "", filelist)
+
+foreach::foreach(iter = 1:length(filelist)), .packages = "nQuack")%dopar%{
+    # Make table
+    prepare_data(filelist[iter], 
+                 inpath, 
+                 outpath, 
+                 tempfolder = paste0("tmp_", iter)) 
+                 # Note, you need the tempfolder name 
+                 # to be unique to not overwrite each other
+ }
+
+
+```
+
+### 02. Process data.   
+Next up, we filter the data file.   
+
+Here we are following the filtering approach found in nQuire: a minimum depth of 10, allele trunctation minimum of 0.15, and allele truncation maximum of 0.85. 
+
+```{r eval=FALSE, include=TRUE}
+inpathtext <- "../inst/extdata/02_prepared/"
+newfilelist <- list.files(path = inpathtext, pattern = "*.txt" )
+
+foreach::foreach(iter = 1:length(newfilelist), 
+                 .packages = "nQuack")%dopar%{
+   samp <- newfilelist[iter]
+   temp <- process_data(paste0(inpathtext, samp), 
+                        min.depth = 10, 
+                        max.depth.quantile.prob = 1, 
+                        error = 0.01, 
+                        trunc = c(0.15,0.85))
+  
+  
+  write.csv(temp, 
+              file = paste0("../inst/extdata/03_processed/",
+                            gsub(".txt", "", samp), ".csv")       
+              row.names = FALSE)
+}
+
+```
+
+### Stop cluster
+
+```{r eval=FALSE, include=TRUE}
+stopCluster(cl)
+```
+
+
+## Part 2: Model inference 
+This is a foreach-based function, so do **NOT** use a foreach loop onto of these functions. 
+
+When you are using this method on an unexplored sample set, we suggest to examine the data under at least 18 model types for all three distributions, a total of 54 models. These functions can be run on multiple cores. 
+
+### SLURM Example
+
+Please set the length of the array to match the number of samples you have. Here we are assuming 100 samples and you are running 20 samples at once on 16 CPUs each = 320 CPUs and 500 GB of memory must be available for you to run this. 
+
+```{r eval=FALSE, include=TRUE}
+#!/bin/bash
+#SBATCH --job-name=02_Model
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=email@address.com
+#SBATCH --mem=25gb
+#SBATCH --time=4-00:00:00
+#SBATCH --cpus-per-task=16
+#SBATCH --nodes=1
+#SBATCH --output=../logs/out/02_Model_%A_%a.out
+#SBATCH --error=../logs/err/02_Model_%A_%a.err
+#SBATCH -a 1-100%20  # Set array with throttle 
+
+# Load modules
+module load R/4.5
+
+# Submit R script and pass along array
+Rscript 02_Model.R $SLURM_ARRAY_TASK_ID
+```
+
+### 02_Model.R
+```{r eval=FALSE, include=TRUE}
+## Load packages
+library(nQuack)
+
+## Set CPUs
+ncpus <- as.numeric(Sys.getenv("SLURM_CPUS_PER_TASK")) 
+
+## Read in list of samples
+samples <- c("MLG013", "MLG014", "MLG015")
+
+## Set array value 
+arrayvalue <- as.numeric(commandArgs(TRUE))
+
+## Select sample
+s <- samples[[arrayvalue]]
+
+## Run models
+### Read in file
+temp <- as.matrix(read.csv(paste0("../inst/extdata/03_processed/", s, ".csv")))
+## quackNormal
+out1 <- quackNormal(xm = temp, 
+                    samplename = s, 
+                    cores = ncpus, 
+                    parallel = TRUE)
+## quackBeta
+out2 <- quackBeta(xm = temp, 
+                  samplename = s, 
+                  cores = ncpus, 
+                  parallel = TRUE)
+### quackBetaBinom
+out3 <- quackBetaBinom(xm = temp, 
+                       samplename = s, 
+                       cores = ncpus, 
+                       parallel = TRUE)
+## Save output
+allout <- rbind(out1, out2, out3)
+write.csv(allout, 
+          file = paste0("../inst/extdata/04_output/",
+                          s, ".csv"),
+          row.names = FALSE)
+
+```
+
+
+### What if I am not using SLURM? 
+
+Here is a workaround from Marne Quigg.
+
+```{r eval=FALSE, include=TRUE}
+
+# Load packages
+library(nQuack)
+library(parallel)
+
+## Create list of samples
+samples <- c("MLG013", "MLG014", "MLG015")
+
+
+run_model <- function(sample){
+      temp <- as.matrix(read.csv(paste0("../inst/extdata/03_processed/", 
+                                        sample, ".csv")))
+      out1 <- quackNormal(xm = temp, 
+                          samplename = sample, 
+                          cores = 1, 
+                          parallel = FALSE)
+      out2 <- quackBeta(xm = temp,
+                        samplename = sample, 
+                        cores = 1, 
+                        parallel = FALSE)
+      out3 <- quackBetaBinom(xm = temp, 
+                             samplename = sample, 
+                             cores = 1, 
+                             parallel = FALSE)
+      
+      allout <- rbind(out1, out2, out3)
+      write.csv(allout,
+                file = paste0("../inst/extdata/04_output/", 
+                          sample, ".csv"),
+                row.names = FALSE)
+}
+
+## Run in parallel across samples
+mclapply(samples, run_model, mc.cores = 10)
+```
+
+### Wait, this is still slow!  
+
+Before you send me an email, please time your steps to help us identify what is actually slow. 
+
+#### 02_Model_withTimers.R
+```{r eval=FALSE, include=TRUE}
+## Load packages
+library(nQuack)
+
+## Set CPUs
+ncpus <- as.numeric(Sys.getenv("SLURM_CPUS_PER_TASK")) 
+
+## Read in list of samples
+samples <- c("MLG013", "MLG014", "MLG015")
+
+## Set array value 
+arrayvalue <- as.numeric(commandArgs(TRUE))
+
+## Select sample
+s <- samples[[arrayvalue]]
+
+## Print Start Time
+starttime <- Sys.time()
+print(paste0("Starting time ", Sys.time(), " seconds"))
+
+## Run models
+### Read in file
+temp <- as.matrix(read.csv(paste0("../inst/extdata/03_processed/", s, ".csv")))
+
+endT <- as.numeric(Sys.time() - starttime, unit = "secs")
+print(paste0("temp file read into R in: ", endT, " seconds"))
+
+## quackNormal
+Ntime <- Sys.time()
+print(paste0("Starting quackNormal at ", Sys.time(), " seconds"))
+
+out1 <- quackNormal(xm = temp, 
+                    samplename = s, 
+                    cores = ncpus, 
+                    parallel = TRUE)
+
+endN <- as.numeric(Sys.time() - Ntime, unit = "secs")
+print(paste0("quackNormal Calculated in: ", endN, " seconds"))
+
+## quackBeta
+Btime <- Sys.time()
+print(paste0("Starting quackBeta at ", Sys.time(), " seconds"))
+
+out2 <- quackBeta(xm = temp, 
+                  samplename = s, 
+                  cores = ncpus, 
+                  parallel = TRUE)
+
+endB <- as.numeric(Sys.time() - Btime, unit = "secs")
+print(paste0("quackBeta Calculated in: ", endN, " seconds"))
+
+### quackBetaBinom
+BBtime <- Sys.time()
+print(paste0("Starting quackBetaBinom at ", Sys.time(), " seconds"))
+
+out3 <- quackBetaBinom(xm = temp, 
+                       samplename = s, 
+                       cores = ncpus, 
+                       parallel = TRUE)
+
+endBB <- as.numeric(Sys.time() - BBtime, unit = "secs")
+print(paste0("quackBetaBinom Calculated in: ", endBB, " seconds"))
+
+## Save output
+allout <- rbind(out1, out2, out3)
+write.csv(allout, 
+          file = paste0("../inst/extdata/04_output/",
+                          s, ".csv"),
+          row.names = FALSE)
+
+endtime <- as.numeric(Sys.time() - starttime , unit = "secs")
+print(paste0("Total calculation for sample, ", s, ", calculated in: ", endtime, " seconds"))
+```
+
+
+

@@ -10,3 +10,7 @@ src/*.so
 src/*.o
 /doc/
 /Meta/
+*.o
+*.so
+*.dll
+datahelper.o

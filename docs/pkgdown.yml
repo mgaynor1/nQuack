@@ -4,10 +4,11 @@ pkgdown_sha: ~
 articles:
   BasicExample: BasicExample.html
   DataPreparation: DataPreparation.html
+  FasterExample: FasterExample.html
   ModelOptions: ModelOptions.html
   Outliers: Outliers.html
   SimulateData: SimulateData.html
-last_built: 2025-08-22T18:58Z
+last_built: 2025-10-13T13:46Z
 urls:
   reference: http://mlgaynor.com/nQuack/reference
   article: http://mlgaynor.com/nQuack/articles
