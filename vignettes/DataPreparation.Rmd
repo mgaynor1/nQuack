@@ -31,8 +31,10 @@ knitr::opts_chunk$set(
 This vignette will teach you how to prepare raw sequence data for input into nQuack. Our software requires sequences to be aligned to a reference genome or target sequences. 
 
 # Preprocessing   
-  
-## Align to a reference genome      
+
+## Option 1: Reference genome    
+
+### Align to a reference genome      
 
 After processing our raw sequence data, we have to align the reads to a reference genome. Here we use [bwa-mem2](https://github.com/bwa-mem2/bwa-mem2) to align our reads. We then converted our SAM files to BAM files using [samtools](http://www.htslib.org/). This is our bash script:
 
@@ -56,9 +58,9 @@ samtools sort sample_001.bam -o sample_001.bam
 ```
 
 
-## Remove repeats   
+### Remove repeats   
 
-### Identify repeat regions     
+#### Identify repeat regions     
 
 Prior to running samples through nQuack, we suggest repeat regions be removed. 
 To remove repeats, you first have to identify them. Here we utilize [repeat modeler](https://www.pnas.org/doi/10.1073/pnas.1921046117) and 
@@ -108,7 +110,7 @@ cut -f1,4,5 02_RepMask/$databasename.fasta.out.gff | perl -pi -e 's/^#.*\n//g' >
 ```
 
 
-### Remove repeats from your alignment 
+#### Remove repeats from your alignment 
 
 Based on the bed file created above, we then remove the repeats from our alignment with samtools function `veiw`.
 
@@ -124,7 +126,7 @@ samtools view sample_001.bam -b -h -o /dev/null  -U repeats_removed/sample_001.b
 
 ```
 
-## Filter low quality     
+#### Filter low quality     
 
 To remove regions of low quality based on the MAPQ score. MAPQ is equal to  -10*log-base-10(Pr(mapping position is wrong)), rounded to the nearest integer ([see more here](https://samtools.github.io/hts-specs/SAMv1.pdf)). For example, if we wanted to remove any site that had a 50% chance of being mapped to the wrong position, we would set our filter to 4.    
 
@@ -146,6 +148,59 @@ mkdir filtered
 ## Remove Repeats
 samtools view -b -q 10 repeats_removed/sample_001.bam > filtered/sample_001.bam
 
+```
+
+## Option 2: Target-based
+
+Here is an example of how to process target enrichment data when a reference genome is absent. This script is meant to be saved as `01_preprocess.sh` and run on SLURM. Here we are assuming `01_allfastq/` contains demultiplexed and trimmed `fastq` files for paired-end reads, labeled `"$name"_R*.fastq` (<i>i.e.</i>, `MLG001_R1.fastq` and `MLG001_R2.fastq`). We are also assuming your target file is called `targetset.fasta`. To find out more about target files, please [see HybPiper](https://github.com/mossmatters/HybPiper/wiki#10-preparing-your-files). 
+
+```{bash eval=FALSE, include=TRUE}
+#!/bin/sh
+#SBATCH --job-name=01_Preprocess
+#SBATCH --mail-type=ALL
+#SBATCH --mail-user=email@address.com
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --cpus-per-task=10
+#SBATCH --mem=5gb # May need to increase
+#SBATCH -t 4-00:00:00
+#SBATCH -o ../logs/01_process.$j.out
+#SBATCH -e ../logs/01_process.%j.err
+
+# Load modules
+module load hybpiper/2.3.0
+module load bwa-mem2/2.2.1 # Any version should be okay
+module load samtools/1.15 # Any version should be okay
+module load picard/3.2.0 # Any version should be okay
+
+# Make folders
+mkdir 02_assembly
+mkdir 03_supercontig
+mkdir 04_mapped
+mkdir 05_sorted
+mkdir 06_rged
+mkdir 07_filtered
+
+# Loop through files
+while read name; do 
+  ## Assemble genes
+  hybpiper assemble -t_dna targetset.fasta -r 01_allfastq/"$name"_R*.fastq --prefix "$name" --bwa --hybpiper_output 02_assembly/ --cpu $SLURM_CPUS_PER_TASK
+  ## Retrieve the supercontig
+  hybpiper retrieve_sequences supercontig -t_dna targetset.fasta --single_sample_name $name --hybpiper_dir 02_assembly/ --fasta_dir 03_supercontig/
+
+  ## Map to supercontig
+  bwa-mem2 index 03_supercontig/"$name"_supercontig.fasta
+  bwa-mem2 mem -t $SLURM_CPUS_PER_TASK -M 03_supercontig/"$name"_supercontig.fasta 01_allfastq/"$name"_R1.fastq 01_allfastq/"$name"_R2.fastq -o 04_mapped/"$name".sam
+  ## Convert SAM to BAM
+  samtools view -S -bT 03_supercontig/"$name"_supercontig.fasta 04_mapped/"$name".sam -o 04_mapped/"$name".bam 
+  ## SORT
+  samtools sort 04_mapped/"$name".bam  -o 05_sorted/"$name".bam 
+  ## Add Read Groups
+  picard AddOrReplaceReadGroups -I 05_sorted/"$name".bam  -O 06_rged/"$name".bam  -LB lib1 -PL ILLUMINA  -PU unit1 -SM $name
+  ## Filter
+  samtools view -b -q 10 06_rged/"$name".bam > 07_filtered/"$name".bam 
+
+done < namelist.txt
 ```
 
 

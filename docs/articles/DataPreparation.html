@@ -57,6 +57,7 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
 </form></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/mgaynor1/nQuack/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
@@ -86,8 +87,11 @@ reference genome or target sequences.</p>
 <h2 id="preprocessing">Preprocessing<a class="anchor" aria-label="anchor" href="#preprocessing"></a>
 </h2>
 <div class="section level3">
-<h3 id="align-to-a-reference-genome">Align to a reference genome<a class="anchor" aria-label="anchor" href="#align-to-a-reference-genome"></a>
+<h3 id="option-1-reference-genome">Option 1: Reference genome<a class="anchor" aria-label="anchor" href="#option-1-reference-genome"></a>
 </h3>
+<div class="section level4">
+<h4 id="align-to-a-reference-genome">Align to a reference genome<a class="anchor" aria-label="anchor" href="#align-to-a-reference-genome"></a>
+</h4>
 <p>After processing our raw sequence data, we have to align the reads to
 a reference genome. Here we use <a href="https://github.com/bwa-mem2/bwa-mem2" class="external-link">bwa-mem2</a> to align our
 reads. We then converted our SAM files to BAM files using <a href="http://www.htslib.org/" class="external-link">samtools</a>. This is our bash script:</p>
@@ -108,12 +112,12 @@ reads. We then converted our SAM files to BAM files using <a href="http://www.ht
 <span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a><span class="co"># SORT</span></span>
 <span id="cb1-16"><a href="#cb1-16" tabindex="-1"></a><span class="ex">samtools</span> sort sample_001.bam <span class="at">-o</span> sample_001.bam</span></code></pre></div>
 </div>
-<div class="section level3">
-<h3 id="remove-repeats">Remove repeats<a class="anchor" aria-label="anchor" href="#remove-repeats"></a>
-</h3>
 <div class="section level4">
-<h4 id="identify-repeat-regions">Identify repeat regions<a class="anchor" aria-label="anchor" href="#identify-repeat-regions"></a>
+<h4 id="remove-repeats">Remove repeats<a class="anchor" aria-label="anchor" href="#remove-repeats"></a>
 </h4>
+<div class="section level5">
+<h5 id="identify-repeat-regions">Identify repeat regions<a class="anchor" aria-label="anchor" href="#identify-repeat-regions"></a>
+</h5>
 <p>Prior to running samples through nQuack, we suggest repeat regions be
 removed. To remove repeats, you first have to identify them. Here we
 utilize <a href="https://www.pnas.org/doi/10.1073/pnas.1921046117" class="external-link">repeat
@@ -161,9 +165,9 @@ samples alignment.</p>
 <span id="cb2-38"><a href="#cb2-38" tabindex="-1"></a><span class="fu">mkdir</span> 03_database</span>
 <span id="cb2-39"><a href="#cb2-39" tabindex="-1"></a><span class="fu">cut</span> <span class="at">-f1,4,5</span> 02_RepMask/<span class="va">$databasename</span>.fasta.out.gff <span class="kw">|</span> <span class="fu">perl</span> <span class="at">-pi</span> <span class="at">-e</span> <span class="st">'s/^#.*\n//g'</span> <span class="op">&gt;</span> 03_database/ref2_<span class="va">$databasename</span>.gff.bed</span></code></pre></div>
 </div>
-<div class="section level4">
-<h4 id="remove-repeats-from-your-alignment">Remove repeats from your alignment<a class="anchor" aria-label="anchor" href="#remove-repeats-from-your-alignment"></a>
-</h4>
+<div class="section level5">
+<h5 id="remove-repeats-from-your-alignment">Remove repeats from your alignment<a class="anchor" aria-label="anchor" href="#remove-repeats-from-your-alignment"></a>
+</h5>
 <p>Based on the bed file created above, we then remove the repeats from
 our alignment with samtools function <code>veiw</code>.</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># Load modules</span></span>
@@ -175,10 +179,9 @@ our alignment with samtools function <code>veiw</code>.</p>
 <span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="co">## Remove Repeats</span></span>
 <span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="ex">samtools</span> view sample_001.bam <span class="at">-b</span> <span class="at">-h</span> <span class="at">-o</span> /dev/null  <span class="at">-U</span> repeats_removed/sample_001.bam  <span class="at">-L</span> 03_database/ref2_<span class="va">$databasename</span>.gff.bed</span></code></pre></div>
 </div>
-</div>
-<div class="section level3">
-<h3 id="filter-low-quality">Filter low quality<a class="anchor" aria-label="anchor" href="#filter-low-quality"></a>
-</h3>
+<div class="section level5">
+<h5 id="filter-low-quality">Filter low quality<a class="anchor" aria-label="anchor" href="#filter-low-quality"></a>
+</h5>
 <p>To remove regions of low quality based on the MAPQ score. MAPQ is
 equal to -10*log-base-10(Pr(mapping position is wrong)), rounded to the
 nearest integer (<a href="https://samtools.github.io/hts-specs/SAMv1.pdf" class="external-link">see more
@@ -205,6 +208,68 @@ have a 10% chance or more of being mapped to the wrong location and set
 <span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="ex">samtools</span> view <span class="at">-b</span> <span class="at">-q</span> 10 repeats_removed/sample_001.bam <span class="op">&gt;</span> filtered/sample_001.bam</span></code></pre></div>
 </div>
 </div>
+</div>
+<div class="section level3">
+<h3 id="option-2-target-based">Option 2: Target-based<a class="anchor" aria-label="anchor" href="#option-2-target-based"></a>
+</h3>
+<p>Here is an example of how to process target enrichment data when a
+reference genome is absent. This script is meant to be saved as
+<code>01_preprocess.sh</code> and run on SLURM. Here we are assuming
+<code>01_allfastq/</code> contains demultiplexed and trimmed
+<code>fastq</code> files for paired-end reads, labeled
+<code>"$name"_R*.fastq</code> (<i>i.e.</i>, <code>MLG001_R1.fastq</code>
+and <code>MLG001_R2.fastq</code>). We are also assuming your target file
+is called <code>targetset.fasta</code>. To find out more about target
+files, please <a href="https://github.com/mossmatters/HybPiper/wiki#10-preparing-your-files" class="external-link">see
+HybPiper</a>.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co">#!/bin/sh</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="co">#SBATCH --job-name=01_Preprocess</span></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="co">#SBATCH --mail-type=ALL</span></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="co">#SBATCH --mail-user=email@address.com</span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a><span class="co">#SBATCH --nodes=1</span></span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="co">#SBATCH --ntasks-per-node=1</span></span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="co">#SBATCH --cpus-per-task=10</span></span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a><span class="co">#SBATCH --mem=5gb # May need to increase</span></span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a><span class="co">#SBATCH -t 4-00:00:00</span></span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a><span class="co">#SBATCH -o ../logs/01_process.$j.out</span></span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a><span class="co">#SBATCH -e ../logs/01_process.%j.err</span></span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a><span class="co"># Load modules</span></span>
+<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a><span class="ex">module</span> load hybpiper/2.3.0</span>
+<span id="cb6-15"><a href="#cb6-15" tabindex="-1"></a><span class="ex">module</span> load bwa-mem2/2.2.1 <span class="co"># Any version should be okay</span></span>
+<span id="cb6-16"><a href="#cb6-16" tabindex="-1"></a><span class="ex">module</span> load samtools/1.15 <span class="co"># Any version should be okay</span></span>
+<span id="cb6-17"><a href="#cb6-17" tabindex="-1"></a><span class="ex">module</span> load picard/3.2.0 <span class="co"># Any version should be okay</span></span>
+<span id="cb6-18"><a href="#cb6-18" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" tabindex="-1"></a><span class="co"># Make folders</span></span>
+<span id="cb6-20"><a href="#cb6-20" tabindex="-1"></a><span class="fu">mkdir</span> 02_assembly</span>
+<span id="cb6-21"><a href="#cb6-21" tabindex="-1"></a><span class="fu">mkdir</span> 03_supercontig</span>
+<span id="cb6-22"><a href="#cb6-22" tabindex="-1"></a><span class="fu">mkdir</span> 04_mapped</span>
+<span id="cb6-23"><a href="#cb6-23" tabindex="-1"></a><span class="fu">mkdir</span> 05_sorted</span>
+<span id="cb6-24"><a href="#cb6-24" tabindex="-1"></a><span class="fu">mkdir</span> 06_rged</span>
+<span id="cb6-25"><a href="#cb6-25" tabindex="-1"></a><span class="fu">mkdir</span> 07_filtered</span>
+<span id="cb6-26"><a href="#cb6-26" tabindex="-1"></a></span>
+<span id="cb6-27"><a href="#cb6-27" tabindex="-1"></a><span class="co"># Loop through files</span></span>
+<span id="cb6-28"><a href="#cb6-28" tabindex="-1"></a><span class="cf">while</span> <span class="bu">read</span> <span class="va">name</span><span class="kw">;</span> <span class="cf">do</span> </span>
+<span id="cb6-29"><a href="#cb6-29" tabindex="-1"></a>  <span class="co">## Assemble genes</span></span>
+<span id="cb6-30"><a href="#cb6-30" tabindex="-1"></a>  <span class="ex">hybpiper</span> assemble <span class="at">-t_dna</span> targetset.fasta <span class="at">-r</span> 01_allfastq/<span class="st">"</span><span class="va">$name</span><span class="st">"</span>_R<span class="pp">*</span>.fastq <span class="at">--prefix</span> <span class="st">"</span><span class="va">$name</span><span class="st">"</span> <span class="at">--bwa</span> <span class="at">--hybpiper_output</span> 02_assembly/ <span class="at">--cpu</span> <span class="va">$SLURM_CPUS_PER_TASK</span></span>
+<span id="cb6-31"><a href="#cb6-31" tabindex="-1"></a>  <span class="co">## Retrieve the supercontig</span></span>
+<span id="cb6-32"><a href="#cb6-32" tabindex="-1"></a>  <span class="ex">hybpiper</span> retrieve_sequences supercontig <span class="at">-t_dna</span> targetset.fasta <span class="at">--single_sample_name</span> <span class="va">$name</span> <span class="at">--hybpiper_dir</span> 02_assembly/ <span class="at">--fasta_dir</span> 03_supercontig/</span>
+<span id="cb6-33"><a href="#cb6-33" tabindex="-1"></a></span>
+<span id="cb6-34"><a href="#cb6-34" tabindex="-1"></a>  <span class="co">## Map to supercontig</span></span>
+<span id="cb6-35"><a href="#cb6-35" tabindex="-1"></a>  <span class="ex">bwa-mem2</span> index 03_supercontig/<span class="st">"</span><span class="va">$name</span><span class="st">"</span>_supercontig.fasta</span>
+<span id="cb6-36"><a href="#cb6-36" tabindex="-1"></a>  <span class="ex">bwa-mem2</span> mem <span class="at">-t</span> <span class="va">$SLURM_CPUS_PER_TASK</span> <span class="at">-M</span> 03_supercontig/<span class="st">"</span><span class="va">$name</span><span class="st">"</span>_supercontig.fasta 01_allfastq/<span class="st">"</span><span class="va">$name</span><span class="st">"</span>_R1.fastq 01_allfastq/<span class="st">"</span><span class="va">$name</span><span class="st">"</span>_R2.fastq <span class="at">-o</span> 04_mapped/<span class="st">"</span><span class="va">$name</span><span class="st">"</span>.sam</span>
+<span id="cb6-37"><a href="#cb6-37" tabindex="-1"></a>  <span class="co">## Convert SAM to BAM</span></span>
+<span id="cb6-38"><a href="#cb6-38" tabindex="-1"></a>  <span class="ex">samtools</span> view <span class="at">-S</span> <span class="at">-bT</span> 03_supercontig/<span class="st">"</span><span class="va">$name</span><span class="st">"</span>_supercontig.fasta 04_mapped/<span class="st">"</span><span class="va">$name</span><span class="st">"</span>.sam <span class="at">-o</span> 04_mapped/<span class="st">"</span><span class="va">$name</span><span class="st">"</span>.bam </span>
+<span id="cb6-39"><a href="#cb6-39" tabindex="-1"></a>  <span class="co">## SORT</span></span>
+<span id="cb6-40"><a href="#cb6-40" tabindex="-1"></a>  <span class="ex">samtools</span> sort 04_mapped/<span class="st">"</span><span class="va">$name</span><span class="st">"</span>.bam  <span class="at">-o</span> 05_sorted/<span class="st">"</span><span class="va">$name</span><span class="st">"</span>.bam </span>
+<span id="cb6-41"><a href="#cb6-41" tabindex="-1"></a>  <span class="co">## Add Read Groups</span></span>
+<span id="cb6-42"><a href="#cb6-42" tabindex="-1"></a>  <span class="ex">picard</span> AddOrReplaceReadGroups <span class="at">-I</span> 05_sorted/<span class="st">"</span><span class="va">$name</span><span class="st">"</span>.bam  <span class="at">-O</span> 06_rged/<span class="st">"</span><span class="va">$name</span><span class="st">"</span>.bam  <span class="at">-LB</span> lib1 <span class="at">-PL</span> ILLUMINA  <span class="at">-PU</span> unit1 <span class="at">-SM</span> <span class="va">$name</span></span>
+<span id="cb6-43"><a href="#cb6-43" tabindex="-1"></a>  <span class="co">## Filter</span></span>
+<span id="cb6-44"><a href="#cb6-44" tabindex="-1"></a>  <span class="ex">samtools</span> view <span class="at">-b</span> <span class="at">-q</span> 10 06_rged/<span class="st">"</span><span class="va">$name</span><span class="st">"</span>.bam <span class="op">&gt;</span> 07_filtered/<span class="st">"</span><span class="va">$name</span><span class="st">"</span>.bam </span>
+<span id="cb6-45"><a href="#cb6-45" tabindex="-1"></a></span>
+<span id="cb6-46"><a href="#cb6-46" tabindex="-1"></a><span class="cf">done</span> <span class="op">&lt;</span> namelist.txt</span></code></pre></div>
+</div>
+</div>
 <div class="section level2">
 <h2 id="data-processing-with-nquack">Data processing with nQuack<a class="anchor" aria-label="anchor" href="#data-processing-with-nquack"></a>
 </h2>
@@ -218,7 +283,7 @@ tab-seperated text file with samtools. For this function, you must
 supply the filename (without the .bam ending), the path to the directory
 containing your BAM files, and the path to the directory where you want
 your processed files to be saved.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Prepare many samples</span></span>
 <span><span class="va">inpath</span> <span class="op">&lt;-</span> <span class="st">"filtered/"</span></span>
 <span><span class="va">outpath</span> <span class="op">&lt;-</span> <span class="st">"Processed/"</span></span>
@@ -237,9 +302,9 @@ cluster, you may need to install samtools locally. Though the location
 of install may differ, here is how I installed samtools locally on UF’s
 amazing <a href="https://www.rc.ufl.edu/about/hipergator/" class="external-link">HiPerGator</a> slurm
 cluster:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">mkdir</span> bin</span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="bu">cd</span> bin</span>
-<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="fu">ln</span> <span class="at">-s</span> /apps/samtools/1.15/bin/samtools samtools</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="fu">mkdir</span> bin</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="bu">cd</span> bin</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="fu">ln</span> <span class="at">-s</span> /apps/samtools/1.15/bin/samtools samtools</span></code></pre></div>
 </div>
 </div>
 <div class="section level3">
@@ -270,7 +335,7 @@ frequency.</p>
 equal probability at each site. The resulting data set includes the
 total coverage per site and the coverage associated with a randomly
 sampled allele.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co">## Prepare many samples</span></span>
 <span><span class="va">textfiles</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span>path <span class="op">=</span> <span class="st">"Processed/"</span>, pattern <span class="op">=</span> <span class="st">"*.txt"</span>, full.name <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span></span>
@@ -294,7 +359,7 @@ inspected based on the output from <code><a href="../reference/process_data.html
 call this output <code>xm</code>. If the x-axis on your coverage
 histogram goes way above the targeted sequencing depth, you need to
 decrease the maximum depth quantile probability.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Plot</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span><span class="va">xm</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span><span class="op">)</span></span>
 <span></span>
@@ -318,7 +383,7 @@ decrease the maximum depth quantile probability.</p>
 removing any site with a frequencies below 0.1 or above 0.9. On first
 pass, we suggest you do not truncate your data. However, once your data
 is processed, you should plot your data to inspect.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Convert to allele frequency</span></span>
 <span><span class="va">xi</span> <span class="op">&lt;-</span> <span class="va">xm</span><span class="op">[</span>,<span class="fl">2</span><span class="op">]</span><span class="op">/</span><span class="va">xm</span><span class="op">[</span>,<span class="fl">1</span><span class="op">]</span></span>
 <span></span>
@@ -356,7 +421,7 @@ their data in our program. After processing samples with nQuire’s
 file can be read into R. To prepare the data frame for nQuack, reduce
 the three column data frame to two columns by randomly sampling allele A
 or B for every site. We created a function to help with this.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Read in nQuire txt file</span></span>
 <span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/process_nquire.html">process_nquire</a></span><span class="op">(</span><span class="st">"file.txt"</span><span class="op">)</span></span></code></pre></div>
 </div>
