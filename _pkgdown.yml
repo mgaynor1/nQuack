@@ -73,6 +73,7 @@ articles:
   - ModelOptions
   - SimulateData
   - Outliers
+  - FAQ
 navbar:
   structure:
     left:

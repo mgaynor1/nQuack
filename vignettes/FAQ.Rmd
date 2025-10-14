@@ -1,0 +1,46 @@
+---
+title: "Frequently Asked Questions"
+output: rmarkdown::html_vignette
+description: >
+  Round-up of frequently asked questions.
+vignette: >
+  %\VignetteIndexEntry{Outliers}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r message=FALSE, warning=FALSE, include=FALSE}
+library(kableExtra)
+library(dplyr)
+library(nQuack)
+```
+
+## Can it go faster?
+
+See our [faster example here](https://mlgaynor.com/nQuack/articles/FasterExample.html). 
+
+## What about higher ploidal levels?    
+
+Currently, nQuack is only coded to estimate the likelihood up to a hexaploid (6x). However, our expectation-maximization code is able to calculate the likelihood of any number of mixtures. Meaning, the code can easily be modified to estimate if a ploidy level higher than 6x is the most likely. Depending on your comfort in R, this may be simple or overly confusing.  I would start by reading through the [Model Option page](https://mlgaynor.com/nQuack/articles/ModelOptions.html) on the pkgdown site, let me know if you need additional help with this. 
+
+I would caution using any approach based on site-based heterozygosity to attempt to differentiation anything above 6 because the expectations at this level are really difficult to differentiate. For example, if you have a dodecaploid, you can have biallelic allele frequencies at 1/12, 2/12, 3/12, 4/12, 5/12, 6/12, 7/12, 8/12,  9/12, 10/12, 11/12 which would be equivalent to the mean values of 0.083, 0.167, 0.25, 0.33, 0.417,  0.5, 0.583, 0.667, 0.75, 0.83, 0.913. Depending on your quality of data and its coverage, these allele frequencies may be indistinguishable. I would suggest [simulating data ](https://mlgaynor.com/nQuack/articles/SimulateData.html) similar to what you have generated, here is a quick example of how to simulate and view the expected allele frequencies for a dodecaploid with our [sim.ind.BB() function](https://mlgaynor.com/nQuack/reference/sim.ind.BB.html): https://gist.github.com/mgaynor1/7acfe13b526f94818469d535f3c30661
+
+
+## Can I identify if my sample is an allopolyploid or autopolyploid?
+
+Briefly, if you are using the model with alpha as a free parameter, the alpha value will be indicative of the mode of inheritance. In tetrasomic inheritance, you would expect that the model will assign relatively equal proportions to the heterozygotes types, thus this would indicate an autopolyploid. In an allopolyploid you would expect a higher proportion at 0.5 due to disomic inheritance. You can check the parameter output to see the calculated portions (or alpha values) by running the expectation maximization outside of the wrapper functions. Find more about about how to run the EM here: https://mlgaynor.com/nQuack/articles/ModelOptions.html
+
+Here is an example of how to run the EM step: https://gist.github.com/mgaynor1/e5a4a9fb2eaba8aabbcf6ff1ef2075f1
+
+The best explanation of this approach can be found in Rowan's preprint here: Schley RS, Piñeiro R, Nicholls J, Gaynor ML, Lewis GP, Pezzini FF, Dexter KG, Kider C, Pennington RT, and Twyford AD. The frequency and importance of polyploidy in tropical trees. In Review, New Phytologist. Preprint available, [doi: 10.1101/2025.07.28.667178](https://doi.org/10.1101/2025.07.28.667178).
+ 
+## What about RNA-seq? HI-C? or PacBio HIFI?
+
+We have not tested this method on RNA-seq. In theory, this could potentially work on RNA-seq data, however, I am not sure how allele-specific expression bias would impact the inference or if there would be enough signal in the data to accurately predict ploidal level for a sample. I suggest testing this approach with samples with known-ploidy level and RNA-seq data to determine if this approach is accurate for your data set - as indicated in our manuscript for any application of this method.
+
+I do not think think this method works for HI-C data. 
+
+This has never been tested on PacBio HIFI data. For high quality data generated with PacBio, you may be able to infer mode of inheritance based on a dotplot of syntenic anchor genes. For example, see Figure 3 (E and F) and the many many supplement plots from: https://pmc.ncbi.nlm.nih.gov/articles/PMC11785232/ 
+
+
+
