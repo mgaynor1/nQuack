@@ -1,10 +1,10 @@
 ---
-title: "Frequently Asked Questions"
+title: "FAQ"
 output: rmarkdown::html_vignette
 description: >
   Round-up of frequently asked questions.
 vignette: >
-  %\VignetteIndexEntry{Outliers}
+  %\VignetteIndexEntry{FAQ}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -40,7 +40,7 @@ We have not tested this method on RNA-seq. In theory, this could potentially wor
 
 I do not think think this method works for HI-C data. 
 
-This has never been tested on PacBio HIFI data. For high quality data generated with PacBio, you may be able to infer mode of inheritance based on a dotplot of syntenic anchor genes. For example, see Figure 3 (E and F) and the many many supplement plots from: https://pmc.ncbi.nlm.nih.gov/articles/PMC11785232/ 
+This has never been tested on PacBio HIFI data. For high quality data generated with PacBio, you may be able to infer ploidy level and mode of inheritance based on a dotplot of syntenic anchor genes. For example, see Figure 3 (E and F) and the many many supplement plots from: https://pmc.ncbi.nlm.nih.gov/articles/PMC11785232/ 
 
 
 
