@@ -20,9 +20,10 @@ Here we provide an extension to the [example to show you how to apply this metho
 
 Time is not reported here. Not all functions in this package are able to use multiple CPUs, however we note when functions are able to use multiple cores. 
 
-To efficiently use this package, you should split your runs into at least two parts:
-- Data preparation
-- Model inference
+To efficiently use this package, you should split your runs into at least two parts:    
+
+  - Data preparation.   
+  - Model inference.    
 
 ## Part 1: Data preparation 
 These functions are not set up to use multiple CPUs. Therefore, we are using a foreach loop to speed up processing. 
