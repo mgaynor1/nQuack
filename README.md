@@ -55,9 +55,14 @@ Sys.setenv(PATH=paste("/apps/samtools/1.19.2/bin", Sys.getenv("PATH"),sep=":"))
 
 For implementation, see our [Basic Example](https://mlgaynor.com/nQuack/articles/BasicExample.html) article.
 
-## References
+## Reference
 
 Gaynor ML, Landis JB, O'Connor TK, Laport RG, Doyle JJ, Soltis DE, Ponciano JM, and Soltis PS. 2024. nQuack: An R package for predicting ploidy level from sequence data using site-based heterozygosity. *Applications in Plant Sciences* 12(4):e11606. [doi: 10.1002/aps3.11606](https://www.doi.org/10.1002/aps3.11606)
+
+
+### Associated publications:   
+
+Schley RS, Piñeiro R, Nicholls J, Gaynor ML, Lewis GP, Pezzini FF, Dexter KG, Kider C, Pennington RT, and Twyford AD. 2025. The frequency and importance of polyploidy in tropical trees. *New Phytologist*. [doi: 10.1111/nph.70764](https://www.doi.org/10.1111/nph.70764)
 
 ## Up Next:
 

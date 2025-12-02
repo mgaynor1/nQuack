@@ -9,7 +9,8 @@ articles:
   ModelOptions: ModelOptions.html
   Outliers: Outliers.html
   SimulateData: SimulateData.html
-last_built: 2025-10-14T14:18Z
+  VCF2nQuack: VCF2nQuack.html
+last_built: 2025-12-02T14:27Z
 urls:
   reference: http://mlgaynor.com/nQuack/reference
   article: http://mlgaynor.com/nQuack/articles

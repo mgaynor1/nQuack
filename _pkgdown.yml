@@ -73,6 +73,7 @@ articles:
   - ModelOptions
   - SimulateData
   - Outliers
+  - VCF2nQuack
   - FAQ
 navbar:
   structure:

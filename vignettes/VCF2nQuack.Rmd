@@ -1,0 +1,114 @@
+---
+title: "VCF to nQuack"
+output: rmarkdown::html_vignette
+description: >
+  How to convert a VCF to use with nQuack?
+vignette: >
+  %\VignetteIndexEntry{VCF to nQuack}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+It is very difficult to filter biallelic sites based only on an alignment (the default for nQuack) - therefore, you may end up with lots of noise in your data and our models may not converge. Here we show you how to use a filtered VCF file as the input for nQuack. Note, this method has not been tested, so the limitations and assumptions of using diploid-called genotypes with nQuack are not fully understood. 
+
+Thanks to Holly Brabazon for requesting this option. 
+
+## Load Packages
+
+NOTE: This approach relays on others software - I do not maintain these packages. 
+
+```{r echo=TRUE, message=FALSE, warning=FALSE, eval=FALSE}
+library(vcfR)
+library(tidyr)
+library(dplyr)
+library(nQuack)
+```
+
+
+## Read in your VCF file
+
+Here we are assuming joint-genotypes (multiple samples per VCF file) and that the VCF file has been filtered to only biallelic sites. Currently, we do not provide an example VCF file. 
+
+```{r echo=TRUE, message=FALSE, warning=FALSE, eval=FALSE}
+df1 <- vcfR::read.vcfR("output.biallelic.vcf")
+## Convert vcf to tidy
+ccdf1 <- vcfR::vcfR2tidy(df1)
+## Subset genotypes
+ccdf1gt <- ccdf1$gt
+```
+
+## Subset information from the Genotypes  
+
+### 01. Subset total read depth
+```{r echo=TRUE, message=FALSE, warning=FALSE, eval=FALSE}
+df1_size <- data.frame(POS=paste0(ccdf1gt$ChromKey, "_", ccdf1gt$POS),
+                       IND=ccdf1gt$Indiv, 
+                       DP = as.integer(ccdf1gt$gt_DP))
+df1_size <- df1_size %>%
+            pivot_wider(names_from = POS, values_from = DP)
+names <- df1_size$IND
+rownames(df1_size) <- df1_size$IND
+df1_size <- df1_size[,-1]
+sizemat <- as.matrix(df1_size)
+rownames(sizemat) <- names
+```
+
+### 02. Subset reference read depth and alternative read depth
+```{r echo=TRUE, message=FALSE, warning=FALSE, eval=FALSE}
+ADset  <- data.frame(do.call(rbind, strsplit(ccdf1gt$gt_AD,",")))
+```
+
+#### 02A. Subset reference read depth
+```{r echo=TRUE, message=FALSE, warning=FALSE, eval=FALSE}
+df1_ref <- data.frame(POS=paste0(ccdf1gt$ChromKey, "_", ccdf1gt$POS),
+                      IND=ccdf1gt$Indiv, 
+                      AD =  as.integer(ADset$X1))
+df1_ref <- df1_ref %>%
+           pivot_wider(names_from = POS, values_from = AD)
+names <- df1_ref$IND
+rownames(df1_ref) <- names
+df1_ref <- df1_ref[,-1]
+refmat <- as.matrix(df1_ref)
+rownames(refmat) <- names
+```
+
+#### 02B. Subset alternative read depth
+
+```{r echo=TRUE, message=FALSE, warning=FALSE, eval=FALSE}
+df1_alt <- data.frame(POS=paste0(ccdf1gt$ChromKey, "_", ccdf1gt$POS),
+                      IND=ccdf1gt$Indiv, 
+                      AD =  as.integer(ADset$X2))
+df1_alt <- df1_alt %>%
+           pivot_wider(names_from = POS, values_from = AD)
+names <- df1_alt$IND
+rownames(df1_alt) <- names
+df1_alt <- df1_alt[,-1]
+altmat <- as.matrix(df1_alt)
+rownames(altmat) <- names
+```
+
+
+### 03. Process for nQuack    
+
+```{r echo=TRUE, message=FALSE, warning=FALSE, eval=FALSE}
+## Set path to folder
+outpath <- "03_processed/"
+
+## Loop through individuals to pull out information
+for(i in 1:length(names)){
+  t1 <- sizemat[i, ]
+  t2 <- refmat[i, ]
+  t3 <- altmat[i, ]
+  
+  ## Create dataframe
+  all <- data.frame(V1 = t1, V2 = t2, V3 = t3)
+  ## Filter to only biallelic sites in the individual
+  all <- all %>% filter(V2 != 0 & V3 != 0)
+  ## Randomly select A or B
+  allout <- nQuire_reformat(as.matrix(all))
+  
+  outname <- paste0(outpath, names[i], ".csv")
+  write.csv(allout, file = outname, row.names = FALSE)
+}
+```
+
