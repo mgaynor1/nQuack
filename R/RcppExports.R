@@ -9,7 +9,7 @@
 #' @param xi List of observations, in this case allele frequencies.
 #' @param trunc List of two values representing the lower and upper bounds, $c_{L}$ and $c_{U}$.
 estepB3 <- function(parmlist, xi, trunc) {
-    .Call(`_nQuack_estepB3`, parmlist, xi, trunc)
+    .Call('_nQuack_estepB3', PACKAGE = 'nQuack', parmlist, xi, trunc)
 }
 
 #' @title Expectation maximization - Beta + Beta + Beta Distribution
@@ -29,7 +29,7 @@ estepB3 <- function(parmlist, xi, trunc) {
 #'
 #'
 emstepB3 <- function(parmlist, xi, niter, epsilon, trunc) {
-    .Call(`_nQuack_emstepB3`, parmlist, xi, niter, epsilon, trunc)
+    .Call('_nQuack_emstepB3', PACKAGE = 'nQuack', parmlist, xi, niter, epsilon, trunc)
 }
 
 #' @title Expectation maximization - Normal Distribution
@@ -51,7 +51,7 @@ emstepB3 <- function(parmlist, xi, niter, epsilon, trunc) {
 #' and the optimized parameter values.
 #'
 emstepN <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
-    .Call(`_nQuack_emstepN`, parmlist, xi, niter, epsilon, trunc, type)
+    .Call('_nQuack_emstepN', PACKAGE = 'nQuack', parmlist, xi, niter, epsilon, trunc, type)
 }
 
 #' @title Expectation maximization - Normal Distribution
@@ -73,7 +73,7 @@ emstepN <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
 #' and the optimized parameter values.
 #'
 emstepNA <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
-    .Call(`_nQuack_emstepNA`, parmlist, xi, niter, epsilon, trunc, type)
+    .Call('_nQuack_emstepNA', PACKAGE = 'nQuack', parmlist, xi, niter, epsilon, trunc, type)
 }
 
 #' @title Expectation maximization - Normal and Uniform Distribution
@@ -95,7 +95,7 @@ emstepNA <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
 #' and the optimized parameter values.
 #'
 emstepNU <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
-    .Call(`_nQuack_emstepNU`, parmlist, xi, niter, epsilon, trunc, type)
+    .Call('_nQuack_emstepNU', PACKAGE = 'nQuack', parmlist, xi, niter, epsilon, trunc, type)
 }
 
 #' @title Expectation maximization - Normal Distribution
@@ -117,7 +117,7 @@ emstepNU <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
 #' and the optimized parameter values.
 #'
 emstepNUA <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
-    .Call(`_nQuack_emstepNUA`, parmlist, xi, niter, epsilon, trunc, type)
+    .Call('_nQuack_emstepNUA', PACKAGE = 'nQuack', parmlist, xi, niter, epsilon, trunc, type)
 }
 
 #' @title Expectation maximization - Beta Distribution
@@ -140,7 +140,7 @@ emstepNUA <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
 #'  and the optimized parameter values.
 #'
 emstepB <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
-    .Call(`_nQuack_emstepB`, parmlist, xi, niter, epsilon, trunc, type)
+    .Call('_nQuack_emstepB', PACKAGE = 'nQuack', parmlist, xi, niter, epsilon, trunc, type)
 }
 
 #' @title Expectation maximization - Beta-Binomial Distribution
@@ -162,7 +162,7 @@ emstepB <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
 #'
 #'
 emstepBB <- function(parmlist, xm, niter, epsilon, trunc, type = "free") {
-    .Call(`_nQuack_emstepBB`, parmlist, xm, niter, epsilon, trunc, type)
+    .Call('_nQuack_emstepBB', PACKAGE = 'nQuack', parmlist, xm, niter, epsilon, trunc, type)
 }
 
 #' @title Expectation maximization - Beta-Binomial and Uniform Distributions
@@ -185,7 +185,7 @@ emstepBB <- function(parmlist, xm, niter, epsilon, trunc, type = "free") {
 #'  and the optimized parameter values.
 #'
 emstepBBU <- function(parmlist, xm, niter, epsilon, trunc, type = "free") {
-    .Call(`_nQuack_emstepBBU`, parmlist, xm, niter, epsilon, trunc, type)
+    .Call('_nQuack_emstepBBU', PACKAGE = 'nQuack', parmlist, xm, niter, epsilon, trunc, type)
 }
 
 #' @title Expectation maximization - Beta and Uniform Distributions
@@ -208,7 +208,7 @@ emstepBBU <- function(parmlist, xm, niter, epsilon, trunc, type = "free") {
 #'  and the optimized parameter values.
 #'
 emstepBU <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
-    .Call(`_nQuack_emstepBU`, parmlist, xi, niter, epsilon, trunc, type)
+    .Call('_nQuack_emstepBU', PACKAGE = 'nQuack', parmlist, xi, niter, epsilon, trunc, type)
 }
 
 #' Calculate Alpha and Beta from Mean and Variance
@@ -218,7 +218,7 @@ emstepBU <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
 #'
 #' @return Numeric vector of alpha and beta.
 alphabetacalc <- function(mu, var) {
-    .Call(`_nQuack_alphabetacalc`, mu, var)
+    .Call('_nQuack_alphabetacalc', PACKAGE = 'nQuack', mu, var)
 }
 
 #' Vector-based - Calculate Alpha and Beta from Mean and Variance
@@ -228,7 +228,7 @@ alphabetacalc <- function(mu, var) {
 #'
 #' @return Numeric matrix of alpha and beta.
 alphabetacalcvec <- function(mu, var) {
-    .Call(`_nQuack_alphabetacalcvec`, mu, var)
+    .Call('_nQuack_alphabetacalcvec', PACKAGE = 'nQuack', mu, var)
 }
 
 #' Calculate Alpha and Beta from Mean, Tau, and Error rate.
@@ -239,7 +239,7 @@ alphabetacalcvec <- function(mu, var) {
 #'
 #' @return Numeric vector of alpha and beta.
 alphabetacalctau <- function(mu, tau, error) {
-    .Call(`_nQuack_alphabetacalctau`, mu, tau, error)
+    .Call('_nQuack_alphabetacalctau', PACKAGE = 'nQuack', mu, tau, error)
 }
 
 #' Vector-based - Calculate Alpha and Beta from Mean, Tau, and Error rate.
@@ -250,7 +250,7 @@ alphabetacalctau <- function(mu, tau, error) {
 #'
 #' @return Numeric matrix of alpha and beta.
 alphabetacalctauvec <- function(mu, tau, error) {
-    .Call(`_nQuack_alphabetacalctauvec`, mu, tau, error)
+    .Call('_nQuack_alphabetacalctauvec', PACKAGE = 'nQuack', mu, tau, error)
 }
 
 #' @title Prepare data - Step 1
@@ -275,7 +275,7 @@ alphabetacalctauvec <- function(mu, tau, error) {
 #' @returns Writes text file with the following columns: chromosome, position, depth, A, C, G, and T.
 #'
 prepare_data <- function(name, inpath, outpath, tempfolder = "temp") {
-    invisible(.Call(`_nQuack_prepare_data`, name, inpath, outpath, tempfolder))
+    invisible(.Call('_nQuack_prepare_data', PACKAGE = 'nQuack', name, inpath, outpath, tempfolder))
 }
 
 #' Calculate Alpha and Beta from Mean and Variance
@@ -285,7 +285,7 @@ prepare_data <- function(name, inpath, outpath, tempfolder = "temp") {
 #'
 #' @return Randomly sampled matrix.
 resample_xm <- function(xm, n) {
-    .Call(`_nQuack_resample_xm`, xm, n)
+    .Call('_nQuack_resample_xm', PACKAGE = 'nQuack', xm, n)
 }
 
 #' @title Data Preparation - Use nQuire's Data
@@ -297,7 +297,7 @@ resample_xm <- function(xm, n) {
 #'
 #' @returns Numeric Matrix with total coverage and coverage for a randomly sampled allele.
 nQuire_reformat <- function(xm) {
-    .Call(`_nQuack_nQuire_reformat`, xm)
+    .Call('_nQuack_nQuire_reformat', PACKAGE = 'nQuack', xm)
 }
 
 #' @name process_rcpp
@@ -316,10 +316,10 @@ nQuire_reformat <- function(xm) {
 #' @return Numeric Matrix with total coverage and coverage for a randomly sampled allele.
 #'
 process_rcpp <- function(x, mindepth, maxprob, trunc, error) {
-    .Call(`_nQuack_process_rcpp`, x, mindepth, maxprob, trunc, error)
+    .Call('_nQuack_process_rcpp', PACKAGE = 'nQuack', x, mindepth, maxprob, trunc, error)
 }
 
 # Register entry points for exported C++ functions
 methods::setLoadAction(function(ns) {
-    .Call(`_nQuack_RcppExport_registerCCallable`)
+    .Call('_nQuack_RcppExport_registerCCallable', PACKAGE = 'nQuack')
 })

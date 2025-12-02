@@ -27,7 +27,7 @@ for a randomly sampled allele.}
 \item{parallel}{default = FALSE, set to true if cores > 1.}
 
 \item{trunc}{List of two values representing the lower and upper bounds for
-allele frequency truncation,\eqn{c_{L}} and \eqn{c_{U}}. If allele frequency
+allele frequency truncation, c_L and c_U. If allele frequency
 truncation was done to remove error, then you do not need to truncate
 the expected. If no truncation has been done, this should be set to c(0,0),
 which is the default.}

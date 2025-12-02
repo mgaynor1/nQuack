@@ -13,7 +13,7 @@ quackit(
 \arguments{
 \item{model_out}{Data frame containing, at minimum, columns labeled LL, type, mixture, distribution, and BIC.}
 
-\item{summary_statistic}{May be equal to BIC or dLL.}
+\item{summary_statistic}{May be equal to BIC or LL.}
 
 \item{mixtures}{Defaults to \code{c("diploid", "triploid", "tetraploid", "hexaploid", "pentaploid")}.}
 }
