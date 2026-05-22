@@ -13,7 +13,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">nQuack</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.3</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,6 +31,7 @@
     <li><a class="dropdown-item" href="../articles/SimulateData.html">Simulate Data</a></li>
     <li><a class="dropdown-item" href="../articles/Outliers.html">Outliers</a></li>
     <li><a class="dropdown-item" href="../articles/VCF2nQuack.html">VCF to nQuack</a></li>
+    <li><a class="dropdown-item" href="../articles/Qploidy2nQuack.html">Qploidy2 to nQuack</a></li>
     <li><a class="dropdown-item" href="../articles/FAQ.html">FAQ</a></li>
   </ul></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -52,8 +53,7 @@
 
       <div class="section-desc"><p>Prepare your data for ploidal estimation with nQuack.</p></div>
 
-
-    </div><div class="section level2">
+      <dl></dl></div><div class="section level2">
 
 
 
@@ -64,25 +64,29 @@
 
         </dt>
         <dd>Prepare data - Step 1</dd>
-      </dl><dl><dt>
+
+        <dt>
 
           <code><a href="process_data.html">process_data()</a></code>
 
         </dt>
         <dd>Process data - Step 2</dd>
-      </dl><dl><dt>
+
+        <dt>
 
           <code><a href="process_nquire.html">process_nquire()</a></code>
 
         </dt>
         <dd>Use nQuire's Data</dd>
-      </dl><dl><dt>
+
+        <dt>
 
           <code><a href="denoise_data.html">denoise_data()</a></code>
 
         </dt>
         <dd>Denoise Data</dd>
-      </dl><dl><dt>
+
+        <dt>
 
           <code><a href="Bclean.html">Bclean()</a></code>
 
@@ -93,8 +97,7 @@
 
       <div class="section-desc"><p>Simulate data for a given ploidal level.</p></div>
 
-
-    </div><div class="section level2">
+      <dl></dl></div><div class="section level2">
 
 
 
@@ -105,13 +108,15 @@
 
         </dt>
         <dd>Simulate Allele Counts for Single Individual - Beta-Binomial Distribution</dd>
-      </dl><dl><dt>
+
+        <dt>
 
           <code><a href="sim.ind.BB.tau.html">sim.ind.BB.tau()</a></code>
 
         </dt>
         <dd>Simulate Allele Counts for Single Individual - Beta-Binomial Distribution with Overdispersion and Error</dd>
-      </dl><dl><dt>
+
+        <dt>
 
           <code><a href="sim.ind.simple.html">sim.ind.simple()</a></code>
 
@@ -122,8 +127,7 @@
 
       <div class="section-desc"><p>Wrapper functions to run model selection for diploids, triploids, tetraploids, pentaploids, and hexaploids.</p></div>
 
-
-    </div><div class="section level2">
+      <dl></dl></div><div class="section level2">
 
 
 
@@ -134,19 +138,22 @@
 
         </dt>
         <dd>Model Selection - Expectation Maximization - Normal Mixture</dd>
-      </dl><dl><dt>
+
+        <dt>
 
           <code><a href="quackNormalNQ.html">quackNormalNQ()</a></code>
 
         </dt>
         <dd>Model Selection - Expectation Maximization - Normal Mixture (nQuire)</dd>
-      </dl><dl><dt>
+
+        <dt>
 
           <code><a href="quackBeta.html">quackBeta()</a></code>
 
         </dt>
         <dd>Model Selection - Expectation Maximization - Beta Mixture</dd>
-      </dl><dl><dt>
+
+        <dt>
 
           <code><a href="quackBetaBinom.html">quackBetaBinom()</a></code>
 
@@ -157,8 +164,7 @@
 
       <div class="section-desc"><p>Wrapper functions for model selection, running specific sets of mixture models, and bootstrap replication.</p></div>
 
-
-    </div><div class="section level2">
+      <dl></dl></div><div class="section level2">
 
 
 
@@ -169,13 +175,15 @@
 
         </dt>
         <dd>Model Selection - Based on BIC or Log-Likelihood</dd>
-      </dl><dl><dt>
+
+        <dt>
 
           <code><a href="bestquack.html">bestquack()</a></code>
 
         </dt>
         <dd>Model Selection - Expectation Maximization - Choose your distribution and type</dd>
-      </dl><dl><dt>
+
+        <dt>
 
           <code><a href="quackNboots.html">quackNboots()</a></code>
 
@@ -186,8 +194,7 @@
 
       <div class="section-desc"><p>Functions used within our mixture models</p></div>
 
-
-    </div><div class="section level2">
+      <dl></dl></div><div class="section level2">
 
 
 
@@ -198,55 +205,64 @@
 
         </dt>
         <dd>Expectation maximization - Normal Distribution</dd>
-      </dl><dl><dt>
+
+        <dt>
 
           <code><a href="emstepNU.html">emstepNU()</a></code>
 
         </dt>
         <dd>Expectation maximization - Normal and Uniform Distribution</dd>
-      </dl><dl><dt>
+
+        <dt>
 
           <code><a href="emstepNA.html">emstepNA()</a></code>
 
         </dt>
         <dd>Expectation maximization - Normal Distribution</dd>
-      </dl><dl><dt>
+
+        <dt>
 
           <code><a href="emstepNUA.html">emstepNUA()</a></code>
 
         </dt>
         <dd>Expectation maximization - Normal Distribution</dd>
-      </dl><dl><dt>
+
+        <dt>
 
           <code><a href="emstepB.html">emstepB()</a></code>
 
         </dt>
         <dd>Expectation maximization - Beta Distribution</dd>
-      </dl><dl><dt>
+
+        <dt>
 
           <code><a href="emstepBU.html">emstepBU()</a></code>
 
         </dt>
         <dd>Expectation maximization - Beta and Uniform Distributions</dd>
-      </dl><dl><dt>
+
+        <dt>
 
           <code><a href="emstepBB.html">emstepBB()</a></code>
 
         </dt>
         <dd>Expectation maximization - Beta-Binomial Distribution</dd>
-      </dl><dl><dt>
+
+        <dt>
 
           <code><a href="emstepBBU.html">emstepBBU()</a></code>
 
         </dt>
         <dd>Expectation maximization - Beta-Binomial and Uniform Distributions</dd>
-      </dl><dl><dt>
+
+        <dt>
 
           <code><a href="estepB3.html">estepB3()</a></code>
 
         </dt>
         <dd>E-Step for Expectation Maximization - Beta + Beta + Beta Distribution</dd>
-      </dl><dl><dt>
+
+        <dt>
 
           <code><a href="emstepB3.html">emstepB3()</a></code>
 
@@ -257,8 +273,7 @@
 
       <div class="section-desc"><p>Everything else.</p></div>
 
-
-    </div><div class="section level2">
+      <dl></dl></div><div class="section level2">
 
 
 
@@ -269,49 +284,57 @@
 
         </dt>
         <dd>Calculate Alpha and Beta from Mean and Variance</dd>
-      </dl><dl><dt>
+
+        <dt>
 
           <code><a href="alphabetacalctau.html">alphabetacalctau()</a></code>
 
         </dt>
         <dd>Calculate Alpha and Beta from Mean, Tau, and Error rate.</dd>
-      </dl><dl><dt>
+
+        <dt>
 
           <code><a href="alphabetacalcvec.html">alphabetacalcvec()</a></code>
 
         </dt>
         <dd>Vector-based - Calculate Alpha and Beta from Mean and Variance</dd>
-      </dl><dl><dt>
+
+        <dt>
 
           <code><a href="alphabetacalctauvec.html">alphabetacalctauvec()</a></code>
 
         </dt>
         <dd>Vector-based - Calculate Alpha and Beta from Mean, Tau, and Error rate.</dd>
-      </dl><dl><dt>
+
+        <dt>
 
           <code><a href="muvarcalcvec.html">muvarcalcvec()</a></code>
 
         </dt>
         <dd>Variance calculation from Mean, Tau, and Sequencing Error</dd>
-      </dl><dl><dt>
+
+        <dt>
 
           <code><a href="process_rcpp.html">process_rcpp()</a></code>
 
         </dt>
         <dd>Data Preparation - Matrix Filtering</dd>
-      </dl><dl><dt>
+
+        <dt>
 
           <code><a href="nQuire_reformat.html">nQuire_reformat()</a></code>
 
         </dt>
         <dd>Data Preparation - Use nQuire's Data</dd>
-      </dl><dl><dt>
+
+        <dt>
 
           <code><a href="setconvert.html">setconvert()</a></code>
 
         </dt>
         <dd>Calculate Variance from Mean, Tau, and Sequencing Error</dd>
-      </dl><dl><dt>
+
+        <dt>
 
           <code><a href="resample_xm.html">resample_xm()</a></code>
 
@@ -323,11 +346,11 @@
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by ML Gaynor.</p>
+  <p>Developed by Michelle L. Gaynor.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer></div>

@@ -6,7 +6,16 @@
 #' @param summary_statistic May be equal to BIC or LL.
 #' @param mixtures Defaults to `c("diploid", "triploid", "tetraploid", "hexaploid", "pentaploid")`.
 #'
-#' @return Returns data frame with the most likely model for each set of mixtures. Includes the best and second best mixtures, as well as the difference between the two.
+#' @return Returns data frame with the most likely model for each set of mixtures.
+#' Includes the best and second best mixtures, as well as the difference between the two.
+#' We only use BIC or LL to compare within each distribution and type.
+#' To identify the most accurate model, you will need to compare accuracy across distributions
+#'  and types using a set of known samples. The distributions include
+#'  Normal, Beta, and Beta-Binomial - each with and without a uniform mixture.
+#'  The type indicates which parameters are estimated for the mixtures:
+#'  all parameters (`type = 'free'`, only used to calculate delta log-likelihood),
+#'  only alpha  (`type = 'fixed'`), only alpha and variance (`type = 'fixed_2'`),
+#'   and only variance (`type ='fixed_3`) to be estimated for each mixture.
 #'
 #'
 quackit <- function(model_out, summary_statistic = "BIC",

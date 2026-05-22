@@ -24,7 +24,7 @@ Time when reported is based on a MacBook Pro with Apple M2 Max, 12 core-cpu, and
 
 In the "inst/extdata/" folder found on this github, I provide three samples of <i>Galax urceolata</i> that were collected in 2021 as part of my dissertation. These samples have not been published, but will be submitted to NCBI-SRA in the near future. This data was generated through target enrichment with species-specific probes. These samples include a diploid (MLG013), a triploid (MLG015), and a tetraploid (MLG014). 
 
-The raw files were created by following the preprocessing steps outlined in the 'Data Preparation'.  
+The raw files were created by following the preprocessing steps outlined in the [Data Preparation](https://mlgaynor.com/nQuack/articles/DataPreparation.html).
 
 ## Load packages    
 This tutorial requires `nQuack` and `dplyr`. 
@@ -36,6 +36,8 @@ library(kableExtra)
 ```
 
 ## Data preparation 
+
+Please see [Data Preparation](https://mlgaynor.com/nQuack/articles/DataPreparation.html) for more information on filtering your data. We also provide a function to input data from [nQuire](https://mlgaynor.com/nQuack/reference/process_nquire.html). In addition, you can use a VCF file for input by following the instructions found in the [VCF to nQuack tutorial](https://mlgaynor.com/nQuack/articles/VCF2nQuack.html). Lastly, you can also [use the output from standardization with Qploidy2](https://mlgaynor.com/nQuack/articles/Qploidy2nQuack.html) with nQuack.
 
 ### 01. Prepare  data
 Warning, this step takes a while and results in a file slightly larger than the input BAM. The time taken in this step can likely be reduce in the future, however, we keep this file large by conducting no true filtering steps during this stage. I suggest running this on one CPU over night on a cluster, though it may take multiple days to finish depending on the data.  
@@ -93,9 +95,18 @@ samples <- c("MLG013", "MLG014", "MLG015")
 
 for(i in 1:length(samples)){
   temp <- as.matrix(read.csv(paste0("../inst/extdata/03_processed/", samples[i], ".csv")))
-  out1 <- quackNormal(xm = temp, samplename = samples[i], cores = 10, parallel = FALSE)
-  out2 <- quackBeta(xm = temp, samplename = samples[i], cores = 10, parallel = FALSE)
-  out3 <- quackBetaBinom(xm = temp, samplename = samples[i], cores = 10, parallel = FALSE)
+  out1 <- quackNormal(xm = temp, 
+                      samplename = samples[i], 
+                      cores = 10, 
+                      parallel = TRUE)
+  out2 <- quackBeta(xm = temp, 
+                    samplename = samples[i], 
+                    cores = 10,
+                    parallel = TRUE)
+  out3 <- quackBetaBinom(xm = temp, 
+                         samplename = samples[i],
+                         cores = 10, 
+                         parallel = TRUE)
   allout <- rbind(out1, out2, out3)
   write.csv(allout, 
             file = paste0("../inst/extdata/04_output/", samples[i], ".csv"),
@@ -140,6 +151,7 @@ for(i in 1:length(samples)){
 }
 
 ```
+
 
 Once we have this output for all our sample, we can pair the outputs with a key that contains sample names and their ploidal level. To identify the most accurate model for your data, we tally the accuracy with some handy `dplyr` functions. 
 ```{r eval=TRUE, message=FALSE, warning=FALSE, fig.align='center'}

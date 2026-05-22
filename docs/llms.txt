@@ -1,0 +1,268 @@
+# nQuack
+
+![](reference/figures/nQuack.png)
+
+**Michelle L. Gaynor, Jacob B. Landis, Tim K. O’Connor, Robert G.
+Laport, Jeff J. Doyle, Douglas E. Soltis, José Miguel Ponciano, and
+Pamela S. Soltis**
+
+[![License: GPL
+v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
+## Overview
+
+nQuack is a modified statistical framework to predict ploidy level based
+on sequence data. We build upon [Weib et al.,
+2018](https://doi.org/10.1186/s12859-018-2128-z) Gaussian Mixture Model
+approach to estimate ploidy level, which was originally written as [a C
+executable](https://github.com/clwgg/nQuire).
+
+## More on nQuack
+
+Here we provided expanded tools and implementations to improve
+site-based heterozygosity inferences of ploidal level.
+
+nQuack provides data preparation guidance and tools to decrease noise in
+input data. These include a maximum sequence coverage quantile filter
+and sequence error-based filter, to remove biallelic sites that are
+likely not representative of copy number variance in the nuclear genome.
+We also consider only the frequency of allele A or B at each site,
+instead of both, as found in other methods. To learn more about best
+practices, see our [Data
+Preparation](https://mlgaynor.com/nQuack/articles/DataPreparation.html)
+guide.
+
+Our model improves upon the nQuire framework by extending it to higher
+ploidal levels (pentaploid and hexaploid), correcting the augmented
+likelihood calculation, implementing more suitable distribution, and
+allowing additional ‘fixed’ models. We also decrease model selection
+errors by relying on BIC rather than likelihood ratio tests. To learn
+more about these methods, see our [Model
+Options](https://mlgaynor.com/nQuack/articles/ModelOptions.html) guide.
+
+We provide 32 ways to estimates likelihood of a mixture of models with
+the expectation maximization algorithm ([see more
+here](https://mlgaynor.com/nQuack/articles/ModelOptions.html)) - 8
+expectation maximization implementations with 4 model types each. In
+total, nQuack offers 128 models.
+
+## Evaluation of nQuack
+
+![](reference/figures/SummarynQuack.png)
+
+**Figure 1**. Accuracy of nQuire, nQuack’s implementation of nQuire,
+nQuack’s best model, and a simplified version of nQuack across data
+sets.
+
+To examine the utility of this method, we examined 513,792 models based
+on both simulated and real samples. Figure 1 depicts the accuracy of our
+method across our included data sets. More information on nQuack’s
+implementation of nQuire can be found on [our pkgdown
+site](https://mlgaynor.com/nQuack/articles/ModelOptions.html) and in the
+[Appendix S1](https://www.doi.org/10.1002/aps3.11606). In Figure 1, the
+simplified version of nQuack only classifies samples as diploid or
+polyploid - though this is not ideal, it is accurate!
+
+Before using this method, we suggest you read our manuscript and
+consider the many limitations to a pattern-based approach for
+determining ploidal level.
+
+## Installation
+
+    install.packages("devtools")
+    devtools::install_github("mgaynor1/nQuack")
+
+### Warning: samtools must be local!
+
+If you are working on your personal computer, make sure samtools is
+installed and callable as “samtools” via terminal. If you are working on
+a cluster, you may need to symbolically-link samtools locally. Though
+the location of install may differ, here is how I make samtools callable
+locally on UF’s amazing
+[HiPerGator](https://www.rc.ufl.edu/about/hipergator/) slurm cluster -
+note, the following should be run in your home directory (i.e., ‘pwd’ =
+/home/username) :
+
+    mkdir bin
+    cd bin
+    ln -s /apps/samtools/1.15/bin/samtools samtools
+
+Thanks to [jessiepelosi](https://github.com/jessiepelosi), here is
+another option:
+
+    Sys.setenv(PATH=paste("/apps/samtools/1.19.2/bin", Sys.getenv("PATH"),sep=":"))
+
+For implementation, see our [Basic
+Example](https://mlgaynor.com/nQuack/articles/BasicExample.html)
+article.
+
+## Reference
+
+Gaynor ML, Landis JB, O’Connor TK, Laport RG, Doyle JJ, Soltis DE,
+Ponciano JM, and Soltis PS. 2024. nQuack: An R package for predicting
+ploidy level from sequence data using site-based heterozygosity.
+*Applications in Plant Sciences* 12(4):e11606. [doi:
+10.1002/aps3.11606](https://www.doi.org/10.1002/aps3.11606)
+
+### Associated publications:
+
+Schley RS, Piñeiro R, Nicholls J, Gaynor ML, Lewis GP, Pezzini FF,
+Dexter KG, Kider C, Pennington RT, and Twyford AD. 2025. The frequency
+and importance of polyploidy in tropical trees. *New Phytologist*. [doi:
+10.1111/nph.70764](https://www.doi.org/10.1111/nph.70764)
+
+## Up Next:
+
+- If you have sequence data with known plodial level for a mixed-ploidy
+  system, let us know. We would love to collaborate with you. To be
+  included in v2.0, please send me an email at shellyleegaynor at gmail.
+
+# Package index
+
+## Preparing Data
+
+Prepare your data for ploidal estimation with nQuack.
+
+- [`prepare_data()`](http://mlgaynor.com/nQuack/reference/prepare_data.md)
+  : Prepare data - Step 1
+- [`process_data()`](http://mlgaynor.com/nQuack/reference/process_data.md)
+  : Process data - Step 2
+- [`process_nquire()`](http://mlgaynor.com/nQuack/reference/process_nquire.md)
+  : Use nQuire's Data
+- [`denoise_data()`](http://mlgaynor.com/nQuack/reference/denoise_data.md)
+  : Denoise Data
+- [`Bclean()`](http://mlgaynor.com/nQuack/reference/Bclean.md) : Remove
+  noise with the beta distribution
+
+## Simulating data
+
+Simulate data for a given ploidal level.
+
+- [`sim.ind.BB()`](http://mlgaynor.com/nQuack/reference/sim.ind.BB.md) :
+  Simulate Allele Counts for Single Individual - Beta-Binomial
+  Distribution
+- [`sim.ind.BB.tau()`](http://mlgaynor.com/nQuack/reference/sim.ind.BB.tau.md)
+  : Simulate Allele Counts for Single Individual - Beta-Binomial
+  Distribution with Overdispersion and Error
+- [`sim.ind.simple()`](http://mlgaynor.com/nQuack/reference/sim.ind.simple.md)
+  : Simulate Allele Counts for Single Individual - Simple Approach
+
+## Basic Mixture Models
+
+Wrapper functions to run model selection for diploids, triploids,
+tetraploids, pentaploids, and hexaploids.
+
+- [`quackNormal()`](http://mlgaynor.com/nQuack/reference/quackNormal.md)
+  : Model Selection - Expectation Maximization - Normal Mixture
+- [`quackNormalNQ()`](http://mlgaynor.com/nQuack/reference/quackNormalNQ.md)
+  : Model Selection - Expectation Maximization - Normal Mixture (nQuire)
+- [`quackBeta()`](http://mlgaynor.com/nQuack/reference/quackBeta.md) :
+  Model Selection - Expectation Maximization - Beta Mixture
+- [`quackBetaBinom()`](http://mlgaynor.com/nQuack/reference/quackBetaBinom.md)
+  : Model Selection - Expectation Maximization - Beta-Binomial Mixture
+
+## More on Mixture Models
+
+Wrapper functions for model selection, running specific sets of mixture
+models, and bootstrap replication.
+
+- [`quackit()`](http://mlgaynor.com/nQuack/reference/quackit.md) : Model
+  Selection - Based on BIC or Log-Likelihood
+- [`bestquack()`](http://mlgaynor.com/nQuack/reference/bestquack.md) :
+  Model Selection - Expectation Maximization - Choose your distribution
+  and type
+- [`quackNboots()`](http://mlgaynor.com/nQuack/reference/quackNboots.md)
+  : Bootstrapping - Expectation Maximization - Choose your distribution
+  and type
+
+## Expectation Maximization Base Functions
+
+Functions used within our mixture models
+
+- [`emstepN()`](http://mlgaynor.com/nQuack/reference/emstepN.md) :
+  Expectation maximization - Normal Distribution
+- [`emstepNU()`](http://mlgaynor.com/nQuack/reference/emstepNU.md) :
+  Expectation maximization - Normal and Uniform Distribution
+- [`emstepNA()`](http://mlgaynor.com/nQuack/reference/emstepNA.md) :
+  Expectation maximization - Normal Distribution
+- [`emstepNUA()`](http://mlgaynor.com/nQuack/reference/emstepNUA.md) :
+  Expectation maximization - Normal Distribution
+- [`emstepB()`](http://mlgaynor.com/nQuack/reference/emstepB.md) :
+  Expectation maximization - Beta Distribution
+- [`emstepBU()`](http://mlgaynor.com/nQuack/reference/emstepBU.md) :
+  Expectation maximization - Beta and Uniform Distributions
+- [`emstepBB()`](http://mlgaynor.com/nQuack/reference/emstepBB.md) :
+  Expectation maximization - Beta-Binomial Distribution
+- [`emstepBBU()`](http://mlgaynor.com/nQuack/reference/emstepBBU.md) :
+  Expectation maximization - Beta-Binomial and Uniform Distributions
+- [`estepB3()`](http://mlgaynor.com/nQuack/reference/estepB3.md) :
+  E-Step for Expectation Maximization - Beta + Beta + Beta Distribution
+- [`emstepB3()`](http://mlgaynor.com/nQuack/reference/emstepB3.md) :
+  Expectation maximization - Beta + Beta + Beta Distribution
+
+## Helper functions
+
+Everything else.
+
+- [`alphabetacalc()`](http://mlgaynor.com/nQuack/reference/alphabetacalc.md)
+  : Calculate Alpha and Beta from Mean and Variance
+- [`alphabetacalctau()`](http://mlgaynor.com/nQuack/reference/alphabetacalctau.md)
+  : Calculate Alpha and Beta from Mean, Tau, and Error rate.
+- [`alphabetacalcvec()`](http://mlgaynor.com/nQuack/reference/alphabetacalcvec.md)
+  : Vector-based - Calculate Alpha and Beta from Mean and Variance
+- [`alphabetacalctauvec()`](http://mlgaynor.com/nQuack/reference/alphabetacalctauvec.md)
+  : Vector-based - Calculate Alpha and Beta from Mean, Tau, and Error
+  rate.
+- [`muvarcalcvec()`](http://mlgaynor.com/nQuack/reference/muvarcalcvec.md)
+  : Variance calculation from Mean, Tau, and Sequencing Error
+- [`process_rcpp()`](http://mlgaynor.com/nQuack/reference/process_rcpp.md)
+  : Data Preparation - Matrix Filtering
+- [`nQuire_reformat()`](http://mlgaynor.com/nQuack/reference/nQuire_reformat.md)
+  : Data Preparation - Use nQuire's Data
+- [`setconvert()`](http://mlgaynor.com/nQuack/reference/setconvert.md) :
+  Calculate Variance from Mean, Tau, and Sequencing Error
+- [`resample_xm()`](http://mlgaynor.com/nQuack/reference/resample_xm.md)
+  : Calculate Alpha and Beta from Mean and Variance
+
+# Articles
+
+### nQuack
+
+- [Basic Example](http://mlgaynor.com/nQuack/articles/BasicExample.md):
+
+  How do you apply this method to real samples?
+
+- [Data
+  Preparation](http://mlgaynor.com/nQuack/articles/DataPreparation.md):
+
+  Learn how to prepare data for nQuack.
+
+- [Faster
+  Example](http://mlgaynor.com/nQuack/articles/FasterExample.md):
+
+  How do you apply this method to real samples efficiently?
+
+- [Model Options](http://mlgaynor.com/nQuack/articles/ModelOptions.md):
+
+  What models can you run with nQuack?
+
+- [Simulate Data](http://mlgaynor.com/nQuack/articles/SimulateData.md):
+
+  How to simulate data with nQuack?
+
+- [Outliers](http://mlgaynor.com/nQuack/articles/Outliers.md):
+
+  What about outliers?
+
+- [VCF to nQuack](http://mlgaynor.com/nQuack/articles/VCF2nQuack.md):
+
+  How to convert a VCF to use with nQuack?
+
+- [Qploidy2 to
+  nQuack](http://mlgaynor.com/nQuack/articles/Qploidy2nQuack.md):
+
+  How to use a standardized VCF from Qploidy2 in nQuack.
+
+- [FAQ](http://mlgaynor.com/nQuack/articles/FAQ.md):
+
+  Round-up of frequently asked questions.

@@ -31,6 +31,10 @@
 #'  the associated free model (without or with a uniform mixture).
 #'  For BIC or delta-log likelihood, the smallest score is the most likely model.
 #'  For LL, the largest score is the most likely model.
+#'  The type indicates which parameters are estimated. This function allows
+#'  all parameters (`type = 'free'`), only alpha  (`type = 'fixed'`),
+#'  only alpha and variance (`type = 'fixed_2'`),
+#'  and only variance (`type ='fixed_3`) to be estimated for each mixture.
 #'
 #' @importFrom foreach foreach %dopar% %:%
 #' @importFrom future plan availableCores multisession

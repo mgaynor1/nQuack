@@ -6,6 +6,6 @@
 ^docs$
 ^_pkgdown\.yml$
 ^pkgdown$
-
 ^doc$
 ^Meta$
+^.*\.DS_Store$

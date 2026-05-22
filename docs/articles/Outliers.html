@@ -31,7 +31,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">nQuack</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.3</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,6 +51,7 @@
     <li><a class="dropdown-item" href="../articles/SimulateData.html">Simulate Data</a></li>
     <li><a class="dropdown-item" href="../articles/Outliers.html">Outliers</a></li>
     <li><a class="dropdown-item" href="../articles/VCF2nQuack.html">VCF to nQuack</a></li>
+    <li><a class="dropdown-item" href="../articles/Qploidy2nQuack.html">Qploidy2 to nQuack</a></li>
     <li><a class="dropdown-item" href="../articles/FAQ.html">FAQ</a></li>
   </ul>
 </li>
@@ -119,7 +120,7 @@ effect on log-likelihood calculations from outliers. We attempted to
 partition the data to match Figure S2 from WeiB et al. 2018, however, we
 never could create the binomial distribution with the most likely model
 as the triploid.</p>
-<p><img src="../reference/figures/OutlierEqualFreq.png" width="125%" style="display: block; margin: auto;"></p>
+<p><img src="../reference/figures/OutlierEqualFreq.png" class="r-plt" alt="" width="125%" style="display: block; margin: auto;"></p>
 <p>However, when the allele frequency of the high coverage outlier
 deviates from the expected (in this case, we set the probability as
 0.2), we do see that the log-likelihood for the binomial and normal
@@ -127,7 +128,7 @@ distributions are greatly effected by this outlier. However, we find
 that the diploid model is more likely in all cases. Noteably, we only
 see small shifts in the log-likelihood associated with the beta and
 beta-binomial distributions.</p>
-<p><img src="../reference/figures/OutlierWithSD.png" width="125%" style="display: block; margin: auto;"></p>
+<p><img src="../reference/figures/OutlierWithSD.png" class="r-plt" alt="" width="125%" style="display: block; margin: auto;"></p>
 </div>
 <div class="section level2">
 <h2 id="tldr">TLDR<a class="anchor" aria-label="anchor" href="#tldr"></a>
@@ -144,11 +145,11 @@ distributions</p>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by ML Gaynor.</p>
+  <p>Developed by Michelle L. Gaynor.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer>

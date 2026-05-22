@@ -1,8 +1,7 @@
 Package: nQuack
 Title: Predicting Ploidal Level from Sequence Data
-Description: nQuack predicts ploidal level from sequence 
-data using site-based heterozygosity and a mixture of models approach.
-Version: 1.0.2
+Description: nQuack predicts ploidal level from sequence data using site-based heterozygosity and a mixture of models approach.
+Version: 1.0.3
 Authors@R: c(
     person(given = "Michelle L.", family = "Gaynor",  email= "shellyleegaynor@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-3912-6079")), 
@@ -11,7 +10,7 @@ Authors@R: c(
     )
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 Suggests: 
     knitr,
     dplyr,
@@ -33,8 +32,9 @@ LinkingTo:
     RcppArmadillo, 
     extraDistr, 
     RcppProgress 
-SystemRequirements: C++17
-samtools
+SystemRequirements: 
+    C++17
+    samtools (>= 1.10)
 Depends: 
     R (>= 3.5.0)
 LazyData: true
