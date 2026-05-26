@@ -36,6 +36,9 @@ To find out more about these steps, please see Qploidy2’s [tutorial on
 Alfalfa](https://breeding-insight.github.io/Qploidy2/Qploidy_alfalfa_tutorial.html#1_Introduction).
 
 ``` r
+# Load Package
+library(Qploidy2)
+
 ## Download Data
 vcf_path_web <- "https://github.com/Breeding-Insight/BIGapp-PanelHub/raw/refs/heads/long_seq/alfalfa/GenoBrew_example/alfalfa_F1_marker_panel_dataset_publicly_available.vcf.gz"
 download.file(vcf_path_web, destfile = "inst/extdata/07_Qploidy2/alfalfa_F1_marker_panel_dataset_publicly_available.vcf.gz")

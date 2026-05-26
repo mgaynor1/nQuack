@@ -13,8 +13,7 @@ process_rcpp(x, mindepth, maxprob, trunc, error)
 
 \item{maxprob}{Maximum depth quantile cut off, default = 0.9.}
 
-\item{trunc}{List of two values representing the lower and upper bounds, $c_{L}$ and $c_{U}$.}
-
+\item{trunc}{List of two values representing the lower and upper bounds,  c_L and c_U.}
 \item{error}{Sequencing error rate.}
 }
 \value{

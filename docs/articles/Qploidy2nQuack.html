@@ -114,7 +114,10 @@ on Alfalfa</a> to generate a file using
 steps, please see Qploidy2’s <a href="https://breeding-insight.github.io/Qploidy2/Qploidy_alfalfa_tutorial.html#1_Introduction" class="external-link">tutorial
 on Alfalfa</a>.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co">## Download Data</span></span>
+<code class="sourceCode R"><span><span class="co"># Load Package</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/Breeding-Insight/Qploidy2" class="external-link">Qploidy2</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## Download Data</span></span>
 <span><span class="va">vcf_path_web</span> <span class="op">&lt;-</span> <span class="st">"https://github.com/Breeding-Insight/BIGapp-PanelHub/raw/refs/heads/long_seq/alfalfa/GenoBrew_example/alfalfa_F1_marker_panel_dataset_publicly_available.vcf.gz"</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></span><span class="op">(</span><span class="va">vcf_path_web</span>, destfile <span class="op">=</span> <span class="st">"inst/extdata/07_Qploidy2/alfalfa_F1_marker_panel_dataset_publicly_available.vcf.gz"</span><span class="op">)</span></span>
 <span><span class="va">vcf_path_local</span> <span class="op">&lt;-</span> <span class="st">"inst/extdata/07_Qploidy2/alfalfa_F1_marker_panel_dataset_publicly_available.vcf.gz"</span></span>

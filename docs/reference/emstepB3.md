@@ -33,8 +33,8 @@ emstepB3(parmlist, xi, niter, epsilon, trunc)
 
 - trunc:
 
-  List of two values representing the lower and upper bounds, \$c_L\$
-  and \$c_U\$.
+  List of two values representing the lower and upper bounds, c_L and
+  c_U.
 
 ## Value
 
