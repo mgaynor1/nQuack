@@ -74,6 +74,7 @@ articles:
   - SimulateData
   - Outliers
   - VCF2nQuack
+  - Qploidy2nQuack
   - FAQ
 navbar:
   structure:

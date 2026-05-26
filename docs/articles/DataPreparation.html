@@ -31,7 +31,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">nQuack</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.3</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,6 +51,7 @@
     <li><a class="dropdown-item" href="../articles/SimulateData.html">Simulate Data</a></li>
     <li><a class="dropdown-item" href="../articles/Outliers.html">Outliers</a></li>
     <li><a class="dropdown-item" href="../articles/VCF2nQuack.html">VCF to nQuack</a></li>
+    <li><a class="dropdown-item" href="../articles/Qploidy2nQuack.html">Qploidy2 to nQuack</a></li>
     <li><a class="dropdown-item" href="../articles/FAQ.html">FAQ</a></li>
   </ul>
 </li>
@@ -393,11 +394,11 @@ is processed, you should plot your data to inspect.</p>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/hist.html" class="external-link">hist</a></span><span class="op">(</span><span class="va">xi</span><span class="op">)</span></span></code></pre></div>
 <p>For <i>Phytophthora infestans</i> (ENA:ERR1990235, Triploid), here is
 the processed data with no truncation:</p>
-<p><img src="../reference/figures/NoTrunc.png" width="125%" style="display: block; margin: auto;"></p>
+<p><img src="../reference/figures/NoTrunc.png" class="r-plt" alt="" width="125%" style="display: block; margin: auto;"></p>
 <p>Notice the U-shaped ends? Well these should be removed prior to
 ploidal estimation. We simply set <code>trunc = c(0.15,0.85)</code>
 above and then reinspected our data:</p>
-<p><img src="../reference/figures/Truncated.png" width="125%" style="display: block; margin: auto;"></p>
+<p><img src="../reference/figures/Truncated.png" class="r-plt" alt="" width="125%" style="display: block; margin: auto;"></p>
 <p>One last note - if you expect you have 6x samples, be very careful
 with your truncation, as the mean of one of the mixtures should be 0.16
 for a hexaploid.</p>
@@ -416,7 +417,7 @@ parameters after the text file is creater rather than default to
 arbitrary cutoffs. Here we mimic nQuire’s defaults for the triploid
 mentioned above (<i>Phytophthora infestans</i>, ENA:ERR1990235). With
 nQuack, you can replicate the nQuire data frame if desired.</p>
-<p><img src="../reference/figures/DataCompare.png" width="125%" style="display: block; margin: auto;"></p>
+<p><img src="../reference/figures/DataCompare.png" class="r-plt" alt="" width="125%" style="display: block; margin: auto;"></p>
 <p>If you happen to like nQuire’s data preparation more than ours, uses
 their data in our program. After processing samples with nQuire’s
 <code>create</code> and <code>view</code> functions, the resulting txt
@@ -446,11 +447,11 @@ to attempting this method. For example, for the triploid mentioned above
 (<i>Phytophthora infestans</i>, ENA:ERR1990235), if you only truncated
 by <code>c(0.1, 0.9)</code> a peak toward the right is still
 retained.</p>
-<p><img src="../reference/figures/FancyDenoise88069-lowtrunc.png" width="125%" style="display: block; margin: auto;">
+<p><img src="../reference/figures/FancyDenoise88069-lowtrunc.png" class="r-plt" alt="" width="125%" style="display: block; margin: auto;">
 However, when you truncate the inital data set by
 <code>c(0.15, 0.85)</code>, a much cleaner data set is returned by the
 <code><a href="../reference/denoise_data.html">denoise_data()</a></code> function:</p>
-<p><img src="../reference/figures/DenoiseFancy88069-highertrunc.png" width="125%" style="display: block; margin: auto;"></p>
+<p><img src="../reference/figures/DenoiseFancy88069-highertrunc.png" class="r-plt" alt="" width="125%" style="display: block; margin: auto;"></p>
 <div class="section level4">
 <h4 id="alternative-approach---bclean">Alternative approach - Bclean<a class="anchor" aria-label="anchor" href="#alternative-approach---bclean"></a>
 </h4>
@@ -473,9 +474,9 @@ of the <code><a href="../reference/Bclean.html">Bclean()</a></code> function app
 including <i>Phytophthora infestans</i> diploid (99189) and triploid
 (88069), and <i>Saccharomyces cerevisiae</i> diploid (SRR3265396),
 triploid (SRR3265389), and tetraploid (SRR3265401):</p>
-<p><img src="../reference/figures/noTruncBclean.png" width="125%" style="display: block; margin: auto;"></p>
+<p><img src="../reference/figures/noTruncBclean.png" class="r-plt" alt="" width="125%" style="display: block; margin: auto;"></p>
 <p>This method can also be applied after truncation to catch any extra
-peak:<br><img src="../reference/figures/TruncBClean.png" width="125%" style="display: block; margin: auto;"></p>
+peak:<br><img src="../reference/figures/TruncBClean.png" class="r-plt" alt="" width="125%" style="display: block; margin: auto;"></p>
 </div>
 <div class="section level4">
 <h4 id="bclean-and-denoise">Bclean and Denoise<a class="anchor" aria-label="anchor" href="#bclean-and-denoise"></a>
@@ -483,7 +484,7 @@ peak:<br><img src="../reference/figures/TruncBClean.png" width="125%" style="dis
 <p>You can also add these two functions together, however this may
 reduce your data set dramatically and impact on model inference has not
 been thoroughly explored.</p>
-<p><img src="../reference/figures/AllInThisTogether.png" width="125%" style="display: block; margin: auto;"></p>
+<p><img src="../reference/figures/AllInThisTogether.png" class="r-plt" alt="" width="125%" style="display: block; margin: auto;"></p>
 <p>Now you are ready to run nQuack!</p>
 </div>
 </div>
@@ -495,11 +496,11 @@ been thoroughly explored.</p>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by ML Gaynor.</p>
+  <p>Developed by Michelle L. Gaynor.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer>

@@ -1,5 +1,5 @@
-pandoc: 3.1.1
-pkgdown: 2.1.3
+pandoc: 3.6.3
+pkgdown: 2.2.0
 pkgdown_sha: ~
 articles:
   BasicExample: BasicExample.html
@@ -8,9 +8,10 @@ articles:
   FasterExample: FasterExample.html
   ModelOptions: ModelOptions.html
   Outliers: Outliers.html
+  Qploidy2nQuack: Qploidy2nQuack.html
   SimulateData: SimulateData.html
   VCF2nQuack: VCF2nQuack.html
-last_built: 2025-12-02T19:46Z
+last_built: 2026-05-26T15:30Z
 urls:
   reference: http://mlgaynor.com/nQuack/reference
   article: http://mlgaynor.com/nQuack/articles

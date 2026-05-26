@@ -19,6 +19,10 @@ library(nQuack)
 
 See our [faster example here](https://mlgaynor.com/nQuack/articles/FasterExample.html). 
 
+## Should I subsample my data?   
+
+Please carefully review [data preparation](https://mlgaynor.com/nQuack/articles/DataPreparation.html). In most instances, you should not subsample your data. If you have a chromosome scale assembly, you can subsample by chromosome. For more information on how to do this, please see [this gist](https://gist.github.com/mgaynor1/a12584cbe8b722c93e746a513b4c5968) and [my response to a closed issue](https://github.com/mgaynor1/nQuack/issues/5).   
+
 ## What about higher ploidal levels?    
 
 Currently, nQuack is only coded to estimate the likelihood up to a hexaploid (6x). However, our expectation-maximization code is able to calculate the likelihood of any number of mixtures. Meaning, the code can easily be modified to estimate if a ploidy level higher than 6x is the most likely. Depending on your comfort in R, this may be simple or overly confusing.  I would start by reading through the [Model Option page](https://mlgaynor.com/nQuack/articles/ModelOptions.html) on the pkgdown site, let me know if you need additional help with this. 

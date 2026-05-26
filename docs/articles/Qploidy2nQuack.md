@@ -1,0 +1,199 @@
+# Qploidy2 to nQuack
+
+## Introduction to Qploidy2
+
+Standardization and data cleaning are very important for determining
+ploidal level from sequence data. In 2025, [Taniguti et
+al.](https://doi.org/10.1002/tpg2.70044) published their new tool that
+helps with this -
+[Qploidy](https://github.com/Cristianetaniguti/Qploidy). Here we provide
+a tutorial for using data standardized with the extension of this
+approach, [Qploidy2](https://github.com/Breeding-Insight/Qploidy2).
+
+Here, I followed their [tutorial on
+Alfalfa](https://breeding-insight.github.io/Qploidy2/Qploidy_alfalfa_tutorial.html#1_Introduction)
+and am using the output of
+[`Qploidy2::standardize()`](https://rdrr.io/pkg/Qploidy2/man/standardize.html)in
+nQuack.
+
+Find out more about this cool tool in their publication:
+
+Taniguti, C. H., Lau, J., Hochhaus, T., Arias, D. C. L., Hokanson, S.
+C., Zlesak, D. C., Byrne, D. H., Klein, P. E., & Riera-Lizarazu, O.
+(2025). Exploring chromosomal variations in garden roses: Insights from
+high-density SNP array data and a new tool, Qploidy. The Plant Genome,
+e70044. <https://doi.org/10.1002/tpg2.70044>
+
+## Using data from Qploidy2 with nQuack
+
+## Predicting individual’s ploidal level
+
+Here, I followed the [tutorial on
+Alfalfa](https://breeding-insight.github.io/Qploidy2/Qploidy_alfalfa_tutorial.html#1_Introduction)
+to generate a file using
+[`Qploidy2::standardize()`](https://rdrr.io/pkg/Qploidy2/man/standardize.html).
+To find out more about these steps, please see Qploidy2’s [tutorial on
+Alfalfa](https://breeding-insight.github.io/Qploidy2/Qploidy_alfalfa_tutorial.html#1_Introduction).
+
+``` r
+# Load Package
+library(Qploidy2)
+
+## Download Data
+vcf_path_web <- "https://github.com/Breeding-Insight/BIGapp-PanelHub/raw/refs/heads/long_seq/alfalfa/GenoBrew_example/alfalfa_F1_marker_panel_dataset_publicly_available.vcf.gz"
+download.file(vcf_path_web, destfile = "inst/extdata/07_Qploidy2/alfalfa_F1_marker_panel_dataset_publicly_available.vcf.gz")
+vcf_path_local <- "inst/extdata/07_Qploidy2/alfalfa_F1_marker_panel_dataset_publicly_available.vcf.gz"
+
+## Read in data
+data <-  Qploidy2::qploidy_read_vcf(vcf_path_local)
+genos <-  Qploidy2::qploidy_read_vcf(vcf_path_local, geno = TRUE)
+geno.pos <-  Qploidy2::qploidy_read_vcf(vcf_path_local, geno.pos = TRUE)
+
+## Standardize 
+qploidy_standardization <- Qploidy2::standardize(data = data,
+                                                 genos = genos,
+                                                 geno.pos = geno.pos,
+                                                 ploidy.standardization = 4,
+                                                 threshold.n.clusters = 4,
+                                                 n.cores = 2,
+                                                 out_filename = "../inst/extdata/07_Qploidy2/standardization.tsv.gz",
+                                                 verbose = TRUE)
+```
+
+### Step 1: Modifying input from Qploidy2 to nQuack
+
+Below, I subsample a data frame from an object of the class
+‘qploidy_standardization’, generated above with
+[`Qploidy2::standardize()`](https://rdrr.io/pkg/Qploidy2/man/standardize.html).
+I then split this data frame by SampleName and subset the information
+needed to use nQuack - the total coverage and coverage for a randomly
+sampled allele at every site which is biallelic for that individual.
+
+``` r
+## Read in the output
+qploidy_standardization <- Qploidy2::read_qploidy_standardization("../inst/extdata/07_Qploidy2/standardization.tsv.gz")
+
+## Subsample to just the data frame with coverage information
+qdata <- qploidy_standardization$data
+
+## Here we are interested in pulling out the information we need for nQuack - the total coverage and coverage for a randomly sampled allele for each sample.
+### In this data frame:
+### X = coverage of the reference 
+### Y = coverage of the alternative
+### R = total coverage
+
+## Make a list of samples
+samples <- unique(qdata$SampleName)
+templist <- c()
+
+for(i in 1:length(samples)){
+  temp <- qdata[which(qdata$SampleName == samples[i]), ]
+  ## Remove sites that are not biallelic for the individual
+  temp <- temp[which(temp$ratio != 1 & temp$ratio != 0),]
+  temp <- temp[which(temp$geno != 0 & temp$geno != 4), ]
+  ## R = total coverage, X = coverage of the reference, & Y = coverage of the alternative
+  xmdf <- data.frame(temp$R, temp$X, temp$Y)
+  xmr <- matrix(nrow = nrow(xmdf), ncol = 2)
+  ## Randomly select coverage of the reference or the alternative allele
+  for(y in 1:nrow(xmdf)){
+    xmr[y, 1] <- xmdf[y, 1]
+    xmr[y, 2] <- xmdf[y, sample(x = c(2,3), size = 1, prob = c(0.5, 0.5))]
+  }
+  ## Remove sites with coverage less than 10 and only keep biallelic sites
+  xmr <- xmr[which(xmr[,1] >= 10 & xmr[,2] != 0), ]
+  templist[[i]] <- as.matrix(xmr)
+}
+```
+
+### Step 2: Model inference
+
+Here we are following the [Basic
+Example](https://mlgaynor.com/nQuack/articles/BasicExample.html) and
+inferring ploidal level for the complete sample. If you are interested
+in a sliding window approach - we suggest identifying the most accurate
+model for your sample and then applying only this model with
+[`bestquack()`](http://mlgaynor.com/nQuack/reference/bestquack.md) on
+each sample, but [subsampled into
+windows](https://mlgaynor.com/nQuack/articles/FAQ.html#should-i-subsample-my-data).
+The sliding to identify if there are regional differences in ploidal
+level.
+
+Note, I wrote the output as I looped through the samples by using
+[`data.table::fwrite()`](https://rdrr.io/pkg/data.table/man/fwrite.html).
+
+``` r
+for(i in 1:length(samples)){
+  out1 <- quackNormal(xm = templist[[i]],
+                      samplename = samples[i], 
+                      cores = 10, 
+                      parallel = TRUE)
+  data.table::fwrite(out1, file = "../inst/extdata/07_Qploidy2/output.csv", 
+                     append = TRUE)
+  out2 <- quackBeta(xm = templist[[i]], 
+                    samplename = samples[i], 
+                    cores = 10, 
+                    parallel = TRUE)
+   data.table::fwrite(out2, 
+                     file = "../inst/extdata/07_Qploidy2/output.csv", 
+                     append = TRUE)
+  out3 <- quackBetaBinom(xm = templist[[i]], 
+                         samplename = samples[i], 
+                         cores = 10, 
+                         parallel = TRUE)
+   data.table::fwrite(out3, 
+                     file = "../inst/extdata/07_Qploidy2/output.csv", 
+                     append = TRUE)
+}
+```
+
+#### Identify the most accurate model
+
+Using our function
+[`quackit()`](http://mlgaynor.com/nQuack/reference/quackit.md), you can
+easily interpret model output. Here we are selecting models based on the
+BIC score and only considering diploid and tetraploid mixtures. I only
+ran 5 samples for this example and assumed all samples were tetraploid -
+we sadly cannot identify the most accurate approach (distribution and
+type) here since many have 100% accuracy.
+
+``` r
+modoutput <-  read.csv("../inst/extdata/07_Qploidy2/output.csv")
+summary <- c()
+samples <- unique(modoutput$sample)
+for(i in 1:5){
+  temp <- modoutput[which(modoutput$sample == samples[i]), ]
+  summary[[i]] <- quackit(model_out =  temp, 
+                     summary_statistic = "BIC", 
+                     mixtures = c("diploid", "tetraploid"))
+}
+alloutputcombo <- do.call(rbind, summary)
+alloutputcombo <- alloutputcombo %>%
+                  dplyr::mutate(accuracy = ifelse(winnerBIC == "tetraploid", 1, 0))
+sumcheck <- alloutputcombo %>% 
+            group_by(Distribution, Type) %>% 
+            summarize(total = n(), correct = sum(accuracy))
+
+kbl(sumcheck) %>%
+  kable_paper("hover", full_width = F) 
+```
+
+| Distribution          | Type    | total | correct |
+|:----------------------|:--------|------:|--------:|
+| beta                  | fixed   |     5 |       5 |
+| beta                  | fixed_2 |     5 |       5 |
+| beta                  | fixed_3 |     5 |       0 |
+| beta-binomial         | fixed   |     5 |       5 |
+| beta-binomial         | fixed_2 |     5 |       5 |
+| beta-binomial         | fixed_3 |     5 |       0 |
+| beta-binomial-uniform | fixed   |     5 |       5 |
+| beta-binomial-uniform | fixed_2 |     5 |       5 |
+| beta-binomial-uniform | fixed_3 |     5 |       5 |
+| beta-uniform          | fixed   |     5 |       5 |
+| beta-uniform          | fixed_2 |     5 |       5 |
+| beta-uniform          | fixed_3 |     5 |       0 |
+| normal                | fixed   |     5 |       5 |
+| normal                | fixed_2 |     5 |       5 |
+| normal                | fixed_3 |     5 |       5 |
+| normal-uniform        | fixed   |     5 |       5 |
+| normal-uniform        | fixed_2 |     5 |       5 |
+| normal-uniform        | fixed_3 |     5 |       5 |

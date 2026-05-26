@@ -31,7 +31,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">nQuack</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.3</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,6 +51,7 @@
     <li><a class="dropdown-item" href="../articles/SimulateData.html">Simulate Data</a></li>
     <li><a class="dropdown-item" href="../articles/Outliers.html">Outliers</a></li>
     <li><a class="dropdown-item" href="../articles/VCF2nQuack.html">VCF to nQuack</a></li>
+    <li><a class="dropdown-item" href="../articles/Qploidy2nQuack.html">Qploidy2 to nQuack</a></li>
     <li><a class="dropdown-item" href="../articles/FAQ.html">FAQ</a></li>
   </ul>
 </li>
@@ -92,7 +93,7 @@ the foundation of all <em>site-based heterozygosity</em> methods.</p>
 <p>These approaches are based on biallelic single nucleotide
 polymorphisms within an individual and the expected number of copies of
 each allele.</p>
-<p><img src="../reference/figures/TableofFreq.png" width="50%" style="display: block; margin: auto;"></p>
+<p><img src="../reference/figures/TableofFreq.png" class="r-plt" alt="" width="50%" style="display: block; margin: auto;"></p>
 </div>
 <div class="section level2">
 <h2 id="nquack">nQuack<a class="anchor" aria-label="anchor" href="#nquack"></a>
@@ -125,7 +126,7 @@ calculate the log-likelihood ratio between the free and fixed models to
 identify if a sample was a diploid, triploid, or tetraploid. The
 simplest approach to expand this to higher ploidal levels is to just add
 these distribution to the fixed mixtures examined.</p>
-<p><img src="../reference/figures/Distributions.png" width="50%" style="display: block; margin: auto;"></p>
+<p><img src="../reference/figures/Distributions.png" class="r-plt" alt="" width="50%" style="display: block; margin: auto;"></p>
 <p>However, mixture models have additional components that might be
 helpful when predicting ploidal level. The figure below shows the basic
 components of a mixture model which include mean
@@ -139,7 +140,7 @@ the expected frequencies of each allele, as seen in the table above. We
 know that proportions may differ for an allopolyploid compared to an
 autopolyploid, so we were interested in exploring models where alpha is
 free.</p>
-<p><img src="../reference/figures/Figure02-ModelDesign.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="../reference/figures/Figure02-ModelDesign.png" class="r-plt" alt="" width="100%" style="display: block; margin: auto;"></p>
 <p>We ended up coding each implementation to provide estimates for all
 parameters free (<code>type = 'free'</code>), only alpha free
 (<code>type = 'fixed'</code>), only alpha and variance free
@@ -271,11 +272,11 @@ function <code><a href="../reference/quackit.html">quackit()</a></code>.</p>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by ML Gaynor.</p>
+  <p>Developed by Michelle L. Gaynor.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer>

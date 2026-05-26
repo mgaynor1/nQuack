@@ -18,7 +18,16 @@ quackit(
 \item{mixtures}{Defaults to \code{c("diploid", "triploid", "tetraploid", "hexaploid", "pentaploid")}.}
 }
 \value{
-Returns data frame with the most likely model for each set of mixtures. Includes the best and second best mixtures, as well as the difference between the two.
+Returns data frame with the most likely model for each set of mixtures.
+Includes the best and second best mixtures, as well as the difference between the two.
+We only use BIC or LL to compare within each distribution and type.
+To identify the most accurate model, you will need to compare accuracy across distributions
+and types using a set of known samples. The distributions include
+Normal, Beta, and Beta-Binomial - each with and without a uniform mixture.
+The type indicates which parameters are estimated for the mixtures:
+all parameters (\code{type = 'free'}, only used to calculate delta log-likelihood),
+only alpha  (\code{type = 'fixed'}), only alpha and variance (\code{type = 'fixed_2'}),
+and only variance (\verb{type ='fixed_3}) to be estimated for each mixture.
 }
 \description{
 This function is for model interpretation.

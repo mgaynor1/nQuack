@@ -31,7 +31,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">nQuack</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.3</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -51,6 +51,7 @@
     <li><a class="dropdown-item" href="../articles/SimulateData.html">Simulate Data</a></li>
     <li><a class="dropdown-item" href="../articles/Outliers.html">Outliers</a></li>
     <li><a class="dropdown-item" href="../articles/VCF2nQuack.html">VCF to nQuack</a></li>
+    <li><a class="dropdown-item" href="../articles/Qploidy2nQuack.html">Qploidy2 to nQuack</a></li>
     <li><a class="dropdown-item" href="../articles/FAQ.html">FAQ</a></li>
   </ul>
 </li>
@@ -103,7 +104,8 @@ through target enrichment with species-specific probes. These samples
 include a diploid (MLG013), a triploid (MLG015), and a tetraploid
 (MLG014).</p>
 <p>The raw files were created by following the preprocessing steps
-outlined in the ‘Data Preparation’.</p>
+outlined in the <a href="https://mlgaynor.com/nQuack/articles/DataPreparation.html" class="external-link">Data
+Preparation</a>.</p>
 </div>
 <div class="section level2">
 <h2 id="load-packages">Load packages<a class="anchor" aria-label="anchor" href="#load-packages"></a>
@@ -118,6 +120,13 @@ outlined in the ‘Data Preparation’.</p>
 <div class="section level2">
 <h2 id="data-preparation">Data preparation<a class="anchor" aria-label="anchor" href="#data-preparation"></a>
 </h2>
+<p>Please see <a href="https://mlgaynor.com/nQuack/articles/DataPreparation.html" class="external-link">Data
+Preparation</a> for more information on filtering your data. We also
+provide a function to input data from <a href="https://mlgaynor.com/nQuack/reference/process_nquire.html" class="external-link">nQuire</a>.
+In addition, you can use a VCF file for input by following the
+instructions found in the <a href="https://mlgaynor.com/nQuack/articles/VCF2nQuack.html" class="external-link">VCF to
+nQuack tutorial</a>. Lastly, you can also <a href="https://mlgaynor.com/nQuack/articles/Qploidy2nQuack.html" class="external-link">use the
+output from standardization with Qploidy2</a> with nQuack.</p>
 <div class="section level3">
 <h3 id="prepare-data">01. Prepare data<a class="anchor" aria-label="anchor" href="#prepare-data"></a>
 </h3>
@@ -188,9 +197,18 @@ multiple cores.</p>
 <span></span>
 <span><span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">samples</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
 <span>  <span class="va">temp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"../inst/extdata/03_processed/"</span>, <span class="va">samples</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, <span class="st">".csv"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
-<span>  <span class="va">out1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/quackNormal.html">quackNormal</a></span><span class="op">(</span>xm <span class="op">=</span> <span class="va">temp</span>, samplename <span class="op">=</span> <span class="va">samples</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, cores <span class="op">=</span> <span class="fl">10</span>, parallel <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span>  <span class="va">out2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/quackBeta.html">quackBeta</a></span><span class="op">(</span>xm <span class="op">=</span> <span class="va">temp</span>, samplename <span class="op">=</span> <span class="va">samples</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, cores <span class="op">=</span> <span class="fl">10</span>, parallel <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span>  <span class="va">out3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/quackBetaBinom.html">quackBetaBinom</a></span><span class="op">(</span>xm <span class="op">=</span> <span class="va">temp</span>, samplename <span class="op">=</span> <span class="va">samples</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, cores <span class="op">=</span> <span class="fl">10</span>, parallel <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+<span>  <span class="va">out1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/quackNormal.html">quackNormal</a></span><span class="op">(</span>xm <span class="op">=</span> <span class="va">temp</span>, </span>
+<span>                      samplename <span class="op">=</span> <span class="va">samples</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, </span>
+<span>                      cores <span class="op">=</span> <span class="fl">10</span>, </span>
+<span>                      parallel <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  <span class="va">out2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/quackBeta.html">quackBeta</a></span><span class="op">(</span>xm <span class="op">=</span> <span class="va">temp</span>, </span>
+<span>                    samplename <span class="op">=</span> <span class="va">samples</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, </span>
+<span>                    cores <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>                    parallel <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span>  <span class="va">out3</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/quackBetaBinom.html">quackBetaBinom</a></span><span class="op">(</span>xm <span class="op">=</span> <span class="va">temp</span>, </span>
+<span>                         samplename <span class="op">=</span> <span class="va">samples</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>,</span>
+<span>                         cores <span class="op">=</span> <span class="fl">10</span>, </span>
+<span>                         parallel <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span>  <span class="va">allout</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span><span class="va">out1</span>, <span class="va">out2</span>, <span class="va">out3</span><span class="op">)</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/utils/write.table.html" class="external-link">write.csv</a></span><span class="op">(</span><span class="va">allout</span>, </span>
 <span>            file <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"../inst/extdata/04_output/"</span>, <span class="va">samples</span><span class="op">[</span><span class="va">i</span><span class="op">]</span>, <span class="st">".csv"</span><span class="op">)</span>,</span>
@@ -690,11 +708,11 @@ across models and sample sets.</p>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by ML Gaynor.</p>
+  <p>Developed by Michelle L. Gaynor.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer>

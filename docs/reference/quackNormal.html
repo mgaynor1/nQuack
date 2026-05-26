@@ -17,7 +17,7 @@ Here we can run up to 32 mixture models."><!-- Global site tag (gtag.js) - Googl
 
     <a class="navbar-brand me-2" href="../index.html">nQuack</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.3</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,6 +35,7 @@ Here we can run up to 32 mixture models."><!-- Global site tag (gtag.js) - Googl
     <li><a class="dropdown-item" href="../articles/SimulateData.html">Simulate Data</a></li>
     <li><a class="dropdown-item" href="../articles/Outliers.html">Outliers</a></li>
     <li><a class="dropdown-item" href="../articles/VCF2nQuack.html">VCF to nQuack</a></li>
+    <li><a class="dropdown-item" href="../articles/Qploidy2nQuack.html">Qploidy2 to nQuack</a></li>
     <li><a class="dropdown-item" href="../articles/FAQ.html">FAQ</a></li>
   </ul></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -132,7 +133,11 @@ triploid, tetraploid, pentaploid, and hexaploid. When free = TRUE,
 the delta log-likelihood (dLL) is calculated based on
 the associated free model (without or with a uniform mixture).
 For BIC or delta-log likelihood, the smallest score is the most likely model.
-For LL, the largest score is the most likely model.</p>
+For LL, the largest score is the most likely model.
+The type indicates which parameters are estimated. This function allows
+all parameters (<code>type = 'free'</code>), only alpha  (<code>type = 'fixed'</code>),
+only alpha and variance (<code>type = 'fixed_2'</code>),
+and only variance (<code>type ='fixed_3</code>) to be estimated for each mixture.</p>
     </div>
 
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
@@ -140,11 +145,11 @@ For LL, the largest score is the most likely model.</p>
 
 
     <footer><div class="pkgdown-footer-left">
-  <p>Developed by ML Gaynor.</p>
+  <p>Developed by Michelle L. Gaynor.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer></div>

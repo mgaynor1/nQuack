@@ -16,7 +16,7 @@ emstepBB(parmlist, xm, niter, epsilon, trunc, type = "free")
 \item{epsilon}{Epsilon value for convergence tolerance. When the absolute delta log-likelihood is
 below this value, convergence is reached.}
 
-\item{trunc}{List of two values representing the lower and upper bounds, $c_{L}$ and $c_{U}$.}
+\item{trunc}{List of two values representing the lower and upper bounds,  c_L and c_U.}
 
 \item{type}{String indicating "Free" or "Fixed".}
 }

@@ -53,6 +53,10 @@ the delta log-likelihood (dLL) is calculated based on
 the associated free model (without or with a uniform mixture).
 For BIC or delta-log likelihood, the smallest score is the most likely model.
 For LL, the largest score is the most likely model.
+The type indicates which parameters are estimated. This function allows
+all parameters (\code{type = 'free'}), only alpha  (\code{type = 'fixed'}),
+only alpha and variance (\code{type = 'fixed_2'}),
+and only variance (\verb{type ='fixed_3}) to be estimated for each mixture.
 }
 \description{
 This function uses the expectation maximization of both
