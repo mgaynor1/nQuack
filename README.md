@@ -13,7 +13,7 @@ nQuack is a modified statistical framework to predict ploidy level based on sequ
 
 ## How to use nQuack
 
-Input data for nQuire can be a [BAM file](https://mlgaynor.com/nQuack/articles/DataPreparation.html), [Output from nQuire](https://mlgaynor.com/nQuack/reference/process_nquire.html), a [VCF](https://mlgaynor.com/nQuack/articles/VCF2nQuack.html), [Output from Qploidy2](https://mlgaynor.com/nQuack/articles/Qploidy2nQuack.html), and more. See pkgdown site for more information on peparing your data for nQuack. 
+Input data for nQuack can be a [BAM file](https://mlgaynor.com/nQuack/articles/DataPreparation.html), [Output from nQuire](https://mlgaynor.com/nQuack/reference/process_nquire.html), a [VCF](https://mlgaynor.com/nQuack/articles/VCF2nQuack.html), [Output from Qploidy2](https://mlgaynor.com/nQuack/articles/Qploidy2nQuack.html), and more. See pkgdown site for more information on preparing your data for nQuack. 
 
 **To use this method or nQuire, you need to have a set of samples with known ploidal level:**
 
