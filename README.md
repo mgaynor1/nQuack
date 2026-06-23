@@ -28,6 +28,8 @@ Input data for nQuire can be a [BAM file](https://mlgaynor.com/nQuack/articles/D
 
 See [Basic Example](https://mlgaynor.com/nQuack/articles/BasicExample.html) for step-by-step guidance. 
 
+Note, we know this is limited and often you will not have samples with known ploidal level. Stay-tuned, we are currently working on a better model trained on 10k samples provided by over 70 collaborators. If you want to join the team, there is still time - reach out! 
+
 ## More on nQuack
 
 Here we provided expanded tools and implementations to improve site-based heterozygosity inferences of ploidal level.
