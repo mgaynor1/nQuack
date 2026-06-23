@@ -12,12 +12,12 @@ v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/li
 ## Table of Contents
 
 [Overview](#overview)  
-[How to use nQuack](#howto)  
+[How to use nQuack](#how-to-use-nquack)  
 [Installation](#installation)  
-[More on nQuack](#more)  
-[Accuracy of nQuack](#evaluation)  
+[More on nQuack](#more-on-nquack)  
+[Accuracy of nQuack](#evaluation-of-nquack)  
 [Citation](#reference)  
-[Collaboration Opportunity](#upnext)
+[Collaboration Opportunity](#up-next)
 
 ## Overview
 
@@ -58,14 +58,14 @@ data](https://mlgaynor.com/nQuack/articles/DataPreparation.html) for
 nQuack.
 
 For modeling, you must input a matrix `xm` which contains two columns
-with total coverage and coverage for a randomly sampled allel across
+with total coverage and coverage for a randomly sampled allele across
 sites for a single individual.
 
 ### Ploidy Prediction
 
-**As shown in Gaynor et al. (2024), both nQuire and nQuack are not the
+As shown in Gaynor et al. (2024), both nQuire and nQuack are not the
 most accurate models. To use this method or nQuire, you should have a
-set of samples with known ploidal level:**
+set of samples with known ploidal level:
 
 **Step 1.** Identify the most accurate filtering and modeling approach
 (distribution and type) based on your samples with known ploidal level.

@@ -75,7 +75,7 @@
 <div class="section level2">
 <h2 id="table-of-contents">Table of Contents<a class="anchor" aria-label="anchor" href="#table-of-contents"></a>
 </h2>
-<p><a href="#overview">Overview</a><br><a href="#howto">How to use nQuack</a><br><a href="#installation">Installation</a><br><a href="#more">More on nQuack</a><br><a href="#evaluation">Accuracy of nQuack</a><br><a href="#reference">Citation</a><br><a href="#upnext">Collaboration Opportunity</a></p>
+<p><a href="#overview">Overview</a><br><a href="#how-to-use-nquack">How to use nQuack</a><br><a href="#installation">Installation</a><br><a href="#more-on-nquack">More on nQuack</a><br><a href="#evaluation-of-nquack">Accuracy of nQuack</a><br><a href="#reference">Citation</a><br><a href="#up-next">Collaboration Opportunity</a></p>
 </div>
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
@@ -84,18 +84,18 @@
 <p>Before using this method, we suggest you read our manuscript and consider the many limitations to a pattern-based approach for determining ploidal level. However, we attempted to highlight the most important take-aways here and in our documentation.</p>
 </div>
 <div class="section level2">
-<h2 id="howto">How to use nQuack<a class="anchor" aria-label="anchor" href="#howto"></a>
+<h2 id="how-to-use-nquack">How to use nQuack<a class="anchor" aria-label="anchor" href="#how-to-use-nquack"></a>
 </h2>
 <div class="section level3">
 <h3 id="input-data">Input Data<a class="anchor" aria-label="anchor" href="#input-data"></a>
 </h3>
 <p>Input data for nQuack can be a <a href="https://mlgaynor.com/nQuack/articles/DataPreparation.html" class="external-link">BAM file</a>, <a href="https://mlgaynor.com/nQuack/reference/process_nquire.html" class="external-link">Output from nQuire</a>, a <a href="https://mlgaynor.com/nQuack/articles/VCF2nQuack.html" class="external-link">VCF</a>, <a href="https://mlgaynor.com/nQuack/articles/Qploidy2nQuack.html" class="external-link">Output from Qploidy2</a>, and more. See the <a href="https://mlgaynor.com/nQuack" class="external-link">pkgdown site</a> for more information on <a href="https://mlgaynor.com/nQuack/articles/DataPreparation.html" class="external-link">preparing your data</a> for nQuack.</p>
-<p>For modeling, you must input a matrix <code>xm</code> which contains two columns with total coverage and coverage for a randomly sampled allel across sites for a single individual.</p>
+<p>For modeling, you must input a matrix <code>xm</code> which contains two columns with total coverage and coverage for a randomly sampled allele across sites for a single individual.</p>
 </div>
 <div class="section level3">
 <h3 id="ploidy-prediction">Ploidy Prediction<a class="anchor" aria-label="anchor" href="#ploidy-prediction"></a>
 </h3>
-<p><strong>As shown in Gaynor et al. (2024), both nQuire and nQuack are not the most accurate models. To use this method or nQuire, you should have a set of samples with known ploidal level:</strong></p>
+<p>As shown in Gaynor et al. (2024), both nQuire and nQuack are not the most accurate models. To use this method or nQuire, you should have a set of samples with known ploidal level:</p>
 <p><span style="color: blue"> <strong>Step 1.</strong> Identify the most accurate filtering and modeling approach (distribution and type) based on your samples with known ploidal level. </span></p>
 <ul>
 <li>Comparing BIC score among all distributions and types is not accurate. You must assess accuracy with a set of samples with known ploidal level.
@@ -133,7 +133,7 @@ ln -s /apps/samtools/1.15/bin/samtools samtools</code></pre>
 <pre><code><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>PATH<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"/apps/samtools/1.19.2/bin"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html" class="external-link">Sys.getenv</a></span><span class="op">(</span><span class="st">"PATH"</span><span class="op">)</span>,sep<span class="op">=</span><span class="st">":"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="section level2">
-<h2 id="more">More on nQuack<a class="anchor" aria-label="anchor" href="#more"></a>
+<h2 id="more-on-nquack">More on nQuack<a class="anchor" aria-label="anchor" href="#more-on-nquack"></a>
 </h2>
 <p>Learn more about nQuack by checking out our articles:</p>
 <ul>
@@ -153,7 +153,7 @@ ln -s /apps/samtools/1.15/bin/samtools samtools</code></pre>
 <p>We provide 32 ways to estimates likelihood of a mixture of models with the expectation maximization algorithm (<a href="https://mlgaynor.com/nQuack/articles/ModelOptions.html" class="external-link">see more here</a>) - 8 expectation maximization implementations with 4 model types each. In total, nQuack offers 128 models.</p>
 </div>
 <div class="section level2">
-<h2 id="evaluation">Evaluation of nQuack<a class="anchor" aria-label="anchor" href="#evaluation"></a>
+<h2 id="evaluation-of-nquack">Evaluation of nQuack<a class="anchor" aria-label="anchor" href="#evaluation-of-nquack"></a>
 </h2>
 <p><img src="reference/figures/SummarynQuack.png" align="center"></p>
 <p><strong>Figure 1</strong>. Accuracy of nQuire, nQuack’s implementation of nQuire, nQuack’s best model, and a simplified version of nQuack across data sets.</p>
@@ -171,7 +171,7 @@ ln -s /apps/samtools/1.15/bin/samtools samtools</code></pre>
 </div>
 </div>
 <div class="section level2">
-<h2 id="upnext">Up Next<a class="anchor" aria-label="anchor" href="#upnext"></a>
+<h2 id="up-next">Up Next<a class="anchor" aria-label="anchor" href="#up-next"></a>
 </h2>
 <ul>
 <li>If you have sequence data with known plodial level for a mixed-ploidy system, let us know. We would love to collaborate with you. To be included in v2.0, please send me an email at shellyleegaynor at gmail.</li>

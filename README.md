@@ -8,32 +8,35 @@
 
 ## Table of Contents
 
-[Overview](#overview)\
-[How to use nQuack](#howto)\
-[Installation](#installation)\
-[More on nQuack](#more)\
-[Accuracy of nQuack](#evaluation)\
-[Citation](#reference)\
-[Collaboration Opportunity](#upnext)
 
-## Overview {#overview}
+[Overview](#overview)     
+[How to use nQuack](#how-to-use-nquack)     
+[Installation](#installation)     
+[More on nQuack](#more-on-nquack)     
+[Accuracy of nQuack](#evaluation-of-nquack)     
+[Citation](#reference)     
+[Collaboration Opportunity](#up-next)    
+
+
+
+## Overview
 
 nQuack is a modified statistical framework to predict ploidy level based on sequence data. We build upon [Weib et al., 2018](https://doi.org/10.1186/s12859-018-2128-z) Gaussian Mixture Model approach to estimate ploidy level, which was originally written as [a C executable](https://github.com/clwgg/nQuire). In our model, we provide a match to nQuire with `quackNormalNQ()`. Note, to match the original software, we use an incorrect likelihood in the expected maximization algorithm for `quackNormalNQ()` (see publication supplement for more information). For the corrected normal, please use `quackNormal()`. Here, the equivalent to nQuire is with a uniform mixture with fixed_3.
 
 Before using this method, we suggest you read our manuscript and consider the many limitations to a pattern-based approach for determining ploidal level. However, we attempted to highlight the most important take-aways here and in our documentation.
 
-## How to use nQuack {#howto}
+## How to use nQuack
 
 ### Input Data
 
 Input data for nQuack can be a [BAM file](https://mlgaynor.com/nQuack/articles/DataPreparation.html), [Output from nQuire](https://mlgaynor.com/nQuack/reference/process_nquire.html), a [VCF](https://mlgaynor.com/nQuack/articles/VCF2nQuack.html), [Output from Qploidy2](https://mlgaynor.com/nQuack/articles/Qploidy2nQuack.html), and more. See the [pkgdown site](https://mlgaynor.com/nQuack) for more information on [preparing your data](https://mlgaynor.com/nQuack/articles/DataPreparation.html) for nQuack.
 
-For modeling, you must input a matrix `xm` which contains two columns with total coverage and coverage for a randomly sampled allel across sites for a single individual.    
+For modeling, you must input a matrix `xm` which contains two columns with total coverage and coverage for a randomly sampled allele across sites for a single individual.    
 
 
 ### Ploidy Prediction
 
-**As shown in Gaynor et al. (2024), both nQuire and nQuack are not the most accurate models. To use this method or nQuire, you should have a set of samples with known ploidal level:**
+As shown in Gaynor et al. (2024), both nQuire and nQuack are not the most accurate models. To use this method or nQuire, you should have a set of samples with known ploidal level:
 
 
 <span style="color: blue">  **Step 1.** Identify the most accurate filtering and modeling approach (distribution and type) based on your samples with known ploidal level. </span>
@@ -51,8 +54,7 @@ See [Basic Example](https://mlgaynor.com/nQuack/articles/BasicExample.html) for 
 
 Note, we know this is limited and often you will not have samples with known ploidal level. Stay-tuned, we are currently working on a better model trained on 10k samples provided by over 70 collaborators. If you want to join the team, there is still time - reach out!
 
-## Installation {#installation}
-
+## Installation 
 ```         
 install.packages("devtools")
 devtools::install_github("mgaynor1/nQuack")
@@ -75,7 +77,7 @@ Sys.setenv(PATH=paste("/apps/samtools/1.19.2/bin", Sys.getenv("PATH"),sep=":"))
 ```
 
 
-## More on nQuack {#more}
+## More on nQuack
 
 Learn more about nQuack by checking out our articles:
 
@@ -97,7 +99,7 @@ Our model improves upon the nQuire framework by extending it to higher ploidal l
 
 We provide 32 ways to estimates likelihood of a mixture of models with the expectation maximization algorithm ([see more here](https://mlgaynor.com/nQuack/articles/ModelOptions.html)) - 8 expectation maximization implementations with 4 model types each. In total, nQuack offers 128 models.
 
-## Evaluation of nQuack {#evaluation}
+## Evaluation of nQuack
 
 <img src="man/figures/SummarynQuack.png" align="center"/>
 
@@ -108,7 +110,7 @@ To examine the utility of this method, we examined 513,792 models based on both 
 Before using this method, we suggest you read our manuscript and consider the many limitations to a pattern-based approach for determining ploidal level.
 
 
-## Reference {#reference}
+## Reference
 
 Gaynor ML, Landis JB, O'Connor TK, Laport RG, Doyle JJ, Soltis DE, Ponciano JM, and Soltis PS. 2024. nQuack: An R package for predicting ploidy level from sequence data using site-based heterozygosity. *Applications in Plant Sciences* 12(4):e11606. [doi: 10.1002/aps3.11606](https://www.doi.org/10.1002/aps3.11606)
 
@@ -116,6 +118,6 @@ Gaynor ML, Landis JB, O'Connor TK, Laport RG, Doyle JJ, Soltis DE, Ponciano JM, 
 
 Schley RS, Piñeiro R, Nicholls J, Gaynor ML, Lewis GP, Pezzini FF, Dexter KG, Kider C, Pennington RT, and Twyford AD. 2026. The frequency and importance of polyploidy in tropical trees. *New Phytologist*. [doi: 10.1111/nph.70764](https://www.doi.org/10.1111/nph.70764)
 
-## Up Next {#upnext}
+## Up Next   
 
 -   If you have sequence data with known plodial level for a mixed-ploidy system, let us know. We would love to collaborate with you. To be included in v2.0, please send me an email at shellyleegaynor at gmail.
