@@ -8,7 +8,25 @@
 
 ## Overview
 
-nQuack is a modified statistical framework to predict ploidy level based on sequence data. We build upon [Weib et al., 2018](https://doi.org/10.1186/s12859-018-2128-z) Gaussian Mixture Model approach to estimate ploidy level, which was originally written as [a C executable](https://github.com/clwgg/nQuire).
+nQuack is a modified statistical framework to predict ploidy level based on sequence data. We build upon [Weib et al., 2018](https://doi.org/10.1186/s12859-018-2128-z) Gaussian Mixture Model approach to estimate ploidy level, which was originally written as [a C executable](https://github.com/clwgg/nQuire). In our model, we provide a match to nQuire with `quackNormalNQ()`. Note, to match the original software, we use an incorrect likelihood in the expected maximization algorithm (see publication supplement for more information). For the corrected normal, please use `quackNormal()`. Here, the equivalent to nQuire is with a uniform mixture with fixed_3.
+
+
+## How to use nQuack
+
+Input data for nQuire can be a [BAM file](https://mlgaynor.com/nQuack/articles/DataPreparation.html), [Output from nQuire](https://mlgaynor.com/nQuack/reference/process_nquire.html), a [VCF](https://mlgaynor.com/nQuack/articles/VCF2nQuack.html), [Output from Qploidy2](https://mlgaynor.com/nQuack/articles/Qploidy2nQuack.html), and more. See pkgdown site for more information on peparing your data for nQuack. 
+
+**To use this method or nQuire, you need to have a set of samples with known ploidal level:**
+
+**Step 1.** Identify the most accurate distribution and type (fixed, fixed_2, fixed_3) based on your samples with known ploidal level.    
+
+- Comparing BIC score among all distributions and types is not accurate. You must assess accuracy with a set of samples with known ploidal level.
+- Distributions: Normal, Beta, and Beta-Binomial + with or without a uniform mixture.  
+- Type indicates which parameter is estimated.
+  - Type: "fixed" = only alpha free, "fixed_2" = only alpha and variance free, "fixed_3" = only variance free    
+      
+**Step 2.** Apply the best model to all unknown samples. 
+
+See [Basic Example](https://mlgaynor.com/nQuack/articles/BasicExample.html) for step-by-step guidance. 
 
 ## More on nQuack
 
