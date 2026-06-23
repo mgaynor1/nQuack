@@ -9,6 +9,16 @@ Pamela S. Soltis**
 [![License: GPL
 v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
+## Table of Contents
+
+[Overview](#overview)  
+[How to use nQuack](#howto)  
+[Installation](#installation)  
+[More on nQuack](#more)  
+[Accuracy of nQuack](#evaluation)  
+[Citation](#reference)  
+[Collaboration Opportunity](#upnext)
+
 ## Overview
 
 nQuack is a modified statistical framework to predict ploidy level based
@@ -26,7 +36,14 @@ normal, please use
 [`quackNormal()`](http://mlgaynor.com/nQuack/reference/quackNormal.md).
 Here, the equivalent to nQuire is with a uniform mixture with fixed_3.
 
+Before using this method, we suggest you read our manuscript and
+consider the many limitations to a pattern-based approach for
+determining ploidal level. However, we attempted to highlight the most
+important take-aways here and in our documentation.
+
 ## How to use nQuack
+
+### Input Data
 
 Input data for nQuack can be a [BAM
 file](https://mlgaynor.com/nQuack/articles/DataPreparation.html),
@@ -35,25 +52,41 @@ nQuire](https://mlgaynor.com/nQuack/reference/process_nquire.html), a
 [VCF](https://mlgaynor.com/nQuack/articles/VCF2nQuack.html), [Output
 from
 Qploidy2](https://mlgaynor.com/nQuack/articles/Qploidy2nQuack.html), and
-more. See pkgdown site for more information on preparing your data for
+more. See the [pkgdown site](https://mlgaynor.com/nQuack) for more
+information on [preparing your
+data](https://mlgaynor.com/nQuack/articles/DataPreparation.html) for
 nQuack.
 
-**To use this method or nQuire, you need to have a set of samples with
-known ploidal level:**
+For modeling, you must input a matrix `xm` which contains two columns
+with total coverage and coverage for a randomly sampled allel across
+sites for a single individual.
 
-**Step 1.** Identify the most accurate distribution and type (fixed,
-fixed_2, fixed_3) based on your samples with known ploidal level.
+### Ploidy Prediction
+
+**As shown in Gaynor et al. (2024), both nQuire and nQuack are not the
+most accurate models. To use this method or nQuire, you should have a
+set of samples with known ploidal level:**
+
+**Step 1.** Identify the most accurate filtering and modeling approach
+(distribution and type) based on your samples with known ploidal level.
 
 - Comparing BIC score among all distributions and types is not accurate.
   You must assess accuracy with a set of samples with known ploidal
   level.
-- Distributions: Normal, Beta, and Beta-Binomial + with or without a
-  uniform mixture.  
-- Type indicates which parameter is estimated.
+  - Gaynor et al. (2024): “Neither nQuack nor nQuire should be used to
+    infer the ploidy in a system for which very little is known, as
+    these models are often positively misleading.”  
+- **Distributions**: Normal, Beta, and Beta-Binomial + with or without a
+  uniform mixture. = 6 options!
+- **Type** indicates which parameter is estimated.
   - Type: “fixed” = only alpha free, “fixed_2” = only alpha and variance
-    free, “fixed_3” = only variance free
+    free, “fixed_3” = only variance free = 3 options!
+- If you do not identify one of the 18 modeling approaches
+  (distributions + type combinations) as accurate, you likely need to
+  reprocess your raw data.
 
-**Step 2.** Apply the best model to all unknown samples.
+**Step 2.** Apply the best filtering approach and best model to all
+unknown samples.
 
 See [Basic
 Example](https://mlgaynor.com/nQuack/articles/BasicExample.html) for
@@ -64,9 +97,52 @@ known ploidal level. Stay-tuned, we are currently working on a better
 model trained on 10k samples provided by over 70 collaborators. If you
 want to join the team, there is still time - reach out!
 
+## Installation
+
+    install.packages("devtools")
+    devtools::install_github("mgaynor1/nQuack")
+
+Warning: samtools must be local!
+
+If you are working on your personal computer, make sure samtools is
+installed and callable as “samtools” via terminal. If you are working on
+a cluster, you may need to symbolically-link samtools locally. Though
+the location of install may differ, here is how I make samtools callable
+locally on UF’s amazing
+[HiPerGator](https://www.rc.ufl.edu/about/hipergator/) slurm cluster -
+note, the following should be run in your home directory (i.e., ‘pwd’ =
+/home/username) :
+
+    mkdir bin
+    cd bin
+    ln -s /apps/samtools/1.15/bin/samtools samtools
+
+Thanks to [jessiepelosi](https://github.com/jessiepelosi), here is
+another option:
+
+    Sys.setenv(PATH=paste("/apps/samtools/1.19.2/bin", Sys.getenv("PATH"),sep=":"))
+
 ## More on nQuack
 
-Here we provided expanded tools and implementations to improve
+Learn more about nQuack by checking out our articles:
+
+- [Basic
+  Example](https://mlgaynor.com/nQuack/articles/BasicExample.html)
+- [Data
+  Preparation](https://mlgaynor.com/nQuack/articles/DataPreparation.html)
+- [Faster
+  Example](https://mlgaynor.com/nQuack/articles/FasterExample.html)
+- [Model
+  Options](https://mlgaynor.com/nQuack/articles/ModelOptions.html)
+- [Simulate
+  Data](https://mlgaynor.com/nQuack/articles/SimulateData.html)
+- [Outliers](https://mlgaynor.com/nQuack/articles/Outliers.html)
+- [VCF to nQuack](https://mlgaynor.com/nQuack/articles/VCF2nQuack.html)
+- [Qploidy2 to
+  nQuack](https://mlgaynor.com/nQuack/articles/Qploidy2nQuack.html)
+- [FAQ](https://mlgaynor.com/nQuack/articles/FAQ.html)
+
+With nQuack, we provided expanded tools and implementations to improve
 site-based heterozygosity inferences of ploidal level.
 
 nQuack provides data preparation guidance and tools to decrease noise in
@@ -114,35 +190,6 @@ Before using this method, we suggest you read our manuscript and
 consider the many limitations to a pattern-based approach for
 determining ploidal level.
 
-## Installation
-
-    install.packages("devtools")
-    devtools::install_github("mgaynor1/nQuack")
-
-### Warning: samtools must be local!
-
-If you are working on your personal computer, make sure samtools is
-installed and callable as “samtools” via terminal. If you are working on
-a cluster, you may need to symbolically-link samtools locally. Though
-the location of install may differ, here is how I make samtools callable
-locally on UF’s amazing
-[HiPerGator](https://www.rc.ufl.edu/about/hipergator/) slurm cluster -
-note, the following should be run in your home directory (i.e., ‘pwd’ =
-/home/username) :
-
-    mkdir bin
-    cd bin
-    ln -s /apps/samtools/1.15/bin/samtools samtools
-
-Thanks to [jessiepelosi](https://github.com/jessiepelosi), here is
-another option:
-
-    Sys.setenv(PATH=paste("/apps/samtools/1.19.2/bin", Sys.getenv("PATH"),sep=":"))
-
-For implementation, see our [Basic
-Example](https://mlgaynor.com/nQuack/articles/BasicExample.html)
-article.
-
 ## Reference
 
 Gaynor ML, Landis JB, O’Connor TK, Laport RG, Doyle JJ, Soltis DE,
@@ -154,11 +201,11 @@ ploidy level from sequence data using site-based heterozygosity.
 ### Associated publications:
 
 Schley RS, Piñeiro R, Nicholls J, Gaynor ML, Lewis GP, Pezzini FF,
-Dexter KG, Kider C, Pennington RT, and Twyford AD. 2025. The frequency
+Dexter KG, Kider C, Pennington RT, and Twyford AD. 2026. The frequency
 and importance of polyploidy in tropical trees. *New Phytologist*. [doi:
 10.1111/nph.70764](https://www.doi.org/10.1111/nph.70764)
 
-## Up Next:
+## Up Next
 
 - If you have sequence data with known plodial level for a mixed-ploidy
   system, let us know. We would love to collaborate with you. To be
