@@ -8,7 +8,7 @@
 
 ## Overview
 
-nQuack is a modified statistical framework to predict ploidy level based on sequence data. We build upon [Weib et al., 2018](https://doi.org/10.1186/s12859-018-2128-z) Gaussian Mixture Model approach to estimate ploidy level, which was originally written as [a C executable](https://github.com/clwgg/nQuire). In our model, we provide a match to nQuire with `quackNormalNQ()`. Note, to match the original software, we use an incorrect likelihood in the expected maximization algorithm (see publication supplement for more information). For the corrected normal, please use `quackNormal()`. Here, the equivalent to nQuire is with a uniform mixture with fixed_3.
+nQuack is a modified statistical framework to predict ploidy level based on sequence data. We build upon [Weib et al., 2018](https://doi.org/10.1186/s12859-018-2128-z) Gaussian Mixture Model approach to estimate ploidy level, which was originally written as [a C executable](https://github.com/clwgg/nQuire). In our model, we provide a match to nQuire with `quackNormalNQ()`. Note, to match the original software, we use an incorrect likelihood in the expected maximization algorithm for `quackNormalNQ()` (see publication supplement for more information). For the corrected normal, please use `quackNormal()`. Here, the equivalent to nQuire is with a uniform mixture with fixed_3.
 
 
 ## How to use nQuack

@@ -75,7 +75,27 @@
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p>nQuack is a modified statistical framework to predict ploidy level based on sequence data. We build upon <a href="https://doi.org/10.1186/s12859-018-2128-z" class="external-link">Weib et al., 2018</a> Gaussian Mixture Model approach to estimate ploidy level, which was originally written as <a href="https://github.com/clwgg/nQuire" class="external-link">a C executable</a>.</p>
+<p>nQuack is a modified statistical framework to predict ploidy level based on sequence data. We build upon <a href="https://doi.org/10.1186/s12859-018-2128-z" class="external-link">Weib et al., 2018</a> Gaussian Mixture Model approach to estimate ploidy level, which was originally written as <a href="https://github.com/clwgg/nQuire" class="external-link">a C executable</a>. In our model, we provide a match to nQuire with <code><a href="reference/quackNormalNQ.html">quackNormalNQ()</a></code>. Note, to match the original software, we use an incorrect likelihood in the expected maximization algorithm for <code><a href="reference/quackNormalNQ.html">quackNormalNQ()</a></code> (see publication supplement for more information). For the corrected normal, please use <code><a href="reference/quackNormal.html">quackNormal()</a></code>. Here, the equivalent to nQuire is with a uniform mixture with fixed_3.</p>
+</div>
+<div class="section level2">
+<h2 id="how-to-use-nquack">How to use nQuack<a class="anchor" aria-label="anchor" href="#how-to-use-nquack"></a>
+</h2>
+<p>Input data for nQuack can be a <a href="https://mlgaynor.com/nQuack/articles/DataPreparation.html" class="external-link">BAM file</a>, <a href="https://mlgaynor.com/nQuack/reference/process_nquire.html" class="external-link">Output from nQuire</a>, a <a href="https://mlgaynor.com/nQuack/articles/VCF2nQuack.html" class="external-link">VCF</a>, <a href="https://mlgaynor.com/nQuack/articles/Qploidy2nQuack.html" class="external-link">Output from Qploidy2</a>, and more. See pkgdown site for more information on preparing your data for nQuack.</p>
+<p><strong>To use this method or nQuire, you need to have a set of samples with known ploidal level:</strong></p>
+<p><strong>Step 1.</strong> Identify the most accurate distribution and type (fixed, fixed_2, fixed_3) based on your samples with known ploidal level.</p>
+<ul>
+<li>Comparing BIC score among all distributions and types is not accurate. You must assess accuracy with a set of samples with known ploidal level.</li>
+<li>Distributions: Normal, Beta, and Beta-Binomial + with or without a uniform mixture.<br>
+</li>
+<li>Type indicates which parameter is estimated.
+<ul>
+<li>Type: “fixed” = only alpha free, “fixed_2” = only alpha and variance free, “fixed_3” = only variance free</li>
+</ul>
+</li>
+</ul>
+<p><strong>Step 2.</strong> Apply the best model to all unknown samples.</p>
+<p>See <a href="https://mlgaynor.com/nQuack/articles/BasicExample.html" class="external-link">Basic Example</a> for step-by-step guidance.</p>
+<p>Note, we know this is limited and often you will not have samples with known ploidal level. Stay-tuned, we are currently working on a better model trained on 10k samples provided by over 70 collaborators. If you want to join the team, there is still time - reach out!</p>
 </div>
 <div class="section level2">
 <h2 id="more-on-nquack">More on nQuack<a class="anchor" aria-label="anchor" href="#more-on-nquack"></a>
