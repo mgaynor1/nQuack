@@ -5,9 +5,6 @@
 - **Michelle L. Gaynor**. Author, maintainer.
   [](https://orcid.org/0000-0002-3912-6079)
 
-- **José Miguel Ponciano**. Contributor.
-  [](https://orcid.org/0000-0001-8457-7840)
-
 ## Citation
 
 Source:

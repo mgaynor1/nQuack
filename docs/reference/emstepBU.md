@@ -31,8 +31,8 @@ emstepBU(parmlist, xi, niter, epsilon, trunc, type = "free")
 
 - trunc:
 
-  List of two values representing the lower and upper bounds, c_L and
-  c_U.
+  List of two values representing the lower and upper bounds, \\c\_{L}\\
+  and \\c\_{U}\\.
 
 - type:
 

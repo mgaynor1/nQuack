@@ -1,6 +1,7 @@
 url: http://mlgaynor.com/nQuack/
 template:
   bootstrap: 5
+  light-switch: true
   params:
     ganalytics: G-YWYQ5CX5NC
 reference:
@@ -81,5 +82,6 @@ navbar:
     left:
     - reference
     - articles
-    right: [search, github]
+    - news
+    right: [search, github, lightswitch]
 

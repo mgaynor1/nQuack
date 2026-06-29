@@ -254,6 +254,19 @@ int mainBashF(std::string name, std::string outpath, std::string tempfolder) {
 //'
 // [[Rcpp::export]]
 void prepare_data(std::string name, std::string inpath, std::string outpath, std::string tempfolder = "temp") {
+    #ifdef _WIN32
+      int samtools_ok = system("samtools --version >NUL 2>&1");
+    #else
+      int samtools_ok = system("samtools --version >/dev/null 2>&1");
+    #endif
+
+      if (samtools_ok != 0) {
+        Rcpp::stop(
+          "The 'samtools' executable (>= 1.10) was not found.\n"
+          "Please install samtools and ensure it is on your PATH."
+        );
+      }
+
    std::string command1 = "mkdir " + tempfolder;
    int result1 =  system(command1.c_str());
    mpileF(name, inpath, tempfolder);

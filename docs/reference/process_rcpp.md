@@ -28,8 +28,8 @@ process_rcpp(x, mindepth, maxprob, trunc, error)
 
 - trunc:
 
-  List of two values representing the lower and upper bounds, c_L and
-  c_U.
+  List of two values representing the lower and upper bounds,\\c\_{L}\\
+  and \\c\_{U}\\.
 
 - error:
 

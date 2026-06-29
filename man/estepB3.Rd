@@ -11,7 +11,7 @@ estepB3(parmlist, xi, trunc)
 
 \item{xi}{List of observations, in this case allele frequencies.}
 
-\item{trunc}{List of two values representing the lower and upper bounds,  c_L and c_U.}
+\item{trunc}{List of two values representing the lower and upper bounds, \eqn{c_{L}} and \eqn{c_{U}}.}
 }
 \description{
 This is used in the \code{Bclean()} function. Here we complete

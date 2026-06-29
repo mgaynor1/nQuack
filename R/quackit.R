@@ -17,7 +17,7 @@
 #'  only alpha  (`type = 'fixed'`), only alpha and variance (`type = 'fixed_2'`),
 #'   and only variance (`type ='fixed_3`) to be estimated for each mixture.
 #'
-#'
+#' @export
 quackit <- function(model_out, summary_statistic = "BIC",
                     mixtures = c("diploid", "triploid", "tetraploid", "hexaploid", "pentaploid")){
   if(summary_statistic == "dLL"){

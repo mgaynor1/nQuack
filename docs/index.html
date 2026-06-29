@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Predicting Ploidal Level from Sequence Data • nQuack</title>
-<script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<script src="lightswitch.js"></script><script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
@@ -25,11 +25,11 @@
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
-    <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
+    <nav class="navbar navbar-expand-lg fixed-top " aria-label="Site navigation"><div class="container">
 
     <a class="navbar-brand me-2" href="index.html">nQuack</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.3</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.0.4</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,12 +53,21 @@
     <li><a class="dropdown-item" href="articles/FAQ.html">FAQ</a></li>
   </ul>
 </li>
+<li class="nav-item"><a class="nav-link" href="news/index.html">Changelog</a></li>
       </ul>
 <ul class="navbar-nav">
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="search.json">
 </form></li>
 <li class="nav-item"><a class="external-link nav-link" href="https://github.com/mgaynor1/nQuack/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-lightswitch" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" aria-label="Light switch"><span class="fa fa-sun"></span></button>
+  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdown-lightswitch">
+<li><button class="dropdown-item" data-bs-theme-value="light"><span class="fa fa-sun"></span> Light</button></li>
+    <li><button class="dropdown-item" data-bs-theme-value="dark"><span class="fa fa-moon"></span> Dark</button></li>
+    <li><button class="dropdown-item" data-bs-theme-value="auto"><span class="fa fa-adjust"></span> Auto</button></li>
+  </ul>
+</li>
       </ul>
 </div>
 
@@ -73,14 +82,81 @@
 <p><strong>Michelle L. Gaynor, Jacob B. Landis, Tim K. O’Connor, Robert G. Laport, Jeff J. Doyle, Douglas E. Soltis, José Miguel Ponciano, and Pamela S. Soltis</strong></p>
 <p><a href="https://www.gnu.org/licenses/gpl-3.0" class="external-link"><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License: GPL v3"></a></p>
 <div class="section level2">
+<h2 id="table-of-contents">Table of Contents<a class="anchor" aria-label="anchor" href="#table-of-contents"></a>
+</h2>
+<p><a href="#overview">Overview</a><br><a href="#how-to-use-nquack">How to use nQuack</a><br><a href="#installation">Installation</a><br><a href="#more-on-nquack">More on nQuack</a><br><a href="#evaluation-of-nquack">Accuracy of nQuack</a><br><a href="#reference">Citation</a><br><a href="#up-next">Collaboration Opportunity</a></p>
+</div>
+<div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p>nQuack is a modified statistical framework to predict ploidy level based on sequence data. We build upon <a href="https://doi.org/10.1186/s12859-018-2128-z" class="external-link">Weib et al., 2018</a> Gaussian Mixture Model approach to estimate ploidy level, which was originally written as <a href="https://github.com/clwgg/nQuire" class="external-link">a C executable</a>.</p>
+<p>nQuack is a modified statistical framework to predict ploidy level based on sequence data. We build upon <a href="https://doi.org/10.1186/s12859-018-2128-z" class="external-link">Weib et al., 2018</a> Gaussian Mixture Model approach to estimate ploidy level, which was originally written as <a href="https://github.com/clwgg/nQuire" class="external-link">a C executable</a>. In our model, we provide a match to nQuire with <code><a href="reference/quackNormalNQ.html">quackNormalNQ()</a></code>. Note, to match the original software, we use an incorrect likelihood in the expected maximization algorithm for <code><a href="reference/quackNormalNQ.html">quackNormalNQ()</a></code> (see publication supplement for more information). For the corrected normal, please use <code><a href="reference/quackNormal.html">quackNormal()</a></code>. Here, the equivalent to nQuire is with a uniform mixture with fixed_3.</p>
+<p>Before using this method, we suggest you read our manuscript and consider the many limitations to a pattern-based approach for determining ploidal level. However, we attempted to highlight the most important take-aways here and in our documentation.</p>
+</div>
+<div class="section level2">
+<h2 id="how-to-use-nquack">How to use nQuack<a class="anchor" aria-label="anchor" href="#how-to-use-nquack"></a>
+</h2>
+<div class="section level3">
+<h3 id="input-data">Input Data<a class="anchor" aria-label="anchor" href="#input-data"></a>
+</h3>
+<p>Input data for nQuack can be a <a href="https://mlgaynor.com/nQuack/articles/DataPreparation.html" class="external-link">BAM file</a>, <a href="https://mlgaynor.com/nQuack/reference/process_nquire.html" class="external-link">Output from nQuire</a>, a <a href="https://mlgaynor.com/nQuack/articles/VCF2nQuack.html" class="external-link">VCF</a>, <a href="https://mlgaynor.com/nQuack/articles/Qploidy2nQuack.html" class="external-link">Output from Qploidy2</a>, and more. See the <a href="https://mlgaynor.com/nQuack" class="external-link">pkgdown site</a> for more information on <a href="https://mlgaynor.com/nQuack/articles/DataPreparation.html" class="external-link">preparing your data</a> for nQuack.</p>
+<p>For modeling, you must input a matrix <code>xm</code> which contains two columns with total coverage and coverage for a randomly sampled allele across sites for a single individual.</p>
+</div>
+<div class="section level3">
+<h3 id="ploidy-prediction">Ploidy Prediction<a class="anchor" aria-label="anchor" href="#ploidy-prediction"></a>
+</h3>
+<p>As shown in Gaynor et al. (2024), both nQuire and nQuack are not the most accurate models. To use this method or nQuire, you should have a set of samples with known ploidal level:</p>
+<p><span style="color: #FFA500"> <strong>Step 1. Identify the most accurate filtering and modeling approach (distribution and type) based on your samples with known ploidal level.</strong> </span></p>
+<ul>
+<li>Comparing BIC score among all distributions and types is not accurate. You must assess accuracy with a set of samples with known ploidal level.
+<ul>
+<li>Gaynor et al. (2024): “Neither nQuack nor nQuire should be used to infer the ploidy in a system for which very little is known, as these models are often positively misleading.”<br>
+</li>
+</ul>
+</li>
+<li>
+<strong>Distributions</strong>: Normal, Beta, and Beta-Binomial + with or without a uniform mixture. = 6 options!</li>
+<li>
+<strong>Type</strong> indicates which parameter is estimated.
+<ul>
+<li>Type: “fixed” = only alpha free, “fixed_2” = only alpha and variance free, “fixed_3” = only variance free = 3 options!</li>
+</ul>
+</li>
+<li>If you do not identify one of the 18 modeling approaches (distributions + type combinations) as accurate, you likely need to reprocess your raw data.</li>
+</ul>
+<p><span style="color: #FFA500"> <strong>Step 2. Apply the best filtering approach and best model to all unknown samples.</strong> </span></p>
+<p>See <a href="https://mlgaynor.com/nQuack/articles/BasicExample.html" class="external-link">Basic Example</a> for step-by-step guidance.</p>
+<p>Note, we know this is limited and often you will not have samples with known ploidal level. Stay-tuned, we are currently working on a better model trained on 10k samples provided by over 70 collaborators. If you want to join the team, there is still time - reach out!</p>
+</div>
+</div>
+<div class="section level2">
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h2>
+<pre><code><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></span>
+<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/install-deprecated.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"mgaynor1/nQuack"</span><span class="op">)</span></span></code></pre>
+<p><span style="color: red"> Warning: samtools must be local! </span></p>
+<p>If you are working on your personal computer, make sure samtools is installed and callable as “samtools” via terminal. If you are working on a cluster, you may need to symbolically-link samtools locally. Though the location of install may differ, here is how I make samtools callable locally on UF’s amazing <a href="https://www.rc.ufl.edu/about/hipergator/" class="external-link">HiPerGator</a> slurm cluster - note, the following should be run in your home directory (i.e., ‘pwd’ = /home/username) :</p>
+<pre><code>mkdir bin
+cd bin
+ln -s /apps/samtools/1.15/bin/samtools samtools</code></pre>
+<p>Thanks to <a href="https://github.com/jessiepelosi" class="external-link">jessiepelosi</a>, here is another option:</p>
+<pre><code><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>PATH<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"/apps/samtools/1.19.2/bin"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html" class="external-link">Sys.getenv</a></span><span class="op">(</span><span class="st">"PATH"</span><span class="op">)</span>,sep<span class="op">=</span><span class="st">":"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
 </div>
 <div class="section level2">
 <h2 id="more-on-nquack">More on nQuack<a class="anchor" aria-label="anchor" href="#more-on-nquack"></a>
 </h2>
-<p>Here we provided expanded tools and implementations to improve site-based heterozygosity inferences of ploidal level.</p>
+<p>Learn more about nQuack by checking out our articles:</p>
+<ul>
+<li><a href="https://mlgaynor.com/nQuack/articles/BasicExample.html" class="external-link">Basic Example</a></li>
+<li><a href="https://mlgaynor.com/nQuack/articles/DataPreparation.html" class="external-link">Data Preparation</a></li>
+<li><a href="https://mlgaynor.com/nQuack/articles/FasterExample.html" class="external-link">Faster Example</a></li>
+<li><a href="https://mlgaynor.com/nQuack/articles/ModelOptions.html" class="external-link">Model Options</a></li>
+<li><a href="https://mlgaynor.com/nQuack/articles/SimulateData.html" class="external-link">Simulate Data</a></li>
+<li><a href="https://mlgaynor.com/nQuack/articles/Outliers.html" class="external-link">Outliers</a></li>
+<li><a href="https://mlgaynor.com/nQuack/articles/VCF2nQuack.html" class="external-link">VCF to nQuack</a></li>
+<li><a href="https://mlgaynor.com/nQuack/articles/Qploidy2nQuack.html" class="external-link">Qploidy2 to nQuack</a></li>
+<li><a href="https://mlgaynor.com/nQuack/articles/FAQ.html" class="external-link">FAQ</a></li>
+</ul>
+<p>With nQuack, we provided expanded tools and implementations to improve site-based heterozygosity inferences of ploidal level.</p>
 <p>nQuack provides data preparation guidance and tools to decrease noise in input data. These include a maximum sequence coverage quantile filter and sequence error-based filter, to remove biallelic sites that are likely not representative of copy number variance in the nuclear genome. We also consider only the frequency of allele A or B at each site, instead of both, as found in other methods. To learn more about best practices, see our <a href="https://mlgaynor.com/nQuack/articles/DataPreparation.html" class="external-link">Data Preparation</a> guide.</p>
 <p>Our model improves upon the nQuire framework by extending it to higher ploidal levels (pentaploid and hexaploid), correcting the augmented likelihood calculation, implementing more suitable distribution, and allowing additional ‘fixed’ models. We also decrease model selection errors by relying on BIC rather than likelihood ratio tests. To learn more about these methods, see our <a href="https://mlgaynor.com/nQuack/articles/ModelOptions.html" class="external-link">Model Options</a> guide.</p>
 <p>We provide 32 ways to estimates likelihood of a mixture of models with the expectation maximization algorithm (<a href="https://mlgaynor.com/nQuack/articles/ModelOptions.html" class="external-link">see more here</a>) - 8 expectation maximization implementations with 4 model types each. In total, nQuack offers 128 models.</p>
@@ -94,34 +170,17 @@
 <p>Before using this method, we suggest you read our manuscript and consider the many limitations to a pattern-based approach for determining ploidal level.</p>
 </div>
 <div class="section level2">
-<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
-</h2>
-<pre><code><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/install-deprecated.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"mgaynor1/nQuack"</span><span class="op">)</span></span></code></pre>
-<div class="section level3">
-<h3 id="warning-samtools-must-be-local">Warning: samtools must be local!<a class="anchor" aria-label="anchor" href="#warning-samtools-must-be-local"></a>
-</h3>
-<p>If you are working on your personal computer, make sure samtools is installed and callable as “samtools” via terminal. If you are working on a cluster, you may need to symbolically-link samtools locally. Though the location of install may differ, here is how I make samtools callable locally on UF’s amazing <a href="https://www.rc.ufl.edu/about/hipergator/" class="external-link">HiPerGator</a> slurm cluster - note, the following should be run in your home directory (i.e., ‘pwd’ = /home/username) :</p>
-<pre><code>mkdir bin
-cd bin
-ln -s /apps/samtools/1.15/bin/samtools samtools</code></pre>
-<p>Thanks to <a href="https://github.com/jessiepelosi" class="external-link">jessiepelosi</a>, here is another option:</p>
-<pre><code><span><span class="fu"><a href="https://rdrr.io/r/base/Sys.setenv.html" class="external-link">Sys.setenv</a></span><span class="op">(</span>PATH<span class="op">=</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste</a></span><span class="op">(</span><span class="st">"/apps/samtools/1.19.2/bin"</span>, <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html" class="external-link">Sys.getenv</a></span><span class="op">(</span><span class="st">"PATH"</span><span class="op">)</span>,sep<span class="op">=</span><span class="st">":"</span><span class="op">)</span><span class="op">)</span></span></code></pre>
-<p>For implementation, see our <a href="https://mlgaynor.com/nQuack/articles/BasicExample.html" class="external-link">Basic Example</a> article.</p>
-</div>
-</div>
-<div class="section level2">
 <h2 id="reference">Reference<a class="anchor" aria-label="anchor" href="#reference"></a>
 </h2>
 <p>Gaynor ML, Landis JB, O’Connor TK, Laport RG, Doyle JJ, Soltis DE, Ponciano JM, and Soltis PS. 2024. nQuack: An R package for predicting ploidy level from sequence data using site-based heterozygosity. <em>Applications in Plant Sciences</em> 12(4):e11606. <a href="https://www.doi.org/10.1002/aps3.11606" class="external-link">doi: 10.1002/aps3.11606</a></p>
 <div class="section level3">
 <h3 id="associated-publications">Associated publications:<a class="anchor" aria-label="anchor" href="#associated-publications"></a>
 </h3>
-<p>Schley RS, Piñeiro R, Nicholls J, Gaynor ML, Lewis GP, Pezzini FF, Dexter KG, Kider C, Pennington RT, and Twyford AD. 2025. The frequency and importance of polyploidy in tropical trees. <em>New Phytologist</em>. <a href="https://www.doi.org/10.1111/nph.70764" class="external-link">doi: 10.1111/nph.70764</a></p>
+<p>Schley RS, Piñeiro R, Nicholls J, Gaynor ML, Lewis GP, Pezzini FF, Dexter KG, Kider C, Pennington RT, and Twyford AD. 2026. The frequency and importance of polyploidy in tropical trees. <em>New Phytologist</em>. <a href="https://www.doi.org/10.1111/nph.70764" class="external-link">doi: 10.1111/nph.70764</a></p>
 </div>
 </div>
 <div class="section level2">
-<h2 id="up-next">Up Next:<a class="anchor" aria-label="anchor" href="#up-next"></a>
+<h2 id="up-next">Up Next<a class="anchor" aria-label="anchor" href="#up-next"></a>
 </h2>
 <ul>
 <li>If you have sequence data with known plodial level for a mixed-ploidy system, let us know. We would love to collaborate with you. To be included in v2.0, please send me an email at shellyleegaynor at gmail.</li>
@@ -155,7 +214,6 @@ ln -s /apps/samtools/1.15/bin/samtools samtools</code></pre>
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>Michelle L. Gaynor <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-3912-6079" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
-<li><a href="authors.html">More about authors...</a></li>
 </ul>
 </div>
 

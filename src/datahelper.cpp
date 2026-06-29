@@ -4,7 +4,8 @@ using namespace Rcpp;
 //' @title Data Preparation - Use nQuire's Data
 //'
 //' @description This function reduce a three column data frame to
-//' two columns by randomly sampling allele A or B for every site. This is used in our function `process_nquire()`
+//' two columns by randomly sampling allele A or B for every site.
+//' This is used in our function `process_nquire()`
 //'
 //' @param xm A matrix with three columns: Total Coverage, Counts for Allele A, and Counts for Allele B.
 //'

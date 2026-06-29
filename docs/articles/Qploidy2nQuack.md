@@ -162,7 +162,7 @@ summary <- c()
 samples <- unique(modoutput$sample)
 for(i in 1:5){
   temp <- modoutput[which(modoutput$sample == samples[i]), ]
-  summary[[i]] <- quackit(model_out =  temp, 
+  summary[[i]] <- nQuack::quackit(model_out =  temp, 
                      summary_statistic = "BIC", 
                      mixtures = c("diploid", "tetraploid"))
 }

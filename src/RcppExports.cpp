@@ -122,6 +122,20 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// estepBB
+Rcpp::List estepBB(const Rcpp::List parmlist, const arma::mat xm, std::string type, const arma::vec trunc);
+RcppExport SEXP _nQuack_estepBB(SEXP parmlistSEXP, SEXP xmSEXP, SEXP typeSEXP, SEXP truncSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const Rcpp::List >::type parmlist(parmlistSEXP);
+    Rcpp::traits::input_parameter< const arma::mat >::type xm(xmSEXP);
+    Rcpp::traits::input_parameter< std::string >::type type(typeSEXP);
+    Rcpp::traits::input_parameter< const arma::vec >::type trunc(truncSEXP);
+    rcpp_result_gen = Rcpp::wrap(estepBB(parmlist, xm, type, trunc));
+    return rcpp_result_gen;
+END_RCPP
+}
 // emstepBB
 Rcpp::List emstepBB(Rcpp::List parmlist, arma::mat xm, int niter, double epsilon, arma::vec trunc, std::string type);
 RcppExport SEXP _nQuack_emstepBB(SEXP parmlistSEXP, SEXP xmSEXP, SEXP niterSEXP, SEXP epsilonSEXP, SEXP truncSEXP, SEXP typeSEXP) {
@@ -138,6 +152,20 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// estepBBU
+Rcpp::List estepBBU(const Rcpp::List parmlist, const arma::mat xm, std::string type, const arma::vec trunc);
+RcppExport SEXP _nQuack_estepBBU(SEXP parmlistSEXP, SEXP xmSEXP, SEXP typeSEXP, SEXP truncSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const Rcpp::List >::type parmlist(parmlistSEXP);
+    Rcpp::traits::input_parameter< const arma::mat >::type xm(xmSEXP);
+    Rcpp::traits::input_parameter< std::string >::type type(typeSEXP);
+    Rcpp::traits::input_parameter< const arma::vec >::type trunc(truncSEXP);
+    rcpp_result_gen = Rcpp::wrap(estepBBU(parmlist, xm, type, trunc));
+    return rcpp_result_gen;
+END_RCPP
+}
 // emstepBBU
 Rcpp::List emstepBBU(Rcpp::List parmlist, arma::mat xm, int niter, double epsilon, arma::vec trunc, std::string type);
 RcppExport SEXP _nQuack_emstepBBU(SEXP parmlistSEXP, SEXP xmSEXP, SEXP niterSEXP, SEXP epsilonSEXP, SEXP truncSEXP, SEXP typeSEXP) {
@@ -151,6 +179,20 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< arma::vec >::type trunc(truncSEXP);
     Rcpp::traits::input_parameter< std::string >::type type(typeSEXP);
     rcpp_result_gen = Rcpp::wrap(emstepBBU(parmlist, xm, niter, epsilon, trunc, type));
+    return rcpp_result_gen;
+END_RCPP
+}
+// estepBU
+Rcpp::List estepBU(const Rcpp::List parmlist, const arma::vec xi, std::string type, const arma::vec trunc);
+RcppExport SEXP _nQuack_estepBU(SEXP parmlistSEXP, SEXP xiSEXP, SEXP typeSEXP, SEXP truncSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< const Rcpp::List >::type parmlist(parmlistSEXP);
+    Rcpp::traits::input_parameter< const arma::vec >::type xi(xiSEXP);
+    Rcpp::traits::input_parameter< std::string >::type type(typeSEXP);
+    Rcpp::traits::input_parameter< const arma::vec >::type trunc(truncSEXP);
+    rcpp_result_gen = Rcpp::wrap(estepBU(parmlist, xi, type, trunc));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -294,8 +336,11 @@ static const R_CallMethodDef CallEntries[] = {
     {"_nQuack_emstepNU", (DL_FUNC) &_nQuack_emstepNU, 6},
     {"_nQuack_emstepNUA", (DL_FUNC) &_nQuack_emstepNUA, 6},
     {"_nQuack_emstepB", (DL_FUNC) &_nQuack_emstepB, 6},
+    {"_nQuack_estepBB", (DL_FUNC) &_nQuack_estepBB, 4},
     {"_nQuack_emstepBB", (DL_FUNC) &_nQuack_emstepBB, 6},
+    {"_nQuack_estepBBU", (DL_FUNC) &_nQuack_estepBBU, 4},
     {"_nQuack_emstepBBU", (DL_FUNC) &_nQuack_emstepBBU, 6},
+    {"_nQuack_estepBU", (DL_FUNC) &_nQuack_estepBU, 4},
     {"_nQuack_emstepBU", (DL_FUNC) &_nQuack_emstepBU, 6},
     {"_nQuack_alphabetacalc", (DL_FUNC) &_nQuack_alphabetacalc, 2},
     {"_nQuack_alphabetacalcvec", (DL_FUNC) &_nQuack_alphabetacalcvec, 2},

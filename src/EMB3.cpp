@@ -14,7 +14,7 @@ using namespace arma;
 //' the truncated distribution.
 //' @param parmlist A list containing initial alpha, mean, and variance.
 //' @param xi List of observations, in this case allele frequencies.
-//' @param trunc List of two values representing the lower and upper bounds, $c_{L}$ and $c_{U}$.
+//' @param trunc List of two values representing the lower and upper bounds, \eqn{c_{L}} and \eqn{c_{U}}.
 //[[Rcpp::export]]
 Rcpp::List estepB3(const Rcpp::List parmlist, const arma::vec xi,
                    const arma::vec trunc){
@@ -203,7 +203,7 @@ extern "C" {
 //
 // description This function is used in expectation maximization to maximize the parameter values.
 // param eout List with output from the estep
-// param trunc List of two values representing the lower and upper bounds, $c_{L}$ and $c_{U}$.
+// param trunc List of two values representing the lower and upper bounds, \eqn{c_{L}} and \eqn{c_{U}}.
 Rcpp::List mstepB3(Rcpp::List eout){
 
   const Rcpp::List parmlist = eout["parm.list"];
@@ -329,7 +329,7 @@ double llcalcfinalB3(Rcpp::List eout){
 //' @param niter Max number of iterates.
 //' @param epsilon Epsilon value for convergence tolerance. When the absolute delta log-likelihood is
 //'    below this value, convergence is reached.
-//' @param trunc List of two values representing the lower and upper bounds, $c_{L}$ and $c_{U}$.
+//' @param trunc List of two values representing the lower and upper bounds,  \eqn{c_{L}} and \eqn{c_{U}}.
 //'
 //' @returns List of elements including the negative log likelihood, the number of iterates,
 //'  and the optimized parameter values.

@@ -7,7 +7,7 @@
 #' the truncated distribution.
 #' @param parmlist A list containing initial alpha, mean, and variance.
 #' @param xi List of observations, in this case allele frequencies.
-#' @param trunc List of two values representing the lower and upper bounds, $c_{L}$ and $c_{U}$.
+#' @param trunc List of two values representing the lower and upper bounds, \eqn{c_{L}} and \eqn{c_{U}}.
 estepB3 <- function(parmlist, xi, trunc) {
     .Call(`_nQuack_estepB3`, parmlist, xi, trunc)
 }
@@ -22,7 +22,7 @@ estepB3 <- function(parmlist, xi, trunc) {
 #' @param niter Max number of iterates.
 #' @param epsilon Epsilon value for convergence tolerance. When the absolute delta log-likelihood is
 #'    below this value, convergence is reached.
-#' @param trunc List of two values representing the lower and upper bounds, $c_{L}$ and $c_{U}$.
+#' @param trunc List of two values representing the lower and upper bounds,  \eqn{c_{L}} and \eqn{c_{U}}.
 #'
 #' @returns List of elements including the negative log likelihood, the number of iterates,
 #'  and the optimized parameter values.
@@ -43,7 +43,7 @@ emstepB3 <- function(parmlist, xi, niter, epsilon, trunc) {
 #' @param niter Max number of iterates.
 #' @param epsilon Epsilon value for convergence tolerance. When the absolute delta log-likelihood is
 #'    below this value, convergence is reached.
-#' @param trunc List of two values representing the lower and upper bounds, $c_{L}$ and $c_{U}$.
+#' @param trunc List of two values representing the lower and upper bounds, \eqn{c_{L}} and \eqn{c_{U}}.
 #' @param type String indicating model type. Options: "free" (estimated parameter(s): alpha, mean, and variance), "fixed" (estimated parameter(s): alpha),
 #' "fixed_2" (estimated parameter(s): alpha and variance), or "fixed_3" (estimated parameter(s): variance).
 #'
@@ -65,7 +65,7 @@ emstepN <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
 #' @param niter Max number of iterates.
 #' @param epsilon Epsilon value for convergence tolerance. When the absolute delta log-likelihood is
 #'    below this value, convergence is reached.
-#' @param trunc List of two values representing the lower and upper bounds, $c_{L}$ and $c_{U}$.
+#' @param trunc List of two values representing the lower and upper bounds, \eqn{c_{L}} and \eqn{c_{U}}.
 #' @param type String indicating model type. Options: "free" (estimated parameter(s): alpha, mean, and variance), "fixed" (estimated parameter(s): alpha),
 #' "fixed_2" (estimated parameter(s): alpha and variance), or "fixed_3" (estimated parameter(s): variance).
 #'
@@ -87,7 +87,7 @@ emstepNA <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
 #' @param niter Max number of iterates.
 #' @param epsilon Epsilon value for convergence tolerance. When the absolute delta log-likelihood is
 #'    below this value, convergence is reached.
-#' @param trunc List of two values representing the lower and upper bounds, $c_{L}$ and $c_{U}$.
+#' @param trunc List of two values representing the lower and upper bounds, \eqn{c_{L}} and \eqn{c_{U}}.
 #' @param type String indicating model type. Options: "free" (estimated parameter(s): alpha, mean, and variance), "fixed" (estimated parameter(s): alpha),
 #' "fixed_2" (estimated parameter(s): alpha and variance), or "fixed_3" (estimated parameter(s): variance).
 #'
@@ -109,7 +109,7 @@ emstepNU <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
 #' @param niter Max number of iterates.
 #' @param epsilon Epsilon value for convergence tolerance. When the absolute delta log-likelihood is
 #'    below this value, convergence is reached.
-#' @param trunc List of two values representing the lower and upper bounds, $c_{L}$ and $c_{U}$.
+#' @param trunc List of two values representing the lower and upper bounds, \eqn{c_{L}} and \eqn{c_{U}}.
 #' @param type String indicating model type. Options: "free" (estimated parameter(s): alpha, mean, and variance), "fixed" (estimated parameter(s): alpha),
 #' "fixed_2" (estimated parameter(s): alpha and variance), or "fixed_3" (estimated parameter(s): variance).
 #'
@@ -131,7 +131,7 @@ emstepNUA <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
 #' @param niter Max number of iterates.
 #' @param epsilon Epsilon value for convergence tolerance. When the absolute delta log-likelihood is
 #'    below this value, convergence is reached.
-#' @param trunc List of two values representing the lower and upper bounds, $c_{L}$ and $c_{U}$.
+#' @param trunc List of two values representing the lower and upper bounds, \eqn{c_{L}} and \eqn{c_{U}}.
 #' @param type String indicating model type. Options: "free" (estimated parameter(s): alpha, mean, and variance), "fixed" (estimated parameter(s): alpha),
 #' "fixed-2" (estimated parameter(s): alpha and variance), or "fixed-3" (estimated parameter(s): variance).
 #'  If avec is length of 1, fixed and fixed-3 will not be able to return a log-likelihood.
@@ -141,6 +141,10 @@ emstepNUA <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
 #'
 emstepB <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
     .Call(`_nQuack_emstepB`, parmlist, xi, niter, epsilon, trunc, type)
+}
+
+estepBB <- function(parmlist, xm, type, trunc) {
+    .Call(`_nQuack_estepBB`, parmlist, xm, type, trunc)
 }
 
 #' @title Expectation maximization - Beta-Binomial Distribution
@@ -154,7 +158,7 @@ emstepB <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
 #' @param niter Max number of iterates.
 #' @param epsilon Epsilon value for convergence tolerance. When the absolute delta log-likelihood is
 #'    below this value, convergence is reached.
-#' @param trunc List of two values representing the lower and upper bounds, $c_{L}$ and $c_{U}$.
+#' @param trunc List of two values representing the lower and upper bounds, \eqn{c_{L}} and \eqn{c_{U}}.
 #' @param type String indicating "Free" or "Fixed".
 #'
 #' @returns List of elements including the negative log likelihood, the number of iterates,
@@ -163,6 +167,10 @@ emstepB <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
 #'
 emstepBB <- function(parmlist, xm, niter, epsilon, trunc, type = "free") {
     .Call(`_nQuack_emstepBB`, parmlist, xm, niter, epsilon, trunc, type)
+}
+
+estepBBU <- function(parmlist, xm, type, trunc) {
+    .Call(`_nQuack_estepBBU`, parmlist, xm, type, trunc)
 }
 
 #' @title Expectation maximization - Beta-Binomial and Uniform Distributions
@@ -176,7 +184,7 @@ emstepBB <- function(parmlist, xm, niter, epsilon, trunc, type = "free") {
 #' @param niter Max number of iterates.
 #' @param epsilon Epsilon value for convergence tolerance. When the absolute delta log-likelihood is
 #'    below this value, convergence is reached.
-#' @param trunc List of two values representing the lower and upper bounds, $c_{L}$ and $c_{U}$.
+#' @param trunc List of two values representing the lower and upper bounds, \eqn{c_{L}} and \eqn{c_{U}}.
 #' @param type String indicating model type. Options: "free" (estimated parameter(s): alpha, mean, and variance), "fixed" (estimated parameter(s): alpha),
 #' "fixed-2" (estimated parameter(s): alpha and variance), or "fixed-3" (estimated parameter(s): variance).
 #'  If avec is length of 1, fixed and fixed-3 will not be able to return a log-likelihood.
@@ -186,6 +194,10 @@ emstepBB <- function(parmlist, xm, niter, epsilon, trunc, type = "free") {
 #'
 emstepBBU <- function(parmlist, xm, niter, epsilon, trunc, type = "free") {
     .Call(`_nQuack_emstepBBU`, parmlist, xm, niter, epsilon, trunc, type)
+}
+
+estepBU <- function(parmlist, xi, type, trunc) {
+    .Call(`_nQuack_estepBU`, parmlist, xi, type, trunc)
 }
 
 #' @title Expectation maximization - Beta and Uniform Distributions
@@ -199,7 +211,7 @@ emstepBBU <- function(parmlist, xm, niter, epsilon, trunc, type = "free") {
 #' @param niter Max number of iterates.
 #' @param epsilon Epsilon value for convergence tolerance. When the absolute delta log-likelihood is
 #'    below this value, convergence is reached.
-#' @param trunc List of two values representing the lower and upper bounds, $c_{L}$ and $c_{U}$.
+#' @param trunc List of two values representing the lower and upper bounds, \eqn{c_{L}} and \eqn{c_{U}}.
 #' @param type String indicating model type. Options: "free" (estimated parameter(s): alpha, mean, and variance), "fixed" (estimated parameter(s): alpha),
 #' "fixed_2" (estimated parameter(s): alpha and variance), or "fixed_3" (estimated parameter(s): variance).
 #'  If avec is length of 1, fixed and fixed_3 will not be able to return a log-likelihood.
@@ -291,7 +303,8 @@ resample_xm <- function(xm, n) {
 #' @title Data Preparation - Use nQuire's Data
 #'
 #' @description This function reduce a three column data frame to
-#' two columns by randomly sampling allele A or B for every site. This is used in our function `process_nquire()`
+#' two columns by randomly sampling allele A or B for every site.
+#' This is used in our function `process_nquire()`
 #'
 #' @param xm A matrix with three columns: Total Coverage, Counts for Allele A, and Counts for Allele B.
 #'
@@ -310,7 +323,7 @@ nQuire_reformat <- function(xm) {
 #' @param x Matrix with five columns: Depth, A, C, G, and T.
 #' @param mindepth Minimum depth, default = 15.
 #' @param maxprob Maximum depth quantile cut off, default = 0.9.
-#' @param trunc List of two values representing the lower and upper bounds, $c_{L}$ and $c_{U}$.
+#' @param trunc List of two values representing the lower and upper bounds,\eqn{c_{L}} and \eqn{c_{U}}.
 #' @param error Sequencing error rate.
 #'
 #' @return Numeric Matrix with total coverage and coverage for a randomly sampled allele.

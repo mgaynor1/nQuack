@@ -14,5 +14,6 @@ Numeric Matrix with total coverage and coverage for a randomly sampled allele.
 }
 \description{
 This function reduce a three column data frame to
-two columns by randomly sampling allele A or B for every site. This is used in our function \code{process_nquire()}
+two columns by randomly sampling allele A or B for every site.
+This is used in our function \code{process_nquire()}
 }

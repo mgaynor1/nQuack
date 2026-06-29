@@ -16,7 +16,7 @@ emstepB3(parmlist, xi, niter, epsilon, trunc)
 \item{epsilon}{Epsilon value for convergence tolerance. When the absolute delta log-likelihood is
 below this value, convergence is reached.}
 
-\item{trunc}{List of two values representing the lower and upper bounds,  c_L and c_U.}
+\item{trunc}{List of two values representing the lower and upper bounds,  \eqn{c_{L}} and \eqn{c_{U}}.}
 }
 \value{
 List of elements including the negative log likelihood, the number of iterates,

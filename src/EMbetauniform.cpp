@@ -14,7 +14,7 @@ using namespace arma;
 // param parmlist A list containing initial alpha, mu, and sigma values.
 // param xi List of observations, in this case allele frequencies.
 // param type String indicating "free", "fixed", "fixed_2", and "fixed_3".
-// param trunc List of two values representing the lower and upper bounds, $c_{L}$ and $c_{U}$.
+// param trunc List of two values representing the lower and upper bounds,\eqn{c_{L}} and \eqn{c_{U}}.
 // return A list with the following elements:
 // \item logL: Log-likelihood of the mixture model.
 // \item Zprobs.mat: Matrix where rows represent data points and columns represent each
@@ -23,6 +23,7 @@ using namespace arma;
 // \item Sj.vec: A vector of column sums for each mixture model.
 // \item parm.list: Supplied list containing initial alpha, mu, and sigma values.
 // \item  xi: List of allele frequencies.
+// [[Rcpp::export]]
 Rcpp::List estepBU(const Rcpp::List parmlist, const arma::vec xi, std::string type,
                   const arma::vec trunc){
 
@@ -245,7 +246,7 @@ extern "C" {
 //
 // description This function is used in expectation maximization to maximize the parameter values.
 // param eout List with output from the estep
-// param trunc List of two values representing the lower and upper bounds, $c_{L}$ and $c_{U}$.]
+// param trunc List of two values representing the lower and upper bounds, \eqn{c_{L}} and \eqn{c_{U}}.
 Rcpp::List mstepBU(Rcpp::List eout){
 
    const Rcpp::List parmlist = eout["parm.list"];
@@ -416,7 +417,7 @@ double llcalcfinalBU(Rcpp::List eout){
 //' @param niter Max number of iterates.
 //' @param epsilon Epsilon value for convergence tolerance. When the absolute delta log-likelihood is
 //'    below this value, convergence is reached.
-//' @param trunc List of two values representing the lower and upper bounds, $c_{L}$ and $c_{U}$.
+//' @param trunc List of two values representing the lower and upper bounds, \eqn{c_{L}} and \eqn{c_{U}}.
 //' @param type String indicating model type. Options: "free" (estimated parameter(s): alpha, mean, and variance), "fixed" (estimated parameter(s): alpha),
 //' "fixed_2" (estimated parameter(s): alpha and variance), or "fixed_3" (estimated parameter(s): variance).
 //'  If avec is length of 1, fixed and fixed_3 will not be able to return a log-likelihood.
