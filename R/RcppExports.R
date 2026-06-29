@@ -143,10 +143,6 @@ emstepB <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
     .Call(`_nQuack_emstepB`, parmlist, xi, niter, epsilon, trunc, type)
 }
 
-estepBB <- function(parmlist, xm, type, trunc) {
-    .Call(`_nQuack_estepBB`, parmlist, xm, type, trunc)
-}
-
 #' @title Expectation maximization - Beta-Binomial Distribution
 #'
 #' @description This function calculates the negative log-likelihood using
@@ -167,10 +163,6 @@ estepBB <- function(parmlist, xm, type, trunc) {
 #'
 emstepBB <- function(parmlist, xm, niter, epsilon, trunc, type = "free") {
     .Call(`_nQuack_emstepBB`, parmlist, xm, niter, epsilon, trunc, type)
-}
-
-estepBBU <- function(parmlist, xm, type, trunc) {
-    .Call(`_nQuack_estepBBU`, parmlist, xm, type, trunc)
 }
 
 #' @title Expectation maximization - Beta-Binomial and Uniform Distributions
@@ -194,10 +186,6 @@ estepBBU <- function(parmlist, xm, type, trunc) {
 #'
 emstepBBU <- function(parmlist, xm, niter, epsilon, trunc, type = "free") {
     .Call(`_nQuack_emstepBBU`, parmlist, xm, niter, epsilon, trunc, type)
-}
-
-estepBU <- function(parmlist, xi, type, trunc) {
-    .Call(`_nQuack_estepBU`, parmlist, xi, type, trunc)
 }
 
 #' @title Expectation maximization - Beta and Uniform Distributions

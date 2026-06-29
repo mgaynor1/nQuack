@@ -67,14 +67,9 @@ As shown in Gaynor et al. (2024), both nQuire and nQuack are not the
 most accurate models. To use this method or nQuire, you should have a
 set of samples with known ploidal level:
 
-<<<<<<< cranable
 **Step 1. Identify the most accurate filtering and modeling approach
 (distribution and type) based on your samples with known ploidal
 level.**
-=======
-**Step 1.** Identify the most accurate filtering and modeling approach
-(distribution and type) based on your samples with known ploidal level.
->>>>>>> main
 
 - Comparing BIC score among all distributions and types is not accurate.
   You must assess accuracy with a set of samples with known ploidal
@@ -91,13 +86,8 @@ level.**
   (distributions + type combinations) as accurate, you likely need to
   reprocess your raw data.
 
-<<<<<<< cranable
 **Step 2. Apply the best filtering approach and best model to all
 unknown samples.**
-=======
-**Step 2.** Apply the best filtering approach and best model to all
-unknown samples.
->>>>>>> main
 
 See [Basic
 Example](https://mlgaynor.com/nQuack/articles/BasicExample.html) for

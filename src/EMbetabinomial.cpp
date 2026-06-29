@@ -25,7 +25,6 @@ using namespace arma;
 // \item Sj.vec: A vector of column sums for each mixture model.
 // \item parm.list: Supplied list containing initial alpha, mu, and sigma values.
 // \item  xm: Matrix of coverage and sequencing depth at a site.
-// [[Rcpp::export]]
 Rcpp::List estepBB(const Rcpp::List parmlist, const arma::mat xm, std::string type,
                     const arma::vec trunc){
 

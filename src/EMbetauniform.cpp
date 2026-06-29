@@ -23,7 +23,6 @@ using namespace arma;
 // \item Sj.vec: A vector of column sums for each mixture model.
 // \item parm.list: Supplied list containing initial alpha, mu, and sigma values.
 // \item  xi: List of allele frequencies.
-// [[Rcpp::export]]
 Rcpp::List estepBU(const Rcpp::List parmlist, const arma::vec xi, std::string type,
                   const arma::vec trunc){
 
