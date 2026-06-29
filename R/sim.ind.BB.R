@@ -36,6 +36,7 @@
 #'
 #' @importFrom truncdist rtrunc
 #' @importFrom stats rbeta rbinom quantile
+#' @export
 
 
 

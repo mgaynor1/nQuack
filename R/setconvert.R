@@ -7,6 +7,7 @@
 #' @param error Sequencing error rate.
 #'
 #' @returns Mean and variance for the associated tau and error.
+#' @export
 setconvert <- function(set, tau, error){
   setout <- list()
   for(i in 1:length(set)){

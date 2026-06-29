@@ -7,6 +7,7 @@
 #' @param error Sequencing error rate.
 #'
 #' @returns Mean and variance for the associated tau and error.
+#' @export
 
 muvarcalcvec <- function(mu, tau, error){
   var.out <- c()

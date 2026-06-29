@@ -41,6 +41,7 @@
 #' @importFrom future plan availableCores multisession
 #' @importFrom parallel makeCluster
 #' @importFrom doParallel registerDoParallel
+#' @export
 
 quackNormal <- function(xm, samplename, cores, parallel= FALSE,
                           trunc = c(0.0,0.0),  lowvar = FALSE,

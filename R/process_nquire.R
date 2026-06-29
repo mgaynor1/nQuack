@@ -10,6 +10,7 @@
 #' @return Numeric matrix with total coverage and coverage for a randomly sampled allele.
 #'
 #' @importFrom data.table fread
+#' @export
 
 process_nquire <- function(file){
   df <- data.table::fread(file, sep = "\t")

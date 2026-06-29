@@ -88,4 +88,4 @@ quackNboots(
 ## Value
 
 BIC scores and log-likelihood (LL) for included mixture models. For
-both, the smallest score is the most likely model.
+both, the smallest score is the most likely model. @export

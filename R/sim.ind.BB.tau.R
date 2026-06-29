@@ -35,6 +35,7 @@
 #'
 #' @importFrom truncdist rtrunc
 #' @importFrom stats rbeta rbinom quantile
+#' @export
 
 
 sim.ind.BB.tau <- function(mvec, avec, tau = 0.01, error = 0.001,

@@ -41,7 +41,7 @@
 #' @importFrom parallel makeCluster
 #' @importFrom doParallel registerDoParallel
 #' @importFrom stats dbeta pbeta
-#'
+#' @export
 
 quackBeta <- function(xm, samplename, cores, parallel= FALSE,
                       trunc = c(0.0,0.0),  lowvar = FALSE,

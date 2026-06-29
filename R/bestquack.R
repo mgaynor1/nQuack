@@ -30,6 +30,7 @@
 #'  For LL, the largest score is the most likely model.
 #'
 #' @importFrom stats dbeta pbeta
+#' @export
 
 
 bestquack <- function(xm, distribution, type, uniform,

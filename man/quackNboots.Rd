@@ -54,6 +54,7 @@ the variance of each mixture will be inferred from these values. If not, the var
 \value{
 BIC scores and log-likelihood (LL) for included mixture models.
 For both, the smallest score is the most likely model.
+@export
 }
 \description{
 This function was made to assist with bootstrap replication for a set of models run a subset of models based on a selected distribution and type.

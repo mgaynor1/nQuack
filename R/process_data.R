@@ -20,6 +20,7 @@
 #' @return Numeric matrix with total coverage and coverage for a randomly sampled allele.
 #' @importFrom data.table fread
 #' @importFrom stats na.omit
+#' @export
 
 process_data <- function(file, min.depth = 2, max.depth.quantile.prob = 0.9,
                               error = 0.01, trunc = c(0,0)){

@@ -19,7 +19,7 @@
 #'
 #' @importFrom graphics hist par
 #' @importFrom stats runif
-#'
+#' @export
 
 Bclean <- function(xm, plot = TRUE, quick = TRUE){
   # Setup data

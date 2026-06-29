@@ -18,7 +18,7 @@
 #'
 #' @importFrom graphics hist par
 #' @importFrom stats runif
-#'
+#' @export
 
 denoise_data <- function(xm, plot = TRUE, filter = "both"){
 
