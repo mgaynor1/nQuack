@@ -8,7 +8,7 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 resource_files:
-  - inst/extdata/07_Qploidy2/output.csv
+  - ../inst/extdata/07_Qploidy2/output.csv
 ---
 
 ```{r message=FALSE, warning=FALSE, include=FALSE}

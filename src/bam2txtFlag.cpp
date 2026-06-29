@@ -262,7 +262,7 @@ void prepare_data(std::string name, std::string inpath, std::string outpath, std
 
       if (samtools_ok != 0) {
         Rcpp::stop(
-          "The 'samtools' executable (>= 1.10) was not found.\n"
+          "The 'samtools' executable was not found.\n"
           "Please install samtools and ensure it is on your PATH."
         );
       }
