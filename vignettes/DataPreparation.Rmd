@@ -226,7 +226,7 @@ for( i in 1:length(filelist)){
 
 ### Warning: samtools must be local!   
 
-If you are working on your personal computer, just make sure samtools is installed and callable as "samtools". If you are working on a cluster, you may need to install samtools locally. Though the location of install may differ, here is how I installed samtools locally on UF's amazing [HiPerGator](https://www.rc.ufl.edu/about/hipergator/) slurm cluster: 
+If you are working on your personal computer, just make sure samtools is installed and callable as "samtools". If you are working on a cluster, you may need to install samtools locally. Though the location of install may differ, here is how I installed samtools locally on UF's amazing [HiPerGator](https://it.ufl.edu/rc/hipergator/) slurm cluster: 
 
 ```{bash eval=FALSE, include=TRUE}
 mkdir bin

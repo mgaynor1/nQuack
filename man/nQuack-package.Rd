@@ -6,14 +6,14 @@
 \alias{nQuack-package}
 \title{nQuack: Predicting Ploidal Level from Sequence Data}
 \description{
-nQuack predicts ploidal level from sequence data using site-based heterozygosity and a mixture of models approach.
+Predicts ploidal level from sequence data using site-based heterozygosity and a mixture models approach.
 }
 \seealso{
 Useful links:
 \itemize{
   \item \url{http://mlgaynor.com/nQuack/}
-  \item \url{https://github.com/mgaynor1/nQuack}
-  \item Report bugs at \url{https://github.com/mgaynor1/nQuack/issue}
+  \item \url{https://github.com/mgaynor1/nQuack/}
+  \item Report bugs at \url{https://github.com/mgaynor1/nQuack/issues}
 }
 
 }
