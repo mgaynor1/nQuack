@@ -431,9 +431,19 @@ double llcalcfinalBBU(Rcpp::List eout){
 //' "fixed-2" (estimated parameter(s): alpha and variance), or "fixed-3" (estimated parameter(s): variance).
 //'  If avec is length of 1, fixed and fixed-3 will not be able to return a log-likelihood.
 //'
+//' @examples
+//'  if(exists("crazy")){
+//'   p = list(avec = c(0.11, 0.22, 0.34, 0.22, 0.11),
+//'           mvec = c(0.20, 0.33, 0.50, 0.67, 0.80),
+//'           svec = c(0.01, 0.01, 0.01, 0.01, 0.01));
+//'   mout <- emstepBBU(p,
+//'                     xm,
+//'                     niter = 100,
+//'                     epsilon = 0.1,
+//'                     trunc = c(0.0,0.0))
+//'}
 //' @returns List of elements including the log likelihood, the negative log likelihood, the number of iterates,
 //'  and the optimized parameter values.
-//'
 // [[Rcpp::export]]
 Rcpp::List emstepBBU(Rcpp::List parmlist, arma::mat xm, int niter, double epsilon, arma::vec trunc,  std::string type = "free"){
    // Set up progress

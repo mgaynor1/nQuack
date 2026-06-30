@@ -10,7 +10,9 @@ using namespace arma;
 //' @param xm Matrix with total coverage and coverage at a randomly sampled allele.
 //' @param n Length of matrix.
 //'
-//' @return Randomly sampled matrix.
+//' @returns Randomly sampled matrix.
+//' @examples
+//' outdf <- resample_xm(as.matrix(xm), n = 10)
 // [[Rcpp::export]]
 arma::mat resample_xm(arma::mat xm, int n){
   arma::uvec index = arma::linspace<arma::uvec>(0, n-1, n);

@@ -2,7 +2,7 @@
 % Please edit documentation in R/Bclean.R
 \name{Bclean}
 \alias{Bclean}
-\title{Remove noise with the beta distribution}
+\title{Remove Noise with the Beta Distribution}
 \usage{
 Bclean(xm, plot = TRUE, quick = TRUE)
 }
@@ -27,4 +27,7 @@ to each mixture model to remove site where the probability of belonging to a U-s
 probability of belonging to any other mixture. Due to the computational time needed
 to run the expectation-maximization algorithm, by default, we simple calculate this probability matrix with the E-step and do not
 run the complete algorithm.
+}
+\examples{
+out <- Bclean(xm[1:100,])
 }

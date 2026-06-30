@@ -1,4 +1,4 @@
-# Prepare data - Step 1
+# Prepare Data - Step 1
 
 This function transforms a BAM file into a text file. Specifically, this
 function uses [samtools
@@ -48,3 +48,18 @@ article for more information. Warning, this writes a temporary folder
 titled 'temp'. If you want to run multiple samples at once, we suggest
 you set the working directory to separate locations to ensure that your
 temp folder/files are not overwritten.
+
+## Examples
+
+``` r
+if(exists("crazy")){
+## Prepare many samples
+  inpath <- "filtered/"
+  outpath <- "Processed/"
+  filelist <- list.files(path = inpath, pattern = "*.bam" )
+  filelist <- gsub(".bam", "", filelist)
+  for( i in 1:length(filelist)){
+    prepare_data(filelist[i], inpath, outpath)
+  }
+}
+```

@@ -472,10 +472,19 @@ double llcalcfinalBB(Rcpp::List eout){
 //' @param trunc List of two values representing the lower and upper bounds, \eqn{c_{L}} and \eqn{c_{U}}.
 //' @param type String indicating "Free" or "Fixed".
 //'
+//' @examples
+//' if(exists("crazy")){
+//'   p = list(avec = c(0.11, 0.22, 0.34, 0.22, 0.11),
+//'            mvec = c(0.20, 0.33, 0.50, 0.67, 0.80),
+//'            svec = c(0.01, 0.01, 0.01, 0.01, 0.01));
+//'   mout <- emstepBB(p,
+//'                    xm,
+//'                    niter = 100,
+//'                    epsilon = 0.1,
+//'                    trunc = c(0.0,0.0))
+//'}
 //' @returns List of elements including the negative log likelihood, the number of iterates,
 //'  and the optimized parameter values.
-//'
-//'
 // [[Rcpp::export]]
 Rcpp::List emstepBB(Rcpp::List parmlist, arma::mat xm, int niter, double epsilon, arma::vec trunc,  std::string type = "free"){
    Rcpp::List mint = parmlist;

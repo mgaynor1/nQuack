@@ -42,3 +42,16 @@ parameters (`type = 'free'`, only used to calculate delta
 log-likelihood), only alpha (`type = 'fixed'`), only alpha and variance
 (`type = 'fixed_2'`), and only variance (`type ='fixed_3`) to be
 estimated for each mixture.
+
+## Examples
+
+``` r
+out <- quackNormal(xm[1:100,], samplename = "sample1", cores = 1)
+#>           <(-)__ <(.)__ <(.)__
+#>            (___/  (___/  (___/  nQuack-in-progress
+#> parallel set to FALSE
+#> Free Model Skipped. Log-likelihood ratio will not be included
+#> Calculating likelihood of each mixture with a normal distibution.
+#> Calculating likelihood of each mixture with a normal+uniform distibution.
+goose <- quackit(out)
+```

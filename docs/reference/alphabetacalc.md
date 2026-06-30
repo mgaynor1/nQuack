@@ -21,3 +21,9 @@ alphabetacalc(mu, var)
 ## Value
 
 Numeric vector of alpha and beta.
+
+## Examples
+
+``` r
+abc <- alphabetacalc(0.5, 0.01)
+```

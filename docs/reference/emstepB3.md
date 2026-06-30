@@ -40,3 +40,21 @@ emstepB3(parmlist, xi, niter, epsilon, trunc)
 
 List of elements including the negative log likelihood, the number of
 iterates, and the optimized parameter values.
+
+## Examples
+
+``` r
+ if(exists("crazy")){
+    xi <- (xm[,2]/xm[,1])
+    tcalc <- alphabetacalcvec(mu = c(0.287, 0.50, 0.713),
+                              var = c(0.01, 0.01, 0.01))
+    set <-  list(avec = c(0.25, 0.25, 0.25, 0.125, 0.125),
+                 t1vec = c(tcalc[,1], 0.5, 0.33),
+                 t2vec = c(tcalc[,2], 0.33, 0.5))
+    checkB <- emstepB3(set,
+                       xi,
+                       1000,
+                       0.1,
+                       c(0,0))
+}
+```

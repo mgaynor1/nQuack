@@ -2,7 +2,7 @@
 
 ## Authors
 
-- **Michelle L. Gaynor**. Author, maintainer.
+- **Michelle L. Gaynor**. Author, maintainer, copyright holder.
   [](https://orcid.org/0000-0002-3912-6079)
 
 ## Citation

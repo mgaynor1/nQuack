@@ -37,3 +37,9 @@ If sampled = FALSE, a data frame with total coverage, coverage of allele
 A, and coverage of allele B will be returned. If sampled = TRUE, a data
 frame with total coverage and coverage of a randomly sampled allele will
 be returned.
+
+## Examples
+
+``` r
+xm <- sim.ind.simple(mvec = c(0.5))
+```

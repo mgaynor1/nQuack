@@ -39,3 +39,11 @@ process_rcpp(x, mindepth, maxprob, trunc, error)
 
 Numeric Matrix with total coverage and coverage for a randomly sampled
 allele.
+
+## Examples
+
+``` r
+if(exists("dfm")){
+  allelefreq <- process_rcpp(dfm, min.depth, max.depth.quantile.prob, trunc, error)
+}
+```

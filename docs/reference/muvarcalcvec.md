@@ -25,3 +25,9 @@ muvarcalcvec(mu, tau, error)
 ## Value
 
 Mean and variance for the associated tau and error.
+
+## Examples
+
+``` r
+var <- muvarcalcvec(mu = 0.5, tau = 0.01, error = 0.01)
+```

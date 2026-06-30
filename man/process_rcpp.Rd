@@ -26,3 +26,8 @@ nucleotide (A, C, G, and T) this function remove all but single nucelotide polym
 When supplied, this function will filter on coverage or  allele frequency. Finally, the function
 samples a single allele frequency per site to avoid data duplication.
 }
+\examples{
+if(exists("dfm")){
+  allelefreq <- process_rcpp(dfm, min.depth, max.depth.quantile.prob, trunc, error)
+}
+}

@@ -82,3 +82,11 @@ parameters are estimated. This function allows all parameters
 (`type = 'free'`), only alpha (`type = 'fixed'`), only alpha and
 variance (`type = 'fixed_2'`), and only variance (`type ='fixed_3`) to
 be estimated for each mixture.
+
+## Examples
+
+``` r
+if(exists("crazy")){
+  out <- quackBetaBinom(xm[1:100,], samplename = "sample1", cores = 1)
+}
+```

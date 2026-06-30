@@ -19,3 +19,8 @@ print messages as it downloads to keep you updated on the progress.
 This function was made to download all files needed to run the Basic Example vignette.
 It downloads a zipped file from Zenodo and unzips it to the "inst/extdata/" directory  within the nQuack package.
 }
+\examples{
+if(exists("crazy")){
+   SetupBasicExample(overwrite = FALSE)
+}
+}

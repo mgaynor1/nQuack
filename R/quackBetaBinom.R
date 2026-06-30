@@ -24,8 +24,11 @@
 #'  the variance will be set as 0.001.
 #' @param free default = FALSE, skip the free model calculation and does not
 #'   calculate delta log-likelihood.
-#'
-#' @return BIC scores and log-likelihood (LL) mixture models including diploid,
+#' @examples
+#' if(exists("crazy")){
+#'   out <- quackBetaBinom(xm[1:100,], samplename = "sample1", cores = 1)
+#' }
+#' @returns BIC scores and log-likelihood (LL) mixture models including diploid,
 #'  triploid, tetraploid, pentaploid, and hexaploid. When free = TRUE,
 #'  the delta log-likelihood (dLL) is calculated based on
 #'  the associated free model (without or with a uniform mixture).

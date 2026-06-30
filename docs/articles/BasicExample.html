@@ -93,19 +93,26 @@
     
     
 <p>Here we provide an example to show you how to apply this method on
-real samples. All associated data files can be found in “inst/extdata/”
-folder in our <a href="https://github.com/mgaynor1/nQuack" class="external-link">github
-repository</a>. Please unzip 01_raw.zip and 02_prepared.zip before
-attempting to run this tutorial!</p>
+real samples.</p>
 <p>Time when reported is based on a MacBook Pro with Apple M2 Max, 12
 core-cpu, and 32 GB memory. Not all functions in this package are able
 to use multiple CPUs, however we note when functions are able to use
 multiple cores. To speed up these analysis, we suggest array SLURM
 submissions.</p>
 <div class="section level2">
+<h2 id="download-all-data-files">Download All Data Files<a class="anchor" aria-label="anchor" href="#download-all-data-files"></a>
+</h2>
+<p>All associated data files need to be downloaded to “inst/extdata/”
+folder.</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Download all data files</span></span>
+<span><span class="fu"><a href="../reference/SetupBasicExample.html">SetupBasicExample</a></span><span class="op">(</span>overwrite <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
 <h2 id="data-description">Data description<a class="anchor" aria-label="anchor" href="#data-description"></a>
 </h2>
-<p>In the “inst/extdata/” folder found on this github, I provide three
+<p>After running <code><a href="../reference/SetupBasicExample.html">SetupBasicExample()</a></code>, all data files should
+be avaliable in “inst/extdata/” folder of this package. I provide three
 samples of <i>Galax urceolata</i> that were collected in 2021 as part of
 my dissertation. These samples have not been published, but will be
 submitted to NCBI-SRA in the near future. This data was generated
@@ -121,7 +128,7 @@ Preparation</a>.</p>
 </h2>
 <p>This tutorial requires <code>nQuack</code> and
 <code>dplyr</code>.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://mlgaynor.com/nQuack/">nQuack</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://haozhu233.github.io/kableExtra/" class="external-link">kableExtra</a></span><span class="op">)</span></span></code></pre></div>
@@ -145,7 +152,7 @@ reduce in the future, however, we keep this file large by conducting no
 true filtering steps during this stage. I suggest running this on one
 CPU over night on a cluster, though it may take multiple days to finish
 depending on the data.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Set in and out paths of files</span></span>
 <span><span class="va">inpath</span> <span class="op">&lt;-</span> <span class="st">"../inst/extdata/01_raw/"</span></span>
 <span><span class="va">outpath</span> <span class="op">&lt;-</span> <span class="st">"../inst/extdata/02_prepared/"</span></span>
@@ -171,7 +178,7 @@ sample set was under this filtering approach using the normal
 distribution implementation with alpha free and a uniform mixture. This
 model and filtering approach led to a 97% accuracy with 186 samples
 ploidal level correctly assigned.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">inpathtext</span> <span class="op">&lt;-</span> <span class="st">"../inst/extdata/02_prepared/"</span></span>
 <span><span class="va">newfilelist</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/list.files.html" class="external-link">list.files</a></span><span class="op">(</span>path <span class="op">=</span> <span class="va">inpathtext</span>, pattern <span class="op">=</span> <span class="st">"*.txt"</span> <span class="op">)</span></span>
 <span></span>
@@ -201,7 +208,7 @@ you are using this method on an unexplored sample set, we suggest to
 examine the data under at least 18 model types for all three
 distributions, a total of 54 models. These functions can be run on
 multiple cores.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">samples</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"MLG013"</span>, <span class="st">"MLG014"</span>, <span class="st">"MLG015"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="kw">for</span><span class="op">(</span><span class="va">i</span> <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fu"><a href="https://rdrr.io/r/base/length.html" class="external-link">length</a></span><span class="op">(</span><span class="va">samples</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span>
@@ -319,7 +326,7 @@ MLG015
 <p>Using our function <code><a href="../reference/quackit.html">quackit()</a></code>, you can easily interpret
 model output. Here we are selecting models based on the BIC score and
 only considering diploid, triploid, and tetraploid mixtures.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">inpathtext</span> <span class="op">&lt;-</span> <span class="st">"../inst/extdata/04_output/"</span></span>
 <span><span class="va">samples</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"MLG013"</span>, <span class="st">"MLG014"</span>, <span class="st">"MLG015"</span><span class="op">)</span></span>
 <span></span>
@@ -336,7 +343,7 @@ only considering diploid, triploid, and tetraploid mixtures.</p>
 with a key that contains sample names and their ploidal level. To
 identify the most accurate model for your data, we tally the accuracy
 with some handy <code>dplyr</code> functions.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span> <span class="co"># Create key</span></span>
 <span><span class="va">key</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>sample <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"MLG013"</span>, <span class="st">"MLG014"</span>, <span class="st">"MLG015"</span><span class="op">)</span>, </span>
 <span>           ploidal.level <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"diploid"</span>, <span class="st">"tetraploid"</span>, <span class="st">"triploid"</span><span class="op">)</span><span class="op">)</span></span>
@@ -637,7 +644,7 @@ and a uniform mixture is the most accurate model. So now what?</p>
 </h3>
 <p>For unknown samples, you can use the best model to predict their
 ploidal level with our <code><a href="../reference/bestquack.html">bestquack()</a></code> function.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">samples</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"MLG013"</span>, <span class="st">"MLG014"</span>, <span class="st">"MLG015"</span><span class="op">)</span></span>
 <span><span class="va">out</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
@@ -656,7 +663,7 @@ ploidal level with our <code><a href="../reference/bestquack.html">bestquack()</
 </h3>
 <p>We also provide a function to run bootstrap replicates with the best
 model. Warning, this will print a lot of ducks.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">samples</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"MLG013"</span>, <span class="st">"MLG014"</span>, <span class="st">"MLG015"</span><span class="op">)</span></span>
 <span><span class="va">bout</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
@@ -678,7 +685,7 @@ best model for the original data set, and the second tallies the
 bootstrap replicates best model. Here for our diploid, we see the best
 model for all replicates is a diploid! This means 100% bootstrap
 support.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">MLG013boot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="st">"../inst/extdata/06_boots/MLG013-boots.csv"</span><span class="op">)</span></span>
 <span><span class="va">MLG013boot</span></span></code></pre></div>
 <pre><code><span><span class="co">##   diploid triploid tetraploid sample</span></span>
@@ -687,7 +694,7 @@ support.</p>
 <p>We can use these replicates to identify when a model shouldn’t be
 trusted. For example, this model is known to missassign ploidal level to
 MLG129, a tetraploid.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span>  <span class="va">temp</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">as.matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="st">"../inst/extdata/06_boots/MLG129.csv"</span><span class="op">)</span><span class="op">)</span></span>
 <span>  <span class="va">check</span>  <span class="op">&lt;-</span> <span class="fu"><a href="../reference/quackNboots.html">quackNboots</a></span><span class="op">(</span><span class="va">temp</span>, </span>
 <span>                        nboots <span class="op">=</span> <span class="fl">1000</span>,</span>
@@ -702,7 +709,7 @@ MLG129, a tetraploid.</p>
 correct model. Suggesting that any deviation from one mixture/ploidal
 level may indicate an untrustworthy model. However, this likely varies
 across models and sample sets.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">MLG129boot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="st">"../inst/extdata/06_boots/MLG129-boots.csv"</span><span class="op">)</span></span>
 <span><span class="va">MLG129boot</span></span></code></pre></div>
 <pre><code><span><span class="co">##   diploid triploid tetraploid sample</span></span>

@@ -219,15 +219,15 @@ and importance of polyploidy in tropical trees. *New Phytologist*. [doi:
 Prepare your data for ploidal estimation with nQuack.
 
 - [`prepare_data()`](http://mlgaynor.com/nQuack/reference/prepare_data.md)
-  : Prepare data - Step 1
+  : Prepare Data - Step 1
 - [`process_data()`](http://mlgaynor.com/nQuack/reference/process_data.md)
-  : Process data - Step 2
+  : Process Data - Step 2
 - [`process_nquire()`](http://mlgaynor.com/nQuack/reference/process_nquire.md)
   : Use nQuire's Data
 - [`denoise_data()`](http://mlgaynor.com/nQuack/reference/denoise_data.md)
   : Denoise Data
 - [`Bclean()`](http://mlgaynor.com/nQuack/reference/Bclean.md) : Remove
-  noise with the beta distribution
+  Noise with the Beta Distribution
 
 ## Simulating data
 
@@ -264,11 +264,11 @@ models, and bootstrap replication.
 - [`quackit()`](http://mlgaynor.com/nQuack/reference/quackit.md) : Model
   Selection - Based on BIC or Log-Likelihood
 - [`bestquack()`](http://mlgaynor.com/nQuack/reference/bestquack.md) :
-  Model Selection - Expectation Maximization - Choose your distribution
-  and type
+  Model Selection - Expectation Maximization - Optimal Distribution and
+  Type
 - [`quackNboots()`](http://mlgaynor.com/nQuack/reference/quackNboots.md)
-  : Bootstrapping - Expectation Maximization - Choose your distribution
-  and type
+  : Bootstrapping - Expectation Maximization - Optimal Distribution and
+  Type
 
 ## Expectation Maximization Base Functions
 
@@ -299,6 +299,8 @@ Functions used within our mixture models
 
 Everything else.
 
+- [`SetupBasicExample()`](http://mlgaynor.com/nQuack/reference/SetupBasicExample.md)
+  : Setup Basic Example
 - [`alphabetacalc()`](http://mlgaynor.com/nQuack/reference/alphabetacalc.md)
   : Calculate Alpha and Beta from Mean and Variance
 - [`alphabetacalctau()`](http://mlgaynor.com/nQuack/reference/alphabetacalctau.md)

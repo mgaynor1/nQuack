@@ -26,3 +26,18 @@ and the optimized parameter values.
 This function is made for the \code{Bclean()} function and preforms expectation maximization with Nelder-Mead
 numerical optimization for beta distribution.
 }
+\examples{
+ if(exists("crazy")){
+    xi <- (xm[,2]/xm[,1])
+    tcalc <- alphabetacalcvec(mu = c(0.287, 0.50, 0.713),
+                              var = c(0.01, 0.01, 0.01))
+    set <-  list(avec = c(0.25, 0.25, 0.25, 0.125, 0.125),
+                 t1vec = c(tcalc[,1], 0.5, 0.33),
+                 t2vec = c(tcalc[,2], 0.33, 0.5))
+    checkB <- emstepB3(set,
+                       xi,
+                       1000,
+                       0.1,
+                       c(0,0))
+}
+}

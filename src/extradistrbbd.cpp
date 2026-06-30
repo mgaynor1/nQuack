@@ -2,12 +2,16 @@
 
 using Rcpp::NumericVector;
 
-// Note, this is not my code! extraDist
-// https://github.com/twolodzko/extraDistr/blob/master/src/beta-binomial-distribution.cpp
-
-// https://github.com/twolodzko/extraDistr/blob/master/src/shared.h
-
-// MACROS
+/*
+ * This file is derived from the extraDistr R package.
+ *
+ * Original source:
+ * extraDistr:
+ * https://github.com/twolodzko/extraDistr/blob/master/src/beta-binomial-distribution.cpp
+ * https://github.com/twolodzko/extraDistr/blob/master/src/shared.h
+ *
+ * License: GPL-2
+*/
 
 #define GETV(x, i)      x[i % x.length()]    // wrapped indexing of vector
 #define GETM(x, i, j)   x(i % x.nrow(), j)   // wrapped indexing of matrix

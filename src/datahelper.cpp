@@ -9,6 +9,10 @@ using namespace Rcpp;
 //'
 //' @param xm A matrix with three columns: Total Coverage, Counts for Allele A, and Counts for Allele B.
 //'
+//' @examples
+//'  if(exists("nxm")){
+//'   out <- nQuire_reformat(nxm)
+//' }
 //' @returns Numeric Matrix with total coverage and coverage for a randomly sampled allele.
 // [[Rcpp::export]]
 NumericMatrix nQuire_reformat(NumericMatrix xm){

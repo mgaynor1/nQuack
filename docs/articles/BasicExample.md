@@ -1,10 +1,7 @@
 # Basic Example
 
 Here we provide an example to show you how to apply this method on real
-samples. All associated data files can be found in “inst/extdata/”
-folder in our [github repository](https://github.com/mgaynor1/nQuack).
-Please unzip 01_raw.zip and 02_prepared.zip before attempting to run
-this tutorial!
+samples.
 
 Time when reported is based on a MacBook Pro with Apple M2 Max, 12
 core-cpu, and 32 GB memory. Not all functions in this package are able
@@ -12,15 +9,27 @@ to use multiple CPUs, however we note when functions are able to use
 multiple cores. To speed up these analysis, we suggest array SLURM
 submissions.
 
+## Download All Data Files
+
+All associated data files need to be downloaded to “inst/extdata/”
+folder.
+
+``` r
+# Download all data files
+SetupBasicExample(overwrite = FALSE)
+```
+
 ## Data description
 
-In the “inst/extdata/” folder found on this github, I provide three
-samples of *Galax urceolata* that were collected in 2021 as part of my
-dissertation. These samples have not been published, but will be
-submitted to NCBI-SRA in the near future. This data was generated
-through target enrichment with species-specific probes. These samples
-include a diploid (MLG013), a triploid (MLG015), and a tetraploid
-(MLG014).
+After running
+[`SetupBasicExample()`](http://mlgaynor.com/nQuack/reference/SetupBasicExample.md),
+all data files should be avaliable in “inst/extdata/” folder of this
+package. I provide three samples of *Galax urceolata* that were
+collected in 2021 as part of my dissertation. These samples have not
+been published, but will be submitted to NCBI-SRA in the near future.
+This data was generated through target enrichment with species-specific
+probes. These samples include a diploid (MLG013), a triploid (MLG015),
+and a tetraploid (MLG014).
 
 The raw files were created by following the preprocessing steps outlined
 in the [Data

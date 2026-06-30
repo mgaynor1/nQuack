@@ -22,3 +22,11 @@ nQuire_reformat(xm)
 
 Numeric Matrix with total coverage and coverage for a randomly sampled
 allele.
+
+## Examples
+
+``` r
+ if(exists("nxm")){
+  out <- nQuire_reformat(nxm)
+}
+```

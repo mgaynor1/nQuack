@@ -18,3 +18,8 @@ uses their data in our program. After processing samples with nQuire's \code{cre
 the resulting text file can be read into R. To prepare the data frame for nQuack, we reduce the three
 column data frame to two columns by randomly sampling allele A or B for every site.
 }
+\examples{
+if(file.exists("mynQuirefile.bin")){
+  cleaned_data <- process_nquire(file = "mynQuirefile.bin")
+}
+}

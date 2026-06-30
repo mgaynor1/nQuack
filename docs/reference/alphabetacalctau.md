@@ -27,3 +27,9 @@ alphabetacalctau(mu, tau, error)
 ## Value
 
 Numeric vector of alpha and beta.
+
+## Examples
+
+``` r
+abc <- alphabetacalctau(0.5, 0.01, 0.01)
+```

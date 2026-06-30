@@ -107,6 +107,20 @@ below this value, convergence is reached.</p></dd>
 and the optimized parameter values.</p>
     </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/exists.html" class="external-link">exists</a></span><span class="op">(</span><span class="st">"crazy"</span><span class="op">)</span><span class="op">)</span><span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">p</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>avec <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.11</span>, <span class="fl">0.22</span>, <span class="fl">0.34</span>, <span class="fl">0.22</span>, <span class="fl">0.11</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>           mvec <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.20</span>, <span class="fl">0.33</span>, <span class="fl">0.50</span>, <span class="fl">0.67</span>, <span class="fl">0.80</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>           svec <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.01</span>, <span class="fl">0.01</span>, <span class="fl">0.01</span>, <span class="fl">0.01</span>, <span class="fl">0.01</span><span class="op">)</span><span class="op">)</span>;</span></span>
+<span class="r-in"><span>  <span class="va">mout</span> <span class="op">&lt;-</span> <span class="fu">emstepBB</span><span class="op">(</span><span class="va">p</span>,</span></span>
+<span class="r-in"><span>                   <span class="va">xm</span>,</span></span>
+<span class="r-in"><span>                   niter <span class="op">=</span> <span class="fl">100</span>,</span></span>
+<span class="r-in"><span>                   epsilon <span class="op">=</span> <span class="fl">0.1</span>,</span></span>
+<span class="r-in"><span>                   trunc <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.0</span>,<span class="fl">0.0</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
 

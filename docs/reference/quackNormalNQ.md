@@ -81,3 +81,14 @@ parameters are estimated. This function allows all parameters
 (`type = 'free'`), only alpha (`type = 'fixed'`), only alpha and
 variance (`type = 'fixed_2'`), and only variance (`type ='fixed_3`) to
 be estimated for each mixture.
+
+## Examples
+
+``` r
+ out <- quackNormalNQ(xm[1:100,], samplename = "sample1", cores = 1)
+#>           <(-)__ <(.)__ <(.)__
+#>            (___/  (___/  (___/  nQuack-in-progress
+#> parallel set to FALSE
+#> Free Model Skipped. Log-likelihood ratio will not be included.
+#> Calculating likelihood of each mixture with a normal distibution.
+```

@@ -32,3 +32,7 @@ and only variance (\verb{type ='fixed_3}) to be estimated for each mixture.
 \description{
 This function is for model interpretation.
 }
+\examples{
+out <- quackNormal(xm[1:100,], samplename = "sample1", cores = 1)
+goose <- quackit(out)
+}

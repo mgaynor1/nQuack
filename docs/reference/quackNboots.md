@@ -1,4 +1,4 @@
-# Bootstrapping - Expectation Maximization - Choose your distribution and type
+# Bootstrapping - Expectation Maximization - Optimal Distribution and Type
 
 This function was made to assist with bootstrap replication for a set of
 models run a subset of models based on a selected distribution and type.
@@ -88,4 +88,24 @@ quackNboots(
 ## Value
 
 BIC scores and log-likelihood (LL) for included mixture models. For
-both, the smallest score is the most likely model. @export
+both, the smallest score is the most likely model.
+
+@export
+
+## Examples
+
+``` r
+ out <- quackNboots(xm[1:100,],
+                    distribution = "normal",
+                    type = "fixed",
+                    uniform = 1,
+                    samplename = "sample1",
+                    nboots = 2)
+#>           <(.)__ <(.)__ <(-)__
+#>            (___/  (___/  (___/  nQuack-in-progress
+#> The best pick for the original data is diploid
+#>           <(.)__ <(.)__ <(-)__
+#>            (___/  (___/  (___/  nQuack-in-progress
+#>           <(.)__ <(.)__ <(-)__
+#>            (___/  (___/  (___/  nQuack-in-progress
+```

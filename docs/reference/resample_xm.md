@@ -21,3 +21,9 @@ resample_xm(xm, n)
 ## Value
 
 Randomly sampled matrix.
+
+## Examples
+
+``` r
+outdf <- resample_xm(as.matrix(xm), n = 10)
+```

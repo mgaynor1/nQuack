@@ -220,9 +220,20 @@ Rcpp::List mstepNUA(Rcpp::List eout){
 //' @param type String indicating model type. Options: "free" (estimated parameter(s): alpha, mean, and variance), "fixed" (estimated parameter(s): alpha),
 //' "fixed_2" (estimated parameter(s): alpha and variance), or "fixed_3" (estimated parameter(s): variance).
 //'
+//' @examples
+//' if(exists("crazy")){
+//'   xi <- (xm[,2]/xm[,1])
+//'   p = list(avec = c(0.11, 0.22, 0.34, 0.22, 0.11),
+//'            mvec = c(0.20, 0.33, 0.50, 0.67, 0.80),
+//'            svec = c(0.01, 0.01, 0.01, 0.01, 0.01));
+//'   mout <- emstepNUA(p,
+//'                     xi,
+//'                     niter = 100,
+//'                     epsilon = 0.1,
+//'                     trunc = c(0.0,0.0))
+//'}
 //' @returns List of elements including the log-likelihood, the number of iterates,
 //' and the optimized parameter values.
-//'
 // [[Rcpp::export]]
 Rcpp::List emstepNUA(Rcpp::List parmlist, const arma::vec xi, int niter, double epsilon, arma::vec trunc,  std::string type = "free"){
    // Set up progress

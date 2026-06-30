@@ -17,3 +17,8 @@ This function reduce a three column data frame to
 two columns by randomly sampling allele A or B for every site.
 This is used in our function \code{process_nquire()}
 }
+\examples{
+ if(exists("nxm")){
+  out <- nQuire_reformat(nxm)
+}
+}

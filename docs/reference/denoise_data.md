@@ -41,3 +41,9 @@ denoise_data(xm, plot = TRUE, filter = "both")
 
 Numeric matrix with total coverage and coverage for a randomly sampled
 allele.
+
+## Examples
+
+``` r
+out <- denoise_data(xm[1:100,])
+```

@@ -22,3 +22,11 @@ process_nquire(file)
 
 Numeric matrix with total coverage and coverage for a randomly sampled
 allele.
+
+## Examples
+
+``` r
+if(file.exists("mynQuirefile.bin")){
+  cleaned_data <- process_nquire(file = "mynQuirefile.bin")
+}
+```

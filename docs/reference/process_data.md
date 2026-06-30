@@ -1,4 +1,4 @@
-# Process data - Step 2
+# Process Data - Step 2
 
 Based on the file generated with
 [`prepare_data()`](http://mlgaynor.com/nQuack/reference/prepare_data.md),
@@ -50,10 +50,18 @@ process_data(
 
 - trunc:
 
-  List of two values representing the lower and upper bounds, \\c\_{L}\\
-  and \\c\_{U}\\ which are used to filter allele frequencies.
+  List of two values representing the lower and upper bounds, \\c_L\\
+  and \\c_U\\ which are used to filter allele frequencies.
 
 ## Value
 
 Numeric matrix with total coverage and coverage for a randomly sampled
 allele.
+
+## Examples
+
+``` r
+if(file.exists("mybamfile.csv")){
+  cleaned_data <- process_data(file = "mybamfile.csv")
+}
+```

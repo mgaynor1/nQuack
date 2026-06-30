@@ -21,3 +21,9 @@ alphabetacalcvec(mu, var)
 ## Value
 
 Numeric matrix of alpha and beta.
+
+## Examples
+
+``` r
+abc <- alphabetacalcvec(c(0.5, 0.5), c(0.01, 0.01))
+```

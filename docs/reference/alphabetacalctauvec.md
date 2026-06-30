@@ -27,3 +27,9 @@ alphabetacalctauvec(mu, tau, error)
 ## Value
 
 Numeric matrix of alpha and beta.
+
+## Examples
+
+``` r
+abc <- alphabetacalctauvec(c(0.5,0.5), 0.01, 0.01)
+```

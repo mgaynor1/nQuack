@@ -8,6 +8,19 @@
 #' @param parmlist A list containing initial alpha, mean, and variance.
 #' @param xi List of observations, in this case allele frequencies.
 #' @param trunc List of two values representing the lower and upper bounds, \eqn{c_{L}} and \eqn{c_{U}}.
+#' @examples
+#'  if(exists("crazy")){
+#'  xi <- (xm[,2]/xm[,1])
+#'  tcalc <- alphabetacalcvec(mu = c(0.287, 0.50, 0.713),
+#'                            var = c(0.01, 0.01, 0.01))
+#'  set <-  list(avec = c(0.25, 0.25, 0.25, 0.125, 0.125),
+#'               t1vec = c(tcalc[,1], 0.5, 0.33),
+#'               t2vec = c(tcalc[,2], 0.33, 0.5))
+#'  checkB <- estepB3(set,
+#'                    xi,
+#'                    c(0,0))
+#'  }
+#' @returns List of zprob, parm.list, xi, denom, and trunc.
 estepB3 <- function(parmlist, xi, trunc) {
     .Call(`_nQuack_estepB3`, parmlist, xi, trunc)
 }
@@ -24,9 +37,22 @@ estepB3 <- function(parmlist, xi, trunc) {
 #'    below this value, convergence is reached.
 #' @param trunc List of two values representing the lower and upper bounds,  \eqn{c_{L}} and \eqn{c_{U}}.
 #'
-#' @returns List of elements including the negative log likelihood, the number of iterates,
+#' @examples
+#'  if(exists("crazy")){
+#'     xi <- (xm[,2]/xm[,1])
+#'     tcalc <- alphabetacalcvec(mu = c(0.287, 0.50, 0.713),
+#'                               var = c(0.01, 0.01, 0.01))
+#'     set <-  list(avec = c(0.25, 0.25, 0.25, 0.125, 0.125),
+#'                  t1vec = c(tcalc[,1], 0.5, 0.33),
+#'                  t2vec = c(tcalc[,2], 0.33, 0.5))
+#'     checkB <- emstepB3(set,
+#'                        xi,
+#'                        1000,
+#'                        0.1,
+#'                        c(0,0))
+#' }
+#'@returns List of elements including the negative log likelihood, the number of iterates,
 #'  and the optimized parameter values.
-#'
 #'
 emstepB3 <- function(parmlist, xi, niter, epsilon, trunc) {
     .Call(`_nQuack_emstepB3`, parmlist, xi, niter, epsilon, trunc)
@@ -46,7 +72,18 @@ emstepB3 <- function(parmlist, xi, niter, epsilon, trunc) {
 #' @param trunc List of two values representing the lower and upper bounds, \eqn{c_{L}} and \eqn{c_{U}}.
 #' @param type String indicating model type. Options: "free" (estimated parameter(s): alpha, mean, and variance), "fixed" (estimated parameter(s): alpha),
 #' "fixed_2" (estimated parameter(s): alpha and variance), or "fixed_3" (estimated parameter(s): variance).
-#'
+#' @examples
+#'  if(exists("crazy")){
+#'   xi <- (xm[,2]/xm[,1])
+#'   p = list(avec = c(0.11, 0.22, 0.34, 0.22, 0.11),
+#'            mvec = c(0.20, 0.33, 0.50, 0.67, 0.80),
+#'            svec = c(0.01, 0.01, 0.01, 0.01, 0.01));
+#'   mout <- emstepN(p,
+#'                   xi,
+#'                   niter = 100,
+#'                   epsilon = 0.1,
+#'                   trunc = c(0.0,0.0))
+#' }
 #' @returns List of elements including the log-likelihood, the number of iterates,
 #' and the optimized parameter values.
 #'
@@ -69,9 +106,20 @@ emstepN <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
 #' @param type String indicating model type. Options: "free" (estimated parameter(s): alpha, mean, and variance), "fixed" (estimated parameter(s): alpha),
 #' "fixed_2" (estimated parameter(s): alpha and variance), or "fixed_3" (estimated parameter(s): variance).
 #'
+#' @examples
+#' if(exists("crazy")){
+#'   xi <- (xm[,2]/xm[,1])
+#'   p = list(avec = c(0.11, 0.22, 0.34, 0.22, 0.11),
+#'            mvec = c(0.20, 0.33, 0.50, 0.67, 0.80),
+#'            svec = c(0.01, 0.01, 0.01, 0.01, 0.01));
+#'   mout <- emstepNA(p,
+#'                    xi,
+#'                    niter = 100,
+#'                    epsilon = 0.1,
+#'                    trunc = c(0.0,0.0))
+#' }
 #' @returns List of elements including the log-likelihood, the number of iterates,
 #' and the optimized parameter values.
-#'
 emstepNA <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
     .Call(`_nQuack_emstepNA`, parmlist, xi, niter, epsilon, trunc, type)
 }
@@ -90,10 +138,20 @@ emstepNA <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
 #' @param trunc List of two values representing the lower and upper bounds, \eqn{c_{L}} and \eqn{c_{U}}.
 #' @param type String indicating model type. Options: "free" (estimated parameter(s): alpha, mean, and variance), "fixed" (estimated parameter(s): alpha),
 #' "fixed_2" (estimated parameter(s): alpha and variance), or "fixed_3" (estimated parameter(s): variance).
-#'
+#' @examples
+#'  if(exists("crazy")){
+#'   xi <- (xm[,2]/xm[,1])
+#'   p = list(avec = c(0.11, 0.22, 0.34, 0.22, 0.11),
+#'            mvec = c(0.20, 0.33, 0.50, 0.67, 0.80),
+#'            svec = c(0.01, 0.01, 0.01, 0.01, 0.01));
+#'   mout <- emstepNU(p,
+#'                    xi,
+#'                    niter = 100,
+#'                    epsilon = 0.1,
+#'                    trunc = c(0.0,0.0))
+#' }
 #' @returns List of elements including the log-likelihood, the number of iterates,
 #' and the optimized parameter values.
-#'
 emstepNU <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
     .Call(`_nQuack_emstepNU`, parmlist, xi, niter, epsilon, trunc, type)
 }
@@ -113,9 +171,20 @@ emstepNU <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
 #' @param type String indicating model type. Options: "free" (estimated parameter(s): alpha, mean, and variance), "fixed" (estimated parameter(s): alpha),
 #' "fixed_2" (estimated parameter(s): alpha and variance), or "fixed_3" (estimated parameter(s): variance).
 #'
+#' @examples
+#' if(exists("crazy")){
+#'   xi <- (xm[,2]/xm[,1])
+#'   p = list(avec = c(0.11, 0.22, 0.34, 0.22, 0.11),
+#'            mvec = c(0.20, 0.33, 0.50, 0.67, 0.80),
+#'            svec = c(0.01, 0.01, 0.01, 0.01, 0.01));
+#'   mout <- emstepNUA(p,
+#'                     xi,
+#'                     niter = 100,
+#'                     epsilon = 0.1,
+#'                     trunc = c(0.0,0.0))
+#'}
 #' @returns List of elements including the log-likelihood, the number of iterates,
 #' and the optimized parameter values.
-#'
 emstepNUA <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
     .Call(`_nQuack_emstepNUA`, parmlist, xi, niter, epsilon, trunc, type)
 }
@@ -136,6 +205,19 @@ emstepNUA <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
 #' "fixed-2" (estimated parameter(s): alpha and variance), or "fixed-3" (estimated parameter(s): variance).
 #'  If avec is length of 1, fixed and fixed-3 will not be able to return a log-likelihood.
 #'
+#'
+#' @examples
+#'   if(exists("crazy")){
+#'     xi <- (xm[,2]/xm[,1])
+#'     p = list(avec = c(0.11, 0.22, 0.34, 0.22, 0.11),
+#'              mvec = c(0.20, 0.33, 0.50, 0.67, 0.80),
+#'              svec = c(0.01, 0.01, 0.01, 0.01, 0.01));
+#'     mout <- emstepB(p,
+#'                     xi,
+#'                     niter = 100,
+#'                     epsilon = 0.1,
+#'                     trunc = c(0.0,0.0))
+#' }
 #' @returns List of elements including the log likelihood, the negative log likelihood, the number of iterates,
 #'  and the optimized parameter values.
 #'
@@ -157,10 +239,19 @@ emstepB <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
 #' @param trunc List of two values representing the lower and upper bounds, \eqn{c_{L}} and \eqn{c_{U}}.
 #' @param type String indicating "Free" or "Fixed".
 #'
+#' @examples
+#' if(exists("crazy")){
+#'   p = list(avec = c(0.11, 0.22, 0.34, 0.22, 0.11),
+#'            mvec = c(0.20, 0.33, 0.50, 0.67, 0.80),
+#'            svec = c(0.01, 0.01, 0.01, 0.01, 0.01));
+#'   mout <- emstepBB(p,
+#'                    xm,
+#'                    niter = 100,
+#'                    epsilon = 0.1,
+#'                    trunc = c(0.0,0.0))
+#'}
 #' @returns List of elements including the negative log likelihood, the number of iterates,
 #'  and the optimized parameter values.
-#'
-#'
 emstepBB <- function(parmlist, xm, niter, epsilon, trunc, type = "free") {
     .Call(`_nQuack_emstepBB`, parmlist, xm, niter, epsilon, trunc, type)
 }
@@ -181,9 +272,19 @@ emstepBB <- function(parmlist, xm, niter, epsilon, trunc, type = "free") {
 #' "fixed-2" (estimated parameter(s): alpha and variance), or "fixed-3" (estimated parameter(s): variance).
 #'  If avec is length of 1, fixed and fixed-3 will not be able to return a log-likelihood.
 #'
+#' @examples
+#'  if(exists("crazy")){
+#'   p = list(avec = c(0.11, 0.22, 0.34, 0.22, 0.11),
+#'           mvec = c(0.20, 0.33, 0.50, 0.67, 0.80),
+#'           svec = c(0.01, 0.01, 0.01, 0.01, 0.01));
+#'   mout <- emstepBBU(p,
+#'                     xm,
+#'                     niter = 100,
+#'                     epsilon = 0.1,
+#'                     trunc = c(0.0,0.0))
+#'}
 #' @returns List of elements including the log likelihood, the negative log likelihood, the number of iterates,
 #'  and the optimized parameter values.
-#'
 emstepBBU <- function(parmlist, xm, niter, epsilon, trunc, type = "free") {
     .Call(`_nQuack_emstepBBU`, parmlist, xm, niter, epsilon, trunc, type)
 }
@@ -204,9 +305,20 @@ emstepBBU <- function(parmlist, xm, niter, epsilon, trunc, type = "free") {
 #' "fixed_2" (estimated parameter(s): alpha and variance), or "fixed_3" (estimated parameter(s): variance).
 #'  If avec is length of 1, fixed and fixed_3 will not be able to return a log-likelihood.
 #'
-#' @returns List of elements including the log likelihood, the negative log likelihood, the number of iterates,
+#' @examples
+#' if(exists("crazy")){
+#'   xi <- (xm[,2]/xm[,1])
+#'   p = list(avec = c(0.11, 0.22, 0.34, 0.22, 0.11),
+#'            mvec = c(0.20, 0.33, 0.50, 0.67, 0.80),
+#'            svec = c(0.01, 0.01, 0.01, 0.01, 0.01));
+#'   mout <- emstepBU(p,
+#'                    xi,
+#'                    niter = 100,
+#'                    epsilon = 0.1,
+#'                    trunc = c(0.0,0.0))
+#' }
+#'@returns List of elements including the log likelihood, the negative log likelihood, the number of iterates,
 #'  and the optimized parameter values.
-#'
 emstepBU <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
     .Call(`_nQuack_emstepBU`, parmlist, xi, niter, epsilon, trunc, type)
 }
@@ -216,7 +328,9 @@ emstepBU <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
 #' @param mu Mean.
 #' @param var Variance.
 #'
-#' @return Numeric vector of alpha and beta.
+#' @examples
+#' abc <- alphabetacalc(0.5, 0.01)
+#' @returns Numeric vector of alpha and beta.
 alphabetacalc <- function(mu, var) {
     .Call(`_nQuack_alphabetacalc`, mu, var)
 }
@@ -226,7 +340,9 @@ alphabetacalc <- function(mu, var) {
 #' @param mu Vector of mean.
 #' @param var Vector of variance.
 #'
-#' @return Numeric matrix of alpha and beta.
+#' @examples
+#' abc <- alphabetacalcvec(c(0.5, 0.5), c(0.01, 0.01))
+#' @returns Numeric matrix of alpha and beta.
 alphabetacalcvec <- function(mu, var) {
     .Call(`_nQuack_alphabetacalcvec`, mu, var)
 }
@@ -237,7 +353,9 @@ alphabetacalcvec <- function(mu, var) {
 #' @param tau Overdispersion parameter. Ranges from 0 to 1, where 0 indicates less overdispersion and 1 indicates high overdispersion.  Here tau must be greater than 0.
 #' @param error Sequencing error rate.
 #'
-#' @return Numeric vector of alpha and beta.
+#' @examples
+#' abc <- alphabetacalctau(0.5, 0.01, 0.01)
+#' @returns Numeric vector of alpha and beta.
 alphabetacalctau <- function(mu, tau, error) {
     .Call(`_nQuack_alphabetacalctau`, mu, tau, error)
 }
@@ -248,12 +366,14 @@ alphabetacalctau <- function(mu, tau, error) {
 #' @param tau Overdispersion parameter. Ranges from 0 to 1, where 0 indicates less overdispersion and 1 indicates high overdispersion.  Here tau must be greater than 0.
 #' @param error Sequencing error rate. Ranges from 0 to 1.
 #'
+#' @examples
+#' abc <- alphabetacalctauvec(c(0.5,0.5), 0.01, 0.01)
 #' @return Numeric matrix of alpha and beta.
 alphabetacalctauvec <- function(mu, tau, error) {
     .Call(`_nQuack_alphabetacalctauvec`, mu, tau, error)
 }
 
-#' @title Prepare data - Step 1
+#' @title Prepare Data - Step 1
 #'
 #' @description This function transforms a BAM file into a text file.
 #'   Specifically, this function uses [samtools mpileup](http://www.htslib.org/doc/samtools-mpileup.html)
@@ -272,8 +392,18 @@ alphabetacalctauvec <- function(mu, tau, error) {
 #' @param outpath Location for output file.
 #' @param tempfolder Location for temp folder.
 #'
+#' @examples
+#' if(exists("crazy")){
+#' ## Prepare many samples
+#'   inpath <- "filtered/"
+#'   outpath <- "Processed/"
+#'   filelist <- list.files(path = inpath, pattern = "*.bam" )
+#'   filelist <- gsub(".bam", "", filelist)
+#'   for( i in 1:length(filelist)){
+#'     prepare_data(filelist[i], inpath, outpath)
+#'   }
+#' }
 #' @returns Writes text file with the following columns: chromosome, position, depth, A, C, G, and T.
-#'
 prepare_data <- function(name, inpath, outpath, tempfolder = "temp") {
     invisible(.Call(`_nQuack_prepare_data`, name, inpath, outpath, tempfolder))
 }
@@ -283,7 +413,9 @@ prepare_data <- function(name, inpath, outpath, tempfolder = "temp") {
 #' @param xm Matrix with total coverage and coverage at a randomly sampled allele.
 #' @param n Length of matrix.
 #'
-#' @return Randomly sampled matrix.
+#' @returns Randomly sampled matrix.
+#' @examples
+#' outdf <- resample_xm(as.matrix(xm), n = 10)
 resample_xm <- function(xm, n) {
     .Call(`_nQuack_resample_xm`, xm, n)
 }
@@ -296,6 +428,10 @@ resample_xm <- function(xm, n) {
 #'
 #' @param xm A matrix with three columns: Total Coverage, Counts for Allele A, and Counts for Allele B.
 #'
+#' @examples
+#'  if(exists("nxm")){
+#'   out <- nQuire_reformat(nxm)
+#' }
 #' @returns Numeric Matrix with total coverage and coverage for a randomly sampled allele.
 nQuire_reformat <- function(xm) {
     .Call(`_nQuack_nQuire_reformat`, xm)
@@ -314,8 +450,11 @@ nQuire_reformat <- function(xm) {
 #' @param trunc List of two values representing the lower and upper bounds,\eqn{c_{L}} and \eqn{c_{U}}.
 #' @param error Sequencing error rate.
 #'
-#' @return Numeric Matrix with total coverage and coverage for a randomly sampled allele.
-#'
+#' @examples
+#' if(exists("dfm")){
+#'   allelefreq <- process_rcpp(dfm, min.depth, max.depth.quantile.prob, trunc, error)
+#' }
+#' @returns Numeric Matrix with total coverage and coverage for a randomly sampled allele.
 process_rcpp <- function(x, mindepth, maxprob, trunc, error) {
     .Call(`_nQuack_process_rcpp`, x, mindepth, maxprob, trunc, error)
 }

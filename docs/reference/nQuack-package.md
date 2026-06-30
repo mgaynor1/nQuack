@@ -15,4 +15,4 @@ Useful links:
 ## Author
 
 **Maintainer**: Michelle L. Gaynor <shellyleegaynor@gmail.com>
-([ORCID](https://orcid.org/0000-0002-3912-6079))
+([ORCID](https://orcid.org/0000-0002-3912-6079)) \[copyright holder\]

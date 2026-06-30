@@ -1,4 +1,4 @@
-# Model Selection - Expectation Maximization - Choose your distribution and type
+# Model Selection - Expectation Maximization - Optimal Distribution and Type
 
 This function was made to run a subset of models based on a selected
 distribution and type. There are many limitations to this function to
@@ -85,3 +85,15 @@ bestquack(
 BIC scores and log-likelihood (LL) for the included mixture models. For
 BIC, the smallest score is the most likely model. For LL, the largest
 score is the most likely model.
+
+## Examples
+
+``` r
+ out <- bestquack(xm[1:100,],
+                  distribution = "normal",
+                  type = "fixed",
+                  uniform = 1,
+                  samplename = "sample1")
+#>           <(.)__ <(.)__ <(-)__
+#>            (___/  (___/  (___/  nQuack-in-progress
+```

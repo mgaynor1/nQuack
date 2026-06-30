@@ -27,3 +27,6 @@ We remove allele frequencies where probability of belonging to uniform mixture i
 probability of belonging to any other mixture. We also implement nQuire's denoise method here, which
 utilizes the inferred alpha parameter and a histogram of base frequencies to filter the data.
 }
+\examples{
+out <- denoise_data(xm[1:100,])
+}

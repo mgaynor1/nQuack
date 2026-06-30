@@ -2,7 +2,7 @@
 % Please edit documentation in R/quackNboots.R
 \name{quackNboots}
 \alias{quackNboots}
-\title{Bootstrapping - Expectation Maximization - Choose your distribution and type}
+\title{Bootstrapping - Expectation Maximization - Optimal Distribution and Type}
 \usage{
 quackNboots(
   xm,
@@ -52,12 +52,20 @@ If not, the variance by default is equal to 0.01 or 0.001.}
 the variance of each mixture will be inferred from these values. If not, the variance by default is equal to 0.01 or 0.001.}
 }
 \value{
-BIC scores and log-likelihood (LL) for included mixture models.
-For both, the smallest score is the most likely model.
+BIC scores and log-likelihood (LL) for included mixture models. For both, the smallest score is the most likely model.
+
 @export
 }
 \description{
 This function was made to assist with bootstrap replication for a set of models run a subset of models based on a selected distribution and type.
 There are many limitations to this function to make this tractable, as there are 128 models that could be run with our package.
 Here we do not include models or comparisons we found unhelpful, this includes the nQuire implementation and log-likelihood ratio tests.
+}
+\examples{
+ out <- quackNboots(xm[1:100,],
+                    distribution = "normal",
+                    type = "fixed",
+                    uniform = 1,
+                    samplename = "sample1",
+                    nboots = 2)
 }

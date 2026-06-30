@@ -1,4 +1,4 @@
-#' Process data - Step 2
+#' Process Data - Step 2
 #'
 #' @description Based on the file generated with `prepare_data()`, which contains the total depth and sequencing coverage for each
 #'  nucleotide (A, C, G, and T), this function remove all but single nucelotide polymorphisms.
@@ -12,12 +12,16 @@
 #' @param file Output txt file created with `prepare_data()`.
 #' @param min.depth Minimum sequencing depth, default as 2.
 #' @param max.depth.quantile.prob Maximum sequencing depth quantile cut off, default = 0.9.
-#' @param trunc List of two values representing the lower and upper bounds, \eqn{c_{L}} and \eqn{c_{U}} which are used to filter allele frequencies.
+#' @param trunc List of two values representing the lower and upper bounds, \eqn{c_L} and \eqn{c_U} which are used to filter allele frequencies.
 #' @param error Sequencing error rate. If an `error` is provided,
 #'  sites will be retained where allele coverage is greater than the sequencing error rate times
 #'  the total coverage, but less than one minus the sequencing error rate times the total coverage.
 #'
-#' @return Numeric matrix with total coverage and coverage for a randomly sampled allele.
+#' @examples
+#' if(file.exists("mybamfile.csv")){
+#'   cleaned_data <- process_data(file = "mybamfile.csv")
+#' }
+#' @returns Numeric matrix with total coverage and coverage for a randomly sampled allele.
 #' @importFrom data.table fread
 #' @importFrom stats na.omit
 #' @export

@@ -1,4 +1,4 @@
-# Remove noise with the beta distribution
+# Remove Noise with the Beta Distribution
 
 Here we filter allele frequencies with a beta mixture model that
 contains 5 mixtures: three mixtures representing cytotypes included in
@@ -41,3 +41,9 @@ Bclean(xm, plot = TRUE, quick = TRUE)
 
 Numeric matrix with total coverage and coverage for a randomly sampled
 allele.
+
+## Examples
+
+``` r
+out <- Bclean(xm[1:100,])
+```

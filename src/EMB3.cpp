@@ -15,6 +15,19 @@ using namespace arma;
 //' @param parmlist A list containing initial alpha, mean, and variance.
 //' @param xi List of observations, in this case allele frequencies.
 //' @param trunc List of two values representing the lower and upper bounds, \eqn{c_{L}} and \eqn{c_{U}}.
+//' @examples
+//'  if(exists("crazy")){
+//'  xi <- (xm[,2]/xm[,1])
+//'  tcalc <- alphabetacalcvec(mu = c(0.287, 0.50, 0.713),
+//'                            var = c(0.01, 0.01, 0.01))
+//'  set <-  list(avec = c(0.25, 0.25, 0.25, 0.125, 0.125),
+//'               t1vec = c(tcalc[,1], 0.5, 0.33),
+//'               t2vec = c(tcalc[,2], 0.33, 0.5))
+//'  checkB <- estepB3(set,
+//'                    xi,
+//'                    c(0,0))
+//'  }
+//' @returns List of zprob, parm.list, xi, denom, and trunc.
 //[[Rcpp::export]]
 Rcpp::List estepB3(const Rcpp::List parmlist, const arma::vec xi,
                    const arma::vec trunc){
@@ -331,9 +344,22 @@ double llcalcfinalB3(Rcpp::List eout){
 //'    below this value, convergence is reached.
 //' @param trunc List of two values representing the lower and upper bounds,  \eqn{c_{L}} and \eqn{c_{U}}.
 //'
-//' @returns List of elements including the negative log likelihood, the number of iterates,
+//' @examples
+//'  if(exists("crazy")){
+//'     xi <- (xm[,2]/xm[,1])
+//'     tcalc <- alphabetacalcvec(mu = c(0.287, 0.50, 0.713),
+//'                               var = c(0.01, 0.01, 0.01))
+//'     set <-  list(avec = c(0.25, 0.25, 0.25, 0.125, 0.125),
+//'                  t1vec = c(tcalc[,1], 0.5, 0.33),
+//'                  t2vec = c(tcalc[,2], 0.33, 0.5))
+//'     checkB <- emstepB3(set,
+//'                        xi,
+//'                        1000,
+//'                        0.1,
+//'                        c(0,0))
+//' }
+//'@returns List of elements including the negative log likelihood, the number of iterates,
 //'  and the optimized parameter values.
-//'
 //'
 // [[Rcpp::export]]
  Rcpp::List emstepB3(Rcpp::List parmlist, arma::vec xi, int niter, double epsilon, arma::vec trunc){

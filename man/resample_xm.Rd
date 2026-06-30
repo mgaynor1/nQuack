@@ -17,3 +17,6 @@ Randomly sampled matrix.
 \description{
 Calculate Alpha and Beta from Mean and Variance
 }
+\examples{
+outdf <- resample_xm(as.matrix(xm), n = 10)
+}

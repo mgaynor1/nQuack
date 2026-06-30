@@ -4,7 +4,11 @@
 #'
 #' @param overwrite Logical. If TRUE, the function will overwrite any existing files
 #' in the data directory. Default is FALSE.
-#' @return This function downloads files to the "inst/extdata/" directory within the nQuack package
+#' @examples
+#' if(exists("crazy")){
+#'    SetupBasicExample(overwrite = FALSE)
+#' }
+#' @returns This function downloads files to the "inst/extdata/" directory within the nQuack package
 #' and does not return any value. The function will
 #' print messages as it downloads to keep you updated on the progress.
 #'
@@ -16,7 +20,7 @@
 SetupBasicExample <- function(overwrite = FALSE){
 
   ## Setup directories
-  dbdir <- tools::R_user_dir("nQuack", which = "data")
+  dbdir <- tools::R_user_dir("nQuack")
   aimdir <- paste0(dbdir, "/inst/extdata")
   writedir <-   paste0(dbdir, "/inst/check")
 

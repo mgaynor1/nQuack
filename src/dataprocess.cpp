@@ -229,8 +229,11 @@ NumericMatrix samplefreq(NumericMatrix x){
 //' @param trunc List of two values representing the lower and upper bounds,\eqn{c_{L}} and \eqn{c_{U}}.
 //' @param error Sequencing error rate.
 //'
-//' @return Numeric Matrix with total coverage and coverage for a randomly sampled allele.
-//'
+//' @examples
+//' if(exists("dfm")){
+//'   allelefreq <- process_rcpp(dfm, min.depth, max.depth.quantile.prob, trunc, error)
+//' }
+//' @returns Numeric Matrix with total coverage and coverage for a randomly sampled allele.
 // [[Rcpp::export]]
 NumericMatrix process_rcpp(NumericMatrix x, int mindepth, double maxprob, NumericVector trunc, double error) {
   NumericVector logicsum = firstfilter(x, mindepth, maxprob);

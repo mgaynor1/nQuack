@@ -6,6 +6,11 @@
 #' @param tau Sequence overdispersion parameter for read counts.
 #' @param error Sequencing error rate.
 #'
+#' @examples
+#'  set <- c()
+#'  set[[1]] =  list(avec = c(1.00), mvec = c(0.50), svec = c(0.01));
+#'  set[[2]] =  list(avec = c(0.50, 0.50), mvec = c(0.67, 0.33), svec = c(0.01, 0.01));
+#'  exset <- setconvert(set, tau = 0.01, error = 0.001)
 #' @returns Mean and variance for the associated tau and error.
 #' @export
 setconvert <- function(set, tau, error){
