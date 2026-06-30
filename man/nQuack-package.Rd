@@ -11,7 +11,8 @@ nQuack predicts ploidal level from sequence data using site-based heterozygosity
 \seealso{
 Useful links:
 \itemize{
-  \item \url{http://mlgaynor.com/nQuack/ https://github.com/mgaynor1/nQuack}
+  \item \url{http://mlgaynor.com/nQuack/}
+  \item \url{https://github.com/mgaynor1/nQuack}
   \item Report bugs at \url{https://github.com/mgaynor1/nQuack/issue}
 }
 
