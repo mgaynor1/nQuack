@@ -11,7 +11,7 @@ RoxygenNote: 7.3.3
 Suggests: 
     knitr,
     dplyr,
-    kableExtra, 
+    kableExtra,
     rmarkdown
 Imports: 
     Rcpp (>= 1.0.11),
@@ -23,7 +23,8 @@ Imports:
     parallel, 
     doParallel,
     extraDistr, 
-    RcppProgress
+    RcppProgress, 
+    httr2
 LinkingTo: 
     Rcpp,
     RcppArmadillo, 
@@ -40,3 +41,4 @@ VignetteBuilder: knitr
 Maintainer: ML Gaynor <shellyleegaynor@gmail.com>
 URL: http://mlgaynor.com/nQuack/ https://github.com/mgaynor1/nQuack
 BugReports: https://github.com/mgaynor1/nQuack/issue
+Config/testthat/edition: 3

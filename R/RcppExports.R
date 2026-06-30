@@ -320,7 +320,3 @@ process_rcpp <- function(x, mindepth, maxprob, trunc, error) {
     .Call(`_nQuack_process_rcpp`, x, mindepth, maxprob, trunc, error)
 }
 
-# Register entry points for exported C++ functions
-methods::setLoadAction(function(ns) {
-    .Call(`_nQuack_RcppExport_registerCCallable`)
-})

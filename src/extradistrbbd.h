@@ -3,8 +3,6 @@
 
 #include <Rcpp.h>
 
-// [[Rcpp::interfaces(r, cpp)]]
-// [[Rcpp::plugins(cpp11)]]
 
 
 using Rcpp::NumericVector;

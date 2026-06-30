@@ -1,7 +1,6 @@
 #ifndef USHARED_H
 #define USHARED_H
 
-// [[Rcpp::depends(RcppArmadillo)]]
 #include <RcppArmadillo.h>
 using namespace arma;
 
