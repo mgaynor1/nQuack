@@ -39,6 +39,6 @@ LazyData: true
 License: GPL (>= 2)
 VignetteBuilder: knitr
 Maintainer: ML Gaynor <shellyleegaynor@gmail.com>
-URL: http://mlgaynor.com/nQuack/ https://github.com/mgaynor1/nQuack, http://mlgaynor.com/nQuack/
+URL: http://mlgaynor.com/nQuack/, https://github.com/mgaynor1/nQuack
 BugReports: https://github.com/mgaynor1/nQuack/issue
 Config/testthat/edition: 3
