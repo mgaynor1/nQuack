@@ -2,7 +2,7 @@
 % Please edit documentation in R/bestquack.R
 \name{bestquack}
 \alias{bestquack}
-\title{Model Selection - Expectation Maximization - Choose your distribution and type}
+\title{Model Selection - Expectation Maximization - Optimal Distribution and Type}
 \usage{
 bestquack(
   xm,
@@ -57,4 +57,11 @@ For LL, the largest score is the most likely model.
 This function was made to run a subset of models based on a selected distribution and type.
 There are many limitations to this function to make this tractable, as there are 128 models that could be run with our package.
 Here we do not include models or comparisons we found unhelpful, this includes the nQuire implementation and log-likelihood ratio tests.
+}
+\examples{
+ out <- bestquack(xm[1:100,],
+                  distribution = "normal",
+                  type = "fixed",
+                  uniform = 1,
+                  samplename = "sample1")
 }

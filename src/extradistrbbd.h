@@ -3,9 +3,16 @@
 
 #include <Rcpp.h>
 
-// [[Rcpp::interfaces(r, cpp)]]
-// [[Rcpp::plugins(cpp11)]]
-
+/*
+ * This file is derived from the extraDistr R package.
+ *
+ * Original source:
+ * extraDistr:
+ * https://github.com/twolodzko/extraDistr/blob/master/src/beta-binomial-distribution.cpp
+ * https://github.com/twolodzko/extraDistr/blob/master/src/shared.h
+ *
+ * License: GPL-2
+ */
 
 using Rcpp::NumericVector;
 

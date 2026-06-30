@@ -17,3 +17,6 @@ Numeric vector of alpha and beta.
 \description{
 Calculate Alpha and Beta from Mean and Variance
 }
+\examples{
+abc <- alphabetacalc(0.5, 0.01)
+}

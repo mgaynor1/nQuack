@@ -70,3 +70,6 @@ and lambda. Only heterozygous sites are returned.
 Based on input variables, the sites may be filtered based on the total coverage (\code{filter.coverage}), allele
 sequencing coverage (\code{filter.error}), or allele frequency (\code{filter.freq}).
 }
+\examples{
+xm <- sim.ind.BB.tau(mvec = c(0.5), avec = c(1), s.size = 100)
+}

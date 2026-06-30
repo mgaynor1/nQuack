@@ -62,3 +62,6 @@ and only variance (\verb{type ='fixed_3}) to be estimated for each mixture.
 This function uses the expectation maximization of both the beta and beta-uniform mixture models for model selection.
 Here we can run up to 32 mixture models.
 }
+\examples{
+ out <- quackBeta(xm[1:100,], samplename = "sample1", cores = 1)
+}

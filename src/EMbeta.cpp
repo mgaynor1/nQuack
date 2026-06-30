@@ -461,11 +461,24 @@ double llcalcfinal(Rcpp::List eout){
 //' @param niter Max number of iterates.
 //' @param epsilon Epsilon value for convergence tolerance. When the absolute delta log-likelihood is
 //'    below this value, convergence is reached.
-//' @param trunc List of two values representing the lower and upper bounds, $c_{L}$ and $c_{U}$.
+//' @param trunc List of two values representing the lower and upper bounds, \eqn{c_{L}} and \eqn{c_{U}}.
 //' @param type String indicating model type. Options: "free" (estimated parameter(s): alpha, mean, and variance), "fixed" (estimated parameter(s): alpha),
 //' "fixed-2" (estimated parameter(s): alpha and variance), or "fixed-3" (estimated parameter(s): variance).
 //'  If avec is length of 1, fixed and fixed-3 will not be able to return a log-likelihood.
 //'
+//'
+//' @examples
+//'   if(exists("crazy")){
+//'     xi <- (xm[,2]/xm[,1])
+//'     p = list(avec = c(0.11, 0.22, 0.34, 0.22, 0.11),
+//'              mvec = c(0.20, 0.33, 0.50, 0.67, 0.80),
+//'              svec = c(0.01, 0.01, 0.01, 0.01, 0.01));
+//'     mout <- emstepB(p,
+//'                     xi,
+//'                     niter = 100,
+//'                     epsilon = 0.1,
+//'                     trunc = c(0.0,0.0))
+//' }
 //' @returns List of elements including the log likelihood, the negative log likelihood, the number of iterates,
 //'  and the optimized parameter values.
 //'

@@ -27,3 +27,6 @@ and coverage of a randomly sampled allele will be returned.
 This function is used to simulate coverage of each allele at
 biallelic heterozygous sites assuming a binomial distribution.
 }
+\examples{
+xm <- sim.ind.simple(mvec = c(0.5), s.size = 100)
+}

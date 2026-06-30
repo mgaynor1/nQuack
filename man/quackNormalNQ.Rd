@@ -63,3 +63,6 @@ This function uses the expectation maximization of both
 the normal and normal-uniform mixture models for model selection
 based on the nQuire approach. Here we can run up to 32 mixture models.
 }
+\examples{
+ out <- quackNormalNQ(xm[1:100,], samplename = "sample1", cores = 1)
+}

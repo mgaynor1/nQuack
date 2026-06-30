@@ -2,7 +2,7 @@
 % Please edit documentation in R/process_data.R
 \name{process_data}
 \alias{process_data}
-\title{Process data - Step 2}
+\title{Process Data - Step 2}
 \usage{
 process_data(
   file,
@@ -23,7 +23,7 @@ process_data(
 sites will be retained where allele coverage is greater than the sequencing error rate times
 the total coverage, but less than one minus the sequencing error rate times the total coverage.}
 
-\item{trunc}{List of two values representing the lower and upper bounds, \eqn{c_{L}} and \eqn{c_{U}} which are used to filter allele frequencies.}
+\item{trunc}{List of two values representing the lower and upper bounds, \eqn{c_L} and \eqn{c_U} which are used to filter allele frequencies.}
 }
 \value{
 Numeric matrix with total coverage and coverage for a randomly sampled allele.
@@ -37,4 +37,9 @@ sites will be retained where allele coverage is greater than the sequencing erro
 the total coverage, but less than one minus the sequencing error rate times the total coverage.
 Lastly, based on \code{trunc}, allele frequencies will be filtered based on a provided lower
 and upper bound. Finally, the function samples a single allele frequency per site to avoid data duplication.
+}
+\examples{
+if(file.exists("mybamfile.csv")){
+  cleaned_data <- process_data(file = "mybamfile.csv")
+}
 }

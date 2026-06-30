@@ -19,3 +19,6 @@ Mean and variance for the associated tau and error.
 \description{
 This function is used to calculate variance.
 }
+\examples{
+var <- muvarcalcvec(mu = 0.5, tau = 0.01, error = 0.01)
+}

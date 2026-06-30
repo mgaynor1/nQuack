@@ -36,7 +36,7 @@ Briefly, if you are using the model with alpha as a free parameter, the alpha va
 
 Here is an example of how to run the EM step: https://gist.github.com/mgaynor1/e5a4a9fb2eaba8aabbcf6ff1ef2075f1
 
-The best explanation of this approach can be found in Rowan's preprint here: Schley RS, Piñeiro R, Nicholls J, Gaynor ML, Lewis GP, Pezzini FF, Dexter KG, Kider C, Pennington RT, and Twyford AD. The frequency and importance of polyploidy in tropical trees. In Review, New Phytologist. Preprint available, [doi: 10.1101/2025.07.28.667178](https://doi.org/10.1101/2025.07.28.667178).
+The best explanation of this approach can be found in Rowan's preprint here: Schley RS, Piñeiro R, Nicholls J, Gaynor ML, Lewis GP, Pezzini FF, Dexter KG, Kider C, Pennington RT, and Twyford AD. The frequency and importance of polyploidy in tropical trees. 2026, New Phytologist. \doi{10.1111/nph.70764}
  
 ## What about RNA-seq? HI-C? or PacBio HIFI?
 

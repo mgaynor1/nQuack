@@ -24,7 +24,9 @@
 #' @param free default = FALSE, skip the free model calculation and does not
 #'   calculate delta log-likelihood.
 #'
-#' @return BIC scores and log-likelihood (LL) mixture models including diploid,
+#' @examples
+#'  out <- quackBeta(xm[1:100,], samplename = "sample1", cores = 1)
+#' @returns BIC scores and log-likelihood (LL) mixture models including diploid,
 #'  triploid, tetraploid, pentaploid, and hexaploid. When free = TRUE,
 #'  the delta log-likelihood (dLL) is calculated based on
 #'  the associated free model (without or with a uniform mixture).
@@ -35,13 +37,12 @@
 #'   only alpha and variance (`type = 'fixed_2'`),
 #'  and only variance (`type ='fixed_3`) to be estimated for each mixture.
 #'
-#'
 #' @importFrom foreach foreach %dopar% %:%
 #' @importFrom future plan availableCores multisession
 #' @importFrom parallel makeCluster
 #' @importFrom doParallel registerDoParallel
 #' @importFrom stats dbeta pbeta
-#'
+#' @export
 
 quackBeta <- function(xm, samplename, cores, parallel= FALSE,
                       trunc = c(0.0,0.0),  lowvar = FALSE,

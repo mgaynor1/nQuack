@@ -16,7 +16,7 @@ using namespace arma;
 // param parmlist A list containing initial alpha,  $theta_{1}$, and $theta_{2}$ values.
 // param xm Matrix where the first column is total coverage and the second is the count of base A or B.
 // param type String indicating "Free" or "Fixed".
-// param trunc List of two values representing the lower and upper bounds, $c_{L}$ and $c_{U}$.
+// param trunc List of two values representing the lower and upper bounds, \eqn{c_{L}} and \eqn{c_{U}}.
 // return A list with the following elements:
 // \item logL: Log-likelihood of the mixture model.
 // \item Zprobs.mat: Matrix where rows represent data points and columns represent each
@@ -254,7 +254,7 @@ extern "C" {
 //
 // description This function is used in expectation maximization to maximize the parameter values.
 // param eout List with output from the estep
-// param trunc List of two values representing the lower and upper bounds, $c_{L}$ and $c_{U}$.]
+// param trunc List of two values representing the lower and upper bounds, \eqn{c_{L}} and \eqn{c_{U}}.
 Rcpp::List mstepBBU(Rcpp::List eout){
 
    const Rcpp::List parmlist = eout["parm.list"];
@@ -426,14 +426,24 @@ double llcalcfinalBBU(Rcpp::List eout){
 //' @param niter Max number of iterates.
 //' @param epsilon Epsilon value for convergence tolerance. When the absolute delta log-likelihood is
 //'    below this value, convergence is reached.
-//' @param trunc List of two values representing the lower and upper bounds, $c_{L}$ and $c_{U}$.
+//' @param trunc List of two values representing the lower and upper bounds, \eqn{c_{L}} and \eqn{c_{U}}.
 //' @param type String indicating model type. Options: "free" (estimated parameter(s): alpha, mean, and variance), "fixed" (estimated parameter(s): alpha),
 //' "fixed-2" (estimated parameter(s): alpha and variance), or "fixed-3" (estimated parameter(s): variance).
 //'  If avec is length of 1, fixed and fixed-3 will not be able to return a log-likelihood.
 //'
+//' @examples
+//'  if(exists("crazy")){
+//'   p = list(avec = c(0.11, 0.22, 0.34, 0.22, 0.11),
+//'           mvec = c(0.20, 0.33, 0.50, 0.67, 0.80),
+//'           svec = c(0.01, 0.01, 0.01, 0.01, 0.01));
+//'   mout <- emstepBBU(p,
+//'                     xm,
+//'                     niter = 100,
+//'                     epsilon = 0.1,
+//'                     trunc = c(0.0,0.0))
+//'}
 //' @returns List of elements including the log likelihood, the negative log likelihood, the number of iterates,
 //'  and the optimized parameter values.
-//'
 // [[Rcpp::export]]
 Rcpp::List emstepBBU(Rcpp::List parmlist, arma::mat xm, int niter, double epsilon, arma::vec trunc,  std::string type = "free"){
    // Set up progress

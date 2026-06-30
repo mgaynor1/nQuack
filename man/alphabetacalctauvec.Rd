@@ -19,3 +19,6 @@ Numeric matrix of alpha and beta.
 \description{
 Vector-based - Calculate Alpha and Beta from Mean, Tau, and Error rate.
 }
+\examples{
+abc <- alphabetacalctauvec(c(0.5,0.5), 0.01, 0.01)
+}

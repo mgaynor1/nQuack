@@ -231,7 +231,7 @@ int mainBashF(std::string name, std::string outpath, std::string tempfolder) {
     return 0;
  }
 
-//' @title Prepare data - Step 1
+//' @title Prepare Data - Step 1
 //'
 //' @description This function transforms a BAM file into a text file.
 //'   Specifically, this function uses [samtools mpileup](http://www.htslib.org/doc/samtools-mpileup.html)
@@ -250,10 +250,33 @@ int mainBashF(std::string name, std::string outpath, std::string tempfolder) {
 //' @param outpath Location for output file.
 //' @param tempfolder Location for temp folder.
 //'
+//' @examples
+//' if(exists("crazy")){
+//' ## Prepare many samples
+//'   inpath <- "filtered/"
+//'   outpath <- "Processed/"
+//'   filelist <- list.files(path = inpath, pattern = "*.bam" )
+//'   filelist <- gsub(".bam", "", filelist)
+//'   for( i in 1:length(filelist)){
+//'     prepare_data(filelist[i], inpath, outpath)
+//'   }
+//' }
 //' @returns Writes text file with the following columns: chromosome, position, depth, A, C, G, and T.
-//'
 // [[Rcpp::export]]
 void prepare_data(std::string name, std::string inpath, std::string outpath, std::string tempfolder = "temp") {
+    #ifdef _WIN32
+      int samtools_ok = system("samtools --version >NUL 2>&1");
+    #else
+      int samtools_ok = system("samtools --version >/dev/null 2>&1");
+    #endif
+
+      if (samtools_ok != 0) {
+        Rcpp::stop(
+          "The 'samtools' executable was not found.\n"
+          "Please install samtools and ensure it is on your PATH."
+        );
+      }
+
    std::string command1 = "mkdir " + tempfolder;
    int result1 =  system(command1.c_str());
    mpileF(name, inpath, tempfolder);

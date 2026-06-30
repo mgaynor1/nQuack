@@ -63,3 +63,8 @@ This function uses the expectation maximization of both
 the beta-binomial and beta-binomial-uniform mixture models for model selection.
 Here we can run up to 32 mixture models.
 }
+\examples{
+if(exists("crazy")){
+  out <- quackBetaBinom(xm[1:100,], samplename = "sample1", cores = 1)
+}
+}

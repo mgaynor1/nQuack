@@ -9,7 +9,9 @@ using namespace arma;
 //' @param mu Mean.
 //' @param var Variance.
 //'
-//' @return Numeric vector of alpha and beta.
+//' @examples
+//' abc <- alphabetacalc(0.5, 0.01)
+//' @returns Numeric vector of alpha and beta.
 // [[Rcpp::export]]
 arma::vec alphabetacalc(const double mu, const double var){
  arma::vec ab(2);
@@ -25,7 +27,9 @@ arma::vec alphabetacalc(const double mu, const double var){
 //' @param mu Vector of mean.
 //' @param var Vector of variance.
 //'
-//' @return Numeric matrix of alpha and beta.
+//' @examples
+//' abc <- alphabetacalcvec(c(0.5, 0.5), c(0.01, 0.01))
+//' @returns Numeric matrix of alpha and beta.
 // [[Rcpp::export]]
 arma::mat alphabetacalcvec(arma::vec mu, arma::vec var){
   const int ml = mu.size();
@@ -44,7 +48,9 @@ arma::mat alphabetacalcvec(arma::vec mu, arma::vec var){
 //' @param tau Overdispersion parameter. Ranges from 0 to 1, where 0 indicates less overdispersion and 1 indicates high overdispersion.  Here tau must be greater than 0.
 //' @param error Sequencing error rate.
 //'
-//' @return Numeric vector of alpha and beta.
+//' @examples
+//' abc <- alphabetacalctau(0.5, 0.01, 0.01)
+//' @returns Numeric vector of alpha and beta.
 // [[Rcpp::export]]
  arma::vec alphabetacalctau(const double mu, const double tau, const double error){
    arma::vec ab(2);
@@ -61,6 +67,8 @@ arma::mat alphabetacalcvec(arma::vec mu, arma::vec var){
 //' @param tau Overdispersion parameter. Ranges from 0 to 1, where 0 indicates less overdispersion and 1 indicates high overdispersion.  Here tau must be greater than 0.
 //' @param error Sequencing error rate. Ranges from 0 to 1.
 //'
+//' @examples
+//' abc <- alphabetacalctauvec(c(0.5,0.5), 0.01, 0.01)
 //' @return Numeric matrix of alpha and beta.
 // [[Rcpp::export]]
 arma::mat alphabetacalctauvec(arma::vec mu, const double tau, const double error){

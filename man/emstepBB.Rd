@@ -16,7 +16,7 @@ emstepBB(parmlist, xm, niter, epsilon, trunc, type = "free")
 \item{epsilon}{Epsilon value for convergence tolerance. When the absolute delta log-likelihood is
 below this value, convergence is reached.}
 
-\item{trunc}{List of two values representing the lower and upper bounds,  c_L and c_U.}
+\item{trunc}{List of two values representing the lower and upper bounds, \eqn{c_{L}} and \eqn{c_{U}}.}
 
 \item{type}{String indicating "Free" or "Fixed".}
 }
@@ -28,4 +28,16 @@ and the optimized parameter values.
 This function calculates the negative log-likelihood using
 the expectation maximization algorithm with Nelder-Mead numerical optimization
 and beta-binomial distribution.
+}
+\examples{
+if(exists("crazy")){
+  p = list(avec = c(0.11, 0.22, 0.34, 0.22, 0.11),
+           mvec = c(0.20, 0.33, 0.50, 0.67, 0.80),
+           svec = c(0.01, 0.01, 0.01, 0.01, 0.01));
+  mout <- emstepBB(p,
+                   xm,
+                   niter = 100,
+                   epsilon = 0.1,
+                   trunc = c(0.0,0.0))
+}
 }

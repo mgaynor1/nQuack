@@ -1,4 +1,4 @@
-#' Bootstrapping - Expectation Maximization - Choose your distribution and type
+#' @title Bootstrapping - Expectation Maximization - Optimal Distribution and Type
 #'
 #' @description This function was made to assist with bootstrap replication for a set of models run a subset of models based on a selected distribution and type.
 #' There are many limitations to this function to make this tractable, as there are 128 models that could be run with our package.
@@ -6,9 +6,16 @@
 #'
 #' @inheritParams bestquack
 #' @param nboots Number of bootstrap replicates to examine.
+#' @examples
+#'  out <- quackNboots(xm[1:100,],
+#'                     distribution = "normal",
+#'                     type = "fixed",
+#'                     uniform = 1,
+#'                     samplename = "sample1",
+#'                     nboots = 2)
+#' @returns BIC scores and log-likelihood (LL) for included mixture models. For both, the smallest score is the most likely model.
 #'
-#' @return BIC scores and log-likelihood (LL) for included mixture models.
-#'  For both, the smallest score is the most likely model.
+#'  @export
 
 
 quackNboots <- function(xm, nboots = 100, distribution, type, uniform,
@@ -16,7 +23,7 @@ quackNboots <- function(xm, nboots = 100, distribution, type, uniform,
                       samplename,
                       trunc = c(0.0,0.0),  lowvar = FALSE,
                       tau = NA, error = NA){
-
+  xm <- as.matrix(xm)
   og <- bestquack(xm, distribution, type, uniform, mixtures, samplename, trunc, lowvar, tau, error)
   ogpick <- (quackit(og))$winnerBIC
   message(paste0("The best pick for the original data is ", ogpick))

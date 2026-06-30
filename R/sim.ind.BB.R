@@ -29,13 +29,14 @@
 #' @param sampled Default as TRUE. Will randomly sample allele A or allele B, then return a data
 #'    frame with total coverage and coverage of a randomly sampled allele will be returned.
 #'
-#' @return If sampled = FALSE, a data frame with total coverage, coverage of allele A,
+#' @examples
+#' xm <- sim.ind.BB(mvec = c(0.5), avec = c(1), svec=c(0.01), s.size = 100)
+#' @returns If sampled = FALSE, a data frame with total coverage, coverage of allele A,
 #'    and coverage of allele B will be returned. If sampled = TRUE, a data frame with total coverage
 #'    and coverage of a randomly sampled allele will be returned.
-#'
-#'
 #' @importFrom truncdist rtrunc
 #' @importFrom stats rbeta rbinom quantile
+#' @export
 
 
 

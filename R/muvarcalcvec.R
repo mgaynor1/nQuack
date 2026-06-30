@@ -6,7 +6,10 @@
 #' @param tau Sequence overdispersion parameter for read counts.
 #' @param error Sequencing error rate.
 #'
+#' @examples
+#' var <- muvarcalcvec(mu = 0.5, tau = 0.01, error = 0.01)
 #' @returns Mean and variance for the associated tau and error.
+#' @export
 
 muvarcalcvec <- function(mu, tau, error){
   var.out <- c()

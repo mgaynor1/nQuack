@@ -1,0 +1,16 @@
+Original project:
+https://github.com/twolodzko/extraDistr
+
+Files:
+  src/extradistrbbd.cpp
+  src/extradistrbbd.h
+
+Original files:
+  src/beta-binomial-distribution.cpp
+  src/shared.h
+
+License:
+  GPL-2
+
+Modifications:
+ Header modified for compile ease.

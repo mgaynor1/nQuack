@@ -1,20 +1,17 @@
 Package: nQuack
 Title: Predicting Ploidal Level from Sequence Data
-Description: nQuack predicts ploidal level from sequence data using site-based heterozygosity and a mixture of models approach.
-Version: 1.0.3
+Description: Predicts ploidal level from sequence data using site-based heterozygosity and a mixture models approach.
+Version: 1.0.4
 Authors@R: c(
-    person(given = "Michelle L.", family = "Gaynor",  email= "shellyleegaynor@gmail.com", role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0002-3912-6079")), 
-     person(given = "José Miguel", family = "Ponciano", email= "josemi@ufl.edu", role = "ctb", 
-           comment = c(ORCID = "0000-0001-8457-7840"))
-    )
+    person(given = "Michelle L.", family = "Gaynor",  email= "shellyleegaynor@gmail.com", role = c("aut", "cre", "cph"),
+           comment = c(ORCID = "0000-0002-3912-6079")))
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
 Suggests: 
     knitr,
     dplyr,
-    kableExtra, 
+    kableExtra,
     rmarkdown
 Imports: 
     Rcpp (>= 1.0.11),
@@ -26,20 +23,22 @@ Imports:
     parallel, 
     doParallel,
     extraDistr, 
-    RcppProgress 
+    RcppProgress, 
+    httr2
 LinkingTo: 
     Rcpp,
     RcppArmadillo, 
     extraDistr, 
-    RcppProgress 
+    RcppProgress
 SystemRequirements: 
     C++17
     samtools (>= 1.10)
 Depends: 
     R (>= 3.5.0)
 LazyData: true
-License: GPL-3
+License: GPL (>= 2)
 VignetteBuilder: knitr
-Maintainer: ML Gaynor <shellyleegaynor@gmail.com>
-URL: http://mlgaynor.com/nQuack/ https://github.com/mgaynor1/nQuack
-BugReports: https://github.com/mgaynor1/nQuack/issue
+Maintainer: Michelle L. Gaynor <shellyleegaynor@gmail.com>
+URL: http://mlgaynor.com/nQuack/, https://github.com/mgaynor1/nQuack/
+BugReports: https://github.com/mgaynor1/nQuack/issues
+Config/testthat/edition: 3

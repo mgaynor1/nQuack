@@ -11,10 +11,26 @@ estepB3(parmlist, xi, trunc)
 
 \item{xi}{List of observations, in this case allele frequencies.}
 
-\item{trunc}{List of two values representing the lower and upper bounds,  c_L and c_U.}
+\item{trunc}{List of two values representing the lower and upper bounds, \eqn{c_{L}} and \eqn{c_{U}}.}
+}
+\value{
+List of zprob, parm.list, xi, denom, and trunc.
 }
 \description{
 This is used in the \code{Bclean()} function. Here we complete
 the E-Step and calculate the log-likelihood. Modifications include a correction for
 the truncated distribution.
+}
+\examples{
+ if(exists("crazy")){
+ xi <- (xm[,2]/xm[,1])
+ tcalc <- alphabetacalcvec(mu = c(0.287, 0.50, 0.713),
+                           var = c(0.01, 0.01, 0.01))
+ set <-  list(avec = c(0.25, 0.25, 0.25, 0.125, 0.125),
+              t1vec = c(tcalc[,1], 0.5, 0.33),
+              t2vec = c(tcalc[,2], 0.33, 0.5))
+ checkB <- estepB3(set,
+                   xi,
+                   c(0,0))
+ }
 }

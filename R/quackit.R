@@ -6,7 +6,10 @@
 #' @param summary_statistic May be equal to BIC or LL.
 #' @param mixtures Defaults to `c("diploid", "triploid", "tetraploid", "hexaploid", "pentaploid")`.
 #'
-#' @return Returns data frame with the most likely model for each set of mixtures.
+#' @examples
+#' out <- quackNormal(xm[1:100,], samplename = "sample1", cores = 1)
+#' goose <- quackit(out)
+#' @returns Returns data frame with the most likely model for each set of mixtures.
 #' Includes the best and second best mixtures, as well as the difference between the two.
 #' We only use BIC or LL to compare within each distribution and type.
 #' To identify the most accurate model, you will need to compare accuracy across distributions
@@ -17,7 +20,7 @@
 #'  only alpha  (`type = 'fixed'`), only alpha and variance (`type = 'fixed_2'`),
 #'   and only variance (`type ='fixed_3`) to be estimated for each mixture.
 #'
-#'
+#' @export
 quackit <- function(model_out, summary_statistic = "BIC",
                     mixtures = c("diploid", "triploid", "tetraploid", "hexaploid", "pentaploid")){
   if(summary_statistic == "dLL"){

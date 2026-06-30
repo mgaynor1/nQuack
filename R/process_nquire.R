@@ -7,9 +7,14 @@
 #'
 #' @param file Output text file created with nQuire.
 #'
-#' @return Numeric matrix with total coverage and coverage for a randomly sampled allele.
+#'@examples
+#' if(file.exists("mynQuirefile.bin")){
+#'   cleaned_data <- process_nquire(file = "mynQuirefile.bin")
+#' }
+#' @returns Numeric matrix with total coverage and coverage for a randomly sampled allele.
 #'
 #' @importFrom data.table fread
+#' @export
 
 process_nquire <- function(file){
   df <- data.table::fread(file, sep = "\t")

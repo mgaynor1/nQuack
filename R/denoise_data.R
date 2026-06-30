@@ -14,11 +14,12 @@
 #'  utilizes the scaled probability of each data point belonging to each mixture model, removing sites where the probability of belonging to uniform mixture is higher than their
 #' probability of belonging to any other mixture. nQuire utilizes the inferred alpha parameter and a histogram of base frequencies to filter the data.
 #'
-#' @return Numeric matrix with total coverage and coverage for a randomly sampled allele.
-#'
+#' @examples
+#' out <- denoise_data(xm[1:100,])
+#' @returns Numeric matrix with total coverage and coverage for a randomly sampled allele.
 #' @importFrom graphics hist par
 #' @importFrom stats runif
-#'
+#' @export
 
 denoise_data <- function(xm, plot = TRUE, filter = "both"){
 

@@ -13,7 +13,8 @@ process_rcpp(x, mindepth, maxprob, trunc, error)
 
 \item{maxprob}{Maximum depth quantile cut off, default = 0.9.}
 
-\item{trunc}{List of two values representing the lower and upper bounds,  c_L and c_U.}
+\item{trunc}{List of two values representing the lower and upper bounds,\eqn{c_{L}} and \eqn{c_{U}}.}
+
 \item{error}{Sequencing error rate.}
 }
 \value{
@@ -24,4 +25,9 @@ Based on supplied matrix with total depth and sequencing coverage for each
 nucleotide (A, C, G, and T) this function remove all but single nucelotide polymorphisms.
 When supplied, this function will filter on coverage or  allele frequency. Finally, the function
 samples a single allele frequency per site to avoid data duplication.
+}
+\examples{
+if(exists("dfm")){
+  allelefreq <- process_rcpp(dfm, min.depth, max.depth.quantile.prob, trunc, error)
+}
 }

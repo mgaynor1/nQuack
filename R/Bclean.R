@@ -1,4 +1,4 @@
-#' Remove noise with the beta distribution
+#' @title Remove Noise with the Beta Distribution
 #'
 #' @description Here we filter allele frequencies with a beta mixture model that contains 5 mixtures:
 #' three mixtures representing cytotypes included in nQuack and two mixtures representing a U-shaped distribution.
@@ -15,11 +15,12 @@
 #'  Warning, if nothing is removed, the plot of removed data will be missing.
 #' @param quick Default to TRUE. If set as FALSE, the expectation-maximization algorithm will be run in full.
 #'
-#' @return Numeric matrix with total coverage and coverage for a randomly sampled allele.
-#'
+#' @examples
+#' out <- Bclean(xm[1:100,])
+#' @returns Numeric matrix with total coverage and coverage for a randomly sampled allele.
 #' @importFrom graphics hist par
 #' @importFrom stats runif
-#'
+#' @export
 
 Bclean <- function(xm, plot = TRUE, quick = TRUE){
   # Setup data

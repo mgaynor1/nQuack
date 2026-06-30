@@ -9,3 +9,5 @@
 ^doc$
 ^Meta$
 ^.*\.DS_Store$
+^cran-comments\.md$
+^\.github$

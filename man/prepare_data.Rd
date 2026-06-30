@@ -2,7 +2,7 @@
 % Please edit documentation in R/RcppExports.R
 \name{prepare_data}
 \alias{prepare_data}
-\title{Prepare data - Step 1}
+\title{Prepare Data - Step 1}
 \usage{
 prepare_data(name, inpath, outpath, tempfolder = "temp")
 }
@@ -31,4 +31,16 @@ this step may take some time. This function also requires samtools to be located
 our \href{mlgaynor.com/nQuack/DataPreparation.html}{Data Preparation} article for more information. Warning, this writes a temporary folder
 titled 'temp'. If you want to run multiple samples at once, we suggest you set the working directory to separate locations to ensure that
 your temp folder/files are not overwritten.
+}
+\examples{
+if(exists("crazy")){
+## Prepare many samples
+  inpath <- "filtered/"
+  outpath <- "Processed/"
+  filelist <- list.files(path = inpath, pattern = "*.bam" )
+  filelist <- gsub(".bam", "", filelist)
+  for( i in 1:length(filelist)){
+    prepare_data(filelist[i], inpath, outpath)
+  }
+}
 }
