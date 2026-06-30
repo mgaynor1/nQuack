@@ -1,6 +1,6 @@
 Package: nQuack
 Title: Predicting Ploidal Level from Sequence Data
-Description: nQuack predicts ploidal level from sequence data using site-based heterozygosity and a mixture of models approach.
+Description: Predicts ploidal level from sequence data using site-based heterozygosity and a mixture models approach.
 Version: 1.0.4
 Authors@R: c(
     person(given = "Michelle L.", family = "Gaynor",  email= "shellyleegaynor@gmail.com", role = c("aut", "cre", "cph"),
@@ -38,7 +38,7 @@ Depends:
 LazyData: true
 License: GPL (>= 2)
 VignetteBuilder: knitr
-Maintainer: ML Gaynor <shellyleegaynor@gmail.com>
-URL: http://mlgaynor.com/nQuack/, https://github.com/mgaynor1/nQuack
-BugReports: https://github.com/mgaynor1/nQuack/issue
+Maintainer: Michelle L. Gaynor <shellyleegaynor@gmail.com>
+URL: http://mlgaynor.com/nQuack/, https://github.com/mgaynor1/nQuack/
+BugReports: https://github.com/mgaynor1/nQuack/issues
 Config/testthat/edition: 3

@@ -1,4 +1,4 @@
-#' Remove Noise with the Beta Distribution
+#' @title Remove Noise with the Beta Distribution
 #'
 #' @description Here we filter allele frequencies with a beta mixture model that contains 5 mixtures:
 #' three mixtures representing cytotypes included in nQuack and two mixtures representing a U-shaped distribution.

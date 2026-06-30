@@ -20,13 +20,13 @@ library(data.table)
 
 ## Introduction to Qploidy2
 
-Standardization and data cleaning are very important for determining ploidal level from sequence data. In 2025, [Taniguti et al.](https://doi.org/10.1002/tpg2.70044) published their new tool that helps with this - [Qploidy](https://github.com/Cristianetaniguti/Qploidy). Here we provide a tutorial for using data standardized with the extension of this approach, [Qploidy2](https://github.com/Breeding-Insight/Qploidy2). 
+Standardization and data cleaning are very important for determining ploidal level from sequence data. In 2025, Taniguti et al.  published their new tool that helps with this - [Qploidy](https://github.com/Cristianetaniguti/Qploidy.). Here we provide a tutorial for using data standardized with the extension of this approach, [Qploidy2](https://github.com/Breeding-Insight/Qploidy2)/. 
 
 Here, I followed their [tutorial on Alfalfa](https://breeding-insight.github.io/Qploidy2/Qploidy_alfalfa_tutorial.html#1_Introduction) and am using the output of `Qploidy2::standardize()`in nQuack. 
 
 Find out more about this cool tool in their publication:
 
-Taniguti, C. H., Lau, J., Hochhaus, T., Arias, D. C. L., Hokanson, S. C., Zlesak, D. C., Byrne, D. H., Klein, P. E., & Riera-Lizarazu, O. (2025). Exploring chromosomal variations in garden roses: Insights from high-density SNP array data and a new tool, Qploidy. The Plant Genome, e70044. [https://doi.org/10.1002/tpg2.70044](https://doi.org/10.1002/tpg2.70044)
+Taniguti, C. H., Lau, J., Hochhaus, T., Arias, D. C. L., Hokanson, S. C., Zlesak, D. C., Byrne, D. H., Klein, P. E., & Riera-Lizarazu, O. (2025). Exploring chromosomal variations in garden roses: Insights from high-density SNP array data and a new tool, Qploidy. The Plant Genome, e70044. \doi{10.1002/tpg2.70044}.
 
 
 

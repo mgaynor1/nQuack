@@ -28,5 +28,5 @@ This function is used to simulate coverage of each allele at
 biallelic heterozygous sites assuming a binomial distribution.
 }
 \examples{
-xm <- sim.ind.simple(mvec = c(0.5))
+xm <- sim.ind.simple(mvec = c(0.5), s.size = 100)
 }

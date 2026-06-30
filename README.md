@@ -21,7 +21,7 @@
 
 ## Overview
 
-nQuack is a modified statistical framework to predict ploidy level based on sequence data. We build upon [Weib et al., 2018](https://doi.org/10.1186/s12859-018-2128-z) Gaussian Mixture Model approach to estimate ploidy level, which was originally written as [a C executable](https://github.com/clwgg/nQuire). In our model, we provide a match to nQuire with `quackNormalNQ()`. Note, to match the original software, we use an incorrect likelihood in the expected maximization algorithm for `quackNormalNQ()` (see publication supplement for more information). For the corrected normal, please use `quackNormal()`. Here, the equivalent to nQuire is with a uniform mixture with fixed_3.
+nQuack is a modified statistical framework to predict ploidy level based on sequence data. We build upon [Weib et al., 2018](https://link.springer.com/article/10.1186/s12859-018-2128-z) Gaussian Mixture Model approach to estimate ploidy level, which was originally written as [a C executable](https://github.com/clwgg/nQuire). In our model, we provide a match to nQuire with `quackNormalNQ()`. Note, to match the original software, we use an incorrect likelihood in the expected maximization algorithm for `quackNormalNQ()` (see publication supplement for more information). For the corrected normal, please use `quackNormal()`. Here, the equivalent to nQuire is with a uniform mixture with fixed_3.
 
 Before using this method, we suggest you read our manuscript and consider the many limitations to a pattern-based approach for determining ploidal level. However, we attempted to highlight the most important take-aways here and in our documentation.
 
@@ -29,7 +29,7 @@ Before using this method, we suggest you read our manuscript and consider the ma
 
 ### Input Data
 
-Input data for nQuack can be a [BAM file](https://mlgaynor.com/nQuack/articles/DataPreparation.html), [Output from nQuire](https://mlgaynor.com/nQuack/reference/process_nquire.html), a [VCF](https://mlgaynor.com/nQuack/articles/VCF2nQuack.html), [Output from Qploidy2](https://mlgaynor.com/nQuack/articles/Qploidy2nQuack.html), and more. See the [pkgdown site](https://mlgaynor.com/nQuack) for more information on [preparing your data](https://mlgaynor.com/nQuack/articles/DataPreparation.html) for nQuack.
+Input data for nQuack can be a [BAM file](https://mlgaynor.com/nQuack/articles/DataPreparation.html), [Output from nQuire](https://mlgaynor.com/nQuack/reference/process_nquire.html), a [VCF](https://mlgaynor.com/nQuack/articles/VCF2nQuack.html), [Output from Qploidy2](https://mlgaynor.com/nQuack/articles/Qploidy2nQuack.html), and more. See the [pkgdown site](https://mlgaynor.com/nQuack/) for more information on [preparing your data](https://mlgaynor.com/nQuack/articles/DataPreparation.html) for nQuack.
 
 For modeling, you must input a matrix `xm` which contains two columns with total coverage and coverage for a randomly sampled allele across sites for a single individual.    
 
@@ -62,7 +62,7 @@ devtools::install_github("mgaynor1/nQuack")
 
 <span style="color: red"> Warning: samtools must be local! </span>
 
-If you are working on your personal computer, make sure samtools is installed and callable as "samtools" via terminal. If you are working on a cluster, you may need to symbolically-link samtools locally. Though the location of install may differ, here is how I make samtools callable locally on UF's amazing [HiPerGator](https://www.rc.ufl.edu/about/hipergator/) slurm cluster - note, the following should be run in your home directory (i.e., 'pwd' = /home/username) :
+If you are working on your personal computer, make sure samtools is installed and callable as "samtools" via terminal. If you are working on a cluster, you may need to symbolically-link samtools locally. Though the location of install may differ, here is how I make samtools callable locally on UF's amazing [HiPerGator](https://it.ufl.edu/rc/hipergator/) slurm cluster - note, the following should be run in your home directory (i.e., 'pwd' = /home/username) :
 
 ```         
 mkdir bin
@@ -105,18 +105,18 @@ We provide 32 ways to estimates likelihood of a mixture of models with the expec
 
 **Figure 1**. Accuracy of nQuire, nQuack's implementation of nQuire, nQuack's best model, and a simplified version of nQuack across data sets.
 
-To examine the utility of this method, we examined 513,792 models based on both simulated and real samples. Figure 1 depicts the accuracy of our method across our included data sets. More information on nQuack's implementation of nQuire can be found on [our pkgdown site](https://mlgaynor.com/nQuack/articles/ModelOptions.html) and in the [Appendix S1](https://www.doi.org/10.1002/aps3.11606). In Figure 1, the simplified version of nQuack only classifies samples as diploid or polyploid - though this is not ideal, it is accurate!
+To examine the utility of this method, we examined 513,792 models based on both simulated and real samples. Figure 1 depicts the accuracy of our method across our included data sets. More information on nQuack's implementation of nQuire can be found on [our pkgdown site](https://mlgaynor.com/nQuack/articles/ModelOptions.html) and in the Appendix S1 in our publication. In Figure 1, the simplified version of nQuack only classifies samples as diploid or polyploid - though this is not ideal, it is accurate!
 
 Before using this method, we suggest you read our manuscript and consider the many limitations to a pattern-based approach for determining ploidal level.
 
 
 ## Reference
 
-Gaynor ML, Landis JB, O'Connor TK, Laport RG, Doyle JJ, Soltis DE, Ponciano JM, and Soltis PS. 2024. nQuack: An R package for predicting ploidy level from sequence data using site-based heterozygosity. *Applications in Plant Sciences* 12(4):e11606. [doi: 10.1002/aps3.11606](https://www.doi.org/10.1002/aps3.11606)
+Gaynor ML, Landis JB, O'Connor TK, Laport RG, Doyle JJ, Soltis DE, Ponciano JM, and Soltis PS. 2024. nQuack: An R package for predicting ploidy level from sequence data using site-based heterozygosity. *Applications in Plant Sciences* 12(4):e11606.\doi{10.1002/aps3.11606}
 
 ### Associated publications:
 
-Schley RS, Piñeiro R, Nicholls J, Gaynor ML, Lewis GP, Pezzini FF, Dexter KG, Kider C, Pennington RT, and Twyford AD. 2026. The frequency and importance of polyploidy in tropical trees. *New Phytologist*. [doi: 10.1111/nph.70764](https://www.doi.org/10.1111/nph.70764)
+Schley RS, Piñeiro R, Nicholls J, Gaynor ML, Lewis GP, Pezzini FF, Dexter KG, Kider C, Pennington RT, and Twyford AD. 2026. The frequency and importance of polyploidy in tropical trees. *New Phytologist*. \doi{10.1111/nph.70764}
 
 ## Up Next   
 
