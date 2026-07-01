@@ -24,7 +24,8 @@ Imports:
     doParallel,
     extraDistr, 
     RcppProgress, 
-    httr2
+    httr2, 
+    magrittr 
 LinkingTo: 
     Rcpp,
     RcppArmadillo, 
