@@ -15,6 +15,7 @@
 #' @importFrom tools R_user_dir
 #' @importFrom httr2 request req_perform resp_url req_timeout
 #' @importFrom utils unzip
+#' @import magrittr
 #' @export
 
 SetupBasicExample <- function(overwrite = FALSE){

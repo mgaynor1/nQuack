@@ -24,7 +24,8 @@ Imports:
     doParallel,
     extraDistr, 
     RcppProgress, 
-    httr2
+    httr2, 
+    magrittr 
 LinkingTo: 
     Rcpp,
     RcppArmadillo, 
@@ -34,7 +35,7 @@ SystemRequirements:
     C++17
     samtools (>= 1.10)
 Depends: 
-    R (>= 3.5.0)
+    R (>= 4.1.0)
 LazyData: true
 License: GPL (>= 2)
 VignetteBuilder: knitr
