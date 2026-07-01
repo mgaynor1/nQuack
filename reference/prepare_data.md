@@ -43,7 +43,7 @@ depth, A, C, G, and T.
 Warning, due to the processing time needed for samtools mpileup, this
 step may take some time. This function also requires samtools to be
 located locally. Please see our [Data
-Preparation](http://mlgaynor.com/nQuack/reference/mlgaynor.com/nQuack/DataPreparation.md)
+Preparation](https://mlgaynor.com/nQuack/articles/DataPreparation.html)
 article for more information. Warning, this writes a temporary folder
 titled 'temp'. If you want to run multiple samples at once, we suggest
 you set the working directory to separate locations to ensure that your
