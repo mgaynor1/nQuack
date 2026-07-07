@@ -23,6 +23,8 @@
 #' @export
 
 Bclean <- function(xm, plot = TRUE, quick = TRUE){
+  oldpar <- par(no.readonly = TRUE)
+  on.exit(par(oldpar))
   # Setup data
   xm <- as.matrix(xm)
   xi <- xm[,2]/xm[,1]

@@ -22,6 +22,8 @@
 #' @export
 
 denoise_data <- function(xm, plot = TRUE, filter = "both"){
+  oldpar <- par(no.readonly = TRUE)
+  on.exit(par(oldpar))
 
   # Setup data
   xm <- as.matrix(xm)

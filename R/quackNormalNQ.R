@@ -24,6 +24,7 @@
 #'  the variance will be set as 0.001.
 #' @param free default = FALSE, skip the free model calculation and does not
 #'   calculate delta log-likelihood.
+#' @param verbose Default to TRUE. If TRUE, progress messages will be printed to the console.
 #' @examples
 #'  out <- quackNormalNQ(xm[1:100,], samplename = "sample1", cores = 1)
 #' @returns BIC scores and log-likelihood (LL) mixture models including diploid,
@@ -46,10 +47,11 @@
 
 quackNormalNQ <- function(xm, samplename, cores, parallel= FALSE,
                       trunc = c(0.0,0.0),  lowvar = FALSE,
-                      tau = NA, error = NA, free = FALSE){
-
+                      tau = NA, error = NA, free = FALSE, verbose = TRUE){
+  if(verbose == TRUE){
   cat(paste0(" \t\t <(-)__ <(.)__ <(.)__",
              "\n \t\t  (___/  (___/  (___/  nQuack-in-progress", "\n"))
+  }
   parallel <- ifelse(cores > 1, TRUE, FALSE)
   message(paste0("parallel set to ", parallel))
 

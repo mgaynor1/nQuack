@@ -13,7 +13,8 @@ quackNormal(
   lowvar = FALSE,
   tau = NA,
   error = NA,
-  free = FALSE
+  free = FALSE,
+  verbose = TRUE
 )
 }
 \arguments{
@@ -45,6 +46,8 @@ the variance of each mixture will be inferred from these values.}
 
 \item{free}{default = FALSE, skip the free model calculation and does not
 calculate delta log-likelihood.}
+
+\item{verbose}{Default to TRUE. If TRUE, progress messages will be printed to the console.}
 }
 \value{
 BIC scores and log-likelihood (LL) mixture models including diploid,

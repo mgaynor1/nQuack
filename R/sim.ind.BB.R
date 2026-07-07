@@ -40,12 +40,16 @@
 
 
 
-sim.ind.BB <- function(mvec, avec, svec,  error = 0.001,
+sim.ind.BB <- function(mvec, avec, svec,
+                           error = 0.001,
                            s.size = 50000, lambda = 11,
-                           max.coverage = 20, min.coverage = 2,
+                           max.coverage = 20,
+                           min.coverage = 2,
                            filter.coverage = TRUE, max.depth.quantile.prob = 0.9,
                            filter.error = TRUE,
                            filter.freq = FALSE, trunc = c(0, 0), sampled = TRUE){
+  oldpar <- par(no.readonly = TRUE)
+  on.exit(par(oldpar))
 
   alpha.beta <- alphabetacalcvec(mvec, svec)
   smax <- (length(avec))
@@ -108,6 +112,8 @@ sim.ind.BB <- function(mvec, avec, svec,  error = 0.001,
     colnames(all.sites) <- c("Total.Coverage", "Allele.A", "Allele.B")
     return(all.sites)
   }
+
+
 }
 
 

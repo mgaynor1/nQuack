@@ -14,7 +14,8 @@ bestquack(
   trunc = c(0, 0),
   lowvar = FALSE,
   tau = NA,
-  error = NA
+  error = NA,
+  verbose = TRUE
 )
 }
 \arguments{
@@ -47,6 +48,8 @@ If not, the variance by default is equal to 0.01 or 0.001.}
 
 \item{error}{Sequencing error rate. If tau and error are provided,
 the variance of each mixture will be inferred from these values. If not, the variance by default is equal to 0.01 or 0.001.}
+
+\item{verbose}{Default to TRUE. If TRUE, progress messages will be printed to the console.}
 }
 \value{
 BIC scores and log-likelihood (LL) for the included mixture models.

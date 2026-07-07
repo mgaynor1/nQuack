@@ -24,6 +24,7 @@
 #' @param lowvar Default to FALSE. When false, variance is equal to 0.01.
 #'  If set to TRUE and tau and error are not provided,
 #'  the variance will be set as 0.001.
+#' @param verbose Default to TRUE. If TRUE, progress messages will be printed to the console.
 #'
 #' @examples
 #'  out <- bestquack(xm[1:100,],
@@ -43,11 +44,11 @@ bestquack <- function(xm, distribution, type, uniform,
                       mixtures = c("diploid", "triploid", "tetraploid", "hexaploid", "pentaploid"),
                       samplename,
            trunc = c(0.0,0.0),  lowvar = FALSE,
-           tau = NA, error = NA){
-
+           tau = NA, error = NA, verbose = TRUE){
+    if(verbose == TRUE){
     cat(paste0(" \t\t <(.)__ <(.)__ <(-)__",
                "\n \t\t  (___/  (___/  (___/  nQuack-in-progress", "\n"))
-
+    }
     # Input data setup
     xm <- as.matrix(xm)
     xi <- (xm[,2]/xm[,1])
