@@ -46,6 +46,9 @@ sim.ind.BB.tau <- function(mvec, avec, tau = 0.01, error = 0.001,
                            filter.error = TRUE,
                            filter.freq = FALSE, trunc = c(0, 0), sampled = TRUE){
 
+  oldpar <- par(no.readonly = TRUE)
+  on.exit(par(oldpar))
+
   alpha.beta <- alphabetacalctauvec(mvec, tau, error)
   smax <- (length(avec))
   all.sites <- data.frame(matrix(nrow = s.size, ncol = 3))
