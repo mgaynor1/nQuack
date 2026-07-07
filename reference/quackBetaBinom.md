@@ -16,7 +16,8 @@ quackBetaBinom(
   lowvar = FALSE,
   tau = NA,
   error = NA,
-  free = FALSE
+  free = FALSE,
+  verbose = TRUE
 )
 ```
 
@@ -69,6 +70,11 @@ quackBetaBinom(
 
   default = FALSE, skip the free model calculation and does not
   calculate delta log-likelihood.
+
+- verbose:
+
+  Default to TRUE. If TRUE, progress messages will be printed to the
+  console.
 
 ## Value
 

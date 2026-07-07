@@ -1,7 +1,8 @@
 # nQuack: Predicting Ploidal Level from Sequence Data
 
 Predicts ploidal level from sequence data using site-based
-heterozygosity and a mixture models approach.
+heterozygosity and a mixture models approach. See Gaynor et al. (2024)
+[doi:10.1002/aps3.11606](https://doi.org/10.1002/aps3.11606) .
 
 ## See also
 

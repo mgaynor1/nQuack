@@ -16,7 +16,8 @@ quackBeta(
   lowvar = FALSE,
   tau = NA,
   error = NA,
-  free = FALSE
+  free = FALSE,
+  verbose = TRUE
 )
 ```
 
@@ -70,6 +71,11 @@ quackBeta(
   default = FALSE, skip the free model calculation and does not
   calculate delta log-likelihood.
 
+- verbose:
+
+  Default to TRUE. If TRUE, progress messages will be printed to the
+  console.
+
 ## Value
 
 BIC scores and log-likelihood (LL) mixture models including diploid,
@@ -87,7 +93,7 @@ be estimated for each mixture.
 
 ``` r
  out <- quackBeta(xm[1:100,], samplename = "sample1", cores = 1)
-#>           <(.)__ <(-)__ <(.)__
+#>           <(.)__ <(.)__ <(-)__
 #>            (___/  (___/  (___/  nQuack-in-progress
 #> parallel set to FALSE
 #> Free Model Skipped. Log-likelihood ratio will not be included

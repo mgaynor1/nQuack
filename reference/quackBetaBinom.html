@@ -78,7 +78,8 @@ Here we can run up to 32 mixture models.</p>
 <span>  lowvar <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  tau <span class="op">=</span> <span class="cn">NA</span>,</span>
 <span>  error <span class="op">=</span> <span class="cn">NA</span>,</span>
-<span>  free <span class="op">=</span> <span class="cn">FALSE</span></span>
+<span>  free <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -131,6 +132,10 @@ the variance of each mixture will be inferred from these values. If not, the var
 <dt id="arg-free">free<a class="anchor" aria-label="anchor" href="#arg-free"></a></dt>
 <dd><p>default = FALSE, skip the free model calculation and does not
 calculate delta log-likelihood.</p></dd>
+
+
+<dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
+<dd><p>Default to TRUE. If TRUE, progress messages will be printed to the console.</p></dd>
 
 </dl></div>
     <div class="section level2">

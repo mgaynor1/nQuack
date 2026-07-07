@@ -79,7 +79,8 @@ Here we do not include models or comparisons we found unhelpful, this includes t
 <span>  trunc <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span>,</span>
 <span>  lowvar <span class="op">=</span> <span class="cn">FALSE</span>,</span>
 <span>  tau <span class="op">=</span> <span class="cn">NA</span>,</span>
-<span>  error <span class="op">=</span> <span class="cn">NA</span></span>
+<span>  error <span class="op">=</span> <span class="cn">NA</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -135,6 +136,10 @@ If not, the variance by default is equal to 0.01 or 0.001.</p></dd>
 <dt id="arg-error">error<a class="anchor" aria-label="anchor" href="#arg-error"></a></dt>
 <dd><p>Sequencing error rate. If tau and error are provided,
 the variance of each mixture will be inferred from these values. If not, the variance by default is equal to 0.01 or 0.001.</p></dd>
+
+
+<dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
+<dd><p>Default to TRUE. If TRUE, progress messages will be printed to the console.</p></dd>
 
 </dl></div>
     <div class="section level2">
