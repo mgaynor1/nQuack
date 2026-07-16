@@ -8,7 +8,7 @@
 ## Citation
 
 Source:
-[`inst/CITATION`](https://github.com/mgaynor1/nQuack/blob/main/inst/CITATION)
+[`inst/CITATION`](https://github.com/mgaynor1/nQuack/blob/CRAN/inst/CITATION)
 
 Gaynor M, Landis J, O'Connor T, Laport R, Doyle J, Soltis D, Ponciano J,
 Soltis P (2024). “nQuack: An R package for predicting ploidal level from
