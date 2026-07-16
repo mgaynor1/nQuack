@@ -6,6 +6,7 @@
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
+
 ## Table of Contents
 
 
@@ -18,6 +19,9 @@
 [Collaboration Opportunity](#up-next)    
 
 
+## CRAN
+
+We are officially on [CRAN](https://cran.r-project.org/web/packages/nQuack/index.html)!
 
 ## Overview
 
