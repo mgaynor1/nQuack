@@ -87,6 +87,11 @@
 <p><a href="#overview">Overview</a><br><a href="#how-to-use-nquack">How to use nQuack</a><br><a href="#installation">Installation</a><br><a href="#more-on-nquack">More on nQuack</a><br><a href="#evaluation-of-nquack">Accuracy of nQuack</a><br><a href="#reference">Citation</a><br><a href="#up-next">Collaboration Opportunity</a></p>
 </div>
 <div class="section level2">
+<h2 id="cran">CRAN<a class="anchor" aria-label="anchor" href="#cran"></a>
+</h2>
+<p>We are officially on <a href="https://cran.r-project.org/web/packages/nQuack/index.html" class="external-link">CRAN</a>!</p>
+</div>
+<div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
 <p>nQuack is a modified statistical framework to predict ploidy level based on sequence data. We build upon <a href="https://link.springer.com/article/10.1186/s12859-018-2128-z" class="external-link">Weib et al., 2018</a> Gaussian Mixture Model approach to estimate ploidy level, which was originally written as <a href="https://github.com/clwgg/nQuire" class="external-link">a C executable</a>. In our model, we provide a match to nQuire with <code><a href="reference/quackNormalNQ.html">quackNormalNQ()</a></code>. Note, to match the original software, we use an incorrect likelihood in the expected maximization algorithm for <code><a href="reference/quackNormalNQ.html">quackNormalNQ()</a></code> (see publication supplement for more information). For the corrected normal, please use <code><a href="reference/quackNormal.html">quackNormal()</a></code>. Here, the equivalent to nQuire is with a uniform mixture with fixed_3.</p>
@@ -228,7 +233,7 @@ ln -s /apps/samtools/1.15/bin/samtools samtools</code></pre>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.1.</p>
 </div>
 
     </footer>

@@ -2,6 +2,8 @@
 
 ## nQuack 1.0.4
 
+CRAN release: 2026-07-16
+
 - Documentation updates including:
   - Updated README.md with new features and usage instructions.
   - Improved examples and tutorials to help users use nQuack correctly!

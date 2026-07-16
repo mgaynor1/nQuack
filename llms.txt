@@ -19,6 +19,11 @@ v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/li
 [Citation](#reference)  
 [Collaboration Opportunity](#up-next)
 
+## CRAN
+
+We are officially on
+[CRAN](https://cran.r-project.org/web/packages/nQuack/index.html)!
+
 ## Overview
 
 nQuack is a modified statistical framework to predict ploidy level based
