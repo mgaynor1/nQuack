@@ -465,6 +465,7 @@ double llcalcfinal(Rcpp::List eout){
 //' @param type String indicating model type. Options: "free" (estimated parameter(s): alpha, mean, and variance), "fixed" (estimated parameter(s): alpha),
 //' "fixed-2" (estimated parameter(s): alpha and variance), or "fixed-3" (estimated parameter(s): variance).
 //'  If avec is length of 1, fixed and fixed-3 will not be able to return a log-likelihood.
+//' @param glreturn Logical statement, if `true`, the function will return the log-likelihood, negative log-likelihood, optimized parameter values, number of iterates, and the probability of each observation belonging to each mixture model. If `false`, the function will return the log-likelihood, negative log-likelihood, optimized parameter values, and number of iterates.
 //'
 //'
 //' @examples
@@ -480,10 +481,10 @@ double llcalcfinal(Rcpp::List eout){
 //'                     trunc = c(0.0,0.0))
 //' }
 //' @returns List of elements including the log likelihood, the negative log likelihood, the number of iterates,
-//'  and the optimized parameter values.
+//'  and the optimized parameter values. If
 //'
 // [[Rcpp::export]]
-Rcpp::List emstepB(Rcpp::List parmlist, arma::vec xi, int niter, double epsilon, arma::vec trunc,  std::string type = "free"){
+Rcpp::List emstepB(Rcpp::List parmlist, arma::vec xi, int niter, double epsilon, arma::vec trunc,  std::string type = "free", bool glreturn = false){
    // Set up progress
   // Progress p(niter, true);
 
@@ -518,7 +519,12 @@ Rcpp::List emstepB(Rcpp::List parmlist, arma::vec xi, int niter, double epsilon,
      }
    }
    double llreturn = llcalcfinal(eint);
-   return  Rcpp::List::create(Rcpp::_["loglikelihood"] = llreturn,Rcpp::_["negloglikelihood"] = lnlikeint,   Rcpp::_["parm.list"] = eint["parm.list"], Rcpp::_["niter.done"] = count);
- }
+   if(glreturn == true){
+     return  Rcpp::List::create(Rcpp::_["loglikelihood"] = llreturn,Rcpp::_["negloglikelihood"] = lnlikeint,   Rcpp::_["parm.list"] = eint["parm.list"], Rcpp::_["niter.done"] = count, Rcpp::_["pir"]=eint["zprob"]);
+
+   }else{
+    return  Rcpp::List::create(Rcpp::_["loglikelihood"] = llreturn,Rcpp::_["negloglikelihood"] = lnlikeint,   Rcpp::_["parm.list"] = eint["parm.list"], Rcpp::_["niter.done"] = count);
+   }
+}
 
 

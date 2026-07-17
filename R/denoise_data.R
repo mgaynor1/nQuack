@@ -31,7 +31,7 @@ denoise_data <- function(xm, plot = TRUE, filter = "both"){
 
   # Free Model Run
   set <-  list(avec = c(0.11, 0.22, 0.33, 0.22, 0.11, 0.01), mvec = c(0.20, 0.33, 0.50, 0.67, 0.80), svec = c(0.01, 0.01, 0.01, 0.01, 0.01));
-  nout <- emstepNUA(set, xi, 1000, 0.1, c(0,0), "free" )
+  nout <- emstepNUA(set, xi, 1000, 0.1, c(0,0), "free",  glreturn = TRUE)
   pir <- nout$pir
 
   # nQuire's way:
