@@ -1,7 +1,7 @@
 Package: nQuack
 Title: Predicting Ploidal Level from Sequence Data
 Description: Predicts ploidal level from sequence data using site-based heterozygosity and a mixture models approach. See Gaynor et al. (2024) <doi:10.1002/aps3.11606>.
-Version: 1.0.4
+Version: 1.0.5
 Authors@R: c(
     person(given = "Michelle L.", family = "Gaynor",  email= "shellyleegaynor@gmail.com", role = c("aut", "cre", "cph"),
            comment = c(ORCID = "0000-0002-3912-6079")))
