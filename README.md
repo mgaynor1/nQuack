@@ -109,7 +109,7 @@ We provide 32 ways to estimates likelihood of a mixture of models with the expec
 
 **Figure 1**. Accuracy of nQuire, nQuack's implementation of nQuire, nQuack's best model, and a simplified version of nQuack across data sets.
 
-To examine the utility of this method, we examined 513,792 models based on both simulated and real samples. Figure 1 depicts the accuracy of our method across our included data sets. More information on nQuack's implementation of nQuire can be found on [our pkgdown site](https://mlgaynor.com/nQuack/articles/ModelOptions.html) and in the Appendix S1 in our publication. In Figure 1, the simplified version of nQuack only classifies samples as diploid or polyploid - though this is not ideal, it is accurate!
+To examine the utility of this method, we examined 513,792 models based on both simulated and real samples. Figure 1 depicts the accuracy of our method across our included data sets. More information on nQuack's implementation of nQuire can be found on [our pkgdown site](https://mlgaynor.com/nQuack/articles/ModelOptions.html) and in the Appendix S1 in our publication. In Figure 1, the simplified version of nQuack only classifies samples as diploid or polyploid - though this is not ideal, it is accurate! Note, the overall accuracy of diploid vs polyploid is 98.3%. 
 
 Before using this method, we suggest you read our manuscript and consider the many limitations to a pattern-based approach for determining ploidal level.
 
