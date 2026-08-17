@@ -4,7 +4,7 @@
 \alias{emstepB}
 \title{Expectation maximization - Beta Distribution}
 \usage{
-emstepB(parmlist, xi, niter, epsilon, trunc, type = "free")
+emstepB(parmlist, xi, niter, epsilon, trunc, type = "free", glreturn = FALSE)
 }
 \arguments{
 \item{parmlist}{A list containing initial alpha, mean, and variance values.}
@@ -21,10 +21,12 @@ below this value, convergence is reached.}
 \item{type}{String indicating model type. Options: "free" (estimated parameter(s): alpha, mean, and variance), "fixed" (estimated parameter(s): alpha),
 "fixed-2" (estimated parameter(s): alpha and variance), or "fixed-3" (estimated parameter(s): variance).
 If avec is length of 1, fixed and fixed-3 will not be able to return a log-likelihood.}
+
+\item{glreturn}{Logical statement, if \code{true}, the function will return the log-likelihood, negative log-likelihood, optimized parameter values, number of iterates, and the probability of each observation belonging to each mixture model. If \code{false}, the function will return the log-likelihood, negative log-likelihood, optimized parameter values, and number of iterates.}
 }
 \value{
 List of elements including the log likelihood, the negative log likelihood, the number of iterates,
-and the optimized parameter values.
+and the optimized parameter values. If
 }
 \description{
 This function calculates the log-likelihood using

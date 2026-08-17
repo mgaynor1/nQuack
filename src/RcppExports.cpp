@@ -40,8 +40,8 @@ BEGIN_RCPP
 END_RCPP
 }
 // emstepN
-Rcpp::List emstepN(Rcpp::List parmlist, const arma::vec xi, int niter, double epsilon, arma::vec trunc, std::string type);
-RcppExport SEXP _nQuack_emstepN(SEXP parmlistSEXP, SEXP xiSEXP, SEXP niterSEXP, SEXP epsilonSEXP, SEXP truncSEXP, SEXP typeSEXP) {
+Rcpp::List emstepN(Rcpp::List parmlist, const arma::vec xi, int niter, double epsilon, arma::vec trunc, std::string type, bool glreturn);
+RcppExport SEXP _nQuack_emstepN(SEXP parmlistSEXP, SEXP xiSEXP, SEXP niterSEXP, SEXP epsilonSEXP, SEXP truncSEXP, SEXP typeSEXP, SEXP glreturnSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -51,13 +51,14 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< double >::type epsilon(epsilonSEXP);
     Rcpp::traits::input_parameter< arma::vec >::type trunc(truncSEXP);
     Rcpp::traits::input_parameter< std::string >::type type(typeSEXP);
-    rcpp_result_gen = Rcpp::wrap(emstepN(parmlist, xi, niter, epsilon, trunc, type));
+    Rcpp::traits::input_parameter< bool >::type glreturn(glreturnSEXP);
+    rcpp_result_gen = Rcpp::wrap(emstepN(parmlist, xi, niter, epsilon, trunc, type, glreturn));
     return rcpp_result_gen;
 END_RCPP
 }
 // emstepNA
-Rcpp::List emstepNA(Rcpp::List parmlist, const arma::vec xi, int niter, double epsilon, arma::vec trunc, std::string type);
-RcppExport SEXP _nQuack_emstepNA(SEXP parmlistSEXP, SEXP xiSEXP, SEXP niterSEXP, SEXP epsilonSEXP, SEXP truncSEXP, SEXP typeSEXP) {
+Rcpp::List emstepNA(Rcpp::List parmlist, const arma::vec xi, int niter, double epsilon, arma::vec trunc, std::string type, bool glreturn);
+RcppExport SEXP _nQuack_emstepNA(SEXP parmlistSEXP, SEXP xiSEXP, SEXP niterSEXP, SEXP epsilonSEXP, SEXP truncSEXP, SEXP typeSEXP, SEXP glreturnSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -67,13 +68,14 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< double >::type epsilon(epsilonSEXP);
     Rcpp::traits::input_parameter< arma::vec >::type trunc(truncSEXP);
     Rcpp::traits::input_parameter< std::string >::type type(typeSEXP);
-    rcpp_result_gen = Rcpp::wrap(emstepNA(parmlist, xi, niter, epsilon, trunc, type));
+    Rcpp::traits::input_parameter< bool >::type glreturn(glreturnSEXP);
+    rcpp_result_gen = Rcpp::wrap(emstepNA(parmlist, xi, niter, epsilon, trunc, type, glreturn));
     return rcpp_result_gen;
 END_RCPP
 }
 // emstepNU
-Rcpp::List emstepNU(Rcpp::List parmlist, const arma::vec xi, int niter, double epsilon, arma::vec trunc, std::string type);
-RcppExport SEXP _nQuack_emstepNU(SEXP parmlistSEXP, SEXP xiSEXP, SEXP niterSEXP, SEXP epsilonSEXP, SEXP truncSEXP, SEXP typeSEXP) {
+Rcpp::List emstepNU(Rcpp::List parmlist, const arma::vec xi, int niter, double epsilon, arma::vec trunc, std::string type, bool glreturn);
+RcppExport SEXP _nQuack_emstepNU(SEXP parmlistSEXP, SEXP xiSEXP, SEXP niterSEXP, SEXP epsilonSEXP, SEXP truncSEXP, SEXP typeSEXP, SEXP glreturnSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -83,13 +85,14 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< double >::type epsilon(epsilonSEXP);
     Rcpp::traits::input_parameter< arma::vec >::type trunc(truncSEXP);
     Rcpp::traits::input_parameter< std::string >::type type(typeSEXP);
-    rcpp_result_gen = Rcpp::wrap(emstepNU(parmlist, xi, niter, epsilon, trunc, type));
+    Rcpp::traits::input_parameter< bool >::type glreturn(glreturnSEXP);
+    rcpp_result_gen = Rcpp::wrap(emstepNU(parmlist, xi, niter, epsilon, trunc, type, glreturn));
     return rcpp_result_gen;
 END_RCPP
 }
 // emstepNUA
-Rcpp::List emstepNUA(Rcpp::List parmlist, const arma::vec xi, int niter, double epsilon, arma::vec trunc, std::string type);
-RcppExport SEXP _nQuack_emstepNUA(SEXP parmlistSEXP, SEXP xiSEXP, SEXP niterSEXP, SEXP epsilonSEXP, SEXP truncSEXP, SEXP typeSEXP) {
+Rcpp::List emstepNUA(Rcpp::List parmlist, const arma::vec xi, int niter, double epsilon, arma::vec trunc, std::string type, bool glreturn);
+RcppExport SEXP _nQuack_emstepNUA(SEXP parmlistSEXP, SEXP xiSEXP, SEXP niterSEXP, SEXP epsilonSEXP, SEXP truncSEXP, SEXP typeSEXP, SEXP glreturnSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -99,13 +102,14 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< double >::type epsilon(epsilonSEXP);
     Rcpp::traits::input_parameter< arma::vec >::type trunc(truncSEXP);
     Rcpp::traits::input_parameter< std::string >::type type(typeSEXP);
-    rcpp_result_gen = Rcpp::wrap(emstepNUA(parmlist, xi, niter, epsilon, trunc, type));
+    Rcpp::traits::input_parameter< bool >::type glreturn(glreturnSEXP);
+    rcpp_result_gen = Rcpp::wrap(emstepNUA(parmlist, xi, niter, epsilon, trunc, type, glreturn));
     return rcpp_result_gen;
 END_RCPP
 }
 // emstepB
-Rcpp::List emstepB(Rcpp::List parmlist, arma::vec xi, int niter, double epsilon, arma::vec trunc, std::string type);
-RcppExport SEXP _nQuack_emstepB(SEXP parmlistSEXP, SEXP xiSEXP, SEXP niterSEXP, SEXP epsilonSEXP, SEXP truncSEXP, SEXP typeSEXP) {
+Rcpp::List emstepB(Rcpp::List parmlist, arma::vec xi, int niter, double epsilon, arma::vec trunc, std::string type, bool glreturn);
+RcppExport SEXP _nQuack_emstepB(SEXP parmlistSEXP, SEXP xiSEXP, SEXP niterSEXP, SEXP epsilonSEXP, SEXP truncSEXP, SEXP typeSEXP, SEXP glreturnSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -115,13 +119,14 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< double >::type epsilon(epsilonSEXP);
     Rcpp::traits::input_parameter< arma::vec >::type trunc(truncSEXP);
     Rcpp::traits::input_parameter< std::string >::type type(typeSEXP);
-    rcpp_result_gen = Rcpp::wrap(emstepB(parmlist, xi, niter, epsilon, trunc, type));
+    Rcpp::traits::input_parameter< bool >::type glreturn(glreturnSEXP);
+    rcpp_result_gen = Rcpp::wrap(emstepB(parmlist, xi, niter, epsilon, trunc, type, glreturn));
     return rcpp_result_gen;
 END_RCPP
 }
 // emstepBB
-Rcpp::List emstepBB(Rcpp::List parmlist, arma::mat xm, int niter, double epsilon, arma::vec trunc, std::string type);
-RcppExport SEXP _nQuack_emstepBB(SEXP parmlistSEXP, SEXP xmSEXP, SEXP niterSEXP, SEXP epsilonSEXP, SEXP truncSEXP, SEXP typeSEXP) {
+Rcpp::List emstepBB(Rcpp::List parmlist, arma::mat xm, int niter, double epsilon, arma::vec trunc, std::string type, bool glreturn);
+RcppExport SEXP _nQuack_emstepBB(SEXP parmlistSEXP, SEXP xmSEXP, SEXP niterSEXP, SEXP epsilonSEXP, SEXP truncSEXP, SEXP typeSEXP, SEXP glreturnSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -131,13 +136,14 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< double >::type epsilon(epsilonSEXP);
     Rcpp::traits::input_parameter< arma::vec >::type trunc(truncSEXP);
     Rcpp::traits::input_parameter< std::string >::type type(typeSEXP);
-    rcpp_result_gen = Rcpp::wrap(emstepBB(parmlist, xm, niter, epsilon, trunc, type));
+    Rcpp::traits::input_parameter< bool >::type glreturn(glreturnSEXP);
+    rcpp_result_gen = Rcpp::wrap(emstepBB(parmlist, xm, niter, epsilon, trunc, type, glreturn));
     return rcpp_result_gen;
 END_RCPP
 }
 // emstepBBU
-Rcpp::List emstepBBU(Rcpp::List parmlist, arma::mat xm, int niter, double epsilon, arma::vec trunc, std::string type);
-RcppExport SEXP _nQuack_emstepBBU(SEXP parmlistSEXP, SEXP xmSEXP, SEXP niterSEXP, SEXP epsilonSEXP, SEXP truncSEXP, SEXP typeSEXP) {
+Rcpp::List emstepBBU(Rcpp::List parmlist, arma::mat xm, int niter, double epsilon, arma::vec trunc, std::string type, bool glreturn);
+RcppExport SEXP _nQuack_emstepBBU(SEXP parmlistSEXP, SEXP xmSEXP, SEXP niterSEXP, SEXP epsilonSEXP, SEXP truncSEXP, SEXP typeSEXP, SEXP glreturnSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -147,13 +153,14 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< double >::type epsilon(epsilonSEXP);
     Rcpp::traits::input_parameter< arma::vec >::type trunc(truncSEXP);
     Rcpp::traits::input_parameter< std::string >::type type(typeSEXP);
-    rcpp_result_gen = Rcpp::wrap(emstepBBU(parmlist, xm, niter, epsilon, trunc, type));
+    Rcpp::traits::input_parameter< bool >::type glreturn(glreturnSEXP);
+    rcpp_result_gen = Rcpp::wrap(emstepBBU(parmlist, xm, niter, epsilon, trunc, type, glreturn));
     return rcpp_result_gen;
 END_RCPP
 }
 // emstepBU
-Rcpp::List emstepBU(Rcpp::List parmlist, arma::vec xi, int niter, double epsilon, arma::vec trunc, std::string type);
-RcppExport SEXP _nQuack_emstepBU(SEXP parmlistSEXP, SEXP xiSEXP, SEXP niterSEXP, SEXP epsilonSEXP, SEXP truncSEXP, SEXP typeSEXP) {
+Rcpp::List emstepBU(Rcpp::List parmlist, arma::vec xi, int niter, double epsilon, arma::vec trunc, std::string type, bool glreturn);
+RcppExport SEXP _nQuack_emstepBU(SEXP parmlistSEXP, SEXP xiSEXP, SEXP niterSEXP, SEXP epsilonSEXP, SEXP truncSEXP, SEXP typeSEXP, SEXP glreturnSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -163,7 +170,8 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< double >::type epsilon(epsilonSEXP);
     Rcpp::traits::input_parameter< arma::vec >::type trunc(truncSEXP);
     Rcpp::traits::input_parameter< std::string >::type type(typeSEXP);
-    rcpp_result_gen = Rcpp::wrap(emstepBU(parmlist, xi, niter, epsilon, trunc, type));
+    Rcpp::traits::input_parameter< bool >::type glreturn(glreturnSEXP);
+    rcpp_result_gen = Rcpp::wrap(emstepBU(parmlist, xi, niter, epsilon, trunc, type, glreturn));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -272,14 +280,14 @@ END_RCPP
 static const R_CallMethodDef CallEntries[] = {
     {"_nQuack_estepB3", (DL_FUNC) &_nQuack_estepB3, 3},
     {"_nQuack_emstepB3", (DL_FUNC) &_nQuack_emstepB3, 5},
-    {"_nQuack_emstepN", (DL_FUNC) &_nQuack_emstepN, 6},
-    {"_nQuack_emstepNA", (DL_FUNC) &_nQuack_emstepNA, 6},
-    {"_nQuack_emstepNU", (DL_FUNC) &_nQuack_emstepNU, 6},
-    {"_nQuack_emstepNUA", (DL_FUNC) &_nQuack_emstepNUA, 6},
-    {"_nQuack_emstepB", (DL_FUNC) &_nQuack_emstepB, 6},
-    {"_nQuack_emstepBB", (DL_FUNC) &_nQuack_emstepBB, 6},
-    {"_nQuack_emstepBBU", (DL_FUNC) &_nQuack_emstepBBU, 6},
-    {"_nQuack_emstepBU", (DL_FUNC) &_nQuack_emstepBU, 6},
+    {"_nQuack_emstepN", (DL_FUNC) &_nQuack_emstepN, 7},
+    {"_nQuack_emstepNA", (DL_FUNC) &_nQuack_emstepNA, 7},
+    {"_nQuack_emstepNU", (DL_FUNC) &_nQuack_emstepNU, 7},
+    {"_nQuack_emstepNUA", (DL_FUNC) &_nQuack_emstepNUA, 7},
+    {"_nQuack_emstepB", (DL_FUNC) &_nQuack_emstepB, 7},
+    {"_nQuack_emstepBB", (DL_FUNC) &_nQuack_emstepBB, 7},
+    {"_nQuack_emstepBBU", (DL_FUNC) &_nQuack_emstepBBU, 7},
+    {"_nQuack_emstepBU", (DL_FUNC) &_nQuack_emstepBU, 7},
     {"_nQuack_alphabetacalc", (DL_FUNC) &_nQuack_alphabetacalc, 2},
     {"_nQuack_alphabetacalcvec", (DL_FUNC) &_nQuack_alphabetacalcvec, 2},
     {"_nQuack_alphabetacalctau", (DL_FUNC) &_nQuack_alphabetacalctau, 3},
