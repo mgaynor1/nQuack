@@ -214,3 +214,8 @@ and importance of polyploidy in tropical trees. *New Phytologist*.
 - If you have sequence data with known plodial level for a mixed-ploidy
   system, let us know. We would love to collaborate with you. To be
   included in v2.0, please send me an email at shellyleegaynor at gmail.
+
+## Support
+
+After publication updates and support was supported through a NSF
+Postdoctoral Research Fellowship in Biology (DBI-2410238) to MLG.
