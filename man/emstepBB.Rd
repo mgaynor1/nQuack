@@ -4,7 +4,7 @@
 \alias{emstepBB}
 \title{Expectation maximization - Beta-Binomial Distribution}
 \usage{
-emstepBB(parmlist, xm, niter, epsilon, trunc, type = "free")
+emstepBB(parmlist, xm, niter, epsilon, trunc, type = "free", glreturn = FALSE)
 }
 \arguments{
 \item{parmlist}{A list containing initial alpha, mean, and variance.}
@@ -19,6 +19,8 @@ below this value, convergence is reached.}
 \item{trunc}{List of two values representing the lower and upper bounds, \eqn{c_{L}} and \eqn{c_{U}}.}
 
 \item{type}{String indicating "Free" or "Fixed".}
+
+\item{glreturn}{Logical statement, if \code{true}, the function will return the log-likelihood, negative log-likelihood, optimized parameter values, number of iterates, and the probability of each observation belonging to each mixture model. If \code{false}, the function will return the log-likelihood, negative log-likelihood, optimized parameter values, and number of iterates.}
 }
 \value{
 List of elements including the negative log likelihood, the number of iterates,

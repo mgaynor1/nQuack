@@ -72,6 +72,7 @@ emstepB3 <- function(parmlist, xi, niter, epsilon, trunc) {
 #' @param trunc List of two values representing the lower and upper bounds, \eqn{c_{L}} and \eqn{c_{U}}.
 #' @param type String indicating model type. Options: "free" (estimated parameter(s): alpha, mean, and variance), "fixed" (estimated parameter(s): alpha),
 #' "fixed_2" (estimated parameter(s): alpha and variance), or "fixed_3" (estimated parameter(s): variance).
+#' @param glreturn Logical statement, if `true`, the function will return the log-likelihood, negative log-likelihood, optimized parameter values, number of iterates, and the probability of each observation belonging to each mixture model. If `false`, the function will return the log-likelihood, negative log-likelihood, optimized parameter values, and number of iterates.
 #' @examples
 #'  if(exists("crazy")){
 #'   xi <- (xm[,2]/xm[,1])
@@ -87,8 +88,8 @@ emstepB3 <- function(parmlist, xi, niter, epsilon, trunc) {
 #' @returns List of elements including the log-likelihood, the number of iterates,
 #' and the optimized parameter values.
 #'
-emstepN <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
-    .Call(`_nQuack_emstepN`, parmlist, xi, niter, epsilon, trunc, type)
+emstepN <- function(parmlist, xi, niter, epsilon, trunc, type = "free", glreturn = FALSE) {
+    .Call(`_nQuack_emstepN`, parmlist, xi, niter, epsilon, trunc, type, glreturn)
 }
 
 #' @title Expectation maximization - Normal Distribution
@@ -105,6 +106,7 @@ emstepN <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
 #' @param trunc List of two values representing the lower and upper bounds, \eqn{c_{L}} and \eqn{c_{U}}.
 #' @param type String indicating model type. Options: "free" (estimated parameter(s): alpha, mean, and variance), "fixed" (estimated parameter(s): alpha),
 #' "fixed_2" (estimated parameter(s): alpha and variance), or "fixed_3" (estimated parameter(s): variance).
+#' @param glreturn Logical statement, if `true`, the function will return the log-likelihood, negative log-likelihood, optimized parameter values, number of iterates, and the probability of each observation belonging to each mixture model. If `false`, the function will return the log-likelihood, negative log-likelihood, optimized parameter values, and number of iterates.
 #'
 #' @examples
 #' if(exists("crazy")){
@@ -120,8 +122,8 @@ emstepN <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
 #' }
 #' @returns List of elements including the log-likelihood, the number of iterates,
 #' and the optimized parameter values.
-emstepNA <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
-    .Call(`_nQuack_emstepNA`, parmlist, xi, niter, epsilon, trunc, type)
+emstepNA <- function(parmlist, xi, niter, epsilon, trunc, type = "free", glreturn = FALSE) {
+    .Call(`_nQuack_emstepNA`, parmlist, xi, niter, epsilon, trunc, type, glreturn)
 }
 
 #' @title Expectation maximization - Normal and Uniform Distribution
@@ -138,10 +140,11 @@ emstepNA <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
 #' @param trunc List of two values representing the lower and upper bounds, \eqn{c_{L}} and \eqn{c_{U}}.
 #' @param type String indicating model type. Options: "free" (estimated parameter(s): alpha, mean, and variance), "fixed" (estimated parameter(s): alpha),
 #' "fixed_2" (estimated parameter(s): alpha and variance), or "fixed_3" (estimated parameter(s): variance).
+#' @param glreturn Logical statement, if `true`, the function will return the log-likelihood, negative log-likelihood, optimized parameter values, number of iterates, and the probability of each observation belonging to each mixture model. If `false`, the function will return the log-likelihood, negative log-likelihood, optimized parameter values, and number of iterates.
 #' @examples
 #'  if(exists("crazy")){
 #'   xi <- (xm[,2]/xm[,1])
-#'   p = list(avec = c(0.11, 0.22, 0.34, 0.22, 0.11),
+#'   p = list(avec = c(0.18, 0.18, 0.18, 0.18, 0.18, 0.1),
 #'            mvec = c(0.20, 0.33, 0.50, 0.67, 0.80),
 #'            svec = c(0.01, 0.01, 0.01, 0.01, 0.01));
 #'   mout <- emstepNU(p,
@@ -152,8 +155,8 @@ emstepNA <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
 #' }
 #' @returns List of elements including the log-likelihood, the number of iterates,
 #' and the optimized parameter values.
-emstepNU <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
-    .Call(`_nQuack_emstepNU`, parmlist, xi, niter, epsilon, trunc, type)
+emstepNU <- function(parmlist, xi, niter, epsilon, trunc, type = "free", glreturn = FALSE) {
+    .Call(`_nQuack_emstepNU`, parmlist, xi, niter, epsilon, trunc, type, glreturn)
 }
 
 #' @title Expectation maximization - Normal Distribution
@@ -170,11 +173,12 @@ emstepNU <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
 #' @param trunc List of two values representing the lower and upper bounds, \eqn{c_{L}} and \eqn{c_{U}}.
 #' @param type String indicating model type. Options: "free" (estimated parameter(s): alpha, mean, and variance), "fixed" (estimated parameter(s): alpha),
 #' "fixed_2" (estimated parameter(s): alpha and variance), or "fixed_3" (estimated parameter(s): variance).
+#' @param glreturn Logical statement, if `true`, the function will return the log-likelihood, negative log-likelihood, optimized parameter values, number of iterates, and the probability of each observation belonging to each mixture model. If `false`, the function will return the log-likelihood, negative log-likelihood, optimized parameter values, and number of iterates.
 #'
 #' @examples
 #' if(exists("crazy")){
 #'   xi <- (xm[,2]/xm[,1])
-#'   p = list(avec = c(0.11, 0.22, 0.34, 0.22, 0.11),
+#'   p = list(avec = c(0.18, 0.18, 0.18, 0.18, 0.18, 0.1),
 #'            mvec = c(0.20, 0.33, 0.50, 0.67, 0.80),
 #'            svec = c(0.01, 0.01, 0.01, 0.01, 0.01));
 #'   mout <- emstepNUA(p,
@@ -185,8 +189,8 @@ emstepNU <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
 #'}
 #' @returns List of elements including the log-likelihood, the number of iterates,
 #' and the optimized parameter values.
-emstepNUA <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
-    .Call(`_nQuack_emstepNUA`, parmlist, xi, niter, epsilon, trunc, type)
+emstepNUA <- function(parmlist, xi, niter, epsilon, trunc, type = "free", glreturn = FALSE) {
+    .Call(`_nQuack_emstepNUA`, parmlist, xi, niter, epsilon, trunc, type, glreturn)
 }
 
 #' @title Expectation maximization - Beta Distribution
@@ -204,6 +208,7 @@ emstepNUA <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
 #' @param type String indicating model type. Options: "free" (estimated parameter(s): alpha, mean, and variance), "fixed" (estimated parameter(s): alpha),
 #' "fixed-2" (estimated parameter(s): alpha and variance), or "fixed-3" (estimated parameter(s): variance).
 #'  If avec is length of 1, fixed and fixed-3 will not be able to return a log-likelihood.
+#' @param glreturn Logical statement, if `true`, the function will return the log-likelihood, negative log-likelihood, optimized parameter values, number of iterates, and the probability of each observation belonging to each mixture model. If `false`, the function will return the log-likelihood, negative log-likelihood, optimized parameter values, and number of iterates.
 #'
 #'
 #' @examples
@@ -219,10 +224,10 @@ emstepNUA <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
 #'                     trunc = c(0.0,0.0))
 #' }
 #' @returns List of elements including the log likelihood, the negative log likelihood, the number of iterates,
-#'  and the optimized parameter values.
+#'  and the optimized parameter values. If
 #'
-emstepB <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
-    .Call(`_nQuack_emstepB`, parmlist, xi, niter, epsilon, trunc, type)
+emstepB <- function(parmlist, xi, niter, epsilon, trunc, type = "free", glreturn = FALSE) {
+    .Call(`_nQuack_emstepB`, parmlist, xi, niter, epsilon, trunc, type, glreturn)
 }
 
 #' @title Expectation maximization - Beta-Binomial Distribution
@@ -238,6 +243,7 @@ emstepB <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
 #'    below this value, convergence is reached.
 #' @param trunc List of two values representing the lower and upper bounds, \eqn{c_{L}} and \eqn{c_{U}}.
 #' @param type String indicating "Free" or "Fixed".
+#' @param glreturn Logical statement, if `true`, the function will return the log-likelihood, negative log-likelihood, optimized parameter values, number of iterates, and the probability of each observation belonging to each mixture model. If `false`, the function will return the log-likelihood, negative log-likelihood, optimized parameter values, and number of iterates.
 #'
 #' @examples
 #' if(exists("crazy")){
@@ -252,8 +258,8 @@ emstepB <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
 #'}
 #' @returns List of elements including the negative log likelihood, the number of iterates,
 #'  and the optimized parameter values.
-emstepBB <- function(parmlist, xm, niter, epsilon, trunc, type = "free") {
-    .Call(`_nQuack_emstepBB`, parmlist, xm, niter, epsilon, trunc, type)
+emstepBB <- function(parmlist, xm, niter, epsilon, trunc, type = "free", glreturn = FALSE) {
+    .Call(`_nQuack_emstepBB`, parmlist, xm, niter, epsilon, trunc, type, glreturn)
 }
 
 #' @title Expectation maximization - Beta-Binomial and Uniform Distributions
@@ -271,10 +277,11 @@ emstepBB <- function(parmlist, xm, niter, epsilon, trunc, type = "free") {
 #' @param type String indicating model type. Options: "free" (estimated parameter(s): alpha, mean, and variance), "fixed" (estimated parameter(s): alpha),
 #' "fixed-2" (estimated parameter(s): alpha and variance), or "fixed-3" (estimated parameter(s): variance).
 #'  If avec is length of 1, fixed and fixed-3 will not be able to return a log-likelihood.
+#' @param glreturn Logical statement, if `true`, the function will return the log-likelihood, negative log-likelihood, optimized parameter values, number of iterates, and the probability of each observation belonging to each mixture model. If `false`, the function will return the log-likelihood, negative log-likelihood, optimized parameter values, and number of iterates.
 #'
 #' @examples
 #'  if(exists("crazy")){
-#'   p = list(avec = c(0.11, 0.22, 0.34, 0.22, 0.11),
+#'   p = list(avec = c(0.18, 0.18, 0.18, 0.18, 0.18, 0.1),
 #'           mvec = c(0.20, 0.33, 0.50, 0.67, 0.80),
 #'           svec = c(0.01, 0.01, 0.01, 0.01, 0.01));
 #'   mout <- emstepBBU(p,
@@ -285,8 +292,8 @@ emstepBB <- function(parmlist, xm, niter, epsilon, trunc, type = "free") {
 #'}
 #' @returns List of elements including the log likelihood, the negative log likelihood, the number of iterates,
 #'  and the optimized parameter values.
-emstepBBU <- function(parmlist, xm, niter, epsilon, trunc, type = "free") {
-    .Call(`_nQuack_emstepBBU`, parmlist, xm, niter, epsilon, trunc, type)
+emstepBBU <- function(parmlist, xm, niter, epsilon, trunc, type = "free", glreturn = FALSE) {
+    .Call(`_nQuack_emstepBBU`, parmlist, xm, niter, epsilon, trunc, type, glreturn)
 }
 
 #' @title Expectation maximization - Beta and Uniform Distributions
@@ -304,11 +311,12 @@ emstepBBU <- function(parmlist, xm, niter, epsilon, trunc, type = "free") {
 #' @param type String indicating model type. Options: "free" (estimated parameter(s): alpha, mean, and variance), "fixed" (estimated parameter(s): alpha),
 #' "fixed_2" (estimated parameter(s): alpha and variance), or "fixed_3" (estimated parameter(s): variance).
 #'  If avec is length of 1, fixed and fixed_3 will not be able to return a log-likelihood.
+#' @param glreturn Logical statement, if `true`, the function will return the log-likelihood, negative log-likelihood, optimized parameter values, number of iterates, and the probability of each observation belonging to each mixture model. If `false`, the function will return the log-likelihood, negative log-likelihood, optimized parameter values, and number of iterates.
 #'
 #' @examples
 #' if(exists("crazy")){
 #'   xi <- (xm[,2]/xm[,1])
-#'   p = list(avec = c(0.11, 0.22, 0.34, 0.22, 0.11),
+#'   p = list(avec = c(0.18, 0.18, 0.18, 0.18, 0.18, 0.1),
 #'            mvec = c(0.20, 0.33, 0.50, 0.67, 0.80),
 #'            svec = c(0.01, 0.01, 0.01, 0.01, 0.01));
 #'   mout <- emstepBU(p,
@@ -319,8 +327,8 @@ emstepBBU <- function(parmlist, xm, niter, epsilon, trunc, type = "free") {
 #' }
 #'@returns List of elements including the log likelihood, the negative log likelihood, the number of iterates,
 #'  and the optimized parameter values.
-emstepBU <- function(parmlist, xi, niter, epsilon, trunc, type = "free") {
-    .Call(`_nQuack_emstepBU`, parmlist, xi, niter, epsilon, trunc, type)
+emstepBU <- function(parmlist, xi, niter, epsilon, trunc, type = "free", glreturn = FALSE) {
+    .Call(`_nQuack_emstepBU`, parmlist, xi, niter, epsilon, trunc, type, glreturn)
 }
 
 #' Calculate Alpha and Beta from Mean and Variance

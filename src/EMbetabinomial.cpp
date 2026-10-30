@@ -471,6 +471,7 @@ double llcalcfinalBB(Rcpp::List eout){
 //'    below this value, convergence is reached.
 //' @param trunc List of two values representing the lower and upper bounds, \eqn{c_{L}} and \eqn{c_{U}}.
 //' @param type String indicating "Free" or "Fixed".
+//' @param glreturn Logical statement, if `true`, the function will return the log-likelihood, negative log-likelihood, optimized parameter values, number of iterates, and the probability of each observation belonging to each mixture model. If `false`, the function will return the log-likelihood, negative log-likelihood, optimized parameter values, and number of iterates.
 //'
 //' @examples
 //' if(exists("crazy")){
@@ -486,7 +487,7 @@ double llcalcfinalBB(Rcpp::List eout){
 //' @returns List of elements including the negative log likelihood, the number of iterates,
 //'  and the optimized parameter values.
 // [[Rcpp::export]]
-Rcpp::List emstepBB(Rcpp::List parmlist, arma::mat xm, int niter, double epsilon, arma::vec trunc,  std::string type = "free"){
+Rcpp::List emstepBB(Rcpp::List parmlist, arma::mat xm, int niter, double epsilon, arma::vec trunc,  std::string type = "free", bool glreturn = false){
    Rcpp::List mint = parmlist;
    // E-step
    Rcpp::List eint = estepBB(mint, xm, type, trunc);
@@ -518,8 +519,13 @@ Rcpp::List emstepBB(Rcpp::List parmlist, arma::mat xm, int niter, double epsilon
      }
    }
    double llreturn = llcalcfinalBB(eint);
-   return Rcpp::List::create(Rcpp::_["loglikelihood"] = llreturn, Rcpp::_["negloglikelihood"] = lnlikeint,  Rcpp::_["parm.list"] = eint["parm.list"], Rcpp::_["niter.done"] = count);
- }
+   if(glreturn == true){
+     return  Rcpp::List::create(Rcpp::_["loglikelihood"] = llreturn,Rcpp::_["negloglikelihood"] = lnlikeint,   Rcpp::_["parm.list"] = eint["parm.list"], Rcpp::_["niter.done"] = count, Rcpp::_["pir"]=eint["zprob"]);
+
+   }else{
+     return  Rcpp::List::create(Rcpp::_["loglikelihood"] = llreturn,Rcpp::_["negloglikelihood"] = lnlikeint,   Rcpp::_["parm.list"] = eint["parm.list"], Rcpp::_["niter.done"] = count);
+   }
+}
 
 
 
