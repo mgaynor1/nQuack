@@ -1,5 +1,15 @@
 # Changelog
 
+## nQuack 1.0.5
+
+- Expected-maximization code updates to export the probability of loci
+  belonging to each mixture, denoted `pir`.
+  - When, `glreturn = TRUE` each emstep function will now return a
+    matrix where each row is a locus and each column is a mixture. The
+    observations represent the probability that the locus observed
+    belongs to each mixture. In the supplement for our publication, this
+    is the Zi value in the E step.
+
 ## nQuack 1.0.4
 
 CRAN release: 2026-07-16

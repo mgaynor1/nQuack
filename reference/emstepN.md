@@ -7,7 +7,7 @@ nQuire and does not use an augmented likelihood.
 ## Usage
 
 ``` r
-emstepN(parmlist, xi, niter, epsilon, trunc, type = "free")
+emstepN(parmlist, xi, niter, epsilon, trunc, type = "free", glreturn = FALSE)
 ```
 
 ## Arguments
@@ -40,6 +40,15 @@ emstepN(parmlist, xi, niter, epsilon, trunc, type = "free")
   alpha, mean, and variance), "fixed" (estimated parameter(s): alpha),
   "fixed_2" (estimated parameter(s): alpha and variance), or "fixed_3"
   (estimated parameter(s): variance).
+
+- glreturn:
+
+  Logical statement, if `true`, the function will return the
+  log-likelihood, negative log-likelihood, optimized parameter values,
+  number of iterates, and the probability of each observation belonging
+  to each mixture model. If `false`, the function will return the
+  log-likelihood, negative log-likelihood, optimized parameter values,
+  and number of iterates.
 
 ## Value
 

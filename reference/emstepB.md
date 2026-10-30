@@ -7,7 +7,7 @@ beta distribution.
 ## Usage
 
 ``` r
-emstepB(parmlist, xi, niter, epsilon, trunc, type = "free")
+emstepB(parmlist, xi, niter, epsilon, trunc, type = "free", glreturn = FALSE)
 ```
 
 ## Arguments
@@ -42,10 +42,20 @@ emstepB(parmlist, xi, niter, epsilon, trunc, type = "free")
   (estimated parameter(s): variance). If avec is length of 1, fixed and
   fixed-3 will not be able to return a log-likelihood.
 
+- glreturn:
+
+  Logical statement, if `true`, the function will return the
+  log-likelihood, negative log-likelihood, optimized parameter values,
+  number of iterates, and the probability of each observation belonging
+  to each mixture model. If `false`, the function will return the
+  log-likelihood, negative log-likelihood, optimized parameter values,
+  and number of iterates.
+
 ## Value
 
 List of elements including the log likelihood, the negative log
 likelihood, the number of iterates, and the optimized parameter values.
+If
 
 ## Examples
 

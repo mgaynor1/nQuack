@@ -7,7 +7,7 @@ optimization and beta distribution with one uniform mixture.
 ## Usage
 
 ``` r
-emstepBBU(parmlist, xm, niter, epsilon, trunc, type = "free")
+emstepBBU(parmlist, xm, niter, epsilon, trunc, type = "free", glreturn = FALSE)
 ```
 
 ## Arguments
@@ -43,6 +43,15 @@ emstepBBU(parmlist, xm, niter, epsilon, trunc, type = "free")
   (estimated parameter(s): variance). If avec is length of 1, fixed and
   fixed-3 will not be able to return a log-likelihood.
 
+- glreturn:
+
+  Logical statement, if `true`, the function will return the
+  log-likelihood, negative log-likelihood, optimized parameter values,
+  number of iterates, and the probability of each observation belonging
+  to each mixture model. If `false`, the function will return the
+  log-likelihood, negative log-likelihood, optimized parameter values,
+  and number of iterates.
+
 ## Value
 
 List of elements including the log likelihood, the negative log
@@ -52,7 +61,7 @@ likelihood, the number of iterates, and the optimized parameter values.
 
 ``` r
  if(exists("crazy")){
-  p = list(avec = c(0.11, 0.22, 0.34, 0.22, 0.11),
+  p = list(avec = c(0.18, 0.18, 0.18, 0.18, 0.18, 0.1),
           mvec = c(0.20, 0.33, 0.50, 0.67, 0.80),
           svec = c(0.01, 0.01, 0.01, 0.01, 0.01));
   mout <- emstepBBU(p,

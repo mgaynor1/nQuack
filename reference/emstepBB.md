@@ -7,7 +7,7 @@ optimization and beta-binomial distribution.
 ## Usage
 
 ``` r
-emstepBB(parmlist, xm, niter, epsilon, trunc, type = "free")
+emstepBB(parmlist, xm, niter, epsilon, trunc, type = "free", glreturn = FALSE)
 ```
 
 ## Arguments
@@ -38,6 +38,15 @@ emstepBB(parmlist, xm, niter, epsilon, trunc, type = "free")
 - type:
 
   String indicating "Free" or "Fixed".
+
+- glreturn:
+
+  Logical statement, if `true`, the function will return the
+  log-likelihood, negative log-likelihood, optimized parameter values,
+  number of iterates, and the probability of each observation belonging
+  to each mixture model. If `false`, the function will return the
+  log-likelihood, negative log-likelihood, optimized parameter values,
+  and number of iterates.
 
 ## Value
 
