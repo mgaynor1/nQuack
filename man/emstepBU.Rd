@@ -36,7 +36,7 @@ and beta distribution with one uniform mixture.
 \examples{
 if(exists("crazy")){
   xi <- (xm[,2]/xm[,1])
-  p = list(avec = c(0.11, 0.22, 0.34, 0.22, 0.11),
+  p = list(avec = c(0.18, 0.18, 0.18, 0.18, 0.18, 0.1),
            mvec = c(0.20, 0.33, 0.50, 0.67, 0.80),
            svec = c(0.01, 0.01, 0.01, 0.01, 0.01));
   mout <- emstepBU(p,
