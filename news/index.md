@@ -9,6 +9,7 @@
     observations represent the probability that the locus observed
     belongs to each mixture. In the supplement for our publication, this
     is the Zi value in the E step.
+- Link to CRAN updated.
 
 ## nQuack 1.0.4
 

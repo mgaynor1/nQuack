@@ -88,7 +88,7 @@
 <div class="section level2">
 <h2 id="cran">CRAN<a class="anchor" aria-label="anchor" href="#cran"></a>
 </h2>
-<p>We are officially on <a href="https://cran.r-project.org/web/packages/nQuack/index.html" class="external-link">CRAN</a>!</p>
+<p>We are officially on <a href="https://CRAN.R-project.org/package=nQuack" class="external-link">CRAN</a>!</p>
 </div>
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
@@ -109,7 +109,7 @@
 <h3 id="ploidy-prediction">Ploidy Prediction<a class="anchor" aria-label="anchor" href="#ploidy-prediction"></a>
 </h3>
 <p>As shown in Gaynor et al. (2024), both nQuire and nQuack are not the most accurate models. To use this method or nQuire, you should have a set of samples with known ploidal level:</p>
-<p><span style="color: #FFA500"> <strong>Step 1. Identify the most accurate filtering and modeling approach (distribution and type) based on your samples with known ploidal level.</strong> </span></p>
+<p><span style="color: #FFA500"><strong>Step 1. Identify the most accurate filtering and modeling approach (distribution and type) based on your samples with known ploidal level.</strong></span></p>
 <ul>
 <li>Comparing BIC score among all distributions and types is not accurate. You must assess accuracy with a set of samples with known ploidal level.
 <ul>
@@ -127,7 +127,7 @@
 </li>
 <li>If you do not identify one of the 18 modeling approaches (distributions + type combinations) as accurate, you likely need to reprocess your raw data.</li>
 </ul>
-<p><span style="color: #FFA500"> <strong>Step 2. Apply the best filtering approach and best model to all unknown samples.</strong> </span></p>
+<p><span style="color: #FFA500"><strong>Step 2. Apply the best filtering approach and best model to all unknown samples.</strong></span></p>
 <p>See <a href="https://mlgaynor.com/nQuack/articles/BasicExample.html" class="external-link">Basic Example</a> for step-by-step guidance.</p>
 <p>Note, we know this is limited and often you will not have samples with known ploidal level. Stay-tuned, we are currently working on a better model trained on 10k samples provided by over 70 collaborators. If you want to join the team, there is still time - reach out!</p>
 </div>
@@ -137,7 +137,7 @@
 </h2>
 <pre><code><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"mgaynor1/nQuack"</span><span class="op">)</span></span></code></pre>
-<p><span style="color: red"> Warning: samtools must be local! </span></p>
+<p><span style="color: red">Warning: samtools must be local!</span></p>
 <p>If you are working on your personal computer, make sure samtools is installed and callable as “samtools” via terminal. If you are working on a cluster, you may need to symbolically-link samtools locally. Though the location of install may differ, here is how I make samtools callable locally on UF’s amazing <a href="https://it.ufl.edu/rc/hipergator/" class="external-link">HiPerGator</a> slurm cluster - note, the following should be run in your home directory (i.e., ‘pwd’ = /home/username) :</p>
 <pre><code>mkdir bin
 cd bin

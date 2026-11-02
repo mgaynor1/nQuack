@@ -21,8 +21,7 @@ v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/li
 
 ## CRAN
 
-We are officially on
-[CRAN](https://cran.r-project.org/web/packages/nQuack/index.html)!
+We are officially on [CRAN](https://CRAN.R-project.org/package=nQuack)!
 
 ## Overview
 
